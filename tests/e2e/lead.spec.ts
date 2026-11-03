@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('API de leads recusa pedidos de outra origem', async ({ request }) => {
-  const res = await request.post('/api/lead', {
+  const res = await request.post('/api/lead/', {
     data: {},
     headers: { origin: 'https://evil.example' },
   });
@@ -9,7 +9,7 @@ test('API de leads recusa pedidos de outra origem', async ({ request }) => {
 });
 
 test('API de leads valida campos', async ({ request, baseURL }) => {
-  const res = await request.post('/api/lead', {
+  const res = await request.post('/api/lead/', {
     data: { intent: 'hire', name: 'A', email: 'x', country: 'PT', locale: 'pt' },
     headers: { origin: baseURL! },
   });

@@ -25,9 +25,9 @@ test('a raiz redireciona para um idioma', async ({ page }) => {
   expect(res?.url()).toMatch(/\/(pt|br|en)\/$/);
 });
 
-test('páginas de serviço publicadas existem e rascunhos dão 404', async ({ request }) => {
+test('páginas de serviço publicadas existem e as inexistentes dão 404', async ({ request }) => {
   expect((await request.get('/pt/servicos/automacao-de-testes/')).status()).toBe(200);
-  expect((await request.get('/pt/servicos/blockchain/')).status()).toBe(404);
+  expect((await request.get('/pt/servicos/nao-existe/')).status()).toBe(404);
 });
 
 test('sitemap, robots e llms.txt', async ({ request }) => {

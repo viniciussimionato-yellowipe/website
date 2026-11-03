@@ -160,7 +160,7 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
     setStatus('sending');
     setBadFields([]);
     try {
-      const res = await fetch('/api/lead', {
+      const res = await fetch('/api/lead/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -477,12 +477,16 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
             {t.back}
           </button>
         )}
+        {/* Keys diferentes: sem elas o React reutiliza o mesmo <button> e muda-lhe o type
+            para submit durante o clique em "Continuar", e o browser envia o formulário
+            antes de mostrar o último passo. */}
         {step < steps ? (
-          <button type="button" onClick={() => goTo(step + 1)} className={submitClass}>
+          <button key="next" type="button" onClick={() => goTo(step + 1)} className={submitClass}>
             {t.next} <ArrowRight strokeWidth={2.2} />
           </button>
         ) : (
           <button
+            key="submit"
             type="submit"
             disabled={status === 'sending'}
             className={`${submitClass} disabled:opacity-60`}
