@@ -80,6 +80,9 @@ export default async function LocaleLayout({
       lang={localeConfig[locale].hreflang}
       // Scroll suave só nas âncoras: ao mudar de página o Next volta ao topo sem animação.
       data-scroll-behavior="smooth"
+      // Extensões do browser mexem nos atributos do <html> (ex.: style) antes da hidratação.
+      // Só cobre os atributos deste elemento; diferenças no resto da árvore continuam a avisar.
+      suppressHydrationWarning
       className={`${montserrat.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body>
