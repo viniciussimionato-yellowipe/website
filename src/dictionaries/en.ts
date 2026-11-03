@@ -3,9 +3,22 @@ import type { Dictionary } from './pt';
 /** en: written for US buyers (nearshore from Portugal and Brazil). Full English pages arrive in sprint 4. */
 const en: Dictionary = {
   meta: {
-    homeTitle: 'Yellowipe | Nearshore tech talent, staff augmentation and software development',
+    homeTitle: 'Nearshore tech talent and software development | Yellowipe',
     homeDescription:
       'We hire talent, augment teams and build solutions in AI, software, cloud and QA, with engineers in Portugal and Brazil.',
+    /** Titles ≤ 60 and descriptions 70–160 characters (content:check). */
+    servicesTitle: 'IT services: software, AI, cloud and QA | Yellowipe',
+    servicesDescription:
+      'Software development, AI, cloud, data and quality engineering, with teams we hire, augment or build for your project.',
+    technologiesTitle: 'Developers and teams by technology | Yellowipe',
+    casesTitle: 'Case studies in software and tech teams | Yellowipe',
+    casesDescription:
+      'Real Yellowipe client projects: the problem, what we did and the numbers behind the result. See how we work.',
+    contactTitle: 'Contact us: tech teams and software projects | Yellowipe',
+    contactDescription:
+      'Tell us what you need: hire tech talent, augment your team or build a product. We reply within one business day.',
+    privacyDescription:
+      'How Yellowipe handles the personal data of clients, candidates and website visitors, in line with the GDPR.',
   },
   common: {
     skip: 'Skip to content',

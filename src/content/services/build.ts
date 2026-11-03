@@ -14,6 +14,7 @@ import {
   STEPS_RECRUITMENT,
 } from './templates';
 import type { AreaId } from './templates';
+import { programmaticTitle } from '@/lib/seo/titles';
 
 /**
  * Máquina de conteúdo dos serviços (docs/15-servicos.md): o mesmo mecanismo das
@@ -88,8 +89,7 @@ export function buildServicePage(service: Service, locale: Locale): ServicePageV
 
   const keyword = cap((br ? service.keyword.br : undefined) ?? service.keyword.pt);
   const pitch = p(facts.pitch);
-  let title = `${keyword} | Yellowipe`;
-  if (title.length > SEO_TITLE_MAX) title = keyword.slice(0, SEO_TITLE_MAX);
+  const title = programmaticTitle(keyword, locale);
   const withTail = `${pitch} ${p(DESC_TAIL)}`;
   const description = withTail.length <= SEO_DESC_MAX ? withTail : pitch;
 

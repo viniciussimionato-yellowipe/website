@@ -3,9 +3,22 @@ import type { Dictionary } from './pt';
 /** pt-BR: não é tradução automática de pt-PT. Termos do mercado brasileiro (equipe, alocação, cases, usuários). */
 const br: Dictionary = {
   meta: {
-    homeTitle: 'Yellowipe | Recrutamento tech, alocação de TI e desenvolvimento de software',
+    homeTitle: 'Recrutamento tech, alocação de TI e software | Yellowipe',
     homeDescription:
       'Contratamos talento, reforçamos equipes e construímos soluções em IA, software, cloud e QA, no Brasil, em Portugal e nos EUA.',
+    /** Títulos ≤ 60 e descrições 70–160 caracteres (content:check). */
+    servicesTitle: 'Serviços de TI: software, IA, cloud e QA | Yellowipe',
+    servicesDescription:
+      'Desenvolvimento de software, IA, cloud, dados e qualidade, com equipes que contratamos, reforçamos ou montamos para o seu projeto.',
+    technologiesTitle: 'Desenvolvedores e equipes por tecnologia | Yellowipe',
+    casesTitle: 'Cases de sucesso em software e equipes | Yellowipe',
+    casesDescription:
+      'Projetos reais de clientes da Yellowipe: o problema, o que fizemos e os números do resultado. Veja como trabalhamos.',
+    contactTitle: 'Fale com a gente: equipes e projetos de TI | Yellowipe',
+    contactDescription:
+      'Conte o que você precisa: contratar talento tech, reforçar a equipe ou construir um produto. Respondemos no mesmo dia útil.',
+    privacyDescription:
+      'Como a Yellowipe trata os dados pessoais de clientes, candidatos e visitantes do site, de acordo com a LGPD.',
   },
   common: {
     skip: 'Pular para o conteúdo',

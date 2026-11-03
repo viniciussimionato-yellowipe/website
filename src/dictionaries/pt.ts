@@ -5,9 +5,22 @@
  */
 const pt = {
   meta: {
-    homeTitle: 'Yellowipe | Recrutamento tech, outsourcing de TI e desenvolvimento de software',
+    homeTitle: 'Recrutamento tech, outsourcing de TI e software | Yellowipe',
     homeDescription:
       'Contratamos talento, reforçamos equipas e construímos soluções em IA, software, cloud e QA, em Portugal, no Brasil e nos EUA.',
+    /** Títulos ≤ 60 e descrições 70–160 caracteres (content:check). */
+    servicesTitle: 'Serviços de TI: software, IA, cloud e QA | Yellowipe',
+    servicesDescription:
+      'Desenvolvimento de software, IA, cloud, dados e qualidade, com equipas que contratamos, reforçamos ou montamos para o seu projeto.',
+    technologiesTitle: 'Developers e equipas por tecnologia | Yellowipe',
+    casesTitle: 'Casos de sucesso em software e equipas | Yellowipe',
+    casesDescription:
+      'Projetos reais de clientes da Yellowipe: o problema, o que fizemos e os números do resultado. Veja como trabalhamos.',
+    contactTitle: 'Fale connosco: equipas e projetos de TI | Yellowipe',
+    contactDescription:
+      'Conte-nos o que precisa: contratar talento tech, reforçar a equipa ou construir um produto. Respondemos no mesmo dia útil.',
+    privacyDescription:
+      'Como a Yellowipe trata os dados pessoais de clientes, candidatos e visitantes do site, de acordo com o RGPD.',
   },
   common: {
     skip: 'Saltar para o conteúdo',

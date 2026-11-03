@@ -17,7 +17,8 @@ import en from '@/dictionaries/en';
 import pt from '@/dictionaries/pt';
 import { locales } from '@/lib/i18n/locales';
 import type { Locale } from '@/lib/i18n/locales';
-import { allRoutes, pathFor } from '@/lib/routing';
+import { allRoutes, isNoindexRoute, pathFor } from '@/lib/routing';
+import { seoFor } from '@/lib/seo/page-seo';
 
 const production = process.env.CONTENT_STRICT === '1';
 const errors: string[] = [];
@@ -53,15 +54,23 @@ for (const e of seoEntries) {
       errors.push(`[${l}] ${e.id}: descrição com ${desc.length} caracteres (70–160)`);
   }
 }
-for (const [l, d] of [
-  ['pt', pt],
-  ['br', br],
-  ['en', en],
-] as const) {
-  if (d.meta.homeTitle.length > 90)
-    warnings.push(`[${l}] título da home com ${d.meta.homeTitle.length} caracteres`);
-  const n = d.meta.homeDescription.length;
-  if (n < 70 || n > 160) errors.push(`[${l}] descrição da home com ${n} caracteres (70–160)`);
+// 2c. Todas as rotas indexáveis, com o título e a descrição que vão para o HTML
+// (dicionários, modelos, serviços, tecnologias e casos): a mesma função do generateMetadata.
+const dicts = { pt, br, en } as const;
+for (const l of locales) {
+  for (const route of allRoutes(l)) {
+    if (isNoindexRoute(route)) continue;
+    const { title, description, noindex } = seoFor(l, route, dicts[l]);
+    if (noindex) continue;
+    const where = `[${l}] ${pathFor(l, route)}`;
+    if (title.length > 60) errors.push(`${where}: título com ${title.length} caracteres (máx. 60)`);
+    else if (title.length < 30)
+      warnings.push(
+        `${where}: título curto (${title.length} caracteres), pouco texto para pesquisa`,
+      );
+    if (description.length < 70 || description.length > 160)
+      errors.push(`${where}: descrição com ${description.length} caracteres (70–160)`);
+  }
 }
 
 // 3. Autorização de casos (R-09)

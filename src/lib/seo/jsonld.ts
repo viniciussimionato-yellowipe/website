@@ -13,7 +13,25 @@ type JsonLd = Record<string, unknown>;
 
 const ORG_ID = () => absoluteUrl('/#organization');
 
+const isPending = (v: string) => !v || v.startsWith('[');
+const LANGUAGES = { PT: 'Portuguese', BR: 'Portuguese', US: 'English' } as const;
+
+/** Contactos comerciais por mercado; os pendentes ([…]) ficam de fora. */
+function contactPoints(): JsonLd[] {
+  return site.markets
+    .map((m) => ({ market: m, phone: site.contacts[m].phone }))
+    .filter(({ phone }) => !isPending(phone))
+    .map(({ market, phone }) => ({
+      '@type': 'ContactPoint',
+      telephone: phone,
+      contactType: 'sales',
+      areaServed: market,
+      availableLanguage: LANGUAGES[market],
+    }));
+}
+
 export function organizationLd(): JsonLd {
+  const contacts = contactPoints();
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -23,6 +41,7 @@ export function organizationLd(): JsonLd {
     logo: absoluteUrl(site.logo),
     sameAs: [site.social.linkedin],
     areaServed: ['PT', 'BR', 'US'],
+    ...(contacts.length ? { contactPoint: contacts } : {}),
     ...(site.foundingYear ? { foundingDate: String(site.foundingYear) } : {}),
   };
 }

@@ -16,6 +16,7 @@ import {
   ptToBr,
 } from './templates';
 import type { Two } from './templates';
+import { programmaticTitle } from '@/lib/seo/titles';
 
 /** Ferramentas de IA mostradas de forma discreta em todas as páginas de tecnologia. */
 export const AI_TOOLS = [
@@ -86,8 +87,7 @@ export function buildTechPage(stack: TechStack, locale: Locale): TechPageView {
   });
   const pitch = p(stack.pitch);
 
-  let title = `${keyword} | Yellowipe`;
-  if (title.length > SEO_TITLE_MAX) title = keyword.slice(0, SEO_TITLE_MAX);
+  const title = programmaticTitle(keyword, locale);
   const withTail = `${pitch} ${p(DESC_TAIL)}`;
   const description = withTail.length <= SEO_DESC_MAX ? withTail : pitch;
 

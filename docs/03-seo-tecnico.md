@@ -19,8 +19,9 @@ Esta lista é o critério de aceitação do requisito R-10. O que já está impl
 
 - [x] Conteúdo completo no HTML inicial (abas, acordeões e rotação renderizados no servidor)
 - [x] Um H1 por página; secções em H2
-- [x] Título ≤ 60 e descrição 70–160 caracteres, validados pelo `content:check`
-- [x] JSON-LD: Organization e WebSite (todas), BreadcrumbList (páginas internas), Service (modelos e serviços), FAQPage onde há FAQ
+- [x] Título ≤ 60 e descrição 70–160 caracteres em **todas** as rotas indexáveis dos três idiomas, validados pelo `content:check` (mesma função do `generateMetadata`: `src/lib/seo/page-seo.ts`); títulos com menos de 30 caracteres dão aviso
+- [x] Páginas de serviço e de tecnologia com o mercado no título ("… em Portugal", "… no Brasil"), se couber em 60 caracteres (`src/lib/seo/titles.ts`)
+- [x] JSON-LD: Organization (com `contactPoint` comercial por mercado, só os contactos confirmados) e WebSite (todas), BreadcrumbList (páginas internas), Service (modelos e serviços), FAQPage onde há FAQ
 - [ ] Article com autor (blog, fase de conteúdo)
 - [x] Open Graph por idioma e imagem de partilha
 - [x] `/llms.txt` gerado do conteúdo
