@@ -22,6 +22,8 @@ export const Attribution = z.object({
   landingPage: optionalText(500),
   conversionPage: optionalText(500),
   ctaId: optionalText(100),
+  /** Página onde estava o CTA que levou ao formulário (ex.: página de serviço → /contacto/). */
+  ctaPage: optionalText(500),
   referrer: optionalText(500),
   utmSource: optionalText(200),
   utmMedium: optionalText(200),

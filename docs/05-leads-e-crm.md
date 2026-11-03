@@ -2,7 +2,7 @@
 
 ## Caminho de um lead
 
-1. CTA (`TrackedLink`, evento `cta_click`) leva ao formulário.
+1. CTA (`TrackedLink`, evento `cta_click`) leva ao formulário e guarda na sessão o CTA, a página e o modelo (`src/lib/analytics/cta-context.ts`). O formulário envia-os ao CRM (`yw_cta_id`, `yw_cta_page`) e, se o CTA veio de uma página de modelo, já abre com a intenção escolhida.
 2. Formulário em três passos (`src/components/forms/LeadForm.tsx`): intenção → contacto → pedido.
 3. `POST /api/lead` (`src/app/api/lead/route.ts`):
    origem do próprio site → limite por IP → tamanho → armadilha para bots → validação (zod) → Turnstile → `handleLead`.
@@ -44,12 +44,12 @@ Configurar `CRM_PROVIDER=hubspot`, `HUBSPOT_PORTAL_ID`, `HUBSPOT_FORM_ID_CLIENT`
 
 Propriedades de contacto a criar no portal antes do lançamento:
 
-| Propriedade                                                                                  | Tipo                                             |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `yw_intent`                                                                                  | seleção: contrate, reforce, construa, indefinido |
-| `yw_areas`, `yw_landing_page`, `yw_conversion_page`, `yw_cta_id`, `yw_gclid`, `yw_li_fat_id` | texto                                            |
-| `yw_headcount`, `yw_lead_score`                                                              | número                                           |
-| `yw_company_size`, `yw_start`, `yw_locale`, `yw_lead_band`, `yw_queue`                       | seleção                                          |
+| Propriedade                                                                                                 | Tipo                                             |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `yw_intent`                                                                                                 | seleção: contrate, reforce, construa, indefinido |
+| `yw_areas`, `yw_landing_page`, `yw_conversion_page`, `yw_cta_id`, `yw_cta_page`, `yw_gclid`, `yw_li_fat_id` | texto                                            |
+| `yw_headcount`, `yw_lead_score`                                                                             | número                                           |
+| `yw_company_size`, `yw_start`, `yw_locale`, `yw_lead_band`, `yw_queue`                                      | seleção                                          |
 
 Workflows no HubSpot: atribuição por `yw_queue`, tarefa com prazo pelo SLA, sequência de nurturing por `yw_intent` (4 emails em 3 semanas), reencaminhamento quando a pontuação sobe.
 

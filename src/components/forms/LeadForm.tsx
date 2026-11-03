@@ -2,10 +2,11 @@
 
 import Script from 'next/script';
 import Link from 'next/link';
-import { useId, useRef, useState } from 'react';
+import { useId, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import type { FormEvent } from 'react';
 import type { Dictionary } from '@/dictionaries';
 import { getAttribution } from '@/lib/analytics/attribution';
+import { parseCta, readCtaRaw } from '@/lib/analytics/cta-context';
 import { track } from '@/lib/analytics/events';
 import type { Locale } from '@/lib/i18n/locales';
 import { localeConfig } from '@/lib/i18n/locales';
@@ -16,6 +17,8 @@ import { ArrowRight } from '@/components/ui/icons';
  * - Envia JSON para /api/lead; a pontuação e o encaminhamento são feitos no servidor.
  * - Campos escondidos de atribuição vêm de getAttribution() no momento do envio.
  * - Sinais de comportamento (preços, casos vistos) vêm do sessionStorage, se existirem.
+ * - O último CTA da sessão (cta-context.ts) vai para o CRM e, se veio de uma página de
+ *   modelo, pré-escolhe a intenção (o visitante pode mudar).
  */
 type Intent = 'hire' | 'augment' | 'build' | 'unsure' | 'job';
 type Status = 'idle' | 'sending' | 'done-calendar' | 'done-email' | 'error';
@@ -31,6 +34,13 @@ type Props = {
 };
 
 const INTENTS: Intent[] = ['hire', 'augment', 'build', 'unsure', 'job'];
+/** Modelo da página do CTA → intenção sugerida no passo 1. */
+const MODEL_INTENT: Record<string, Intent> = {
+  contrate: 'hire',
+  reforce: 'augment',
+  construa: 'build',
+};
+const noSubscribe = () => () => {};
 
 function readSignals() {
   try {
@@ -93,7 +103,12 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
   const formRef = useRef<HTMLFormElement>(null);
   const started = useRef(false);
   const [step, setStep] = useState(1);
-  const [intent, setIntent] = useState<Intent | null>(null);
+  const [chosen, setChosen] = useState<Intent | null>(null);
+  // Lido depois da hidratação (o servidor não tem sessionStorage): sem diferenças no HTML.
+  const ctaRaw = useSyncExternalStore(noSubscribe, readCtaRaw, () => null);
+  const lastCta = useMemo(() => parseCta(ctaRaw), [ctaRaw]);
+  const intent = chosen ?? (lastCta?.model ? MODEL_INTENT[lastCta.model] : undefined) ?? null;
+  const sourceCta = lastCta?.ctaId ?? ctaId ?? formId;
   const [status, setStatus] = useState<Status>('idle');
   const [meetingUrl, setMeetingUrl] = useState<string | null>(null);
   const [badFields, setBadFields] = useState<string[]>([]);
@@ -117,6 +132,7 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
         : undefined;
       if (invalid) {
         invalid.reportValidity();
+        track('form_error', { form_id: formId, passo: step, campos: invalid.name || 'sem-nome' });
         return;
       }
       track('form_step', { form_id: formId, passo: step, ...(intent ? { intencao: intent } : {}) });
@@ -151,7 +167,10 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
       message: str('message'),
       locale,
       consentMarketing: data.get('consentMarketing') === 'on',
-      attribution: getAttribution(ctaId),
+      attribution: {
+        ...getAttribution(sourceCta),
+        ...(lastCta ? { ctaPage: lastCta.page } : {}),
+      },
       signals: readSignals(),
       turnstileToken: str('cf-turnstile-response'),
       website: str('website') ?? '',
@@ -174,6 +193,8 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
       };
       if (!res.ok || !body.ok) {
         setBadFields(body.fields ?? []);
+        if (body.fields?.length)
+          track('form_error', { form_id: formId, passo: step, campos: body.fields.join(',') });
         setStatus('error');
         return;
       }
@@ -186,6 +207,7 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
           mercado: payload.country ?? localeConfig[locale].market,
           idioma: locale,
           faixa_pontuacao: body.band ?? 'unknown',
+          cta_id: sourceCta,
         });
       }
       if (body.next === 'calendar' && body.meetingUrl) {
@@ -275,7 +297,7 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
                 value={value}
                 required
                 checked={intent === value}
-                onChange={() => setIntent(value)}
+                onChange={() => setChosen(value)}
                 className={`m-0 size-[18px] ${c.radio}`}
               />
               {t.intents[value]}

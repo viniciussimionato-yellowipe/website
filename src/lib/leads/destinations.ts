@@ -76,6 +76,7 @@ export async function deliverToCrm(
       ['yw_landing_page', a.landingPage],
       ['yw_conversion_page', a.conversionPage],
       ['yw_cta_id', a.ctaId],
+      ['yw_cta_page', a.ctaPage],
       ['utm_source', a.utmSource],
       ['utm_medium', a.utmMedium],
       ['utm_campaign', a.utmCampaign],

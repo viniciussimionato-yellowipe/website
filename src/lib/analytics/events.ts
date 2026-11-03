@@ -29,7 +29,15 @@ export type AnalyticsEvents = {
     mercado: string;
     idioma: string;
     faixa_pontuacao: string;
+    /** CTA que levou ao formulário (último clicado na sessão) ou o próprio formulário. */
+    cta_id?: string;
   };
+  /** Validação falhou (no browser ou no servidor). campos = nomes dos campos, nunca valores. */
+  form_error: { form_id: string; passo: number; campos: string };
+  /** Clique em email ou telefone: também é um contacto comercial. canal = email | telefone. */
+  contact_click: { canal: 'email' | 'telefone'; tipo_pagina: string };
+  /** Pergunta frequente aberta: mostra as objeções que mais pesam em cada tipo de página. */
+  faq_open: { pergunta: string; tipo_pagina: string };
   /** origem: formulário geral, candidatura a uma vaga ou CV espontâneo. vaga = id da vaga, nunca o nome do candidato. */
   candidate_submit: {
     idioma: string;

@@ -17,8 +17,14 @@ const TAGS = [
   'mercado',
   'faixa_pontuacao',
 ] as const;
-/** Sessões guardadas sempre, mesmo com amostragem: as que geram procura. */
-const UPGRADE = new Set(['generate_lead', 'meeting_booked', 'calculator_result']);
+/** Sessões guardadas sempre, mesmo com amostragem: as que geram procura (formulário ou contacto direto). */
+const UPGRADE = new Set([
+  'generate_lead',
+  'meeting_booked',
+  'calculator_result',
+  'contact_click',
+  'whatsapp_click',
+]);
 /** Eventos técnicos que não interessam como evento no Clarity. */
 const SKIP = new Set(['web_vitals']);
 

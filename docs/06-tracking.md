@@ -9,22 +9,25 @@
 
 ## Eventos
 
-| Evento              | Quando dispara                         | Propriedades                                                  | Implementado                |
-| ------------------- | -------------------------------------- | ------------------------------------------------------------- | --------------------------- |
-| `page_context`      | Carga inicial e cada navegação         | `tipo_pagina`, `pagina_id`, `idioma`                          | sim                         |
-| `web_vitals`        | LCP, INP, CLS, FCP e TTFB reais        | `metrica`, `valor`, `classificacao`, `tipo_pagina`            | sim                         |
-| `cta_click`         | Clique em qualquer CTA (`TrackedLink`) | `cta_id`, `cta_text`, `posicao`, `tipo_pagina`, `modelo`      | sim                         |
-| `form_start`        | Primeiro foco no formulário            | `form_id`, `pagina_conversao`                                 | sim                         |
-| `form_step`         | Passo concluído                        | `form_id`, `passo`, `intencao`                                | sim                         |
-| `generate_lead`     | Envio aceite                           | `form_id`, `intencao`, `mercado`, `idioma`, `faixa_pontuacao` | sim                         |
-| `candidate_submit`  | Envio com "Procuro emprego"            | `idioma`                                                      | sim                         |
-| `meeting_booked`    | Reunião marcada                        | `origem_cta`, `mercado`                                       | integração com o calendário |
-| `calculator_result` | Estimativa mostrada                    | `perfis`, `mercado`, `modelo`                                 | sprint 5                    |
-| `calculator_email`  | Pedido do detalhe                      | `perfis`, `mercado`                                           | sprint 5                    |
-| `resource_download` | Relatório ou guia                      | `recurso_id`                                                  | fase de conteúdo            |
-| `case_view`         | Caso aberto                            | `caso_id`, `setor`                                            | sim                         |
-| `whatsapp_click`    | WhatsApp (`/br/`)                      | `pagina`                                                      | sprint 4                    |
-| `language_switch`   | Mudança de idioma                      | `de`, `para`                                                  | sim                         |
+| Evento              | Quando dispara                         | Propriedades                                                            | Implementado                |
+| ------------------- | -------------------------------------- | ----------------------------------------------------------------------- | --------------------------- |
+| `page_context`      | Carga inicial e cada navegação         | `tipo_pagina`, `pagina_id`, `idioma`                                    | sim                         |
+| `web_vitals`        | LCP, INP, CLS, FCP e TTFB reais        | `metrica`, `valor`, `classificacao`, `tipo_pagina`                      | sim                         |
+| `cta_click`         | Clique em qualquer CTA (`TrackedLink`) | `cta_id`, `cta_text`, `posicao`, `tipo_pagina`, `modelo`                | sim                         |
+| `form_start`        | Primeiro foco no formulário            | `form_id`, `pagina_conversao`                                           | sim                         |
+| `form_step`         | Passo concluído                        | `form_id`, `passo`, `intencao`                                          | sim                         |
+| `generate_lead`     | Envio aceite                           | `form_id`, `intencao`, `mercado`, `idioma`, `faixa_pontuacao`, `cta_id` | sim                         |
+| `form_error`        | Validação falhou (browser ou servidor) | `form_id`, `passo`, `campos` (nomes, nunca valores)                     | sim                         |
+| `contact_click`     | Clique em email ou telefone            | `canal`, `tipo_pagina`                                                  | sim                         |
+| `faq_open`          | Pergunta frequente aberta              | `pergunta`, `tipo_pagina`                                               | sim                         |
+| `candidate_submit`  | Envio com "Procuro emprego"            | `idioma`                                                                | sim                         |
+| `meeting_booked`    | Reunião marcada                        | `origem_cta`, `mercado`                                                 | integração com o calendário |
+| `calculator_result` | Estimativa mostrada                    | `perfis`, `mercado`, `modelo`                                           | sprint 5                    |
+| `calculator_email`  | Pedido do detalhe                      | `perfis`, `mercado`                                                     | sprint 5                    |
+| `resource_download` | Relatório ou guia                      | `recurso_id`                                                            | fase de conteúdo            |
+| `case_view`         | Caso aberto                            | `caso_id`, `setor`                                                      | sim                         |
+| `whatsapp_click`    | Clique num link wa.me (`/br/`)         | `pagina`                                                                | sim (falta o link no site)  |
+| `language_switch`   | Mudança de idioma                      | `de`, `para`                                                            | sim                         |
 
 ## Atribuição
 
@@ -38,10 +41,11 @@
 1. Variáveis de camada de dados para cada propriedade da tabela.
 2. Etiqueta de configuração do GA4 **sem** page_view automático. O `page_view` do GA4 dispara no evento `page_context`, com `tipo_pagina`, `pagina_id` e `idioma`. Nas definições do fluxo de dados, desligar "Alterações de página com base em eventos do histórico do browser" para não contar a mesma vista duas vezes (o site navega no cliente).
 3. Etiquetas de evento para os restantes eventos da tabela.
-4. Marcar `generate_lead` e `meeting_booked` como eventos-chave.
-5. Dimensões personalizadas (âmbito de evento): `tipo_pagina`, `pagina_id`, `idioma`, `cta_id`, `posicao`, `modelo`, `intencao`, `mercado`, `faixa_pontuacao`, `metrica`, `classificacao`. Métrica personalizada: `valor`.
-6. Ligar o Search Console ao GA4 (consultas → página de entrada).
-7. Verificar cada evento no modo de pré-visualização antes de dar a tarefa como feita.
+4. Eventos-chave (conversões): `generate_lead`, `meeting_booked`, `contact_click` e `whatsapp_click`. `contact_click` e `whatsapp_click` são contactos diretos que não passam pelo formulário; sem eles, as páginas que geram chamadas parecem não converter.
+5. Dimensões personalizadas (âmbito de evento): `tipo_pagina`, `pagina_id`, `idioma`, `cta_id`, `posicao`, `modelo`, `intencao`, `mercado`, `faixa_pontuacao`, `canal`, `pergunta`, `campos`, `metrica`, `classificacao`. Métrica personalizada: `valor`.
+6. Valor do lead para o Google Ads (decisão comercial pendente): no GTM, mapear `faixa_pontuacao` para um valor (ex.: 50+ → valor de uma oportunidade média) e enviá-lo com `generate_lead`. Permite licitar por valor em vez de por número de leads.
+7. Ligar o Search Console ao GA4 (consultas → página de entrada).
+8. Verificar cada evento no modo de pré-visualização antes de dar a tarefa como feita.
 
 ## Microsoft Clarity
 
@@ -62,6 +66,10 @@ Mapas de calor e gravações para perceber _porquê_ as visitas orgânicas conve
 | Etiquetas (`set`) | `tipo_pagina`, `pagina_id`, `idioma`, `modelo`, `intencao`, `mercado`, `faixa_pontuacao`  |
 | Eventos (`event`) | Todos os eventos da tabela acima, exceto `page_context` (vira etiqueta) e `web_vitals`    |
 | Prioridade        | Sessões com `generate_lead`, `meeting_booked` ou `calculator_result` são sempre guardadas |
+
+### Atribuição ao CTA de origem
+
+`TrackedLink` guarda o último CTA da sessão (`sessionStorage`, `yw_last_cta`: id do CTA, página e modelo). O formulário envia-o ao CRM (`yw_cta_id`, `yw_cta_page`) e ao GA4 (`cta_id` no `generate_lead`), e pré-escolhe a intenção quando o CTA vem de uma página de modelo. Assim um lead feito em `/contacto/` fica atribuído à página de serviço onde a decisão foi tomada.
 
 ### Segmentos a guardar no Clarity
 

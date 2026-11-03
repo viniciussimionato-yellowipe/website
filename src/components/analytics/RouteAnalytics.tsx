@@ -6,7 +6,9 @@ import { useEffect } from 'react';
 import { track } from '@/lib/analytics/events';
 
 /**
- * Contexto de cada página vista (`page_context`) e Core Web Vitals reais (`web_vitals`).
+ * Contexto de cada página vista (`page_context`), Core Web Vitals reais (`web_vitals`) e
+ * cliques que não passam por componentes próprios: email, telefone, WhatsApp e perguntas
+ * frequentes (um só listener delegado no documento, sem tocar em cada link).
  * O tipo de página vem do `data-page-type` do PageTransition, renderizado no servidor.
  * Os eventos ficam no dataLayer; o GTM só os lê depois do consentimento.
  */
@@ -30,6 +32,30 @@ function reportVital(metric: { name: string; value: number; rating: string }) {
   });
 }
 
+const WHATSAPP = /^https:\/\/(wa\.me|api\.whatsapp\.com)\//;
+
+function onDocumentClick(e: MouseEvent) {
+  const target = e.target instanceof Element ? e.target : null;
+  const href = target?.closest('a[href]')?.getAttribute('href');
+  if (href) {
+    const { tipo_pagina } = currentPage();
+    // Só o canal: o endereço e o número nunca vão para o tracking.
+    if (href.startsWith('mailto:')) track('contact_click', { canal: 'email', tipo_pagina });
+    else if (href.startsWith('tel:')) track('contact_click', { canal: 'telefone', tipo_pagina });
+    else if (WHATSAPP.test(href)) track('whatsapp_click', { pagina: location.pathname });
+    return;
+  }
+  const summary = target?.closest('details[name^="faq"] > summary');
+  const details = summary?.parentElement;
+  // O clique ainda não mudou o estado: fechado agora = vai abrir.
+  if (summary && details instanceof HTMLDetailsElement && !details.open) {
+    track('faq_open', {
+      pergunta: (summary.textContent ?? '').trim().slice(0, 100),
+      tipo_pagina: currentPage().tipo_pagina,
+    });
+  }
+}
+
 export function RouteAnalytics({ locale }: { locale: string }) {
   const pathname = usePathname();
 
@@ -38,6 +64,11 @@ export function RouteAnalytics({ locale }: { locale: string }) {
     landing ??= page;
     track('page_context', { ...page, idioma: locale });
   }, [pathname, locale]);
+
+  useEffect(() => {
+    document.addEventListener('click', onDocumentClick);
+    return () => document.removeEventListener('click', onDocumentClick);
+  }, []);
 
   useReportWebVitals(reportVital);
   return null;
