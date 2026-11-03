@@ -1,0 +1,157 @@
+/*
+ * Carreiras v3 e Vagas v1 (docs/design/carreiras-v3.dc.html, vagas-v1.dc.html).
+ * Só o que o Tailwind não faz bem: o realce amarelo que se desenha no título,
+ * a entrada do mapa e os pinos com pulsação. Comportamento em components/careers.
+ */
+.cr-mark {
+  display: inline;
+  color: var(--color-navy);
+  padding: 0 0.14em;
+  background: linear-gradient(var(--color-yellow), var(--color-yellow)) no-repeat 0 88% / 100% 0.9em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: cr-mark 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+@keyframes cr-mark {
+  from {
+    background-size: 0% 0.9em;
+    color: #ffffff;
+  }
+}
+
+/* Mapa de pontos: um pouco maior do que a coluna, a sair pela direita */
+.cr-map {
+  position: relative;
+  width: 112%;
+  margin-right: -12%;
+  aspect-ratio: 576 / 531;
+  animation: cr-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.cr-pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  animation: cr-pin 0.7s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+  animation-delay: calc(0.6s + var(--i) * 0.25s);
+}
+.cr-pin::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--color-yellow);
+  transform: translate(-50%, -2px) rotate(45deg);
+  border-radius: 2px;
+}
+.cr-pin::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: rgba(244, 190, 20, 0.35);
+  animation: cr-pulse 2.6s ease-out infinite;
+}
+.cr-pin-av {
+  position: relative;
+  z-index: 1;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 4px solid var(--color-yellow);
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 14px 28px -12px rgba(0, 0, 0, 0.7);
+}
+@keyframes cr-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes cr-pin {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -80%) scale(0.6);
+  }
+}
+@keyframes cr-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 190, 20, 0.6);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px rgba(244, 190, 20, 0);
+  }
+}
+@media (max-width: 960px) {
+  .cr-map {
+    width: 100%;
+    margin: 0;
+  }
+  .cr-pin-av {
+    width: 42px;
+    height: 42px;
+    border-width: 3px;
+  }
+}
+
+/* Processo: seta entre passos */
+.cr-step::after {
+  content: '';
+  position: absolute;
+  top: 36px;
+  right: -12px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--color-line-strong);
+  border-right: 2px solid var(--color-line-strong);
+  transform: rotate(45deg);
+}
+.cr-step:last-child::after {
+  display: none;
+}
+@media (max-width: 960px) {
+  .cr-step::after {
+    display: none;
+  }
+}
+
+/* Detalhe da vaga: painel lateral */
+.jb-scrim {
+  animation: jb-fade 0.3s ease both;
+}
+.jb-panel {
+  animation: jb-slide 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes jb-slide {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+}
+@keyframes jb-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-mark,
+  .cr-map,
+  .cr-pin,
+  .cr-pin::before,
+  .jb-scrim,
+  .jb-panel {
+    animation: none;
+  }
+}

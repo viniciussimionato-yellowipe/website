@@ -1,0 +1,752 @@
+@import 'tailwindcss';
+@import './model-page.css';
+@import './careers.css';
+
+/*
+ * Tokens da marca (design v7, deck institucional). Usar sempre os tokens,
+ * nunca cores soltas: bg-navy, text-body, border-line, text-gold, etc.
+ * Contraste AA: dourado (#8A6600) para texto amarelo sobre branco; amarelo (#F4BE14) só sobre navy.
+ */
+@theme {
+  --color-navy: #06193a;
+  --color-navy-2: #0e2650;
+  --color-navy-hover: #0b2a5c;
+  --color-ink: #06193a;
+  --color-body: #4f5b6e;
+  --color-muted: #5b6475;
+  --color-line: #e3e7ee;
+  --color-line-strong: #c9d0db;
+  --color-surface: #f4f6f9;
+  --color-yellow: #f4be14;
+  --color-yellow-hi: #ffd24a;
+  --color-gold: #8a6600;
+  --color-warm: #fff8e1;
+  --color-on-navy: #cbd5e6;
+  --color-on-navy-2: #afc0de;
+  --color-link-hover: #013d74;
+  --color-danger: #b42318;
+
+  --radius-card: 16px;
+  --radius-btn: 12px;
+
+  --animate-marquee: marquee 46s linear infinite;
+  --animate-marquee-reverse: marquee 54s linear infinite reverse;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* As famílias vêm do next/font (variáveis definidas no layout). */
+@theme inline {
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-display: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  section[id] {
+    scroll-margin-top: 84px;
+  }
+  ::selection {
+    background: var(--color-yellow);
+    color: var(--color-navy);
+  }
+  a {
+    text-underline-offset: 3px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #5f697b;
+  }
+  input:user-invalid,
+  select:user-invalid,
+  textarea:user-invalid {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 3px rgb(180 35 24 / 0.12);
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-[1200px] px-6;
+  }
+  .eyebrow {
+    @apply font-mono text-[13px] tracking-[0.12em] uppercase;
+  }
+  .btn-primary {
+    @apply inline-flex min-h-[50px] items-center gap-2.5 rounded-[var(--radius-btn)] bg-yellow px-6 py-[15px] text-[15.5px] font-semibold text-navy no-underline transition-[background-color,transform] duration-150 hover:bg-yellow-hi hover:text-navy active:scale-[0.97];
+  }
+  .btn-navy {
+    @apply inline-flex min-h-[48px] items-center gap-2.5 rounded-[var(--radius-btn)] bg-navy px-[22px] py-3.5 text-[15px] font-semibold text-white no-underline transition-[background-color,transform] duration-150 hover:bg-navy-hover hover:text-white active:scale-[0.97];
+  }
+  .skip-link {
+    @apply absolute -top-16 left-4 z-50 rounded-[10px] bg-yellow px-4 py-3 font-semibold text-navy no-underline focus:top-3;
+  }
+  .marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Mapa vetorial dos mercados (MarketsMap.tsx). Área do mapa: metade direita do cartão
+   no desktop, faixa superior no mobile, com as margens a esbater para o branco. */
+.markets-map {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62%;
+  height: 100%;
+  pointer-events: none;
+  --map-land: #e9eef5;
+  --map-usa: #d3dcea;
+  --map-bra: #d3dcea;
+  --map-prt: #d3dcea;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent, #000 22%), linear-gradient(0deg, transparent, #000 18%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent, #000 22%), linear-gradient(0deg, transparent, #000 18%);
+  mask-composite: intersect;
+}
+@media (max-width: 960px) {
+  .markets-map {
+    left: 0;
+    width: 100%;
+    height: 210px;
+    -webkit-mask-image: linear-gradient(0deg, transparent, #000 35%);
+    mask-image: linear-gradient(0deg, transparent, #000 35%);
+  }
+}
+/* Zoom: parte da vista geral e aproxima-se do país; o estado final vem do style inline. */
+.markets-map-cam.is-zoomed {
+  animation: map-zoom-in 1.6s cubic-bezier(0.22, 0.8, 0.2, 1) both;
+}
+@keyframes map-zoom-in {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+}
+.markets-map-arc {
+  fill: none;
+  stroke: var(--color-navy);
+  stroke-opacity: 0.35;
+  stroke-width: 1.2;
+  stroke-dasharray: 3 4;
+}
+.markets-map-pin {
+  fill: var(--color-navy);
+}
+.markets-map-pin.is-on {
+  stroke: var(--color-yellow);
+  stroke-width: 3;
+}
+.markets-map-ring {
+  fill: none;
+  stroke: var(--color-navy);
+  stroke-opacity: 0.35;
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-ring 2.4s ease-out 1.6s infinite;
+}
+@keyframes map-ring {
+  from {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto !important;
+  }
+  .marquee-track [data-duplicate] {
+    display: none;
+  }
+  .map-zoom {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Clientes: faixa contínua (inspirada na Globant), com o mesmo easing e a mesma pausa ao passar o rato das restantes animações */
+.clients-mq {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.clients-track {
+  width: max-content;
+  gap: 72px;
+  padding: 0 36px;
+  animation: clients-mq 48s linear infinite;
+}
+.clients-mq:hover .clients-track {
+  animation-play-state: paused;
+}
+@keyframes clients-mq {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.clients-track img {
+  opacity: 0.62;
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.clients-track li:hover img {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+@media (max-width: 960px) {
+  .clients-track {
+    gap: 48px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clients-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    gap: 26px 52px;
+  }
+  .clients-track li[aria-hidden='true'] {
+    display: none;
+  }
+  .clients-mq {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* Página por tecnologia (mockup TecnologiaNet v1): mesmo easing e ritmo das restantes animações */
+.tech-card {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px -24px rgb(6 25 58 / 0.3);
+}
+.tech-prof {
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 18px;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+.tech-prof:hover {
+  transform: translateY(-4px);
+  border-color: rgb(255 255 255 / 0.26);
+}
+.tcard {
+  justify-self: end;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #fff;
+  color: var(--color-ink);
+  box-shadow: 0 34px 70px -30px rgb(0 0 0 / 0.7);
+  animation: tc-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.tc-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tc-layers li {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: var(--color-surface);
+  animation: tc-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.4s + var(--i) * 0.14s);
+}
+.tc-l {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.tc-chip {
+  font-style: normal;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+.tc-who {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--color-navy-2);
+  color: #fff;
+  border: 1px solid rgb(244 190 20 / 0.5);
+  animation: tc-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.35s both;
+}
+.tc-ok {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #22a06b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  animation: tc-ok 0.5s cubic-bezier(0.34, 1.45, 0.64, 1) 1.9s both;
+}
+.ai-tool img {
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition:
+    filter 0.35s ease,
+    opacity 0.35s ease;
+}
+.ai-tool:hover img {
+  filter: none;
+  opacity: 1;
+}
+@keyframes tc-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes tc-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+@keyframes tc-ok {
+  from {
+    transform: scale(0);
+  }
+}
+@supports (animation-timeline: view()) {
+  .rv {
+    animation: rv-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  @keyframes rv-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+}
+@media (max-width: 1023px) {
+  .tcard {
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+@media (max-width: 640px) {
+  .tc-layers li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tcard,
+  .tc-layers li,
+  .tc-who,
+  .tc-ok,
+  .rv {
+    animation: none;
+  }
+}
+
+/* Mega-menus do cabeçalho (comportamento em components/layout/MegaNav.tsx).
+   Abre com uma cortina de cima para baixo e o conteúdo entra em dois tempos; fecha mais depressa. */
+.mega-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-on-navy);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.mega-trigger::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -26px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-yellow);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.mega-chev {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-state='open'] > .mega-trigger {
+  color: var(--color-yellow);
+}
+[data-state='open'] > .mega-trigger::after {
+  transform: scaleX(1);
+}
+[data-state='open'] > .mega-trigger .mega-chev {
+  transform: rotate(180deg);
+}
+.mega-panel {
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  clip-path: inset(0 0 100% 0);
+  transition:
+    opacity 0.18s ease,
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.24s;
+}
+.mega-panel[data-state='open'] {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 -80px 0);
+  transition:
+    opacity 0.26s ease,
+    transform 0.46s cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+.mega-sheet {
+  overflow: hidden;
+  border-top: 1px solid var(--color-line);
+  background: #fff;
+  color: var(--color-ink);
+  box-shadow: 0 28px 48px -24px rgb(6 25 58 / 0.35);
+}
+.mega-in {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+.mega-panel[data-state='open'] .mega-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.4s ease 0.08s,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+}
+.mega-panel[data-state='open'] .mega-in-2 {
+  transition-delay: 0.16s;
+}
+/* Troca direta entre Serviços e Tecnologias: o painel já está aberto, só o conteúdo muda. */
+.mega-panel[data-instant],
+.mega-panel[data-instant] .mega-in {
+  transition: none;
+}
+.mega-scrim {
+  position: fixed;
+  inset: 73px 0 0;
+  z-index: -1;
+  background: rgb(6 25 58 / 0.28);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0s linear 0.3s;
+}
+.mega-scrim[data-state='open'] {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.4s ease,
+    visibility 0s;
+}
+@media (max-width: 960px) {
+  .mega-scrim {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mega-panel,
+  .mega-panel[data-state='open'],
+  .mega-in,
+  .mega-panel[data-state='open'] .mega-in,
+  .mega-scrim {
+    transform: none;
+    clip-path: none;
+    transition-duration: 0.01ms;
+    transition-delay: 0s;
+  }
+}
+
+/* Menu mobile: desliza e aparece em vez de surgir de repente */
+.mobile-panel {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.28s;
+}
+.mobile-panel[data-state='open'] {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.28s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-panel,
+  .mobile-panel[data-state='open'] {
+    transform: none;
+    transition-duration: 0.01ms;
+  }
+}
+
+/* Página Tecnologias (benchmark BairesDev /technologies): logótipos a flutuar, título com marcador,
+   pesquisa e filtros. Mesmo easing e ritmo das restantes animações do site. */
+.hub-hero {
+  isolation: isolate;
+}
+.hub-mark {
+  position: relative;
+  display: block;
+  color: var(--color-navy);
+}
+.hub-mark > span {
+  position: relative;
+  display: inline;
+  padding: 0 0.18em;
+  background: linear-gradient(var(--color-yellow), var(--color-yellow)) no-repeat 0 88% / 100% 0.9em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: hub-mark 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+@keyframes hub-mark {
+  from {
+    background-size: 0% 0.9em;
+    color: #fff;
+  }
+}
+.hub-ai {
+  font-size: 0.62em;
+  color: var(--color-yellow);
+  letter-spacing: -0.01em;
+  animation: tc-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+}
+.hub-float {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  display: none;
+  grid-template-columns: repeat(2, 72px);
+  gap: 22px 26px;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+.hub-float-left {
+  left: max(16px, calc(50% - 720px));
+}
+.hub-float-right {
+  right: max(16px, calc(50% - 720px));
+}
+.hub-float li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 18px 36px -18px rgb(0 0 0 / 0.55);
+  animation:
+    tc-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(0.15s + var(--n) * 0.08s) both,
+    hub-bob 7s ease-in-out calc(var(--n) * -0.9s) infinite;
+}
+.hub-float li:nth-child(even) {
+  transform: translateY(48px);
+}
+@keyframes hub-bob {
+  50% {
+    translate: 0 -8px;
+  }
+}
+@media (min-width: 1180px) {
+  .hub-float {
+    display: grid;
+  }
+}
+.hub-search {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  margin-top: calc(-1 * clamp(40px, 5vw, 64px) - 32px);
+  border: 1px solid var(--color-line-strong);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 48px -28px rgb(6 25 58 / 0.45);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hub-search:focus-within {
+  border-color: var(--color-navy);
+  box-shadow:
+    0 0 0 4px rgb(244 190 20 / 0.35),
+    0 24px 48px -28px rgb(6 25 58 / 0.45);
+}
+.hub-search svg {
+  position: absolute;
+  left: 20px;
+  color: var(--color-muted);
+}
+.hub-search input {
+  width: 100%;
+  min-height: 64px;
+  padding: 0 20px 0 54px;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  font-size: 17px;
+  color: var(--color-ink);
+  outline: none;
+}
+.hub-search input::placeholder {
+  color: var(--color-muted);
+}
+.hub-chip {
+  flex: none;
+  padding: 8px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-surface);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-body);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+.hub-chip:hover {
+  border-color: var(--color-line-strong);
+  color: var(--color-ink);
+}
+.hub-chip[aria-pressed='true'] {
+  border-color: var(--color-navy);
+  background: var(--color-navy);
+  color: #fff;
+}
+.hub-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  background: #fff;
+  text-decoration: none;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hub-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-line-strong);
+  box-shadow: 0 18px 36px -24px rgb(6 25 58 / 0.35);
+}
+.hub-empty {
+  padding: 28px;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: 20px;
+  background: var(--color-warm);
+  animation: tc-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-mark > span,
+  .hub-ai,
+  .hub-float li,
+  .hub-empty {
+    animation: none;
+    opacity: 1;
+  }
+}
