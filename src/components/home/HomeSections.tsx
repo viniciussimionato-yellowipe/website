@@ -127,17 +127,16 @@ export function Hero({ locale, dict }: P) {
 
 export function LogosStrip() {
   const { clientLogos } = getContent();
-  // Faixa contínua: a lista é repetida uma vez (cópia escondida dos leitores de ecrã) para o ciclo não ter emendas.
-  const loop = [
-    ...clientLogos.map((l) => ({ ...l, dup: false })),
-    ...clientLogos.map((l) => ({ ...l, dup: true })),
-  ];
+  // Faixa contínua a toda a largura: a animação desliza metade da faixa, e cada metade tem
+  // duas cópias da lista (~2.800 px) para cobrir ecrãs largos sem emendas. Só a primeira
+  // cópia é lida pelos leitores de ecrã.
+  const loop = [0, 1, 2, 3].flatMap((copy) => clientLogos.map((l) => ({ ...l, dup: copy > 0 })));
   return (
     <section
       aria-label="Clientes"
       className="clients overflow-hidden border-b border-line bg-white py-10"
     >
-      <div className="clients-mq mx-auto max-w-[1200px]">
+      <div className="clients-mq">
         <ul className="clients-track m-0 flex list-none items-center p-0">
           {loop.map((l, i) => (
             <li

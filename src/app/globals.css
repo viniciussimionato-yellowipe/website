@@ -210,14 +210,16 @@
 
 /* Clientes: faixa contínua (inspirada na Globant), com o mesmo easing e a mesma pausa ao passar o rato das restantes animações */
 .clients-mq {
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  /* Mesmo esbatimento das pontas da faixa de stack (.marquee-mask). */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 .clients-track {
   width: max-content;
   gap: 72px;
   padding: 0 36px;
-  animation: clients-mq 48s linear infinite;
+  /* Duas cópias por metade: o dobro do tempo mantém a velocidade de antes. */
+  animation: clients-mq 96s linear infinite;
 }
 .clients-mq:hover .clients-track {
   animation-play-state: paused;
