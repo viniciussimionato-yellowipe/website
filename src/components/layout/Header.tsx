@@ -141,7 +141,7 @@ export function Header({ locale, dict, alternatesIndex }: Props) {
     });
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/[0.06] bg-navy/[0.96] backdrop-blur-[10px]">
+    <header className="sticky top-0 z-30 [view-transition-name:site-header] border-b border-white/[0.06] bg-navy/[0.96] backdrop-blur-[10px]">
       <div className="container-site flex items-center gap-7 py-3.5">
         <Link
           href={home}

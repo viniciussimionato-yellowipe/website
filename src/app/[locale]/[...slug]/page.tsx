@@ -24,6 +24,7 @@ import {
   TechnologiesHubPage,
   TechnologyPage,
 } from '@/components/templates/pages';
+import { PageTransition } from '@/components/layout/PageTransition';
 
 /**
  * Todas as páginas com slug traduzido passam por aqui. A rota resolve-se em
@@ -134,7 +135,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function SlugPage(props: Props) {
   const r = await resolve(props);
   if (!r) notFound();
-  const { locale, route, dict } = r;
+  return <PageTransition route={r.route}>{renderRoute(r.locale, r.route, r.dict)}</PageTransition>;
+}
+
+function renderRoute(locale: Locale, route: Route, dict: Dictionary) {
   const base = { locale, dict };
 
   switch (route.kind) {

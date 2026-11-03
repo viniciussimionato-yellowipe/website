@@ -77,6 +77,8 @@ export default async function LocaleLayout({
   return (
     <html
       lang={localeConfig[locale].hreflang}
+      // Scroll suave só nas âncoras: ao mudar de página o Next volta ao topo sem animação.
+      data-scroll-behavior="smooth"
       className={`${montserrat.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body>

@@ -24,7 +24,17 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   async headers() {
-    return [{ source: '/:path*', headers: securityHeaders }];
+    return [
+      { source: '/:path*', headers: securityHeaders },
+      // Imagens de public/ sem hash no nome: cache de um dia, servida da cache mais uma semana
+      // enquanto revalida. As versões otimizadas (next/image) têm cache própria.
+      {
+        source: '/images/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
+        ],
+      },
+    ];
   },
   async redirects() {
     // Mapa de redirecionamentos 301 do site atual: preencher a partir de

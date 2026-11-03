@@ -24,6 +24,9 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Ignora API, ficheiros do Next, ficheiros estáticos e ficheiros de SEO.
-  matcher: ['/((?!api|_next|images|favicon.ico|robots.txt|sitemap.xml|llms.txt|.*\\..*).*)'],
+  // Ignora caminhos que já têm idioma (quase todo o tráfego: sem salto extra antes da
+  // cache), API, ficheiros do Next, ficheiros estáticos e ficheiros de SEO.
+  matcher: [
+    '/((?!(?:pt|br|en)(?:/|$)|api|_next|images|favicon.ico|robots.txt|sitemap.xml|llms.txt|.*\\..*).*)',
+  ],
 };

@@ -16,6 +16,7 @@ import {
   ProcessSection,
   StackBand,
 } from '@/components/home/HomeSections';
+import { PageTransition } from '@/components/layout/PageTransition';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -38,7 +39,7 @@ export default async function HomePage({ params }: Props) {
   const dict = getDictionary(locale);
 
   return (
-    <>
+    <PageTransition route={{ kind: 'home' }}>
       <Hero locale={locale} dict={dict} />
       <LogosStrip />
       <ModelsSection locale={locale} dict={dict} />
@@ -50,6 +51,6 @@ export default async function HomePage({ params }: Props) {
       <FaqSection locale={locale} dict={dict} />
       <ContactSection locale={locale} dict={dict} />
       <JsonLd data={faqLd(dict.faq.items)} />
-    </>
+    </PageTransition>
   );
 }

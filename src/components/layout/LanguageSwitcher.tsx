@@ -30,6 +30,8 @@ export function LanguageSwitcher({ locale, label, alternatesIndex }: Props) {
           <Link
             key={l}
             href={href}
+            // Mudar de idioma é raro: não vale pré-carregar duas páginas noutros idiomas em cada visita.
+            prefetch={false}
             hrefLang={localeConfig[l].hreflang}
             lang={localeConfig[l].hreflang}
             aria-current={current ? 'true' : undefined}

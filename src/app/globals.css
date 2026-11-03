@@ -750,3 +750,49 @@
     opacity: 1;
   }
 }
+
+/* ---------- Transições entre páginas (PageTransition.tsx, docs/07) ----------
+   A página que sai desvanece depressa; a que entra sobe 8 px. O cabeçalho fica parado
+   para servir de âncora. Só opacity e transform; nada com movimento reduzido. */
+::view-transition {
+  /* Cliques durante a animação chegam à página nova. */
+  pointer-events: none;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+::view-transition-old(.page-exit) {
+  animation: 120ms ease-in both vt-fade-out;
+}
+::view-transition-new(.page-enter) {
+  animation: 260ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both vt-rise;
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
