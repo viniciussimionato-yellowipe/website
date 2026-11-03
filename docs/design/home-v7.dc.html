@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Yellowipe · Home v7</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@400;500;600&amp;display=swap">
+<style>
+:root{--navy:#06193A;--navy-2:#0E2650;--ink:#06193A;--body:#4F5B6E;--muted:#5B6475;--line:#E3E7EE;--surface:#F4F6F9;--yellow:#F4BE14;--yellow-hi:#FFD24A;--gold:#8A6600;--warm:#FFF8E1;--on-navy:#CBD5E6;--on-navy-2:#AFC0DE;--edge-navy:rgba(255,255,255,0.12)}
+body{margin:0;background:#ffffff}
+::selection{background:#F4BE14;color:#06193A}
+a{color:var(--ink);text-underline-offset:3px}
+a:hover{color:#013D74}
+.nav-links{display:flex}
+.nav-burger{display:none}
+.cta-m{display:none !important}
+.nav-link{color:var(--on-navy);text-decoration:none}
+.nav-link:hover{color:#ffffff}
+.link-y{color:var(--yellow);text-decoration:none}
+.link-y:hover{color:var(--yellow-hi)}
+.btn-y:hover{background:var(--yellow-hi);color:var(--navy)}
+.btn-n:hover{background:#0B2A5C;color:#ffffff}
+.btn-g:hover{border-color:rgba(255,255,255,0.55);color:#ffffff}
+.tile:hover{border-color:var(--navy)}
+.card-l{transition:box-shadow .2s ease,border-color .2s ease}
+.card-l:hover{border-color:#C9D0DB;box-shadow:0 10px 28px rgba(6,25,58,0.08)}
+.card-d:hover{border-color:rgba(255,255,255,0.24)}
+.row-l:hover{background:var(--surface)}
+.row-l:hover .chev{color:var(--navy);transform:translateX(3px)}
+.row-d:hover{background:rgba(255,255,255,0.08)}
+.row-d:hover .chev{color:var(--yellow);transform:translateX(3px)}
+.chev{transition:transform .2s cubic-bezier(.2,.8,.2,1),color .2s ease}
+.chip:hover{border-color:rgba(244,190,20,0.6);color:#ffffff}
+.ask:hover{color:#ffffff;border-color:rgba(255,255,255,0.4)}
+.faq-q:hover{color:#013D74}
+.foot-link{color:var(--on-navy-2);text-decoration:none}
+.foot-link:hover{color:#ffffff}
+input::placeholder{color:#5F697B}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:84px}
+.skip{position:absolute;left:16px;top:-64px;z-index:50;background:#F4BE14;color:#06193A;padding:12px 16px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px;color:#06193A}
+.btn-y,.btn-n,.btn-g{transition:background-color .18s ease,border-color .18s ease,color .18s ease,transform .12s ease}
+.btn-y:active,.btn-n:active,.btn-g:active,.tile:active,.ctl:active{transform:scale(.97)}
+.tile{transition:border-color .18s ease,background-color .18s ease,color .18s ease,transform .12s ease}
+.mq:focus-within .mq-track{animation-play-state:paused}
+.ctl{background:transparent;border:1px solid currentColor;border-radius:999px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;position:relative;opacity:.7;transition:opacity .18s ease}
+.ctl:hover{opacity:1}
+.ctl::after{content:"";position:absolute;inset:-6px}
+input:user-invalid,select:user-invalid{border-color:#B42318 !important;box-shadow:0 0 0 3px rgba(180,35,24,.12)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+.rot{display:inline-grid;vertical-align:top}
+.rot > *{grid-area:1/1}
+.rot-w{transition:opacity .55s cubic-bezier(.2,.8,.2,1),transform .55s cubic-bezier(.2,.8,.2,1)}
+.mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;width:max-content;gap:56px;animation:mq 46s linear infinite}
+.mq-rev .mq-track{animation-direction:reverse;animation-duration:54s}
+.mq:hover .mq-track{animation-play-state:paused}
+.mq-w{color:#B4BCC8;transition:color .25s ease}
+.mq-w:hover{color:#06193A}
+.markets-map{position:absolute;top:0;right:0;width:62%;height:100%;pointer-events:none;--map-land:#E9EEF5;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%),linear-gradient(0deg,transparent,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 22%),linear-gradient(0deg,transparent,#000 18%);mask-composite:intersect}
+.markets-map-cam{animation:map-zoom-in 1.6s cubic-bezier(.22,.8,.2,1) both}
+@keyframes map-zoom-in{from{transform:translate(0,0) scale(1)}}
+.markets-map-arc{fill:none;stroke:#06193A;stroke-opacity:.35;stroke-width:1.2;stroke-dasharray:3 4}
+.markets-map-pin{fill:#06193A}.markets-map-pin.is-on{stroke:#F4BE14;stroke-width:3}
+.markets-map-ring{fill:none;stroke:#06193A;stroke-opacity:.35;stroke-width:1.2;transform-box:fill-box;transform-origin:center;animation:map-ring 2.4s ease-out 1.6s infinite}
+@keyframes map-ring{from{transform:scale(.6);opacity:1}to{transform:scale(1.9);opacity:0}}
+@media (max-width: 960px){.markets-map{left:0;width:100%;height:210px;-webkit-mask-image:linear-gradient(0deg,transparent,#000 35%);mask-image:linear-gradient(0deg,transparent,#000 35%)}.mk-open{padding-top:200px !important}}
+@media (prefers-reduced-motion: reduce){.markets-map-cam,.markets-map-ring{animation:none}}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.rot-w{transition:none}.mq-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #F4BE14;outline-offset:3px}
+@media (max-width: 960px){
+.nav-links{display:none}.nav-burger{display:inline-flex}.hide-m{display:none !important}.cta-m{display:inline-flex !important}
+.tiles{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.tiles .tile{flex:0 0 118px !important;scroll-snap-align:start}
+.mk-wrap{flex-direction:column !important;height:auto !important}
+.mk-strip{width:100% !important;height:64px !important;flex-direction:row !important;justify-content:flex-start !important;padding:0 20px !important}
+.mk-vert{writing-mode:horizontal-tb !important;transform:none !important}
+.steps-line{display:none !important}
+}
+.ct-lbl{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#CBD5E6;font-weight:500}
+.ct-field{display:flex;flex-direction:column;gap:8px}
+.ct-field input,.ct-field select{font-family:'Montserrat',sans-serif;font-size:15px;color:#ffffff;background:#06193A;border:1px solid rgba(255,255,255,0.14);border-radius:10px;padding:12px 14px;min-height:48px;box-sizing:border-box;transition:border-color .2s}
+.ct-field input::placeholder{color:#7F8FAD}
+.ct-field input:hover,.ct-field select:hover{border-color:rgba(255,255,255,0.3)}
+.ct-field input:focus,.ct-field select:focus{border-color:#F4BE14}
+.ct-opt{display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.14);background:#06193A;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:500;min-height:48px;box-sizing:border-box;cursor:pointer;color:#ffffff;transition:border-color .2s}
+.ct-opt:hover{border-color:rgba(255,255,255,0.3)}
+.ct-opt input{accent-color:#F4BE14;width:18px;height:18px;margin:0}
+.ct-on{border-color:#F4BE14;background:rgba(244,190,20,0.08)}
+.ct-mail:hover{text-decoration-color:#F4BE14 !important}
+@media (max-width: 960px){.ct-grid{grid-template-columns:1fr !important}.ct-intro{position:static !important}.ct-btn{align-self:stretch !important}}
+.mm-trigger{position:relative;background:none;border:0;padding:0;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.mm-bar{position:absolute;left:0;right:0;bottom:-26px;height:3px;border-radius:2px;background:#F4BE14;transition:opacity .2s;pointer-events:none}
+.mm-panel{position:absolute;left:0;right:0;top:100%;background:#ffffff;color:#06193A;border-top:1px solid #E3E7EE;box-shadow:0 28px 48px -24px rgba(6,25,58,0.35);animation:mm-in .22s cubic-bezier(.2,.8,.2,1)}
+@keyframes mm-in{from{opacity:0;transform:translateY(-6px)}}
+.mm-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:320px minmax(0,1fr);box-sizing:border-box}
+.mm-side{background:#F4F6F9;padding:36px 32px 36px 24px;display:flex;flex-direction:column;gap:14px;position:relative}
+.mm-side::before{content:"";position:absolute;top:0;bottom:0;right:100%;width:100vw;background:#F4F6F9}
+.mm-title{margin:0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.02em}
+.mm-intro{margin:0;font-size:14.5px;line-height:1.6;color:#4F5B6E}
+.mm-models{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
+.mm-model{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-decoration:none;color:#06193A;padding:10px 12px;margin:0 -12px;border-radius:10px;transition:background .2s}
+.mm-model:hover{background:#ffffff}
+.mm-model-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#8A6600;background:#FFF8E1;border-radius:5px;padding:2px 6px}
+.mm-model-name{font-weight:600;font-size:14.5px}
+.mm-model-text{font-size:13px;line-height:1.5;color:#5B6475}
+.mm-logo{height:22px;width:auto;max-width:140px;object-fit:contain;object-position:left center;align-self:flex-start;display:block;filter:brightness(0);opacity:.78}
+.mm-proof{margin-top:auto;padding-top:20px;border-top:1px solid #D5DBE4;display:flex;flex-direction:column;gap:10px}
+.mm-proof p{margin:0;font-size:13.5px;line-height:1.55;color:#06193A}
+.mm-proof a{color:#06193A;font-weight:600}
+.mm-proof a:hover{color:#8A6600}
+.mm-main{padding:36px 0 30px 48px;display:flex;flex-direction:column;gap:28px}
+.mm-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 32px}
+.mm-col{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.mm-head{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#5B6475;margin:0 0 8px}
+.mm-head:not(:first-child){margin-top:22px}
+.mm-sq{width:7px;height:7px;background:#F4BE14;border-radius:1px;flex:none}
+.mm-link{display:inline-block;padding:6px 0;font-size:14.5px;font-weight:500;color:#06193A;text-decoration:none;transition:color .15s}
+.mm-link:hover{color:#8A6600;text-decoration:underline;text-underline-offset:4px}
+.mm-foot{display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:20px;border-top:1px solid #E3E7EE}
+.mm-all{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:#06193A;text-decoration:none}
+.mm-all:hover{color:#8A6600}
+.mm-all svg{transition:transform .2s}
+.mm-all:hover svg{transform:translateX(3px)}
+.mm-mobile{display:none}
+@media (max-width: 960px){
+.mm-panel{display:none}
+.mm-mobile{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;max-height:calc(100vh - 73px);overflow-y:auto;box-shadow:0 24px 40px -20px rgba(0,0,0,0.5);background:#06193A;padding:8px 24px 32px;box-sizing:border-box;border-top:1px solid rgba(255,255,255,0.08)}
+.mm-acc{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:56px;background:none;border:0;border-bottom:1px solid rgba(255,255,255,0.1);color:#ffffff;font:inherit;font-size:17px;font-weight:500;text-decoration:none;cursor:pointer;padding:0;text-align:left}
+.mm-acc-body{display:flex;flex-direction:column;padding:6px 0 16px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.mm-acc-eyebrow{margin:14px 0 4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#AFC0DE}
+.mm-mlink{display:flex;align-items:center;gap:8px;min-height:44px;color:#CBD5E6;text-decoration:none;font-size:15px}
+.mm-mobile .mm-model-tag{background:rgba(244,190,20,0.14);color:#F4BE14}
+.mm-chips{margin:0 0 4px;font-size:14.5px;line-height:1.7;color:#CBD5E6}
+}
+@media (prefers-reduced-motion: reduce){.mm-panel{animation:none}}
+
+/* clientes: faixa contínua (à Globant), com a mesma linguagem das restantes animações */
+.cl-sec{background:#ffffff;border-bottom:1px solid var(--line);padding:38px 0 40px;overflow:hidden}
+.cl-mq{max-width:1200px;margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.cl-track{display:flex;align-items:center;width:max-content;gap:72px;margin:0;padding:0 36px;list-style:none;animation:clmq 48s linear infinite}
+.cl-mq:hover .cl-track{animation-play-state:paused}
+@keyframes clmq{to{transform:translateX(-50%)}}
+.cl-track li{display:flex;align-items:center;height:40px}
+.cl-track img{width:auto;display:block;opacity:.62;transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)}
+.cl-track li:hover img{opacity:1;transform:translateY(-2px)}
+@media (max-width: 960px){.cl-sec{padding:28px 0 30px}.cl-track{gap:48px}.cl-track img{transform:scale(.86)}.cl-track li:hover img{transform:scale(.86) translateY(-2px)}}
+@media (prefers-reduced-motion: reduce){.cl-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:26px 52px}.cl-track li[aria-hidden="true"]{display:none}.cl-mq{-webkit-mask-image:none;mask-image:none}}
+</style>
+</helmet>
+<div style="font-family: 'Montserrat', system-ui, sans-serif; color: var(--ink); background: #ffffff; min-width: 0; position: relative">
+<a href="#conteudo" class="skip">Saltar para o conteúdo</a>
+
+<header class="hdr" onMouseLeave="{{menuLeave}}" style="position: sticky; top: 0; z-index: 30; background: rgba(6,25,58,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 28px">
+<a href="#" aria-label="Yellowipe, página inicial" style="display: flex; align-items: center"><img src="/_blob/4eb33a48f536b4dfdc9e177d601a483d" alt="Yellowipe" style="height: 30px; width: auto; display: block"></a>
+<nav aria-label="Principal" class="nav-links" style="flex: 1; justify-content: center; align-items: center; gap: 26px; font-size: 14.5px; font-weight: 500">
+<button type="button" class="nav-link mm-trigger" aria-expanded="{{srvOpen}}" aria-controls="mm-servicos" onClick="{{srvToggle}}" onMouseEnter="{{srvHover}}" style="color: {{srvColor}}">Serviços <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{srvRot}}); transition: transform .2s ease"><path d="M6 9l6 6 6-6"></path></svg><span class="mm-bar" style="opacity: {{srvBar}}"></span></button>
+<button type="button" class="nav-link mm-trigger" aria-expanded="{{tecOpen}}" aria-controls="mm-tecnologias" onClick="{{tecToggle}}" onMouseEnter="{{tecHover}}" style="color: {{tecColor}}">Tecnologias <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{tecRot}}); transition: transform .2s ease"><path d="M6 9l6 6 6-6"></path></svg><span class="mm-bar" style="opacity: {{tecBar}}"></span></button>
+<a href="#" class="nav-link" onMouseEnter="{{menuLeave}}">Casos de sucesso</a>
+<a href="#" class="nav-link" onMouseEnter="{{menuLeave}}">Sobre</a>
+<a href="#" class="nav-link" onMouseEnter="{{menuLeave}}">Insights</a>
+<a href="#" class="nav-link" onMouseEnter="{{menuLeave}}">Carreiras</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 12px; margin-left: auto">
+<div class="hide-m" style="display: flex; gap: 2px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px">
+<a href="#" aria-current="true" style="color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); border-radius: 6px; padding: 4px 7px">PT</a>
+<a href="#" class="nav-link" style="padding: 4px 7px">BR</a>
+<a href="#" class="nav-link" style="padding: 4px 7px">EN</a>
+</div>
+<a href="#" class="btn-y hide-m" style="background: var(--yellow); color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: none; padding: 11px 18px; border-radius: 10px; display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box">Agendar conversa</a>
+<a href="#" class="btn-y cta-m" style="background: var(--yellow); color: var(--navy); font-weight: 600; font-size: 13.5px; text-decoration: none; padding: 10px 14px; border-radius: 10px; align-items: center; min-height: 44px; box-sizing: border-box">Falar connosco</a>
+<button type="button" class="nav-burger" aria-label="{{mobLabel}}" aria-expanded="{{mobOpen}}" aria-controls="mm-mobile" onClick="{{mobToggle}}" style="background: transparent; border: 1px solid rgba(255,255,255,0.22); color: #ffffff; border-radius: 10px; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer"><sc-if value="{{mobClosed}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></sc-if><sc-if value="{{mobOpen}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></sc-if></button>
+</div>
+</div>
+
+<sc-if value="{{srvOpen}}" hint-placeholder-val="{{ false }}">
+<div id="mm-servicos" class="mm-panel" role="region" aria-label="Serviços">
+<div class="mm-inner">
+<aside class="mm-side">
+<p class="mm-title">Serviços<span style="color: var(--yellow)">.</span></p>
+<p class="mm-intro">Do talento ao go-live, no modelo que serve a sua equipa:</p>
+<ul class="mm-models">
+<sc-for list="{{models}}" as="md" hint-placeholder-count="3">
+<li><a href="#" class="mm-model"><span class="mm-model-tag">{{md.tag}}</span><span class="mm-model-name">{{md.name}}</span><span class="mm-model-text">{{md.text}}</span></a></li>
+</sc-for>
+</ul>
+<div class="mm-proof">
+<img src="/_blob/4f4b5f5de27f5c30a9120a6c7b55f189" alt="Clever Advertising" class="mm-logo">
+<p>De 32 para 1.600+ testes automatizados em seis meses. <a href="#">Ler o caso</a></p>
+</div>
+</aside>
+<div class="mm-main">
+<div class="mm-cols">
+<sc-for list="{{srvCols}}" as="col" hint-placeholder-count="3">
+<ul class="mm-col">
+<sc-for list="{{col.rows}}" as="r" hint-placeholder-count="7">
+<sc-if value="{{r.head}}" hint-placeholder-val="{{ false }}"><li class="mm-head"><span class="mm-sq" aria-hidden="true"></span>{{r.name}}<sc-if value="{{r.isIa}}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" aria-hidden="true" style="width: 10px; height: 10px; margin-left: 4px; align-self: flex-start"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14"></path></svg></sc-if></li></sc-if>
+<sc-if value="{{r.item}}" hint-placeholder-val="{{ true }}"><li><a href="#" class="mm-link">{{r.name}}</a></li></sc-if>
+</sc-for>
+</ul>
+</sc-for>
+</div>
+<div class="mm-foot"><a href="#" class="mm-all">Todos os serviços <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="#" class="mm-all">Recrutamento tech: perfis que contratamos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{tecOpen}}" hint-placeholder-val="{{ false }}">
+<div id="mm-tecnologias" class="mm-panel" role="region" aria-label="Tecnologias">
+<div class="mm-inner">
+<aside class="mm-side">
+<p class="mm-title">Tecnologias<span style="color: var(--yellow)">.</span></p>
+<p class="mm-intro">Profissionais e equipas fluentes na stack que já usa, e nas ferramentas de IA que aceleram a entrega.</p>
+<ul class="mm-models">
+<sc-for list="{{models}}" as="md" hint-placeholder-count="3">
+<li><a href="#" class="mm-model"><span class="mm-model-tag">{{md.tag}}</span><span class="mm-model-name">{{md.techName}}</span></a></li>
+</sc-for>
+</ul>
+<div class="mm-proof">
+<img src="/_blob/d1e4d36b7a28cf780538f093143b1ff3" alt="Linde" class="mm-logo">
+<p>−94% no tempo de regressão com CI/CD e testes automáticos. <a href="#">Ler o caso</a></p>
+</div>
+</aside>
+<div class="mm-main">
+<div class="mm-cols">
+<sc-for list="{{tecCols}}" as="col" hint-placeholder-count="3">
+<ul class="mm-col">
+<sc-for list="{{col.rows}}" as="r" hint-placeholder-count="7">
+<sc-if value="{{r.head}}" hint-placeholder-val="{{ false }}"><li class="mm-head"><span class="mm-sq" aria-hidden="true"></span>{{r.name}}<sc-if value="{{r.isIa}}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" aria-hidden="true" style="width: 10px; height: 10px; margin-left: 4px; align-self: flex-start"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14"></path></svg></sc-if></li></sc-if>
+<sc-if value="{{r.item}}" hint-placeholder-val="{{ true }}"><li><a href="#" class="mm-link">{{r.name}}</a></li></sc-if>
+</sc-for>
+</ul>
+</sc-for>
+</div>
+<div class="mm-foot"><a href="#" class="mm-all">Todas as tecnologias <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{mobOpen}}" hint-placeholder-val="{{ false }}">
+<div id="mm-mobile" class="mm-mobile">
+<button type="button" class="mm-acc" aria-expanded="{{mSrvOpen}}" onClick="{{mSrvToggle}}">Serviços <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{mSrvRot}})"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{mSrvOpen}}" hint-placeholder-val="{{ false }}">
+<div class="mm-acc-body">
+<p class="mm-acc-eyebrow">Modelos</p>
+<sc-for list="{{models}}" as="md" hint-placeholder-count="3"><a href="#" class="mm-mlink"><span class="mm-model-tag">{{md.tag}}</span> {{md.name}}</a></sc-for>
+<p class="mm-acc-eyebrow">Áreas</p>
+<sc-for list="{{srvAreas}}" as="a" hint-placeholder-count="6"><a href="#" class="mm-mlink">{{a}}</a></sc-for>
+<a href="#" class="mm-mlink" style="color: var(--yellow)">Todos os serviços →</a>
+</div>
+</sc-if>
+<button type="button" class="mm-acc" aria-expanded="{{mTecOpen}}" onClick="{{mTecToggle}}">Tecnologias <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{mTecRot}})"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{mTecOpen}}" hint-placeholder-val="{{ false }}">
+<div class="mm-acc-body">
+<sc-for list="{{tecGroups}}" as="g" hint-placeholder-count="5"><p class="mm-acc-eyebrow">{{g.name}}</p><p class="mm-chips">{{g.list}}</p></sc-for>
+<a href="#" class="mm-mlink" style="color: var(--yellow)">Todas as tecnologias →</a>
+</div>
+</sc-if>
+<a href="#" class="mm-acc">Casos de sucesso</a>
+<a href="#" class="mm-acc">Sobre</a>
+<a href="#" class="mm-acc">Insights</a>
+<a href="#" class="mm-acc">Carreiras</a>
+<div style="display: flex; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 20px 0 4px">
+<a href="#" aria-current="true" style="color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); border-radius: 6px; padding: 6px 10px">PT</a>
+<a href="#" class="nav-link" style="padding: 6px 10px">BR</a>
+<a href="#" class="nav-link" style="padding: 6px 10px">EN</a>
+</div>
+<a href="#" class="btn-y" style="margin-top: 12px; background: var(--yellow); color: var(--navy); font-weight: 600; font-size: 15px; text-decoration: none; padding: 14px 18px; border-radius: 999px; display: flex; align-items: center; justify-content: center; min-height: 50px; box-sizing: border-box">Agendar conversa</a>
+</div>
+</sc-if>
+</header>
+
+<section id="conteudo" tabindex="-1" style="position: relative; overflow: hidden; background: var(--navy); color: #ffffff; outline: none">
+<img src="/_blob/7e4be3fbb3e0b5b33e759f2197426985" alt="" aria-hidden="true" style="position: absolute; right: -100px; top: 24px; width: 560px; height: auto; opacity: 0.26; pointer-events: none">
+<div style="max-width: 940px; margin: 0 auto; padding: clamp(88px, 11vw, 148px) 24px clamp(88px, 11vw, 148px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; position: relative">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow)">Parceiro de Capacidade Tecnológica</p>
+<h1 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: clamp(40px, 5.8vw, 74px); line-height: 1.04; letter-spacing: -0.025em; text-wrap: balance">Transformamos estratégia digital em <span style="color: var(--yellow)">capacidade real de execução.</span></h1>
+<div aria-live="{{rotLive}}" onMouseEnter="{{rotHold}}" onMouseLeave="{{rotRelease}}" style="display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.7; color: var(--on-navy); max-width: 680px">
+<p style="margin: 0">Contratamos talento, reforçamos equipas e construímos soluções em</p>
+<p style="margin: 0; position: relative; display: inline-flex; align-items: center"><span class="rot"><sc-for list="{{rot}}" as="w" hint-placeholder-count="6"><strong class="rot-w" aria-hidden="{{w.hidden}}" style="display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; color: #ffffff; font-weight: 600; opacity: {{w.op}}; transform: translateY({{w.ty}})">{{w.text}}<sc-if value="{{w.isIa}}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" aria-hidden="true" style="width: 0.62em; height: 0.62em; margin-left: 0.15em; align-self: flex-start"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14"></path></svg></sc-if>.</strong></sc-for></span></p>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 28px; margin-top: 4px">
+<a href="#" class="btn-y" style="background: var(--yellow); color: var(--navy); font-weight: 600; font-size: 15.5px; text-decoration: none; padding: 15px 24px; border-radius: 12px; display: inline-flex; align-items: center; gap: 10px; min-height: 50px; box-sizing: border-box">Agendar conversa <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="#" class="nav-link" style="font-weight: 500; font-size: 15.5px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Ver casos de sucesso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+</section>
+
+<section aria-label="Clientes" class="cl-sec">
+<div class="cl-mq"><ul class="cl-track"><li><img src="/_blob/cdfad7e62e9abc275a70795b87329aea" alt="MC Sonae" style="height: 30px"></li><li><img src="/_blob/3c62f06aaf3e0fad8393aeb3f72ab9de" alt="Sky" style="height: 30px"></li><li><img src="/_blob/7cdb91988668beb3e3bed4852e45c566" alt="Sword" style="height: 26px"></li><li><img src="/_blob/174ef5d2685e1a15b83f2f8ad76c0fba" alt="Efacec" style="height: 26px"></li><li><img src="/_blob/9d9793bbb738483e3b7a561875feb425" alt="Linde" style="height: 30px"></li><li><img src="/_blob/ffc0dd81a6b8984be6fb0670b7131373" alt="Xing" style="height: 24px"></li><li><img src="/_blob/56442b654147f1f8811ff37c7af10305" alt="Medicare" style="height: 24px"></li><li><img src="/_blob/610ea5da7b04e8c9619acbc6537fca50" alt="Zühlke" style="height: 32px"></li><li><img src="/_blob/08182d6fc8db37821ad7ec127d6fd4cf" alt="Clever Advertising" style="height: 28px"></li><li aria-hidden="true"><img src="/_blob/cdfad7e62e9abc275a70795b87329aea" alt="" style="height: 30px"></li><li aria-hidden="true"><img src="/_blob/3c62f06aaf3e0fad8393aeb3f72ab9de" alt="" style="height: 30px"></li><li aria-hidden="true"><img src="/_blob/7cdb91988668beb3e3bed4852e45c566" alt="" style="height: 26px"></li><li aria-hidden="true"><img src="/_blob/174ef5d2685e1a15b83f2f8ad76c0fba" alt="" style="height: 26px"></li><li aria-hidden="true"><img src="/_blob/9d9793bbb738483e3b7a561875feb425" alt="" style="height: 30px"></li><li aria-hidden="true"><img src="/_blob/ffc0dd81a6b8984be6fb0670b7131373" alt="" style="height: 24px"></li><li aria-hidden="true"><img src="/_blob/56442b654147f1f8811ff37c7af10305" alt="" style="height: 24px"></li><li aria-hidden="true"><img src="/_blob/610ea5da7b04e8c9619acbc6537fca50" alt="" style="height: 32px"></li><li aria-hidden="true"><img src="/_blob/08182d6fc8db37821ad7ec127d6fd4cf" alt="" style="height: 28px"></li></ul></div>
+</section>
+
+<section style="background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) 24px; display: flex; flex-direction: column; gap: 52px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold)">Como trabalhamos consigo</p>
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.02em; max-width: 760px; text-wrap: balance">Do recrutamento à entrega. Decide até onde vamos.</h2>
+<p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: var(--body); max-width: 680px">Três modelos de colaboração, consoante as suas prioridades, os prazos e o nível de responsabilidade que quer manter. Pode mudar de modelo a qualquer momento.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px">
+<a href="#" class="card-l" style="text-decoration: none; color: var(--ink); background: #ffffff; border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<span style="width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: var(--yellow); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7M19 8v6M16 11h6"></path></svg></span>
+<h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 23px">Contrate</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.65; color: var(--body)">Os nossos recrutadores encontram o talento certo para a sua equipa, em contratação permanente.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--muted)">Ideal para perfis difíceis de encontrar e equipas a crescer de forma estável.</p>
+<span style="margin-top: auto; padding-top: 8px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px">Recrutamento de TI <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a href="#" class="card-l" style="text-decoration: none; color: var(--ink); background: #ffffff; border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<span style="width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: var(--yellow); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7M16 4.5a4 4 0 0 1 0 7M22 21c0-3-1.8-5.6-4.5-6.6"></path></svg></span>
+<h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 23px">Reforce</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.65; color: var(--body)">Os nossos especialistas integram-se na sua equipa e trabalham com as suas ferramentas e processos.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--muted)">Ideal para ganhar capacidade já, sem aumentar o quadro de pessoal.</p>
+<span style="margin-top: auto; padding-top: 8px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px">Outsourcing de TI <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a href="#" class="card-l" style="text-decoration: none; color: var(--ink); background: #ffffff; border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<span style="width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: var(--yellow); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"></path><path d="M3 8l9 5 9-5M12 13v8"></path></svg></span>
+<h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 23px">Construa</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.65; color: var(--body)">As nossas equipas constroem a solução para si, da definição do produto ao go-live.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--muted)">Ideal para lançar produtos novos ou modernizar sistemas com uma equipa que assume a entrega.</p>
+<span style="margin-top: auto; padding-top: 8px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px">Desenvolvimento de software <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+</section>
+
+<section style="background: var(--surface); overflow: hidden">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 112px) 24px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.02em; max-width: 900px; text-wrap: balance">Dominamos a sua stack e as ferramentas de <span style="position: relative; display: inline-block">IA<svg viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; right: -0.42em; top: -0.12em; width: 0.4em; height: 0.4em"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14"></path></svg></span>&nbsp; que a aceleram.</h2>
+<p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: var(--body); max-width: 660px">Experiência em dezenas de tecnologias e linguagens, incluindo os assistentes de IA que estão a mudar a forma como se constrói software.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 8px 0 20px">
+<div class="mq" aria-label="Tecnologias"><ul class="mq-track" style="animation-play-state: {{mqState}}; list-style: none; margin: 0; padding: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 56px); line-height: 1.25"><li class="mq-w" style="color: #06193A; white-space: nowrap">React</li><li class="mq-w" style="white-space: nowrap">Angular</li><li class="mq-w" style="white-space: nowrap">Vue.js</li><li class="mq-w" style="white-space: nowrap">Node.js</li><li class="mq-w" style="white-space: nowrap">TypeScript</li><li class="mq-w" style="white-space: nowrap">JavaScript</li><li class="mq-w" style="white-space: nowrap">Python</li><li class="mq-w" style="white-space: nowrap">Java</li><li class="mq-w" style="white-space: nowrap">.NET</li><li class="mq-w" style="white-space: nowrap">C#</li><li class="mq-w" style="white-space: nowrap">PHP</li><li class="mq-w" style="white-space: nowrap">Go</li><li class="mq-w" aria-hidden="true" style="color: #06193A; white-space: nowrap">React</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Angular</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Vue.js</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Node.js</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">TypeScript</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">JavaScript</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Python</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Java</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">.NET</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">C#</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">PHP</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Go</li></ul></div>
+<div class="mq mq-rev" aria-label="Plataformas e ferramentas de IA"><ul class="mq-track" style="animation-play-state: {{mqState}}; list-style: none; margin: 0; padding: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 56px); line-height: 1.25"><li class="mq-w" style="color: #06193A; white-space: nowrap">Claude Code<svg viewBox="0 0 24 24" aria-hidden="true" style="width: 0.42em; height: 0.42em; margin-left: 0.08em; vertical-align: 0.9em"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14"></path></svg></li><li class="mq-w" style="white-space: nowrap">Swift</li><li class="mq-w" style="white-space: nowrap">Kotlin</li><li class="mq-w" style="white-space: nowrap">Android</li><li class="mq-w" style="white-space: nowrap">iOS</li><li class="mq-w" style="white-space: nowrap">Cursor</li><li class="mq-w" style="white-space: nowrap">AWS</li><li class="mq-w" style="white-space: nowrap">Azure</li><li class="mq-w" style="white-space: nowrap">Google Cloud</li><li class="mq-w" style="white-space: nowrap">GitHub Copilot</li><li class="mq-w" style="white-space: nowrap">Kubernetes</li><li class="mq-w" style="white-space: nowrap">Docker</li><li class="mq-w" style="white-space: nowrap">Terraform</li><li class="mq-w" style="white-space: nowrap">OpenAI Codex</li><li class="mq-w" aria-hidden="true" style="color: #06193A; white-space: nowrap">Claude Code<svg viewBox="0 0 24 24" aria-hidden="true" style="width: 0.42em; height: 0.42em; margin-left: 0.08em; vertical-align: 0.9em"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14"></path></svg></li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Swift</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Kotlin</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Android</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">iOS</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Cursor</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">AWS</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Azure</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Google Cloud</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">GitHub Copilot</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Kubernetes</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Docker</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">Terraform</li><li class="mq-w" aria-hidden="true" style="white-space: nowrap">OpenAI Codex</li></ul></div>
+</div>
+<div style="display: flex; justify-content: center; padding: 8px 24px clamp(64px, 8vw, 96px)"><a href="#" style="font-weight: 600; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; border-bottom: 1.5px solid var(--navy)">Ver todas as tecnologias <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+</section>
+
+<section style="background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold)">O que fazemos</p>
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance">Sete áreas de especialização. Um só parceiro.</h2>
+<p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: var(--body); max-width: 700px">Do software à medida ao recrutamento tech, cobrimos o ciclo completo de entrega, <strong style="color: var(--ink); font-weight: 600">com IA em cada área</strong> e casos reais por trás.</p>
+</div>
+<div role="tablist" aria-label="Áreas de especialização" class="tiles" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{caps}}" as="cap" hint-placeholder-count="7">
+<button type="button" role="tab" aria-selected="{{cap.selected}}" aria-controls="painel-areas" tabIndex="{{cap.tabIndex}}" class="tile" onClick="{{cap.pick}}" onKeyDown="{{cap.key}}" style="aspect-ratio: 1 / 1; min-height: 108px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 12px 8px; border-radius: 14px; background: {{cap.bg}}; border: 1px solid {{cap.edge}}; color: {{cap.fg}}; cursor: pointer; box-sizing: border-box">
+<span style="color: {{cap.iconFg}}; display: flex">
+<sc-if value="{{cap.isSoftware}}" hint-placeholder-val="{{ true }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2"></rect><path d="M2.5 8h19M9.5 12.5L7.5 14.5l2 2M14.5 12.5l2 2-2 2"></path></svg></sc-if>
+<sc-if value="{{cap.isIa}}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"></rect><rect x="9.5" y="9.5" width="5" height="5" rx="1"></rect><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"></path></svg></sc-if>
+<sc-if value="{{cap.isAdv}}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"></circle><ellipse cx="12" cy="12" rx="10" ry="4"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"></ellipse></svg></sc-if>
+<sc-if value="{{cap.isCloud}}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.5-9 6 6 0 0 1 11.6 1.5A3.75 3.75 0 0 1 17.5 18H7z"></path><path d="M3 21h18"></path></svg></sc-if>
+<sc-if value="{{cap.isQa}}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3v6c0 4.7-3.4 8.6-8 10-4.6-1.4-8-5.3-8-10v-6l8-3z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg></sc-if>
+<sc-if value="{{cap.isDesign}}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="5" rx="1.5"></rect><rect x="13" y="10" width="8" height="11" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect></svg></sc-if>
+<sc-if value="{{cap.isRecruit}}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"></circle><path d="M3 21c0-3.9 3.1-7 7-7 1.4 0 2.6.4 3.7 1"></path><circle cx="17.5" cy="17.5" r="3"></circle><path d="M19.7 19.7L22 22"></path></svg></sc-if>
+</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; font-weight: 500; line-height: 1.35; text-align: center; white-space: pre-line">{{cap.label}}</span>
+</button>
+</sc-for>
+</div>
+<div role="tabpanel" id="painel-areas" tabIndex="0" style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(24px, 3.4vw, 44px); display: flex; flex-wrap: wrap; gap: 40px">
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.01em">{{active.name}}</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: var(--body)">{{active.desc}}</p>
+<p style="margin: 0; display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.6; color: var(--ink)"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14" stroke="#8A6600" stroke-width="0.8"></path></svg><span><strong style="font-weight: 600">Com IA:</strong> {{active.ai}}</span></p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<span style="font-size: 13px; color: var(--muted); margin-right: 4px">Disponível como</span>
+<sc-for list="{{active.models}}" as="m" hint-placeholder-count="3">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 5px 11px; border-radius: 999px; background: {{m.bg}}; color: {{m.fg}}; border: 1px {{m.line}} {{m.edge}}">{{m.label}}</span>
+</sc-for>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: 12px; background: #ffffff; border: 1px solid var(--line)">
+<span style="width: 28px; height: 28px; border-radius: 8px; background: var(--warm); color: var(--gold); display: flex; align-items: center; justify-content: center; flex: none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"></path></svg></span>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink); font-weight: 500">{{active.proof}}</p>
+</div>
+<a href="#" style="font-weight: 600; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Ver todos os serviços de {{active.short}} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="flex: 1.25 1 380px; min-width: 0; display: flex; flex-direction: column; background: #ffffff; border: 1px solid var(--line); border-radius: 16px; padding: 6px 10px">
+<sc-for list="{{active.services}}" as="svc" hint-placeholder-count="4">
+<a href="#" class="row-l" style="text-decoration: none; color: var(--ink); display: flex; gap: 16px; align-items: center; padding: 18px 12px; border-bottom: 1px solid #EEF1F5; border-radius: 10px">
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><span style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 17px">{{svc.name}}</span><span style="font-size: 14px; line-height: 1.55; color: var(--muted)">{{svc.text}}</span></span>
+<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; color: #7A8496"><path d="M9 6l6 6-6 6"></path></svg>
+</a>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background: var(--navy); color: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: flex-end; justify-content: space-between">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow)">Casos de sucesso</p>
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance">Execução que gera resultados reais.</h2>
+</div>
+<dl style="margin: 0; display: flex; gap: 0; border: 1px solid var(--edge-navy); border-radius: 16px; overflow: hidden">
+<div style="padding: 18px 28px; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid var(--edge-navy)"><dt style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 34px; line-height: 1; color: #ffffff">15+</dt><dd style="margin: 0; font-size: 13.5px; color: var(--on-navy-2)">anos a entregar tecnologia</dd></div>
+<div style="padding: 18px 28px; display: flex; flex-direction: column; gap: 4px"><dt style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 34px; line-height: 1; color: var(--yellow)">100+</dt><dd style="margin: 0; font-size: 13.5px; color: var(--on-navy-2)">produtos levados até ao go-live</dd></div>
+</dl>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px">
+<a href="#" class="card-d" style="text-decoration: none; color: #ffffff; background: rgba(255,255,255,0.04); border: 1px solid var(--edge-navy); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 190px; background: var(--navy-2); overflow: hidden"><img src="/_blob/f93fad7239beb5bba2dd025aacc0833e" alt="Plataforma da Clever Advertising" width="1024" height="476" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block"></div>
+<div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+<img src="/_blob/4f4b5f5de27f5c30a9120a6c7b55f189" alt="Clever Advertising" style="height: 24px; width: auto; align-self: flex-start">
+<p style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 26px; line-height: 1.15; color: var(--yellow)">32 → 1.600+ testes</p>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--on-navy)">Uma suíte de testes estagnada transformada num processo de QA escalável em seis meses, com automação assistida por IA.</p>
+<p style="margin: 0; margin-top: auto; padding-top: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--on-navy-2)">Qualidade e testes · Construa</p>
+</div>
+</a>
+<a href="#" class="card-d" style="text-decoration: none; color: #ffffff; background: rgba(255,255,255,0.04); border: 1px solid var(--edge-navy); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 190px; background: var(--navy-2); overflow: hidden"><img src="/_blob/f2410cc99434d6fc69e007ab4dc50423" alt="Dashboard operacional da Linde" width="1024" height="480" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block"></div>
+<div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+<img src="/_blob/d1e4d36b7a28cf780538f093143b1ff3" alt="Linde" style="height: 24px; width: auto; align-self: flex-start">
+<p style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 26px; line-height: 1.15; color: var(--yellow)">−94% no tempo de regressão</p>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--on-navy)">Uma suíte com 88% de falhas recuperada numa semana, com 128 testes automatizados e CI/CD.</p>
+<p style="margin: 0; margin-top: auto; padding-top: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--on-navy-2)">Qualidade e testes · Cloud e DevOps</p>
+</div>
+</a>
+<a href="#" class="card-d" style="text-decoration: none; color: #ffffff; background: rgba(255,255,255,0.04); border: 1px solid var(--edge-navy); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 190px; background: var(--navy-2); overflow: hidden; display: flex; align-items: flex-end; justify-content: center; padding-top: 16px; box-sizing: border-box"><img src="/_blob/121dfb89983b97b41515560fe4cb7545" alt="Aplicação Hapvida" width="800" height="480" style="width: 74%; height: auto; display: block"></div>
+<div style="padding: 26px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+<img src="/_blob/ee90fef6f268df2b953b5cf0da785130" alt="Hapvida" style="height: 24px; width: auto; align-self: flex-start">
+<p style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 26px; line-height: 1.15; color: var(--yellow)">Teleconsulta para milhões</p>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--on-navy)">Desenvolvimento end-to-end da aplicação Hapvida, com acesso remoto a cuidados de saúde.</p>
+<p style="margin: 0; margin-top: auto; padding-top: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--on-navy-2)">Software à medida · Construa</p>
+</div>
+</a>
+</div>
+<div style="display: flex; justify-content: center"><a href="#" class="link-y" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center; gap: 8px">Ver todos os casos de sucesso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+</div>
+</section>
+
+<section style="background: var(--surface)">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold)">Três mercados</p>
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.02em">Uma rede de talento e execução.</h2>
+<p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: var(--body); max-width: 680px">Presença local, talento especializado e capacidade de entrega em Portugal, no Brasil e nos Estados Unidos.</p>
+</div>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position: absolute"><defs><g id="yw-markets-land" style="fill: var(--map-land); stroke: #ffffff; stroke-width: 0.8"><path vector-effect="non-scaling-stroke" d="M271.9 240L266.4 250.5L269.5 254.7L260.6 259.9L252.8 257.2L258.4 265.4L250.1 271.5L246.3 271L240.6 263.1L242.8 260.6L240.6 256.3L242.1 249.5L234.3 249.8L229.1 245.9L224 246.1L218.5 237.4L221.2 230.8L226.7 226.6L224.2 227.8L223.5 234.9L227 237.6L226.1 230.3L232.8 228.2L232 225.3L239.4 232.2L251.5 233.9L264.5 231.2L260.3 232L268.8 236.7L265.5 239.8L271.9 240Z"></path><path vector-effect="non-scaling-stroke" d="M298.5 414.6L292.4 419.9L280.5 417.7L278.2 414.4L281.4 399L284.7 398.4L297 407L299.5 410.1L298.5 414.6Z"></path><path vector-effect="non-scaling-stroke" d="M247.5 199.7L248.7 201.3L244.9 201.6L243.4 199.5L247.5 199.7Z"></path><path vector-effect="non-scaling-stroke" d="M-8.1 23.8L-8.1 27.1L-10.3 30.1L-12.2 27.9L-11 27L-12.1 22.7L-16.5 25.6L-14.2 22L-19.3 17.2L-21.9 16.5L-22.6 13.8L-20.5 14.3L-22.1 12.7L-20.8 12.5L-24.1 11.4L-23.5 8.8L-24.8 10.4L-27.1 9.1L-29.5 3.5L-28.4 10.3L-31.6 9.4L-31.3 6.5L-32.6 5.6L-32.9 7.3L-36 5.8L-32.2 9.1L-34.4 10.4L-47.1 2.8L-46 0.3L-45.1 2.3L-44 1L-45.7 -0.1L-49.7 1.7L-53.6 0.6L-53.6 -0.7L-64.6 -0.1L-67.6 -2L-66.8 -4L-69 -2.3L-74.3 -4.4L-73.5 -6.9L-79.2 -5.3L-79 -7.4L-81.4 -6.4L-82.2 -4.8L-81.1 -3.7L-82.6 -2.9L-79.9 -2.9L-81.7 0.1L-85.6 -0.6L-86.4 1.4L-86.9 0.5L-91.7 4.5L-95 4.8L-95.5 3.7L-92.2 1.4L-95.4 1.3L-93.4 -4.3L-89.8 -6.2L-84.3 -5.3L-88.2 -7.1L-85.7 -9.1L-91.8 -7.2L-97.5 -2L-100.1 -1.8L-98.6 0L-102.6 2.1L-104.7 5L-101.7 6.2L-101.8 7.4L-105 10.8L-113.7 15.5L-114.5 17.5L-121.7 20.7L-121.9 22.8L-132.7 26.6L-134.1 25.4L-136.3 28L-138.5 27.4L-138.7 28.8L-140.5 28.4L-141.2 29.7L-141.1 28.1L-136.6 24.8L-132.8 23.5L-129.2 24.3L-130.2 23.2L-129.2 21.4L-122.7 18.7L-121.3 15.8L-117.8 14.6L-118.4 11.5L-116.8 10.6L-118.1 9.3L-115.2 5.1L-120.8 8.2L-122 6.8L-120.3 6.1L-123.2 6.1L-123.8 9.4L-129.5 5.6L-136.6 8L-134.6 5.3L-135.9 5.1L-135.3 2.5L-137.7 -1.7L-135.8 -4.1L-138.7 -1.6L-138.3 0.1L-143.6 1.2L-149.4 -3.2L-147.2 -5.4L-145.3 -4.6L-145.5 -3.6L-144 -4.6L-142.9 -3.5L-141.7 -4.6L-143.6 -5.1L-142.3 -5.4L-148.5 -5.6L-147.5 -6.7L-149.1 -7.7L-150.3 -6.6L-152.7 -10L-151.2 -10.3L-152.3 -10.9L-150.5 -11.3L-150.8 -12.8L-148.8 -15.1L-147 -15.2L-147.2 -17.9L-145.6 -19.7L-141.2 -18.7L-137.1 -21.7L-132.4 -21.9L-131.1 -23.5L-132 -26.3L-134 -27.5L-131.4 -29.6L-132.5 -30.7L-135 -29.9L-139.2 -27.1L-140.8 -28.9L-140.6 -27.4L-152.6 -28.4L-155.7 -32.2L-152.6 -33L-160.4 -35.4L-153.6 -38.7L-150.5 -38.6L-151.1 -39.8L-145.8 -41.6L-142.6 -41.5L-144.1 -39.1L-142.8 -38.2L-132.1 -38.9L-135.7 -40.4L-138.2 -43.1L-137.4 -44L-134.4 -40.7L-128.9 -40.5L-129.4 -41.8L-135.4 -42.4L-134.9 -44.5L-142.1 -45.1L-144.5 -48.5L-155.1 -53.7L-153.5 -54.1L-152.8 -57.3L-145.2 -57.7L-142.1 -59.3L-135.5 -67.6L-136.3 -66.4L-132 -67.4L-128.5 -69.5L-127.5 -67.2L-127.3 -68.8L-125.5 -69L-128.3 -69.8L-126.7 -70.9L-119.6 -71.4L-113.9 -75.4L-110.3 -73.3L-112.6 -71.9L-111.9 -71.3L-107.8 -73L-104.8 -71L-97.2 -71.3L-97.9 -69.9L-95.1 -69.2L-95.8 -68.4L-85.1 -68.8L-66.5 -65.1L-60.9 -66L-52 -62.7L-52 -1.8L-44.3 -2.1L-44.7 -0.5L-38.4 4.6L-37.8 6.5L-34.3 5L-33.3 2.4L-29.9 1.2L-21.6 9.4L-15.3 19.9L-8.4 22.6L-8.1 23.8ZM-16.4 22.6L-17.1 23.6L-18.6 22.8L-17.5 20.4L-16.4 22.6ZM-11.9 26.1L-12.8 27.7L-13.8 26.5L-14.9 27.6L-14.5 24.2L-12.9 23.5L-11.9 26.1ZM-21.5 17.5L-19.8 18.2L-20 19.7L-21.3 18.5L-20.6 19.8L-22.4 20.6L-23.9 17.5L-21.5 17.5ZM-19.4 29.4L-20.3 29.1L-21.2 27L-19.4 29.4ZM-22.3 21.3L-16.7 26.1L-18.5 26.2L-15.9 27.6L-16.1 30.3L-17.9 29.2L-20.5 27L-20.1 25.5L-22.7 24.4L-21 23.7L-23 23.4L-22.3 21.3ZM213.2 81.1L225.9 81.1L226.7 79.7L228.5 79.8L235 68.8L240.8 70.7L240.8 77.5L244.1 82L239.8 84.2L238.2 83.6L237.9 84.8L236.9 83.2L235.5 85.9L230.9 87.7L228.7 91.8L229.5 92.7L227.8 94.2L230.3 96.9L232 96.6L231.6 95.4L232.2 97.3L227.3 98.2L226.4 96.7L225.9 98.7L220.3 99.2L216.1 101.7L216.1 99.3L214.9 102.8L216.1 103.4L215.7 106.3L212.8 109.9L209.9 107.7L211.7 105.3L209.6 107L211.8 112.6L208.3 118.5L209.4 114.8L206.6 111.3L208.5 107.6L205.7 108.7L206.4 112.9L205.3 112.1L206.6 114.2L203.1 112.7L203.9 110.5L203 111.8L202.9 113L206.9 115.1L206 116.1L203.6 113.8L207 117.2L205 116.9L206.4 119.3L203 117.7L208 119.6L209.9 124.6L208.2 120.8L208.7 123.3L205.1 122.8L205.1 124L207.7 124L207.7 125.2L209 124.5L207.3 126.8L203.8 126L205.9 127.1L204.1 128.2L206.2 129.1L202.4 129.6L200.3 133.1L200.2 132.1L196.6 134.1L189.7 140.5L188.8 139.8L185.9 146.8L191.8 164.5L190.5 170.8L187.6 171.6L183.9 163.8L182.8 164.2L181.1 161.5L182.4 160L180.6 160L181.4 155.5L177.2 150.9L174.8 150.3L170.7 152L169.6 149.4L163.2 149.1L164 148.1L160.1 149.5L160 147.6L159.5 149L153.6 149.9L151.1 149L150.9 150.3L154.4 150.4L153.1 152.3L155.9 154.1L154.5 155.1L151.4 152.6L151.1 154.5L146.8 153.7L147 152.5L144.4 151.3L143 152.6L136.7 151.8L136.6 150.7L136.4 152L133 153.3L133.9 152.6L131.9 151.9L132.4 153.4L130.9 155.1L127.1 157.2L128 156.6L125.4 156.3L126.3 157.3L123.4 158.7L122.2 162.2L120.9 161.7L123.4 167.8L122.5 168.5L115.6 166L114 161.3L106.5 151.7L102.6 151.2L99 155L94.4 152.5L92.3 148.1L86.2 142.8L79.2 142.8L79.1 144.8L67.8 144.8L52.7 139.6L53.1 138.6L43.5 139.4L42.1 136L38 132.8L29.4 130.3L29.4 127.8L24.5 122.3L24.8 119.9L22 116.7L22.2 115.6L23.7 117L22.7 114.6L25.9 114.4L20 114.7L17.2 110.4L16.7 106.3L14.6 103.5L15.7 98.3L13.8 91.8L15.4 87.6L16 75.1L19.1 75.4L15.7 74.8L15.5 71.8L16.6 71.3L15.4 71.4L13.2 64.1L20.9 65.4L21.4 66.7L19.4 69.2L21.9 66.5L21.7 69.7L19.9 70.4L21.2 70.6L23 66L20.8 61L131.4 61L132.2 59.1L133.5 62.3L140 62.9L145.9 65.8L154.2 66.1L158.5 64.5L172.5 71.6L173.8 73.9L175.4 73.4L176.1 75.7L177.5 75.6L177.6 77.1L181.8 79.4L183.4 88.1L181.8 92.7L179.4 95.1L181.2 97.3L195.9 91.9L195.3 88.7L197.1 87.9L204.7 87.9L207.4 84.6L213.2 81.1ZM222 100.6L216.3 102.4L217.7 100.9L222 100.6ZM21.7 65.3L22.4 66.5L21.4 65.3L21.5 64.1L21.7 65.3Z" style="fill: var(--map-usa)"></path><path vector-effect="non-scaling-stroke" d="M363.6 514.6L367.7 519L359.9 514.3L363.6 514.6Z"></path><path vector-effect="non-scaling-stroke" d="M276.6 499.5L280.3 500.2L279.1 502.5L273.9 504.7L276.6 499.5ZM270.9 500.6L274.9 500.4L270 504.5L268.2 503.7L270.9 500.6Z"></path><path vector-effect="non-scaling-stroke" d="M501.3 47.2L491 45.8L495.4 43.4L495.6 40.2L493.3 40.8L494.9 39L501 38.1L500.6 33.6L497.6 31.2L499.9 29.1L491.9 30.1L493.7 23.6L491.7 22.1L489.1 26.9L491.2 18.9L487.5 19.2L491.9 8.5L496.6 8.4L499.8 8.2L495.5 14.2L504.9 14.7L498.8 21.2L501.3 21.8L496.8 22.7L503.4 23.8L511.7 33.7L512.5 36.5L509.4 35.8L513.1 38L512.2 40.3L519 42.1L513.7 48L517.6 49.5L513.2 51.7L489.5 55.5L501.3 47.2ZM487.4 14.6L489.3 16.2L486.7 16.4L485 14.9L487.4 14.6ZM487.1 33.8L480.6 33.2L481.8 30.1L487.5 27.6L490.1 31.6L487.1 33.8Z"></path><path vector-effect="non-scaling-stroke" d="M558 136.5L550.1 149.6L548.2 141.5L542 133.6L545.2 123L548.6 118.3L556.2 118.9L553.9 123L556.5 127.3L552.2 132.6L558 136.5Z"></path><path vector-effect="non-scaling-stroke" d="M268 233.6L264.4 233.9L265.6 231.1L268.3 230.8L268 233.6Z"></path><path vector-effect="non-scaling-stroke" d="M515.6 230.1L519.1 249.1L514.9 248.4L514 244.3L511.7 229.7L515.6 230.1Z"></path><path vector-effect="non-scaling-stroke" d="M550.1 68.5L550 70.8L553.8 71.6L552.5 75L549.2 73.7L547.8 77L545.5 73.9L540.5 76.8L539 74.1L535.9 75.4L539.9 68.8L550.1 68.5Z"></path><path vector-effect="non-scaling-stroke" d="M588.3 12.7L584.8 17.5L584.5 14.3L588.3 12.7ZM557.6 5.7L563.5 -8.2L560.6 -10.4L560.7 -22.1L568.3 -25.3L566.6 -28.4L570.2 -38.6L573.9 -39.7L579.1 -50.5L583.7 -50.9L585.2 -55L591.9 -53.6L594.5 -58.4L606.6 -50.9L608.6 -36.4L601.6 -36.8L597.6 -33.2L597.6 -28.2L581.5 -15L581 -4.2L588 1L583.9 3.8L586.2 3.6L585.1 5.3L576.9 8.1L579.7 8.9L575.7 22.3L563.5 26.5L563.5 19.7L557 9.6L557.6 5.7Z"></path><path vector-effect="non-scaling-stroke" d="M295.4 252.8L294.4 264.4L288.1 264.2L287.9 266.9L284.1 264.2L279.8 257.9L283.8 250.5L294.6 250.6L295.4 252.8Z"></path><path vector-effect="non-scaling-stroke" d="M524.6 106.3L525.8 106.7L524.6 108.4L523.2 108.2L522.5 107.4L522 107.7L521.5 107.1L523.1 105.9L524.6 105.4L524.6 106.3ZM504.8 88.9L506.4 89.8L506.3 90.7L506.8 90.4L511.8 92.4L514.5 92.4L514.8 91.7L517.4 92.4L517.8 93.6L518.8 93.3L519.9 94L522.6 94.1L523.6 93.5L524.8 93.7L525 96L520.3 99.2L516.1 100.2L514.9 101.4L515.6 101.8L514.4 102.4L510.7 107.5L511.2 109.7L512.8 111.1L509.9 113.1L508.7 115.7L509.1 116.3L506.7 116.6L505.4 117.5L503.6 120.3L494.5 120.5L493.3 121.5L491.3 121.9L490.6 123.2L489.5 123.7L487.8 123L486.5 120.9L487.1 119.6L486.4 120L484.5 117.9L482.4 118.4L482.2 115.9L484.2 113.7L483.6 113.8L482.6 112.5L484 109.7L481.9 106.9L483.5 106.8L484.1 106.2L484.4 105.2L483.9 104.5L484.8 103.6L484.3 100.5L487.1 97.9L485.8 97.3L485.5 96L483.4 95.8L482.4 96.5L479.4 96.6L479.5 95.7L478.9 95.1L476.6 96.1L476.5 95.2L477.2 94.4L476.7 94.4L476.8 92.7L475.9 92.9L476.3 91.9L475.1 91L475.3 90.1L476.5 89.3L478.6 89L479 88.1L481.2 87.2L483.8 88.2L488.6 87.8L493.9 88.9L497.6 88.4L499.8 89.1L500.5 88.7L502.7 89.3L504.8 88.9ZM446.7 157.7L446.3 158.7L445.4 159.3L444.6 157.7L447.5 156.8L446.7 157.7ZM457.1 155.4L456.6 155.6L456.7 154.9L458 154.1L458.1 155L457.1 155.4ZM455.2 158.6L454 158.9L455.1 158.4L456 156.3L456.7 156.3L456.5 157.6L456.3 158.2L455.2 158.6ZM450.4 158.7L450.3 160.1L449.4 160.4L448.8 159.8L449.3 158.7L450.4 158.7Z"></path><path vector-effect="non-scaling-stroke" d="M629.5 364.5L637.2 365.4L639.9 373.7L639.8 380.5L636.8 380L635.2 384L639 386.3L643.5 384.3L641.5 391.4L631.9 403.8L618.5 414.4L592.1 419.3L585.6 417L584.1 410.2L584.8 405.6L577.8 391.9L580.2 389.4L584.4 393L591.9 391.2L591.9 375.4L594.7 384.2L598.6 384.3L604.2 377.7L613.8 379.4L620.3 370.4L629.5 364.5Z"></path><path vector-effect="non-scaling-stroke" d="M602.2 60.6L600.4 64L594 63.4L584.6 67.3L579.5 64.1L583 61.5L589.8 57.8L602.2 60.6Z"></path><path vector-effect="non-scaling-stroke" d="M578.1 73.7L573 78.9L566.7 77.2L566.8 73.6L576.4 71.8L578.1 73.7Z"></path><path vector-effect="non-scaling-stroke" d="M470.9 240.3L466 246.6L458.8 238L466.9 234.2L470.9 240.3Z"></path><path vector-effect="non-scaling-stroke" d="M597.4 82L602.9 83.1L601.7 94.2L598.2 94.6L599 92.5L589.8 88.2L587.6 76.5L592.8 75.5L597.4 82Z"></path><path vector-effect="non-scaling-stroke" d="M462.9 214.6L466.4 224.4L445.2 224.6L445.2 221.5L452.2 220.1L445.8 219.6L441.9 214.9L447 207.6L454.8 207.4L462.9 214.6Z"></path><path vector-effect="non-scaling-stroke" d="M595.8 27.3L594.4 28.9L602.3 28.5L602.7 31.2L590.4 31.8L595.8 27.3Z"></path><path vector-effect="non-scaling-stroke" d="M624.9 78.9L630.8 79.8L627.6 81.5L626.3 87.3L620.3 85.2L614 87.7L603.7 86.9L602.9 83.1L597.4 82L595.1 78.2L593 75.6L596.6 74.6L601.2 67.4L618.9 64.7L624.3 71.2L624.9 78.9Z"></path><path vector-effect="non-scaling-stroke" d="M443.2 137.9L445.2 138.4L444.7 138.9L443.3 138.6L443.2 137.9ZM476.9 96L478.9 95.1L479.5 95.7L479.4 96.6L482.4 96.5L483.4 95.8L485.5 96L485.8 97.3L487.1 97.9L484.3 100.5L484.8 103.6L483.9 104.5L484.4 105.2L484.1 106.2L483.5 106.8L481.9 106.9L484 109.7L482.9 111.3L482.6 112.5L483.6 113.8L484.2 113.7L482.2 115.9L482.4 118.4L480.7 119.2L477.6 118.7L476 119.1L476.7 117.2L476.5 112.5L477.3 112.6L476.8 112.2L475.1 112.5L475 111.6L475.9 111.1L476.8 109.6L475.5 111.2L474.6 111.4L474.1 110.9L474.5 108.4L476.6 104.7L477.3 101.7L477 97.2L476.4 96.9L476.9 96ZM387.5 108.1L386.9 108.1L387 107.6L387.5 108.1ZM403.7 111.6L402.8 111.5L402.6 110.9L403.5 110.9L403.7 111.6ZM397.4 112.2L396.6 111.8L397.4 111.8L397.4 112.2ZM399.4 112.5L398.2 112.7L398 112L399.4 112.5ZM409.4 115.4L411.3 115.4L410.2 115.9L409.1 115.7L408.6 115.1L409.4 115.4Z" style="fill: var(--map-prt)"></path><path vector-effect="non-scaling-stroke" d="M606.4 47.7L608.4 53L602.8 57.8L603.2 60.8L587.9 58.9L577.4 52.5L571.2 51.2L568.8 34.8L583.4 29.8L587.9 32.4L605.5 33.2L606.4 47.7Z"></path><path vector-effect="non-scaling-stroke" d="M232.1 291.2L220.5 294.8L216 304.6L219.2 312L223.3 314.4L229.8 312.2L229.4 318.5L233.7 318.3L237.3 324.6L234.3 337.4L236.6 340.2L232.3 347.9L211.6 336.4L204 323.4L193 302.6L187.4 298.5L188.8 289.2L190.7 287.9L190.1 292L195.9 294.2L198.6 287.9L209.7 280.4L211.3 274.5L220.2 283.9L231.6 284.9L229.1 289.4L232.1 291.2Z"></path><path vector-effect="non-scaling-stroke" d="M279.4 356L280.2 364.2L288.6 365L290.3 371.9L295 372.3L291.5 384.5L286.3 387.3L277.6 386.3L281.4 377.8L261.5 364.9L265 353.9L275.6 352.4L279.4 356Z"></path><path vector-effect="non-scaling-stroke" d="M202.5 239.6L200.4 245.3L198.3 242L201 241.7L195.7 238.2L190.2 241.4L191.7 244.4L188.6 245.4L187.7 242.6L180.5 241.9L180.8 235.8L186.6 239.1L195.6 236L202.5 239.6Z"></path><path vector-effect="non-scaling-stroke" d="M594.5 -58.4L591.9 -53.6L585.2 -55L583.7 -50.9L579.1 -50.5L573.9 -39.7L570.2 -38.6L566.6 -28.4L568.3 -25.3L560.7 -22.1L560.6 -10.4L563.5 -8.2L558.6 6.4L554.4 1.4L552.7 5.9L540 11.6L534.1 7.5L537.5 5.9L535.6 5.4L537.6 2.6L532.5 4.6L540 -3.1L532.6 2.2L534.6 -4.1L532 -6.3L542.4 -7.3L532.4 -7.2L531.7 -11.4L538.9 -11.3L532.6 -13.1L544.4 -16.7L538.9 -16.6L542.3 -19L546.5 -17.4L546.3 -22.2L555 -21.3L556.7 -24.1L552.2 -21.6L550.5 -23.4L563.7 -33.3L560.5 -33.5L563.1 -38.4L568.1 -39.7L564.5 -39.2L566.6 -43.7L573.7 -45.7L569.8 -46.2L571.8 -48.3L574.4 -46.7L571.2 -49.9L582.2 -54.1L578.3 -55.3L588.8 -63.4L590.9 -63.6L590.6 -61.1L593.3 -64.8L592.2 -60.5L594.5 -64.6L599.9 -64L597.4 -66.9L602.7 -67.9L605.4 -65.1L611.1 -72.5L615.1 -71.1L612.2 -66L618 -71.8L620 -68.9L622.4 -73.1L625.6 -72.2L624.8 -67L627.3 -71.4L635.7 -68.1L627.1 -66.2L635.4 -61.9L632.7 -62.6L627.9 -58.3L628.6 -62.9L623 -65.7L616.3 -63L611.8 -55.3L601.6 -56.2L598.4 -60L594.5 -58.4Z"></path><path vector-effect="non-scaling-stroke" d="M566.4 219.1L570.3 228L557.9 247.9L552.6 246.3L545.2 256.1L536.3 257.1L533.6 253.6L529.7 248.9L522.8 248.8L523.1 238L527.1 232.4L528.6 220.1L534 218.5L539.7 222L550.5 222.8L566.4 219.1Z"></path><path vector-effect="non-scaling-stroke" d="M566.4 219.1L550.5 222.8L530.7 219L526.4 227.3L523.2 224.5L521.6 226.5L516.1 220.1L512.9 214L527.4 211L528.9 196.8L535.3 195.4L559.9 178.5L568.9 182.3L571.9 180.7L575.9 191.8L573.9 206L565.8 216.4L566.4 219.1Z"></path><path vector-effect="non-scaling-stroke" d="M179.4 213.9L177.4 230.8L168.2 228.8L161.3 222.1L172.6 214.6L179.4 213.9Z"></path><path vector-effect="non-scaling-stroke" d="M536 51.8L532.1 48L525.8 47.6L529.1 48L527.8 46.2L532.2 40L540.8 38.3L539.2 45.3L535.8 46.2L536 51.8Z"></path><path vector-effect="non-scaling-stroke" d="M605.5 345.6L613 346.2L606.6 348.9L595.9 348.4L595.9 363.7L591.9 363.7L591.9 391.2L584.4 393L580.2 389.4L577.9 391.7L573.2 386.1L569.9 365.6L559 344L595 347.1L605.5 345.6Z"></path><path vector-effect="non-scaling-stroke" d="M503.1 127.9L507.1 141.3L496.7 143.3L497.3 146.4L477.4 156.2L476.8 163.1L466.4 164.1L463.7 168.5L452.6 187.2L444 187.3L448.4 177.1L460.2 159.7L471.2 153.3L475 139.3L484.4 133L488.3 124.8L503.1 127.9Z"></path><path vector-effect="non-scaling-stroke" d="M476.7 160.8L477.3 168L463.9 168L463.9 178.7L459.4 181.4L459.9 187.7L444.1 187.7L443.8 189.9L444 187.3L453.6 185.9L466.4 164.1L476.8 163.1L476.7 160.8Z"></path><path vector-effect="non-scaling-stroke" d="M588.8 88.3L593.4 91.6L589.4 96.1L585.8 93.2L588.8 88.3Z"></path><path vector-effect="non-scaling-stroke" d="M43.5 139.4L53.1 138.6L52.7 139.6L67.8 144.8L79.1 144.8L79.2 142.8L86.2 142.8L92.3 148.1L94.4 152.5L99 155L102.6 151.2L106.5 151.7L114 161.3L115.6 166L123.4 168.1L121 177.5L120.6 182.7L122.7 186.7L122.4 187.9L121 184.8L121.4 186.5L128.3 198.1L133.8 200.8L142.2 198.7L145.9 199.6L149 195.9L150.6 189L158.1 186.7L163.9 186.6L164.9 188.4L161.2 194.7L162.3 195L160.6 200.4L159.7 198.1L155.4 202.3L148 202.3L148 204.6L146.4 204.6L150.3 208.2L150.2 209.5L145.1 209.5L143.1 215.7L136.3 209.5L133 208.6L126 211.2L121 209.9L108.6 204.8L104.3 201.7L98.2 200.2L92.2 196.1L89.3 191.6L91 190.8L90 189.9L91.2 187L88.8 182.2L80.2 173.8L79.8 171.9L75.9 170.2L76.5 169.1L74.8 169.5L74.9 165.6L70.1 162.3L69.9 159.9L65.3 157.3L61 150.7L59.8 145.4L57 143.8L52.3 142.2L53.5 149.9L60.5 157.5L64.5 165L65.7 164.9L69.4 175L70.5 176L70.9 175L74.3 178.6L72 181.1L70.5 178.1L63.7 172.9L62.5 167L59.4 163.9L57.6 164.8L52 160.5L55.7 160.7L55.8 157.5L49.3 151.7L43.5 139.4ZM63.2 155L61.9 155.7L62.1 154.3L63.2 155Z"></path><path vector-effect="non-scaling-stroke" d="M462.9 214.6L453.9 207.1L447 207.6L445.9 210.4L447.2 192.3L443.7 189.5L459.9 187.7L459.4 181.4L463.9 178.7L463.9 173.7L463.9 168L477.3 168L477.3 162.4L492.7 172.2L485.6 172.2L489.9 211.8L468.2 213.2L466 211.2L462.9 214.6Z"></path><path vector-effect="non-scaling-stroke" d="M466.4 224.4L462.9 214.6L466 211.2L468.2 213.2L489.9 211.8L485.6 172.2L492.7 172.2L524.5 193.9L525 197.3L528.9 196.8L527.4 211L517.2 212.7L509 213.7L495.8 220.5L487.9 233.4L487 231.2L480 233.5L475.5 224.2L469.2 226.5L466.4 224.4Z"></path><path vector-effect="non-scaling-stroke" d="M598.2 94.6L604 97.1L598.3 101.1L593.8 98L598.2 94.6Z"></path><path vector-effect="non-scaling-stroke" d="M536.5 55.1L537.9 57.3L535.7 58.5L536.5 55.1Z"></path><path vector-effect="non-scaling-stroke" d="M550.1 149.6L558 136.5L572.7 140.1L574.8 144.3L588.5 149.5L592.4 146.4L592.5 140.8L598.9 137.6L612.1 142.3L611.2 151.5L611.9 193.2L607.9 193.3L607.9 195.3L575.9 178.8L568.9 182.3L553.3 174.2L549.7 167.3L551.6 164.3L550.1 149.6Z"></path><path vector-effect="non-scaling-stroke" d="M466 246.6L471.4 240.1L474.1 244.6L477.1 243.8L477.6 248.2L482.2 250.9L481.8 256.9L466 246.6Z"></path><path vector-effect="non-scaling-stroke" d="M593.4 91.8L595.2 89.7L598.2 94.6L594.3 96.4L593.4 91.8Z"></path><path vector-effect="non-scaling-stroke" d="M203 199.6L207.2 201.9L203.4 202.2L198.6 200.3L203 199.6Z"></path><path vector-effect="non-scaling-stroke" d="M540.1 76.5L545.7 73.9L548.1 76.9L549.2 73.7L552.3 75L553.8 71.8L560.7 70.7L566.8 73.6L567.5 78.1L561.1 78.9L561.2 83.9L570.2 94.6L576.7 96.2L575.6 98.1L585.9 104.8L579.7 103.1L578.1 106.5L580.7 110L574.9 114.9L576.8 110.2L574.8 105.3L556.4 93.7L552.2 86L547.1 84L542 87.2L538.5 80.8L540.1 76.5ZM574.3 113.6L572.5 120.7L563 116.6L562.9 113.8L574.3 113.6ZM550.5 101.1L550.2 109.2L546.6 110.3L546.2 106L544.9 100.9L550.5 101.1Z"></path><path vector-effect="non-scaling-stroke" d="M483.1 28.3L479.4 31.8L487.3 34L486.7 43.8L473.1 48L470.5 44.3L476.9 41.5L472.3 42.1L476.3 38.7L471.6 37.5L473.7 35.4L471.8 32.9L477.8 33L478.9 28L483.1 28.3Z"></path><path vector-effect="non-scaling-stroke" d="M449.8 -39.2L453.6 -40.2L451.5 -38.4L457.5 -34.5L457.6 -31.4L438.8 -21.2L421.4 -23.6L425.6 -28.7L415.9 -30.3L422.4 -32.2L424 -34.4L414.1 -34.6L418.9 -36L416.7 -36.7L418.2 -38.9L422.2 -37.1L420.4 -40.6L426.4 -37.9L427.5 -32.9L431.2 -38.4L434 -36.2L436.6 -38.9L439.4 -35.9L438.8 -38.7L441.8 -37.5L447 -41.2L449.8 -39.2Z"></path><path vector-effect="non-scaling-stroke" d="M600.5 64L603.5 66.3L596.5 74.7L581.2 76.2L576.4 71.8L578.2 67.3L600.5 64Z"></path><path vector-effect="non-scaling-stroke" d="M179.4 213.9L172.1 214.9L163.8 222L159.4 218L154.5 216.2L160.5 210.2L172.1 209.8L179.4 213.9Z"></path><path vector-effect="non-scaling-stroke" d="M224.9 194.4L224.9 201.4L215.7 200.6L214.9 198.8L222.6 198.9L218.4 194L224.9 194.4Z"></path><path vector-effect="non-scaling-stroke" d="M269 253.5L267.2 247.9L270.6 246.2L269.1 244.1L271.9 240L274.1 241.2L278.1 244.9L277.3 248.7L278.8 246.7L283.2 249.9L279.8 257.6L283.2 262.4L286.1 266.5L275.1 268.8L272 263.5L273.2 256.8L269 253.5Z"></path><path vector-effect="non-scaling-stroke" d="M445.2 224.6L457.1 223.3L457.1 227.1L451.1 230L451.7 226.2L445.2 224.6Z"></path><path vector-effect="non-scaling-stroke" d="M470.9 240.3L467.2 234.3L458.8 238L451.8 230.8L457.1 227.1L457.1 223.3L470.1 225.5L476 224.7L481.3 240.6L475.5 245.4L473.9 240.8L470.9 240.3Z"></path><path vector-effect="non-scaling-stroke" d="M143.1 215.7L145.1 209.5L150.2 209.5L146.4 204.6L148 202.3L155.4 202.3L155.1 210.2L159.1 210.9L151.6 219L143.1 215.7Z"></path><path vector-effect="non-scaling-stroke" d="M617.3 97.1L616.4 101.7L607.1 101.7L607.8 105.4L602.5 102.9L605.3 109.1L602.3 110.6L608.2 116L606 114.5L604.1 115.2L606 117.2L602.9 116.7L604.6 121.8L599.8 119.7L597.6 113.7L604.7 114L596.7 113L593.2 108.4L595.9 101.2L617.3 97.1Z"></path><path vector-effect="non-scaling-stroke" d="M511.7 229.7L514.1 246.8L516.7 249.9L501.1 254.2L499 247.7L502 241.4L500.7 230.1L511.7 229.7Z"></path><path vector-effect="non-scaling-stroke" d="M550.1 68.5L542.3 68.1L544.5 61.1L537.4 58.6L535.8 46.2L540.1 43.7L540.8 36.2L551.1 36.8L546.6 32.7L546.7 29.3L556.3 32.8L566.9 33.5L572.1 49.1L560.4 54.2L567.3 62.1L563 65.5L564.1 68.7L550.1 68.5Z"></path><path vector-effect="non-scaling-stroke" d="M445.8 219.6L451.9 218.7L456.6 220.6L450.9 220.4L444.9 221.7L450.3 220.1L445.8 219.6Z"></path><path vector-effect="non-scaling-stroke" d="M565.2 265.6L564.9 269.3L569.7 270.7L567.4 275.1L569.9 276.6L569.5 281.9L568 284.3L562.4 281.6L558.4 283.7L559.5 289L557.2 288.9L546.8 276.7L549.4 272.9L552 273.5L549.3 272.1L550.4 270.2L557.3 270.3L557.4 265.1L565.2 265.6Z"></path><path vector-effect="non-scaling-stroke" d="M549.9 91.9L548.7 98.7L546.8 95.5L549.9 91.9ZM542.5 68.1L535.9 75.1L539.1 74.1L539.5 84.1L542.7 85.6L538 90.1L527.6 88.2L522.6 94.1L506.3 90.7L504.8 88.9L509.1 79.2L503.6 71.8L505 70L494.8 67L493.1 63.3L506.5 62.7L504.6 57.4L513.7 58.6L519.6 50.5L544.5 61.1L542.5 68.1ZM293.5 265L296.3 251.2L304.7 255.7L301.2 264.8L293.5 265Z"></path><path vector-effect="non-scaling-stroke" d="M608.6 -36.4L606.6 -50.9L594.5 -58.4L598.4 -60L601.6 -56.2L611.8 -55.3L618.1 -64.6L623.6 -65.6L629.3 -61.4L625.9 -54.6L632 -48.9L628.3 -43.6L632.4 -36.3L630.4 -31.2L634.1 -26L632.8 -23.4L638.1 -17.7L629 -7.8L622.7 -3L603.9 1L597.7 -3.6L596.4 -16L613.2 -30.2L613.4 -34.3L608.6 -36.4Z"></path><path vector-effect="non-scaling-stroke" d="M557.3 265.6L557.3 270.3L550.4 270.2L551.2 265.1L557.3 265.6Z"></path><path vector-effect="non-scaling-stroke" d="M154.5 216.2L161.1 218.6L160.5 221.1L151.6 219L154.5 216.2Z"></path><path vector-effect="non-scaling-stroke" d="M210.9 274.7L209.7 280.4L198.6 287.9L195.9 294.2L190.1 292L191.1 289.3L192.6 282.6L190.9 285.1L188.1 283.1L191.9 271L196.6 268.5L210.9 274.7ZM146.9 274.2L148.8 277.3L146.7 277.1L146.9 274.2Z"></path><path vector-effect="non-scaling-stroke" d="M224.9 201.4L225.5 193.7L233.5 196.7L238.5 198.7L237.4 200.6L224.9 201.4Z"></path><path vector-effect="non-scaling-stroke" d="M392.2 -180L408.8 -176.9L383.9 -174.1L411.5 -175.9L414.1 -173.1L425.2 -171.1L419.5 -167.6L392.5 -165L411.4 -164.5L414.8 -161.6L426.6 -165.1L427.1 -160.6L419.5 -152.8L433.5 -161L442.2 -158.7L447.5 -162.3L455 -162.7L466.3 -159.2L445 -150.9L448.3 -149.6L446 -148L434.3 -148L431.4 -145.8L436 -138.2L427.5 -133.6L425.1 -125.4L434 -125.5L430.1 -123.2L438.2 -121.6L438.7 -118.7L421.6 -116.9L431.6 -112.9L434 -109.1L433.9 -104.4L423.1 -103.9L428.1 -103.6L428.6 -100.1L432.1 -102.8L434.9 -99.4L429.4 -96.2L424.2 -97L424.2 -99.5L422.7 -97.5L423.5 -95L430.5 -93.9L430 -91.1L422.6 -89.4L409.9 -93.9L412.8 -91.3L402.9 -90.7L405.8 -89.3L401.8 -88.4L415.5 -90.5L423.9 -86.7L422.8 -80.7L415.7 -83.6L413.5 -87.6L405.4 -85.2L412.7 -86.6L411.5 -82.4L424.2 -77.9L422.1 -75.2L425 -75.9L425.9 -69L422.5 -68.5L422.3 -71.4L418.7 -68.4L413.8 -74.1L404 -77.1L409 -73.8L398.4 -72.4L399.7 -70.2L395.7 -68.4L405.5 -68.5L402.5 -65.1L409.9 -67.7L422.9 -65.4L406.1 -55.9L388.1 -51.6L382.7 -54.2L383.3 -51.1L373.5 -40.6L368.5 -40.6L369.5 -38.6L361 -35L362.9 -39.7L359.4 -40.3L359.2 -35.8L351.3 -34.8L353.4 -33L347.6 -31.4L351.3 -27.8L345.7 -26.6L349.8 -22.9L346.4 -18.8L343.3 -19.7L344.4 -16.7L340.2 -16.6L343.4 -15.7L343.6 -11.3L339.8 -3.1L336.3 -3.6L339.4 -2L338.7 0.4L330.5 -1.2L333 -3.9L327.8 -3.7L328.5 -7.4L320.7 -4.4L318.3 -7.1L314.8 -9.6L316.7 -12.6L310.7 -15.1L312.8 -18.7L310.4 -17.3L305.8 -23.2L311 -26.1L305.7 -25.4L306.4 -27.7L311.5 -29.2L308.2 -32.4L308.9 -29.5L303.7 -26.9L301.8 -33.3L307.6 -36.2L299.2 -35L298.6 -38.2L307.1 -43.6L297.5 -38.7L302.5 -43.6L297.3 -44.3L296.8 -47.2L302 -49.5L309.5 -47.9L302.6 -50.1L297.1 -48.1L299.4 -52.6L307.2 -53.4L298.5 -53.2L299.8 -55.4L307.5 -55.3L307.7 -59L310.8 -59.3L307.7 -59.6L310.7 -65.4L303 -65.6L293.9 -70.2L309.3 -68L304.9 -72.5L307.9 -72.4L300 -73.7L304.9 -77.5L298.2 -76.7L297.4 -82.5L296.1 -75.8L289.6 -76.5L292.6 -82.5L289.7 -81.1L289.6 -83.2L293 -86.4L289.3 -87.4L290.8 -89.9L287.6 -91.6L287.1 -96.1L283.1 -96.1L287 -99.2L277.7 -105.8L277.9 -108.5L258.8 -114L238.7 -111.8L234.1 -114.4L239.5 -116.5L227.4 -120L246.4 -121.8L246.8 -124.2L234.6 -123.3L229.9 -125.3L231.5 -126.5L223.4 -127.5L221.1 -131.1L248.7 -138.2L255.3 -146.6L244.6 -146.4L244 -149.4L253.9 -154.9L259.9 -153.9L260 -156.9L266.3 -156.2L267.2 -162L270.3 -163.7L285.5 -158.3L275 -164.5L293.8 -167.9L297.3 -166L297.8 -161.1L299.9 -167.6L313.8 -163.7L308.3 -168.2L311.9 -169.1L333.1 -162.3L334.7 -169.1L329.8 -171.8L346.5 -171.8L327.5 -172.9L327.3 -174.9L346.8 -175.3L350.6 -177.6L359.4 -174.3L357 -178L361.1 -179.3L392.2 -180Z"></path><path vector-effect="non-scaling-stroke" d="M485.5 -13.6L485.1 -12.1L483.3 -13.9L485.5 -13.6Z"></path><path vector-effect="non-scaling-stroke" d="M562.3 24.4L559.4 30.1L556.3 25.3L560.9 22.5L562.3 24.4ZM551 29.8L546.7 29.3L544.5 25.5L544.7 19.8L549 17.5L545.1 18.4L550.2 16.2L554.4 13.3L553.1 19.7L555.7 20.7L550.4 26.1L551 29.8ZM554.6 25.4L555.1 28.1L551.9 27.7L554.6 25.4Z"></path><path vector-effect="non-scaling-stroke" d="M587.3 58.3L579.8 63L572 60.9L568.8 63.1L561.6 57.1L560.4 54.2L564 53.3L572 50.4L587.3 58.3Z"></path><path vector-effect="non-scaling-stroke" d="M184.7 180L192.7 181.1L215.3 192L204.4 193.6L201.1 193.8L203.6 191.2L197.1 186.6L184.7 184L184.6 182.1L172.5 185.5L184.7 180Z"></path><path vector-effect="non-scaling-stroke" d="M566.3 78.6L573.4 78.8L577.7 73.5L583.2 77.2L587.6 76.5L588 81.5L575.2 80.2L582.3 91.2L575.9 88.4L570.2 79.7L567.4 81.9L566.3 78.6Z"></path><path vector-effect="non-scaling-stroke" d="M480 233.5L487 231.2L487.5 233.3L501.2 236.3L499 247.7L501 252.5L481.8 256.9L482.2 250.9L477.6 248.2L479.1 240.4L481.3 240.6L480 233.5Z"></path><path vector-effect="non-scaling-stroke" d="M181.7 235.9L180.5 241.9L171.1 233.2L171.5 235.9L168.8 233.6L169.5 229.4L177.4 230.5L181.7 235.9Z"></path><path vector-effect="non-scaling-stroke" d="M635 307.1L627.6 308.3L625.6 311.3L625.9 321.8L631.2 323.2L631.1 328.4L628.4 328.2L620.6 320.8L616.1 322.1L607.9 317.9L601.1 319.3L599.1 303.6L591.5 302.3L589.4 306.2L582.3 306.8L577.7 297.9L561.6 298.3L561.8 294.6L566.6 293.2L569.4 291.5L570.8 293.8L576 289.4L576.9 283L583 276.5L588.3 254.7L601.7 257.7L603.5 255.4L620.5 253.5L624.8 256.9L630.7 255.9L637.1 265.7L631.8 271L627.4 284.1L630.2 299.6L635 307.1Z"></path><path vector-effect="non-scaling-stroke" d="M556.5 290L559.5 289L558.4 283.7L562.4 281.6L568 284.3L569.5 281.9L569.9 276.6L567.4 275.1L569.7 270.7L564.9 269.3L565.2 265.6L575 266.6L578.4 260.3L586.5 261.1L583 276.5L576.9 283L575.5 290L570.8 293.8L569.4 291.5L560.1 294.3L556.5 290Z"></path><path vector-effect="non-scaling-stroke" d="M226.7 226.6L221.2 230.8L218.5 237.4L224 246.1L242.1 249.5L240.6 256.3L242.8 260.6L240.6 263.1L244.5 269.4L242.4 265.8L232.6 267.5L235.4 271.7L231.8 272L234.4 279.1L232.1 291.2L229.1 289.4L231.7 285.1L227.5 283.3L220.2 283.9L212.8 275.1L202.4 272.7L195.9 267.8L203.7 258.6L200.4 245.3L202.4 239.6L204.9 242.5L212.6 229.7L214.4 231.1L225.1 224.4L226.7 226.6Z"></path><path vector-effect="non-scaling-stroke" d="M230.3 348.5L234 345L235.6 347.3L240.5 367.2L244 367.9L237.8 375.3L238.7 384.8L233.4 391.1L229.9 403L232.6 416.7L227.2 428.6L228.6 436.5L225.1 441.6L223.4 455.6L224.7 464.4L227.4 465.3L223.7 466.3L226.6 468.6L225.2 475.7L217.7 490.7L224.1 503.2L238.2 505.3L228.8 507.6L226.8 513.6L222.3 510.7L224.8 511.4L227.1 507.8L219.8 510.1L224.1 506.9L221.2 506.3L219.5 509.2L217.4 507.9L219.5 506L215.9 506.9L214.9 504L221.9 504.8L221.8 501.9L219.3 500.5L221.6 502.3L217.9 503.6L211.6 496.4L213.4 494.7L216.8 497.8L217.4 495.4L216.1 497.2L213.5 493.9L216.7 490.8L213.7 482.5L218.4 483.3L213.4 481L215.5 480.4L214.7 476.4L209.2 476L216.2 469.5L214.4 473.5L217.1 471.5L216.6 475.3L217.1 469.8L220.3 469.7L218.4 468L221.3 465.5L218.9 463.4L222.7 450.4L217.5 451.8L216.1 448.6L219.1 439.7L217.4 430.9L226.2 409.7L225.9 393.3L231.6 361.6L230.3 348.5ZM237.5 506.9L237.4 519L224.4 517.6L230.8 517.2L229.9 512.2L231 515.8L235.8 516.5L231.7 514.3L234.6 511.1L230.7 510.9L230.5 507.5L237.5 506.9ZM243.7 520.6L241.1 521.2L239.6 519.4L243.7 520.6ZM216.9 459.3L214.5 458.8L217.1 452.3L216.9 459.3ZM214.1 488.4L213.7 492.8L213.1 489.9L211.7 492.1L210.1 489.5L212.8 486.1L214.1 488.4ZM220.3 511.4L223.2 513.2L219.8 513.3L216.6 511.8L220.3 511.4ZM233.2 519.3L238.2 519.6L239.8 523.4L236.3 521.7L233.2 519.3ZM226.4 514.4L227.5 516.3L225.3 515.5L223.4 513.9L226.4 514.4ZM217.1 464.5L215.6 468.4L213.5 465.7L217.1 464.5ZM228 519L230.9 520.1L228.7 520.2L228 519Z"></path><path vector-effect="non-scaling-stroke" d="M607.9 195.3L607.9 210.9L603.7 211.7L599.3 222.9L603.4 230.4L593.4 237.7L587.8 238.4L586.7 241.4L573.9 244.1L567.9 235.4L574.6 234.1L565.8 216.4L573.9 206L575.9 191.8L571.9 180.7L575.9 178.8L607.9 195.3Z"></path><path vector-effect="non-scaling-stroke" d="M608.6 239.5L621.6 253.8L614.1 253L601.7 257.7L590 253.8L586.4 260.4L578.4 260.3L576.7 265.2L573.8 260.5L569.7 250.1L573.9 244.1L586.3 242L587.6 238.6L593.4 237.7L602 230.1L608.6 239.5Z"></path><path vector-effect="non-scaling-stroke" d="M-18.6 33.6L-16.7 34.6L-18.1 36.2L-14.7 33.6L-15.6 35.9L-16 38.3L-18.7 38.4L-17.7 37.9L-20.4 34.3L-18.6 33.6ZM-15 38.7L-14.5 40.2L-15.9 40.4L-12.5 44L-18.2 39L-15 38.7ZM3.2 52.4L10.1 54.1L12.7 58.2L18.4 62.6L17.7 64.4L15.5 63.8L11.5 62.2L12.7 59.8L10 61.3L7.3 58.8L5.7 58.1L7.5 57.4L0.5 55.1L0.4 53.4L2.1 52.7L-1.4 52.1L0.3 51.2L3.2 52.4ZM-8.1 23.8L-8.4 22.6L-15.3 19.9L-21.6 9.4L-29.9 1.2L-33.3 2.4L-34.3 5L-37.8 6.5L-38.4 4.6L-44.7 -0.5L-44.3 -2.1L-52 -1.8L-52 -62.7L-44.7 -61.7L-39.5 -58.8L-29 -55.9L-31.6 -58.9L-28.6 -61.4L-25.8 -61.5L-25.6 -62.9L-23.5 -61.7L-24.7 -59.9L-10.7 -66.1L-6.7 -66.6L-6.6 -65.2L-19.3 -59.6L-21.7 -57L-20.8 -56.3L-18.3 -57.1L-18.9 -58.7L-15.2 -61.2L-12.3 -61.3L-11.9 -59.6L-8.5 -63.2L-3.6 -65L-4.6 -63.8L-3.4 -63.4L1.3 -67.1L-0.7 -68.2L0 -69.3L9.9 -60.6L11.3 -61.1L10.6 -62.5L12.9 -65.1L12 -65.4L13.8 -66.3L15.5 -63L14.6 -60.7L17.9 -60.9L19.9 -63.8L23.7 -63.9L43.1 -57.5L52 -57.1L56.1 -53.9L51.5 -52.1L50.3 -50.5L51.5 -49.9L62 -49L71.7 -51.1L80 -46.1L80 -45L78 -45L83 -40.3L81 -44.1L83.4 -43.6L80.2 -49.9L80.8 -51.4L86.3 -52.6L89 -55.3L79 -52.2L77.1 -53.2L78.7 -55.4L87.3 -57.6L94.6 -51.5L98.1 -52L105.8 -49.1L110.2 -50.1L116.3 -49.3L118.4 -49.9L117.5 -51.7L122.2 -48.6L123.2 -50.2L119.2 -50.6L117.4 -53.7L122.4 -54.6L124.1 -52.9L126.3 -53.3L125.1 -51.4L128.1 -52.9L126.5 -47.8L130.3 -44.5L126.3 -44.7L128.8 -41.8L127.9 -44L130.4 -44L131 -46.1L129.4 -49.4L130.2 -51.3L133 -51.7L138.2 -55.5L136.6 -58.1L135.7 -56.6L133.6 -56.7L135.7 -59L135 -60.3L137.5 -61.1L137 -59.7L137.9 -61.5L128.1 -63.8L125.8 -66.7L126.8 -68.9L128.5 -69.1L125.8 -71L126.2 -74.2L127.8 -75.5L129.7 -74.9L130.4 -76L128.6 -76.8L133.6 -79.7L139.9 -74.9L140.1 -71.3L145.7 -66.5L142.7 -66.9L142 -65.9L144.1 -65.5L140.4 -62.8L150.2 -61.5L147.1 -60.1L150.1 -57.3L149.7 -54.5L151.2 -53L154.9 -59.9L159.1 -57.5L160.7 -53.6L158.6 -53.2L158.7 -50.8L162.6 -45.6L165.8 -47.6L169.2 -55.8L172.5 -56.5L171.6 -57L172.6 -58.6L170.5 -59.7L170 -64.1L181.5 -63L182.4 -62.4L181 -61.6L183.1 -59.9L186.7 -59.1L184.2 -57.3L186.5 -57.1L186.9 -55.7L181.8 -54.3L186.8 -46.8L186.1 -44.8L181.4 -41.6L177.9 -40.1L172.6 -44.6L171.6 -43.6L173.4 -43.7L176.8 -39.3L174.1 -38.9L169.6 -41.5L165.2 -41.2L168.2 -38.5L162.2 -33.3L153 -37.3L146.3 -37.4L152.3 -36.2L156.1 -33.4L163.9 -32.4L159.6 -25.9L156.7 -24.6L155.2 -25.4L155.5 -24.5L151.8 -25.6L152.6 -24.4L151.3 -24.6L151.4 -22.7L148.8 -22L137.2 -25.6L137.8 -23.8L143.4 -22.7L142.1 -21.9L144.6 -22.8L148.1 -21.2L149.2 -18.8L146.2 -17.1L142.6 -17.2L144.3 -15.8L141.8 -15.5L140.9 -14.5L141.9 -13.2L139.2 -14.4L140.4 -13.5L137.7 -11.8L138.8 -10.7L133 -3L132.2 5.5L134.9 7.6L134.7 10L135.5 7.5L139.3 7.5L142.3 15.7L140.8 18L149.6 16.2L156.7 18.6L162.1 23.1L169.3 25.5L171.1 26.9L170.5 28.4L176.4 27.1L182.4 28.4L182.8 39.6L185.6 42.8L184.7 44L189.4 46.5L190.2 48.4L188.6 49.8L191.6 49L194.6 51.7L193.2 48.6L194.8 47.2L196.4 49.4L196.1 46.4L198.2 43.8L196 34.3L193.2 30.6L200.9 27.2L205 23.2L205.9 20.4L204.4 13.2L197.9 7.8L201.1 1.9L202.6 2.5L202.8 -0.1L201.7 -0.5L201.6 -5L199.3 -4.9L201.9 -9.4L199.9 -11.1L199.5 -13.9L202.5 -15.7L213.5 -12.9L217.2 -15.1L221.3 -12.9L220.9 -11.2L223.1 -11.1L223.1 -9.6L225.4 -9.8L224.6 -8.7L226.3 -7L232 -5.2L234.1 -6.1L233.3 -0.5L229.4 -0.2L233.1 0.5L233.3 3.9L234.6 4.1L233.9 6.7L231.4 7.3L237.2 6.5L238.5 7.4L238.6 10.8L235.8 12.3L238.3 11.5L239.9 9L239.7 11L241 9.4L241.3 11.8L246.6 7.2L248 9.3L247.8 7L250.5 5.6L249.2 4.7L250.1 3.2L251.8 3.6L250.3 1.3L251.9 1.4L252.7 -2L254 -1.6L252.9 -0.1L254.9 -0.4L257 2.9L256.2 3.7L258.3 4.8L256.1 5.6L259 5.5L260.5 7.9L257.9 9.9L261.6 9L259 11.7L262.1 10.9L264.2 12.3L264.1 14L262 14.7L266.7 17.5L266.5 19.4L262 18.7L266.3 21.2L265.1 21.9L266.5 22L266.2 23.2L270.6 24.4L271.2 26.1L269.5 28.5L273 27.1L274.2 27.8L272.6 29.8L275 27.7L276.9 29.7L280.2 29.5L282.4 31.1L270.4 36.2L271.6 37.1L270.7 38.3L280.3 33.8L279.2 33.1L282.3 33.4L283.5 35.5L281.9 36.5L282.7 37.2L286.1 35.6L288.6 37.9L288.8 41.7L286.7 42.2L289 42.6L288 43.1L289.2 44.4L284.1 48.1L278 48.9L272.5 54.1L265.1 55.2L261.1 54.2L246 54.6L242.5 59.1L238.9 59.9L233.3 65L227.9 63.7L232.9 65.6L226.9 72.2L214.7 78.5L216.1 79.4L210.4 82.3L204.7 87.9L196.6 88.1L195.3 88.7L195.9 91.9L182.2 97.3L179.4 95.1L181.8 92.7L183.4 88.1L181.8 79.4L177.6 77.1L177.5 75.6L176.1 75.7L175.4 73.4L173.8 73.9L172.5 71.6L158.5 64.5L154.2 66.1L145.9 65.8L140 62.9L133.5 62.3L131.4 59L131.4 61L19.7 61L19.1 59.6L20.5 58.9L18.9 59.1L19.2 57.4L17.9 58.9L15.9 57.8L17.7 57.4L16.5 57.1L16.7 55L14.9 56.9L12.9 55.6L11.8 53.5L12.6 51.2L11.8 53L7.6 53.1L6.2 52.7L8.4 52L5.9 52.2L5.9 50.2L3.8 51.2L1.2 49.7L2.3 47.3L5.2 46.8L1.1 47.9L0.8 44.1L3 43L5.1 44.8L3.2 42.7L3.9 40.6L-0.4 46.3L-1.4 44.3L0.2 42.2L-1.1 43.2L-0.2 40.3L-1.5 40.7L-4.7 36.9L-3.4 36L0.3 38.3L-2.7 36.8L-2.1 35.1L-3.8 35.2L-6.3 38.4L-9.3 35.8L-6.5 33.1L-9.7 32L-6.2 26.2L-7.2 25.7L-8.2 28.5L-8.1 23.8ZM172.3 -32.8L174 -34.1L183.8 -28.8L185.3 -26.1L184.5 -24.8L188.7 -25.3L191 -23.4L187.8 -21.3L182.5 -22.8L179.7 -25.7L177.7 -25.1L171 -19.2L168.9 -22.8L163.3 -22.1L167 -25.6L166.5 -28.3L168.7 -36.6L171 -36.3L172.3 -32.8ZM267.6 76.4L268.5 76.2L267.8 77.6L269 77.4L270.8 74.6L272.6 75.5L271.2 77.4L266.9 78.3L266 76.5L270.4 71.1L270 74.8L267.6 76.4ZM243.5 80.3L240.8 77.5L240.8 70.7L235 68.8L228.5 79.8L226.7 79.7L225.9 81.1L213.2 81.1L217.8 79L219.4 76.1L223.6 73.4L229.9 71L236.7 64.2L245.6 60.3L250.4 59.6L255 61.3L253.9 61.7L254.6 63.9L251 66L245.2 65.9L249.6 67.7L252 66.8L252.6 68.3L250.7 70.6L252.7 70.8L253.8 75L261 77.9L264.2 76.8L267.7 79.9L257.6 82.7L257.6 83.7L254.9 83.3L250.1 88.4L247.5 87L247.6 83.6L254.2 79.5L255.5 81L258.5 79.3L252.5 79.4L254.7 77L253.5 76.4L252.9 78L248.5 80L247.9 79.1L246.2 80.7L243.5 80.3ZM290.2 47.6L287.9 48.7L288.8 50.3L284.7 57.8L287.3 55.1L290 55.8L287.4 57.7L291.1 58.3L290.6 60.5L294 58.2L294.2 59.2L297.5 59.3L295.4 62L297.2 62.7L295.5 64L299.8 62.7L296.5 67.1L297.6 67.8L300.5 65.4L299.3 67.8L299.5 68.8L301.2 67.4L300.4 70.9L299.3 72.9L297.6 73L297.6 70.4L295.5 72L296.6 68.9L295.2 66.8L294 69.1L288.8 71.8L288.3 71.1L292.9 67.8L289.7 68.8L287.5 68.6L288.6 67L284.9 68.3L274.7 67.4L278.7 63.4L275.3 63.2L277.1 63L278.4 60.5L280 61L279.1 58.9L280.8 58.4L283.9 50.4L287.9 47.5L290.2 47.6ZM165.6 -72.5L169.4 -73.5L172.7 -72.6L173.2 -77.1L168.4 -79.7L170.7 -81.6L174.9 -80.1L169.4 -85.2L171 -87L175 -85.8L170.2 -88.2L180.6 -92.9L185.6 -92.7L189.6 -88.3L190.9 -85.4L187.1 -82.1L189.6 -83.2L188.3 -79.1L192.5 -81.1L191.6 -82.3L192.7 -83.2L196 -81.8L197.7 -78.9L197.2 -82.4L201.9 -81.1L198.1 -83.3L201 -85.3L210.8 -83.4L211.8 -81.5L208.3 -77.7L212.4 -80.6L215.2 -79.7L211.2 -77.6L213.2 -77.4L212 -74L214 -77.2L216.5 -78.1L215.2 -75.4L217.1 -76.7L219.3 -74.5L218.9 -76.4L220.4 -77.4L224.5 -76.6L227.1 -74.2L221.5 -71.2L225 -72.8L229.5 -72.5L224.4 -68.3L226.9 -68.8L226.3 -66.1L228.6 -69.8L232.2 -71.3L238.5 -68.7L231.8 -65.5L236.9 -66.7L236 -65L237 -64.8L239.8 -67.5L242.5 -65.4L243.1 -63.3L235 -61.7L243.1 -61.4L245.2 -59.3L238.4 -59.7L235.8 -58.8L240.7 -58.6L240.5 -56.6L234.7 -57.1L245 -54.3L244.3 -51.6L247.2 -53.1L246.2 -50L248.2 -51.7L250 -51L250.4 -49L250.3 -50.3L252.3 -51.4L251.9 -49.7L256.6 -48.2L256 -46.7L253.2 -46.7L259.8 -46L257.2 -43.2L263.5 -44.7L266.8 -42L263.5 -42L265.7 -40.4L264.5 -39.8L261.8 -40.4L264 -37.9L261.5 -37.8L262.5 -36.6L261.4 -35.3L258.2 -36.7L257.6 -30.7L254.6 -32.3L254.9 -33.8L253.8 -31.9L250.4 -36.1L254.2 -39.8L248.7 -37.7L249.4 -39.1L247.7 -38.6L244.1 -41.9L242.8 -41.5L243.1 -39.8L240.5 -40.8L243.3 -37.9L242.6 -37.2L237 -39L239.1 -38.2L239.3 -36.8L240.3 -34.8L243.5 -34L242.7 -33.4L245.2 -29.9L245.5 -31.1L247.1 -29.3L248.2 -30.4L250.3 -29.4L249.9 -27.9L251.7 -27.5L249.7 -26.6L253.3 -24.9L254.4 -22.8L253.3 -19.9L251.2 -23.2L253.3 -17.9L251.3 -17.9L251.6 -16L245.4 -20L245.2 -18.8L240.4 -23L241 -21L236.4 -22.8L248.1 -13.4L247 -11.3L226.6 -18.8L224 -21L226.5 -22L222 -23.6L218.2 -27.3L218.9 -28.4L215.7 -27.4L213.3 -30L212.4 -27.7L209.1 -28.1L205.1 -26.2L200.8 -27L199.2 -29.5L202.6 -32.4L202.7 -34.1L208.7 -32.6L210.2 -30.1L208.8 -33.1L217.8 -34.3L214.3 -38.8L223.1 -46.1L218.9 -53.6L216.7 -53.7L216.6 -56L214.3 -55.2L212.4 -56.9L212.8 -58.6L205.7 -56L205.8 -58.2L208.6 -58.5L209 -60.2L206.1 -61.4L207.1 -62.8L203.6 -62.6L204.6 -63.6L201.6 -64.1L200.9 -66.9L198.9 -66.8L195.7 -69.5L194.4 -68.1L196.3 -67.3L196.7 -65.3L193.9 -64.4L185.8 -66L188.3 -63.3L185.7 -64.8L168.9 -65.5L166.7 -66.2L166.4 -68.5L160.6 -67L156.6 -69L154.2 -72.9L163.4 -72.5L152.6 -76L152.6 -82.9L155.1 -88.2L161.1 -92.9L171.6 -93.6L172.1 -92.7L168 -89.8L165.3 -85.6L167.1 -79.1L171.9 -75L165.6 -72.5ZM264.8 60.4L257.7 58.9L254.2 56.6L255 56L260.6 57.3L264.8 60.4ZM256.8 73.8L263.3 73.7L261.9 76.3L259.9 75.8L260 74.7L255.6 74L254.4 72.7L256 70.8L256.8 73.8ZM184 -18.1L183.5 -16.2L179.9 -13.4L177.1 -13.7L176.4 -15.1L178.5 -17.8L184 -18.1ZM193.8 -14.7L194.7 -12.3L193.1 -9.8L192 -10.3L191.1 -13.1L193.8 -14.7ZM209.3 -53.4L211.7 -52.4L211.2 -47.5L204.6 -46L202.8 -49L203.5 -50.8L205.6 -53.1L209.3 -53.4ZM189.1 41.2L184 39.7L184.4 38.9L187.5 38.7L189.1 41.2ZM196.3 21.7L195.3 23.9L195.3 22L192.9 24.3L194 22.6L192 23.6L194.1 20.9L194.9 19.8L196.3 21.7ZM-2.2 40.1L-2.7 43.6L-3 41.1L-4.1 41.1L-4.1 38.3L-2.2 40.1ZM239.1 -1.4L240.1 -3.4L240.6 -2.3L239.1 -1.4ZM252.7 -8.3L250.4 -9.5L251.5 -10.2L253.3 -9.6L252.7 -8.3ZM217.5 -49.7L213.7 -50L213.1 -51.5L214.5 -51.8L218.2 -51.1L217.5 -49.7ZM200.5 -21.3L201.9 -19.8L200.2 -19.1L197.9 -21L200.5 -21.3ZM205.3 -20.9L202.5 -22.1L203.5 -22.7L205.3 -20.9ZM177.1 -36.4L178.7 -35.3L176.7 -36.3L175.5 -36.2L174.4 -38.6L177.1 -36.4ZM165.6 -49.4L164.4 -50.3L164.7 -52.8L166.3 -52.4L165.6 -49.4Z"></path><path vector-effect="non-scaling-stroke" d="M546.2 255.3L551.1 247.2L554.4 246L556.9 248.5L559.4 245.8L570.3 228L568.3 221.7L574.6 234.1L567.9 235.4L574.2 243.1L572.1 247.1L570.3 253.2L576.3 262.7L576.2 267.6L551.9 265.6L550.8 258.1L546.2 255.3Z"></path><path vector-effect="non-scaling-stroke" d="M515.6 230.1L500.7 230.1L501.1 236.4L493.5 235.3L490 229.9L495.2 221L509 213.7L512.9 214.2L515.9 221.8L521.6 226.5L515.6 230.1Z"></path><path vector-effect="non-scaling-stroke" d="M244.5 269.4L246.6 271.2L249.3 270.4L250.1 271.5L258.3 265.7L258.4 264.6L255.8 264.3L255.1 259.9L252.8 257.2L260.6 259.9L261.2 258.2L268 256.1L269.4 253.4L272 253.9L271.4 256.1L273.8 258.6L272 263.5L273.3 267.3L276.6 269.5L283.5 266.2L288.1 266.9L288.2 264.2L300.1 265.6L306.2 257L309.1 265.8L312.2 267.7L312.4 269.6L306.9 274.6L304.1 279.8L301.3 280.5L304.2 280.6L308.4 278L310.4 282.4L314.7 281.2L313.5 284.9L315.2 282L318.6 280.2L319.5 277.2L322.9 276.9L330.2 279.7L330.7 281.2L331.7 280.2L333.4 281.3L333 283.4L334.5 283.8L333.1 287.1L335.1 284.2L335.2 285.5L338.5 283.8L346.1 286L352.1 285.7L363.3 294L370.4 295.3L372.7 302.4L372.1 308L369.6 312.6L362.6 319.5L359 325.9L356.6 325.7L355.4 345.8L353.4 348.1L352.9 353.6L348.2 360.5L348 363.7L345.2 365L343.8 367.7L339.4 366.8L339.1 367.9L333.5 368.2L330.1 371.3L324.5 373.1L319.2 378.2L317.1 378L318.4 378.9L317 381.8L317.5 389.6L314 393.9L309 402.7L303.8 407.3L309.7 399.9L306.8 398.1L306.9 401.3L304.1 404.1L301.4 411.8L297.9 414.3L299.5 410.1L297 407L289.6 401.7L288 402.7L284.7 398.4L281.6 398.8L289.1 390.1L296.6 385.5L297.3 381.6L296 378.9L293.5 378.8L295 372.3L290.3 371.9L288.8 365.2L280.1 363.9L280.7 359.5L279.4 356L280.6 355.3L279.5 354.3L282 348L280.7 345.1L278.4 343.9L278.6 340L271.3 339.9L269.7 335.1L270.9 335.1L270 329.8L264.8 328.7L252 322.4L250.4 319.5L250.4 313.3L245.7 314L237.5 318.9L230.6 318.7L229.4 318.5L229.8 312.2L227 314.3L223.4 314.4L222.5 312.4L219.2 312L220.1 310.4L216 304.6L219.5 300.2L220.5 294.8L228.8 291L232.1 291.5L234.4 279.1L231.7 274.8L231.8 272L235.4 271.7L234.8 270.1L232.6 270.1L232.6 267.5L239.3 267.4L239.2 266.3L240.3 267.3L242.4 265.8L244.5 269.4ZM313.5 275.2L318.5 275.7L316.7 279.9L314.4 280.5L310 281.4L309 279.3L309.4 275.4L313.5 275.2ZM304.7 280L307 276.5L306.9 278.4L304.7 280Z" style="fill: var(--map-bra)"></path><path vector-effect="non-scaling-stroke" d="M613 346.2L624.1 361.8L629.5 364.5L620.3 370.4L614.1 379.2L610.2 379.7L604.2 377.7L598.8 384.3L594.7 384.2L591.9 363.7L595.9 363.7L595.9 348.4L604.9 347.1L606.4 349L613 346.2Z"></path><path vector-effect="non-scaling-stroke" d="M589.4 81.7L589.9 88L585.8 93L582.7 91.4L575.2 80.2L589.4 81.7Z"></path><path vector-effect="non-scaling-stroke" d="M234 345L236.6 340.2L234.3 337.4L237.3 324.6L233.7 318.3L237.5 318.9L245.7 314L250.4 313.3L250.7 320.2L254.3 324.3L270 329.8L270.5 336L271.3 339.9L278.6 340L282 348L280.6 355.3L275.6 352.4L265 353.9L261.4 364.7L256.3 363.8L254.7 367.2L247.1 362.9L240.5 367.2L234 345Z"></path><path vector-effect="non-scaling-stroke" d="M518.5 249.4L518.4 238L515.1 231.3L523.4 224.6L527.3 231.7L523.1 238L522.8 248.8L518.5 249.4Z"></path><path vector-effect="non-scaling-stroke" d="M155.4 202.3L158.8 199.6L159.2 203.5L155.1 210.2L155.4 202.3Z"></path><path vector-effect="non-scaling-stroke" d="M528.9 48.4L535.2 49.7L537.4 53.4L534 58.3L522.4 51.1L528.9 48.4Z"></path><path vector-effect="non-scaling-stroke" d="M203.1 168.3L200.5 163.9L203.7 165.7L203.1 168.3ZM201 173.4L198.6 173.7L199.3 171.3L201 173.4Z"></path><path vector-effect="non-scaling-stroke" d="M550.1 69.8L564.1 68.7L563.3 65.2L572 60.9L579.8 63L577.8 71.1L570.2 74.2L550.1 69.8Z"></path><path vector-effect="non-scaling-stroke" d="M281.6 398.8L277.9 417L283.3 421.9L285.3 428.7L279.3 436L262.7 437.7L262.4 447.5L251.5 447.5L252.1 453.3L256.8 453.4L257.5 456.2L252.1 456.1L254.7 457.5L251 460.4L249.4 467.5L244.2 468.7L241.6 472.7L248.6 478.2L248.8 482.2L242.1 487.4L240.3 492.8L236.1 492.9L238.3 493.7L234.1 501.2L238.2 505.3L224.3 503.4L222.6 496.4L219.4 496.7L218 493.5L226.6 469.1L223.7 466.3L227.4 465.3L224.7 464.4L223.4 457.6L225.4 443.4L228.6 436.5L227.2 428.6L232.6 416.7L229.7 404.9L231.9 395L238.7 384.8L238 374.8L242.6 372.3L247.1 362.9L254.7 367.2L256.3 363.8L260.7 363.7L267.9 371.1L280.7 377L277.6 386.3L289.1 386.7L293.5 378.8L296.4 379.2L296.6 385.5L281.6 398.8ZM237.4 519L237.5 506.9L245.3 516L250.1 519.3L237.4 519Z"></path><path vector-effect="non-scaling-stroke" d="M564.3 292.8L560.8 296.2L560.8 293.4L564.3 292.8ZM607.9 317.9L607.9 326.5L599.9 326.6L600.2 339.9L605.5 345.6L595 347.1L559 344L562.2 328.4L567.1 321.8L564.8 313.2L565.5 307.8L561.2 298.7L577.3 297.8L582.3 306.8L589.4 306.2L591.5 302.3L599.2 303.7L600.9 319L607.9 317.9Z"></path><path vector-effect="non-scaling-stroke" d="M546.3 119.5L542 133.6L548.2 141.5L551.2 154.2L549.7 167.3L553 173.9L559.9 178.5L535.3 195.4L525.3 197.4L524.5 193.9L491.8 171.6L477.3 162.4L477.3 156.3L497.3 146.4L496.9 143.2L507.1 141.3L503.1 127.9L517 121.4L546.3 119.5Z"></path><path vector-effect="non-scaling-stroke" d="M589.4 96.4L590.8 92.6L593.9 94.7L595.8 102.9L592 106.6L589.3 103.3L589.4 96.4Z"></path></g></defs></svg>
+<div class="mk-wrap" style="display: flex; gap: 10px; height: 440px">
+<sc-for list="{{markets}}" as="mk" hint-placeholder-count="3">
+<sc-if value="{{mk.open}}" hint-placeholder-val="{{ true }}">
+<div class="mk-open" style="flex: 1; min-width: 0; position: relative; overflow: hidden; border-radius: 18px; background: #ffffff; border: 1px solid var(--line); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; min-height: 360px; box-sizing: border-box">
+<svg class="markets-map" viewBox="0 0 576.0 531.1" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" style="--map-usa: {{mk.cUsa}}; --map-bra: {{mk.cBra}}; --map-prt: {{mk.cPrt}}"><g class="markets-map-cam" style="transform: translate({{mk.tx}}px, {{mk.ty}}px) scale({{mk.s}})"><use href="#yw-markets-land"></use><path class="markets-map-arc" vector-effect="non-scaling-stroke" d="M118.0 107.6Q298.6 42.4 479.2 107.1"></path><path class="markets-map-arc" vector-effect="non-scaling-stroke" d="M310.0 324.5Q394.6 185.4 479.2 107.1"></path><path class="markets-map-arc" vector-effect="non-scaling-stroke" d="M118.0 107.6Q214.0 181.5 310.0 324.5"></path><circle class="{{mk.pinUS}}" vector-effect="non-scaling-stroke" cx="118.0" cy="107.6" r="{{mk.rUS}}"></circle><circle class="{{mk.pinBR}}" vector-effect="non-scaling-stroke" cx="310.0" cy="324.5" r="{{mk.rBR}}"></circle><circle class="{{mk.pinPT}}" vector-effect="non-scaling-stroke" cx="479.2" cy="107.1" r="{{mk.rPT}}"></circle><circle class="markets-map-ring" vector-effect="non-scaling-stroke" cx="{{mk.hx}}" cy="{{mk.hy}}" r="{{mk.ringR}}"></circle></g></svg>
+<img src="{{mk.flag}}" alt="" aria-hidden="true" style="width: 36px; height: 36px; position: relative">
+<h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 32px; position: relative">{{mk.name}}</h3>
+<p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: var(--body); max-width: 460px; position: relative">{{mk.desc}}</p>
+<p style="margin: 0; font-size: 14px; color: var(--muted); position: relative">{{mk.contact}}</p>
+<a href="#" style="font-weight: 600; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; position: relative">Yellowipe {{mk.short}} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</sc-if>
+<sc-if value="{{mk.closed}}" hint-placeholder-val="{{ false }}">
+<button type="button" class="mk-strip tile" onClick="{{mk.pick}}" aria-label="Ver {{mk.name}}" style="width: 92px; flex: none; border-radius: 18px; background: #ffffff; border: 1px solid var(--line); color: var(--ink); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 14px; padding: 24px 0; box-sizing: border-box">
+<img src="{{mk.flag}}" alt="" aria-hidden="true" style="width: 28px; height: 28px">
+<span class="mk-vert" style="writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.06em">{{mk.name}}</span>
+</button>
+</sc-if>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) 24px; display: flex; flex-direction: column; gap: 52px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold)">Como começamos</p>
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.02em">Da primeira conversa à equipa a entregar.</h2>
+</div>
+<div style="position: relative">
+<div class="steps-line" style="position: absolute; left: 12.5%; right: 12.5%; top: 22px; height: 1px; background: #D5DBE4"></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; position: relative">
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px"><span style="width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: var(--yellow); font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center">01</span><h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 19px">Conversa inicial</h3><p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--muted); max-width: 240px">Percebemos o desafio, os prazos e o nível de responsabilidade que quer manter.</p></li>
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1px solid var(--navy); color: var(--navy); font-family: 'IBM Plex Mono', monospace; font-size: 14px; display: flex; align-items: center; justify-content: center; box-sizing: border-box">02</span><h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 19px">Proposta</h3><p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--muted); max-width: 240px">Modelo, perfis e plano de arranque em [X] dias úteis.</p></li>
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1px solid var(--navy); color: var(--navy); font-family: 'IBM Plex Mono', monospace; font-size: 14px; display: flex; align-items: center; justify-content: center; box-sizing: border-box">03</span><h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 19px">Arranque</h3><p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--muted); max-width: 240px">Equipa selecionada e integrada em [X] semanas, com as suas ferramentas.</p></li>
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1px solid var(--navy); color: var(--navy); font-family: 'IBM Plex Mono', monospace; font-size: 14px; display: flex; align-items: center; justify-content: center; box-sizing: border-box">04</span><h3 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 19px">Acompanhamento</h3><p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--muted); max-width: 240px">Gestão contínua do desempenho e das entregas.</p></li>
+</ol>
+</div>
+<div style="display: flex; justify-content: center"><a href="#contacto" class="btn-n" style="background: var(--navy); color: #ffffff; font-weight: 600; font-size: 15px; text-decoration: none; padding: 14px 22px; border-radius: 12px; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; box-sizing: border-box">Começar com uma conversa <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4BE14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+</div>
+</section>
+
+<section style="background: var(--surface)">
+<div style="max-width: 880px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold)">Perguntas frequentes</p>
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.02em">O que nos perguntam antes de começar.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="7">
+<div style="background: #ffffff; border: 1px solid var(--line); border-radius: 14px; padding: 0 20px">
+<h3 style="margin: 0"><button type="button" class="faq-q" onClick="{{f.toggle}}" aria-expanded="{{f.open}}" style="width: 100%; background: transparent; border: 0; color: var(--ink); text-align: left; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 20px 0; min-height: 64px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 18px">
+<span style="flex: 1">{{f.q}}</span>
+<span style="width: 28px; height: 28px; border-radius: 50%; background: {{f.signBg}}; color: {{f.signFg}}; display: flex; align-items: center; justify-content: center; flex: none; font-family: 'IBM Plex Mono', monospace; font-size: 16px">{{f.sign}}</span>
+</button></h3>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 0 44px 22px 0; font-size: 15.5px; line-height: 1.7; color: var(--body); max-width: 68ch">{{f.a}}</p>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="contacto" style="position: relative; overflow: hidden; background: var(--navy); color: #ffffff">
+<img src="/_blob/7e4be3fbb3e0b5b33e759f2197426985" alt="" aria-hidden="true" style="position: absolute; left: -120px; top: -30px; width: 420px; height: auto; opacity: 0.2; pointer-events: none">
+<div class="ct-grid" style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(40px, 6vw, 88px); align-items: start; position: relative">
+<div class="ct-intro" style="display: flex; flex-direction: column; gap: 22px; position: sticky; top: 120px">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow)"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--yellow)"></span>Fale connosco</p>
+<h2 style="margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: clamp(40px, 4.2vw, 60px); line-height: 1.04; letter-spacing: -0.035em">Contratar. Reforçar.<br><span style="color: var(--yellow)">Construir.</span></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: var(--on-navy); max-width: 460px">Um único parceiro, do talento ao go-live. Conte-nos o que precisa e respondemos no mesmo dia útil.</p>
+<p style="margin: 6px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-navy-2)">Portugal · Brasil · Estados Unidos</p>
+<a href="mailto:[email comercial]@yellowipe.io" class="ct-mail" style="align-self: flex-start; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #ffffff; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.4); text-underline-offset: 5px; text-decoration-thickness: 1px">Ou envie-nos um email para [email comercial]@yellowipe.io</a>
+</div>
+<form style="min-width: 0; background: var(--navy-2); border: 1px solid var(--edge-navy); border-radius: 20px; padding: clamp(24px, 3.2vw, 40px); display: flex; flex-direction: column; gap: 22px; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 22px; border-bottom: 1px solid var(--edge-navy)">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff">Pedido de contacto</p>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--on-navy)">Três passos rápidos. Encaminhamos para a pessoa certa no seu mercado.</p>
+<p style="margin: 0; font-size: 13px; color: var(--on-navy-2)"><span style="color: var(--yellow)">*</span> Campos obrigatórios</p>
+</div>
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+<legend class="ct-lbl" style="padding: 0; margin-bottom: 12px">O que procura? <span style="color: var(--yellow)">*</span></legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px">
+<label class="ct-opt ct-on"><input type="radio" name="motivo5" checked>Contratar talento</label>
+<label class="ct-opt"><input type="radio" name="motivo5">Reforçar a equipa</label>
+<label class="ct-opt"><input type="radio" name="motivo5">Construir uma solução</label>
+<label class="ct-opt"><input type="radio" name="motivo5">Procuro emprego</label>
+</div>
+</fieldset>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px">
+<label class="ct-field"><span class="ct-lbl">Nome <span style="color: var(--yellow)">*</span></span><input type="text" autocomplete="name" required placeholder="O seu nome"></label>
+<label class="ct-field"><span class="ct-lbl">Email profissional <span style="color: var(--yellow)">*</span></span><input type="email" autocomplete="email" required placeholder="nome@empresa.com"></label>
+<label class="ct-field"><span class="ct-lbl">Empresa <span style="color: var(--yellow)">*</span></span><input type="text" autocomplete="organization" required placeholder="Nome da empresa"></label>
+<label class="ct-field"><span class="ct-lbl">Mercado <span style="color: var(--yellow)">*</span></span><select required><option>Portugal</option><option>Brasil</option><option>Estados Unidos</option></select></label>
+</div>
+<button type="button" class="btn-y ct-btn" style="align-self: flex-start; background: var(--yellow); color: var(--navy); border: 0; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 15.5px; padding: 15px 28px; border-radius: 999px; min-height: 52px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px">Continuar para o calendário <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<p style="margin: 0; font-size: 13px; line-height: 1.55; color: var(--on-navy-2)">Ao enviar, aceita a <a href="#" style="color: #ffffff">Política de privacidade</a>. Candidaturas seguem para a equipa de recrutamento.</p>
+</form>
+</div>
+</section>
+
+<footer style="background: #041431; color: #ffffff; border-top: 1px solid rgba(255,255,255,0.06)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-wrap: wrap; gap: 40px">
+<div style="flex: 1.4 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<img src="/_blob/4eb33a48f536b4dfdc9e177d601a483d" alt="Yellowipe" style="height: 28px; width: auto; align-self: flex-start">
+<p style="margin: 0; font-size: 14px; line-height: 1.65; color: var(--on-navy-2); max-width: 300px">Parceiro de Capacidade Tecnológica em Portugal, no Brasil e nos Estados Unidos.</p>
+</div>
+<nav aria-label="Serviços" style="flex: 1 1 160px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #ffffff">Serviços</p>
+<a href="#" class="foot-link">Recrutamento de TI</a><a href="#" class="foot-link">Outsourcing de TI</a><a href="#" class="foot-link">Desenvolvimento de software</a><a href="#" class="foot-link">Inteligência artificial</a><a href="#" class="foot-link">Automação de testes</a><a href="#" class="foot-link">Cloud e DevOps</a><a href="#" class="foot-link">Todos os serviços</a>
+</nav>
+<nav aria-label="Empresa" style="flex: 1 1 160px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #ffffff">Empresa</p>
+<a href="#" class="foot-link">Quem somos</a><a href="#" class="foot-link">Carreiras e vagas</a><a href="#" class="foot-link">Mercados</a><a href="#" class="foot-link">Casos de sucesso</a>
+</nav>
+<nav aria-label="Recursos" style="flex: 1 1 160px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #ffffff">Recursos</p>
+<a href="#" class="foot-link">Insights</a><a href="#" class="foot-link">Guia salarial de TI</a><a href="#" class="foot-link">FAQ</a><a href="#" class="foot-link">Contacto</a>
+</nav>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: var(--on-navy-2)">
+<p style="margin: 0">© 2026 Yellowipe. Todos os direitos reservados.</p>
+<p style="margin: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center"><span>Resumir esta página com</span><a href="#" class="foot-link">ChatGPT</a><a href="#" class="foot-link">Claude</a><a href="#" class="foot-link">Perplexity</a><a href="#" class="foot-link">Gemini</a></p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center"><a href="#" class="foot-link">Política de privacidade</a><a href="#" class="foot-link">Termos</a><a href="#" class="foot-link">Cookies</a><a href="#" class="foot-link" aria-label="LinkedIn" style="display: inline-flex; min-height: 44px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"></path></svg></a></div>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { active: 'software', market: 'pt', faq: 0, rot: 0, rotPaused: false, rotHover: false, mqPaused: false, menu: '', mob: false, mSrv: true, mTec: false };
+  }
+  componentDidMount() {
+    var self = this;
+    var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ rotPaused: true, mqPaused: true }); }
+    this._t = setInterval(function () {
+      if (self.state.rotPaused || self.state.rotHover) return;
+      self.setState({ rot: (self.state.rot + 1) % 6 });
+    }, 2800);
+  }
+  componentWillUnmount() {
+    clearInterval(this._t);
+  }
+  renderVals() {
+    var self = this;
+    var all = ['Contrate', 'Reforce', 'Construa'];
+    var data = [
+      { id: 'software', label: 'Software\nà medida', name: 'Software à medida', short: 'software à medida',
+        desc: 'Software à medida do seu negócio, da primeira versão ao go-live, com uma equipa que fica até o produto estar estável.',
+        ai: 'desenvolvimento acelerado com assistentes de código como Claude Code, Cursor e GitHub Copilot.',
+        services: [
+          { name: 'Aplicações web', text: 'Portais, plataformas SaaS e dashboards rápidos no browser, construídos sobre APIs.' },
+          { name: 'Aplicações mobile', text: 'Apps iOS e Android, nativas ou multiplataforma, da conceção à publicação nas lojas.' },
+          { name: 'Aplicações enterprise', text: 'Sistemas internos integrados com o ERP e o CRM, no lugar de folhas de cálculo.' },
+          { name: 'Aplicações cloud', text: 'Aplicações cloud-native, preparadas para crescer sem reescrever a arquitetura.' }
+        ], models: all, proof: 'Hapvida: aplicação com teleconsulta para milhões de utilizadores.' },
+      { id: 'ia', label: 'Inteligência\nartificial', name: 'Inteligência artificial', short: 'inteligência artificial',
+        desc: 'Da prova de conceito à IA em produção: agentes, modelos e automações ligados aos seus dados e processos.',
+        ai: 'IA generativa, RAG e agentes em produção, ligados aos seus sistemas por MCP, com OpenAI, Azure AI, SageMaker ou Vertex AI.',
+        services: [
+          { name: 'IA generativa', text: 'Assistentes, pesquisa sobre documentos e geração de conteúdo com os dados da empresa.' },
+          { name: 'Agentes de IA', text: 'Agentes que executam tarefas de ponta a ponta, com regras e supervisão humana.' },
+          { name: 'Desenvolvimento de IA/ML', text: 'Modelos de previsão, classificação e recomendação treinados com os seus dados.' },
+          { name: 'Transformação com IA', text: 'Diagnóstico, priorização de casos de uso e roadmap para toda a organização.' }
+        ], models: all, proof: '[Caso de IA a publicar]' },
+      { id: 'adv', label: 'Tecnologias\nemergentes', name: 'Tecnologias emergentes', short: 'tecnologias emergentes',
+        desc: 'Tecnologias emergentes aplicadas a problemas concretos, com protótipos rápidos para validar antes de investir.',
+        ai: 'protótipos validados mais depressa com desenvolvimento assistido por IA.',
+        services: [
+          { name: 'Realidade aumentada e virtual', text: 'Experiências imersivas para formação, vendas e manutenção no terreno.' },
+          { name: 'Blockchain', text: 'Registos partilhados e contratos inteligentes onde a rastreabilidade é crítica.' },
+          { name: 'IoT', text: 'Sensores e plataformas ligados para monitorizar operações em tempo real.' }
+        ], models: ['Reforce', 'Construa'], proof: '[Caso a publicar]' },
+      { id: 'cloud', label: 'Cloud e\nDevOps', name: 'Cloud e DevOps', short: 'cloud e DevOps',
+        desc: 'Infraestrutura que acelera as entregas: pipelines, cloud e sistemas modernizados sem parar a operação.',
+        ai: 'infraestrutura como código e pipelines escritos e revistos com apoio de IA, e operações de modelos (MLOps).',
+        services: [
+          { name: 'DevOps e DevSecOps', text: 'Pipelines, infraestrutura como código e segurança integrada no ciclo de entrega.' },
+          { name: 'Migração para cloud', text: 'Migração para AWS, Azure ou Google Cloud com o mínimo de interrupção.' },
+          { name: 'Modernização de sistemas', text: 'Sistemas legados reescritos ou decompostos por fases, sem parar o negócio.' },
+          { name: 'Pipelines CI/CD', text: 'Integração e entrega contínuas, com testes automáticos em cada alteração.' }
+        ], models: all, proof: 'Linde: −94% no tempo de regressão com CI/CD.' },
+      { id: 'qa', label: 'Qualidade\ne testes', name: 'Qualidade e testes', short: 'qualidade e testes',
+        desc: 'Qualidade medida em cada entrega, com automação que cresce ao ritmo do produto.',
+        ai: 'testes gerados e mantidos com apoio de IA, como no caso Clever.',
+        services: [
+          { name: 'Automação de testes', text: 'Suites automáticas que crescem com o produto e cortam o tempo de regressão.' },
+          { name: 'Testes de performance', text: 'Testes de carga e stress que mostram os limites antes dos utilizadores.' },
+          { name: 'Testes de segurança', text: 'Análise de vulnerabilidades e testes de intrusão antes de cada lançamento.' },
+          { name: 'Testes manuais', text: 'Testes exploratórios e de aceitação onde a automação não chega.' }
+        ], models: all, proof: 'Clever: de 32 para 1.600+ testes automatizados em seis meses.' },
+      { id: 'design', label: 'Design de\nproduto', name: 'Design de produto', short: 'design de produto',
+        desc: 'Produtos fáceis de usar, desenhados com quem os vai usar e entregues prontos a desenvolver.',
+        ai: 'pesquisa, protótipos e variantes de interface produzidos mais depressa com IA.',
+        services: [
+          { name: 'UX e UI Design', text: 'Investigação, fluxos, protótipos e design system prontos para desenvolvimento.' },
+          { name: 'Web design', text: 'Sites institucionais e landing pages pensados para converter.' }
+        ], models: all, proof: 'Hapvida: experiência desenhada para milhões de utilizadores.' },
+      { id: 'recruit', label: 'Recrutamento\ntech', name: 'Recrutamento tech', short: 'recrutamento tech',
+        desc: 'Encontramos os perfis tecnológicos de que a sua equipa precisa, para contratação permanente, nos três mercados.',
+        ai: 'profissionais fluentes nas ferramentas de IA que a sua equipa usa, e especialistas em dados, machine learning e IA generativa.',
+        services: [
+          { name: 'Developers e engenharia', text: 'Front-end, back-end, mobile e full-stack, de júnior a arquiteto.' },
+          { name: 'Dados e IA', text: 'Engenheiros de dados, cientistas de dados e especialistas em machine learning.' },
+          { name: 'Cloud, DevOps e QA', text: 'Perfis de infraestrutura, automação e qualidade de software.' },
+          { name: 'Lideranças tecnológicas', text: 'Tech leads, engineering managers e CTOs.' }
+        ], models: ['Contrate'], proof: '1.000+ profissionais de tecnologia contratados ou mobilizados.' }
+    ];
+    var flags = function (id) {
+      return { isSoftware: id === 'software', isIa: id === 'ia', isAdv: id === 'adv', isCloud: id === 'cloud', isQa: id === 'qa', isDesign: id === 'design', isRecruit: id === 'recruit' };
+    };
+    var caps = data.map(function (c) {
+      var sel = c.id === self.state.active;
+      return Object.assign({
+        label: c.label, selected: sel,
+        pick: function () { self.setState({ active: c.id }); },
+        tabIndex: sel ? '0' : '-1',
+        key: function (e) {
+          var ids = data.map(function (d) { return d.id; });
+          var k = ids.indexOf(self.state.active), nk = -1;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nk = (k + 1) % ids.length;
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nk = (k + ids.length - 1) % ids.length;
+          if (e.key === 'Home') nk = 0;
+          if (e.key === 'End') nk = ids.length - 1;
+          if (nk < 0) return;
+          e.preventDefault();
+          self.setState({ active: ids[nk] });
+          var list = e.currentTarget && e.currentTarget.parentNode ? e.currentTarget.parentNode.querySelectorAll('[role=tab]') : [];
+          if (list[nk]) list[nk].focus();
+        },
+        bg: sel ? '#06193A' : '#F4F6F9',
+        edge: sel ? '#06193A' : '#E3E7EE',
+        fg: sel ? '#ffffff' : '#06193A',
+        iconFg: sel ? '#F4BE14' : '#4F5B6E'
+      }, flags(c.id));
+    });
+    var a = data.filter(function (c) { return c.id === self.state.active; })[0] || data[0];
+    var models = all.map(function (m) {
+      var on = a.models.indexOf(m) !== -1;
+      return { label: m, bg: on ? '#06193A' : 'transparent', fg: on ? '#ffffff' : '#6B7486', line: on ? 'solid' : 'dashed', edge: on ? '#06193A' : '#C9CFD8' };
+    });
+    var active = { name: a.name, short: a.short, desc: a.desc, ai: a.ai, services: a.services, models: models, proof: a.proof };
+
+    var mkData = [
+      { id: 'pt', tx: '-2826.8', ty: '-430.9', s: '6.5', hx: '479.2', hy: '107.1', ringR: '2.15', cUsa: '#D3DCEA', cBra: '#D3DCEA', cPrt: '#F4BE14', pinUS: 'markets-map-pin', rUS: '0.54', pinBR: 'markets-map-pin', rBR: '0.54', pinPT: 'markets-map-pin is-on', rPT: '1.08', name: 'Portugal', short: 'Portugal', flag: '/_blob/5db57e2c1915e3e1945e5f449a4ebf4a',
+        desc: 'Recrutamento, equipas e entrega de projetos para empresas portuguesas e europeias.', contact: '[Morada e contacto em Portugal]' },
+      { id: 'br', tx: '-301.0', ty: '-351.1', s: '1.9', hx: '310.0', hy: '324.5', ringR: '7.37', cUsa: '#D3DCEA', cBra: '#F4BE14', cPrt: '#D3DCEA', pinUS: 'markets-map-pin', rUS: '1.84', pinBR: 'markets-map-pin is-on', rBR: '3.68', pinPT: 'markets-map-pin', rPT: '1.84', name: 'Brasil', short: 'Brasil', flag: '/_blob/19e089b1762c603f845dba7a6551b0cc',
+        desc: 'Talento e capacidade de entrega para empresas brasileiras, com casos como a Hapvida.', contact: '[Morada e contacto no Brasil]' },
+      { id: 'us', tx: '75.6', ty: '71.8', s: '1.8', hx: '118.0', hy: '107.6', ringR: '7.78', cUsa: '#F4BE14', cBra: '#D3DCEA', cPrt: '#D3DCEA', pinUS: 'markets-map-pin is-on', rUS: '3.89', pinBR: 'markets-map-pin', rBR: '1.94', pinPT: 'markets-map-pin', rPT: '1.94', name: 'Estados Unidos', short: 'EUA', flag: '/_blob/8b7d9680a79c8f1601f4b205b7f27ade',
+        desc: 'Equipas e projetos para empresas norte-americanas, com talento dos três mercados.', contact: '[Morada e contacto nos EUA]' }
+    ];
+    var markets = mkData.map(function (m) {
+      var open = m.id === self.state.market;
+      return { name: m.name, short: m.short, flag: m.flag, desc: m.desc, contact: m.contact, open: open, closed: !open, tx: m.tx, ty: m.ty, s: m.s, hx: m.hx, hy: m.hy, ringR: m.ringR, cUsa: m.cUsa, cBra: m.cBra, cPrt: m.cPrt, pinUS: m.pinUS, pinBR: m.pinBR, pinPT: m.pinPT, rUS: m.rUS, rBR: m.rBR, rPT: m.rPT,
+        pick: function () { self.setState({ market: m.id }); } };
+    });
+
+    var faqData = [
+      { q: 'Que serviços de tecnologia oferece a Yellowipe?', a: 'Software à medida, inteligência artificial, cloud e DevOps, qualidade e testes, design de produto, tecnologias emergentes e recrutamento tech. Cada área está disponível em um ou mais dos nossos três modelos: Contrate, Reforce e Construa.' },
+      { q: 'As vossas equipas trabalham com IA?', a: 'Sim. As nossas equipas usam no dia a dia ferramentas como Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Gemini e Windsurf, e adaptam-se às que a sua equipa já usa. Para construir produtos com IA trabalhamos com OpenAI, Azure AI, Amazon SageMaker, Google Vertex AI e Hugging Face.' },
+      { q: 'Qual é a diferença entre Contrate, Reforce e Construa?', a: 'No Contrate, recrutamos profissionais para o seu quadro. No Reforce, os nossos especialistas integram-se na sua equipa e trabalham sob a sua gestão. No Construa, assumimos a entrega da solução, da definição do produto ao go-live.' },
+      { q: 'Quanto custa trabalhar com a Yellowipe?', a: 'Depende do modelo, dos perfis, da senioridade e da duração. Depois da conversa inicial, enviamos uma proposta com o modelo, a equipa e o plano de arranque em [X] dias úteis.' },
+      { q: 'Quanto tempo demora a arrancar uma equipa?', a: 'Em regra, [X] semanas desde a aprovação da proposta até à equipa estar integrada e a trabalhar com as suas ferramentas.' },
+      { q: 'Em que mercados trabalham?', a: 'Em Portugal, no Brasil e nos Estados Unidos, com talento e capacidade de entrega nos três mercados.' },
+      { q: 'Têm experiência no meu setor?', a: 'Trabalhamos com empresas de retalho, media, energia, saúde e tecnologia, entre outras, como a MC Sonae, a Sky, a Efacec e a Medicare.' }
+    ];
+    var faqs = faqData.map(function (f, i) {
+      var open = self.state.faq === i;
+      return { q: f.q, a: f.a, open: open, sign: open ? '−' : '+',
+        signBg: open ? '#06193A' : '#F4F6F9', signFg: open ? '#F4BE14' : '#06193A',
+        toggle: function () { self.setState({ faq: open ? -1 : i }); } };
+    });
+    var areas = ['Inteligência artificial', 'Software à medida', 'Cloud e DevOps', 'Qualidade e testes', 'Design de produto', 'Tecnologias emergentes'];
+    var cur = self.state.rot % areas.length, prev = (cur + areas.length - 1) % areas.length;
+    var rot = areas.map(function (t, i) {
+      return { text: t, isIa: i === 0, hidden: i !== cur, op: i === cur ? 1 : 0, ty: i === cur ? '0' : (i === prev ? '-70%' : '70%') };
+    });
+    var menu = self.state.menu, mob = !!self.state.mob;
+    var col = function (groups) {
+      var rows = [];
+      groups.forEach(function (g) {
+        rows.push({ head: true, item: false, name: g[0], isIa: !!g[2] });
+        g[1].forEach(function (n) { rows.push({ head: false, item: true, name: n, isIa: false }); });
+      });
+      return { rows: rows };
+    };
+    var srvG = {
+      software: ['Software à medida', ['Aplicações web', 'Aplicações mobile', 'Aplicações enterprise', 'Aplicações cloud']],
+      ia: ['Inteligência artificial', ['IA generativa', 'Agentes de IA', 'Desenvolvimento de IA/ML', 'Transformação com IA'], true],
+      cloud: ['Cloud e DevOps', ['DevOps e DevSecOps', 'Migração para cloud', 'Modernização de sistemas', 'Pipelines CI/CD']],
+      qa: ['Qualidade e testes', ['Automação de testes', 'Testes de performance', 'Testes de segurança', 'Testes manuais']],
+      design: ['Design de produto', ['UX e UI Design', 'Web design']],
+      adv: ['Tecnologias emergentes', ['Realidade aumentada e virtual', 'Blockchain', 'IoT']]
+    };
+    var tecG = {
+      front: ['Front-end', ['React', 'Angular', 'Vue.js', 'TypeScript', 'JavaScript']],
+      mobile: ['Mobile', ['iOS e Swift', 'Android e Kotlin']],
+      back: ['Back-end', ['Node.js', 'Python', 'Java', '.NET e C#', 'PHP', 'Go']],
+      cloud: ['Cloud e DevOps', ['AWS', 'Azure', 'Google Cloud', 'Kubernetes', 'Docker', 'Terraform']],
+      ai: ['Desenvolvimento com IA', ['Claude Code', 'Cursor', 'GitHub Copilot', 'OpenAI Codex'], true]
+    };
+    var menuVals = {
+      models: [
+        { tag: 'Contrate', name: 'Recrutamento de TI', text: 'O talento certo para a sua equipa, em contratação permanente.', techName: 'Recrutamos developers em qualquer stack' },
+        { tag: 'Reforce', name: 'Outsourcing de TI', text: 'Especialistas integrados na sua equipa, com as suas ferramentas.', techName: 'Especialistas na stack que já usa' },
+        { tag: 'Construa', name: 'Desenvolvimento de software', text: 'Equipas que constroem a solução, da definição ao go-live.', techName: 'Equipas completas para o seu produto' }
+      ],
+      srvCols: [col([srvG.software, srvG.design]), col([srvG.ia, srvG.adv]), col([srvG.cloud, srvG.qa])],
+      tecCols: [col([tecG.front, tecG.mobile]), col([tecG.back]), col([tecG.cloud, tecG.ai])],
+      srvAreas: ['Software à medida', 'Inteligência artificial', 'Cloud e DevOps', 'Qualidade e testes', 'Design de produto', 'Tecnologias emergentes'],
+      tecGroups: [tecG.front, tecG.back, tecG.mobile, tecG.cloud, tecG.ai].map(function (g) { return { name: g[0], list: g[1].join(' · ') }; }),
+      srvOpen: menu === 'srv', tecOpen: menu === 'tec',
+      srvColor: menu === 'srv' ? '#F4BE14' : '', tecColor: menu === 'tec' ? '#F4BE14' : '',
+      srvRot: menu === 'srv' ? '180deg' : '0deg', tecRot: menu === 'tec' ? '180deg' : '0deg',
+      srvBar: menu === 'srv' ? 1 : 0, tecBar: menu === 'tec' ? 1 : 0,
+      srvToggle: function () { self.setState({ menu: self.state.menu === 'srv' ? '' : 'srv' }); },
+      tecToggle: function () { self.setState({ menu: self.state.menu === 'tec' ? '' : 'tec' }); },
+      srvHover: function () { self.setState({ menu: 'srv' }); },
+      tecHover: function () { self.setState({ menu: 'tec' }); },
+      menuLeave: function () { if (self.state.menu) self.setState({ menu: '' }); },
+      mobOpen: mob, mobClosed: !mob, mobLabel: mob ? 'Fechar menu' : 'Abrir menu',
+      mobToggle: function () { self.setState({ mob: !self.state.mob }); },
+      mSrvOpen: !!self.state.mSrv, mTecOpen: !!self.state.mTec,
+      mSrvRot: self.state.mSrv ? '180deg' : '0deg', mTecRot: self.state.mTec ? '180deg' : '0deg',
+      mSrvToggle: function () { self.setState({ mSrv: !self.state.mSrv }); },
+      mTecToggle: function () { self.setState({ mTec: !self.state.mTec }); }
+    };
+    var rp = self.state.rotPaused, mp = self.state.mqPaused;
+    return Object.assign(menuVals, { caps: caps, active: active, markets: markets, faqs: faqs, rot: rot,
+      rotPaused: rp, rotRunning: !rp, rotLabel: rp ? 'Retomar a rotação das áreas' : 'Pausar a rotação das áreas',
+      rotLive: rp ? 'polite' : 'off',
+      rotToggle: function () { self.setState({ rotPaused: !self.state.rotPaused }); },
+      rotHold: function () { self.setState({ rotHover: true }); },
+      rotRelease: function () { self.setState({ rotHover: false }); },
+      mqPaused: mp, mqRunning: !mp, mqState: mp ? 'paused' : 'running',
+      mqLabel: mp ? 'Retomar o movimento das tecnologias' : 'Pausar o movimento das tecnologias',
+      mqToggle: function () { self.setState({ mqPaused: !self.state.mqPaused }); } });
+  }
+}
+</script>
+</body>
+</html>

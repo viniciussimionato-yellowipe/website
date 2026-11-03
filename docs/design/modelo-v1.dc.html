@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Yellowipe · Página de modelo v1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@400;500;600&amp;display=swap">
+<style>
+:root{--navy:#06193A;--navy-2:#0E2650;--ink:#06193A;--body:#4F5B6E;--muted:#5B6475;--line:#E3E7EE;--line-2:#C9D0DB;--surface:#F4F6F9;--yellow:#F4BE14;--yellow-hi:#FFD24A;--gold:#8A6600;--warm:#FFF8E1;--on-navy:#CBD5E6;--on-navy-2:#AFC0DE;--edge-navy:rgba(255,255,255,0.12);--ease:cubic-bezier(.22,1,.36,1)}
+body{margin:0;background:#ffffff}
+::selection{background:#F4BE14;color:#06193A}
+a{color:var(--ink);text-underline-offset:3px}
+html{scroll-behavior:smooth}
+.pg{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:#ffffff;min-width:0;position:relative}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px;box-sizing:border-box}
+.sec{padding-top:clamp(72px,9vw,120px);padding-bottom:clamp(72px,9vw,120px)}
+.eyebrow{margin:0;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.on-navy .eyebrow,.eyebrow-y{color:var(--yellow)}
+.h2{margin:0;font-family:'IBM Plex Sans',sans-serif;font-weight:500;font-size:clamp(30px,3.4vw,44px);line-height:1.12;letter-spacing:-0.02em;text-wrap:balance}
+.lead{margin:0;font-size:16.5px;line-height:1.7;color:var(--body);max-width:620px}
+.on-navy{background:var(--navy);color:#ffffff}
+.on-navy .lead{color:var(--on-navy)}
+.head{display:flex;flex-direction:column;gap:16px;max-width:760px}
+.btn-y{background:var(--yellow);color:var(--navy);font-weight:600;font-size:15.5px;text-decoration:none;padding:15px 26px;border-radius:999px;display:inline-flex;align-items:center;gap:10px;min-height:52px;box-sizing:border-box;transition:background-color .18s ease,transform .12s ease}
+.btn-y:hover{background:var(--yellow-hi);color:var(--navy)}
+.btn-y svg,.lnk svg{transition:transform .25s var(--ease)}
+.btn-y:hover svg,.lnk:hover svg{transform:translateX(3px)}
+.btn-y:active{transform:scale(.97)}
+.lnk{font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;color:#ffffff}
+.lnk:hover{color:var(--yellow)}
+.lnk-d{color:var(--ink)}
+.lnk-d:hover{color:var(--gold)}
+
+/* topo do mockup: escolher o modelo */
+.demo{background:#FFF8E1;border-bottom:1px solid #F1DFA6;font-size:13px}
+.demo .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-top:10px;padding-bottom:10px}
+.demo-t{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.demo-b{font:inherit;font-weight:600;border:1px solid #E6CF85;background:#ffffff;color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;min-height:34px}
+.demo-b[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#ffffff}
+
+/* cabeçalho */
+.hdr{position:sticky;top:0;z-index:30;background:rgba(6,25,58,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;padding-top:14px;padding-bottom:14px}
+.nav{flex:1;display:flex;justify-content:center;align-items:center;gap:26px;font-size:14.5px;font-weight:500}
+.nav a{color:var(--on-navy);text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.nav a:hover,.nav a.cur{color:#ffffff}
+.nav a.cur{color:var(--yellow)}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero-tree{position:absolute;left:-140px;bottom:-60px;width:460px;height:auto;opacity:.14;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:clamp(40px,5vw,72px);align-items:center;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(64px,8vw,112px);position:relative}
+.crumbs{display:flex;gap:8px;font-size:13px;color:var(--on-navy-2);margin:0 0 22px;padding:0;list-style:none}
+.crumbs a{color:var(--on-navy-2);text-decoration:none}
+.crumbs a:hover{color:#ffffff}
+.h1{margin:14px 0 0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:clamp(38px,4.2vw,56px);line-height:1.05;letter-spacing:-0.03em;text-wrap:balance}
+.hero-lead{margin:22px 0 0;font-size:17.5px;line-height:1.7;color:var(--on-navy);max-width:560px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;padding:0;list-style:none}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--edge-navy);background:rgba(255,255,255,0.04);border-radius:999px;padding:7px 13px;font-size:13px;color:var(--on-navy)}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex:none}
+.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:34px}
+
+/* visual da equipa (inspirado na Lynxmind: cartões que assentam, linhas com fluxo, pulsação) */
+.viz{position:relative;aspect-ratio:1/0.92;width:100%;max-width:520px;justify-self:end}
+.viz-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.viz-lines path{fill:none;stroke:rgba(244,190,20,0.55);stroke-width:1.4;stroke-dasharray:3 6;vector-effect:non-scaling-stroke;animation:flow 1.6s linear infinite}
+.viz-lines .ring{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:1;stroke-dasharray:none;animation:none;vector-effect:non-scaling-stroke}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52%;background:#ffffff;color:var(--ink);border-radius:18px;padding:18px 18px 16px;box-shadow:0 30px 60px -24px rgba(0,0,0,0.55);display:flex;flex-direction:column;gap:10px;box-sizing:border-box;z-index:2}
+.core-k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.core-t{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.2}
+.core-bar{height:6px;border-radius:99px;background:var(--surface);overflow:hidden}
+.core-bar span{display:block;height:100%;width:72%;background:var(--yellow);border-radius:99px;transform-origin:left;animation:grow 2.4s var(--ease) both .6s}
+@keyframes grow{from{transform:scaleX(0)}}
+.core-s{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--body)}
+.dot{position:relative;width:8px;height:8px;border-radius:50%;background:#22A06B;flex:none}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(34,160,107,.45);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,160,107,.45)}70%,100%{box-shadow:0 0 0 9px rgba(34,160,107,0)}}
+.node{position:absolute;transform:translate(-50%,-50%);z-index:3}
+.node-in{display:flex;align-items:center;gap:9px;background:var(--navy-2);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:9px 12px 9px 9px;white-space:nowrap;box-shadow:0 14px 30px -16px rgba(0,0,0,.6);animation:settle 1.1s var(--ease) both,float 6s ease-in-out infinite;animation-delay:var(--d),calc(var(--d) + 1.2s)}
+.node-av{width:26px;height:26px;border-radius:8px;background:rgba(244,190,20,0.14);color:var(--yellow);display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;flex:none}
+.node-n{font-size:13px;font-weight:600;color:#ffffff}
+.node-m{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--on-navy-2)}
+@keyframes settle{from{opacity:0;transform:translate(var(--sx),var(--sy)) rotate(var(--sr)) scale(.94)}}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -6px}}
+.viz-chip{position:absolute;left:50%;bottom:-4%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid var(--edge-navy);border-radius:999px;padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--on-navy);white-space:nowrap;z-index:3}
+
+/* ilustrações por modelo: amarelo = Yellowipe, branco = cliente */
+.viz2{position:relative;width:100%;max-width:520px;justify-self:end;display:flex;flex-direction:column;gap:14px}
+.vz-legend{display:flex;gap:18px;justify-content:flex-end;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--on-navy-2)}
+.vz-legend span{display:inline-flex;align-items:center;gap:7px}
+.vz-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.lg-y{background:var(--yellow)}
+.lg-c{background:#ffffff}
+.vz{display:flex;flex-direction:column;gap:0}
+.av{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;flex:none;box-sizing:border-box}
+.av-y{background:var(--yellow);color:var(--navy);box-shadow:0 0 0 2px var(--navy-2)}
+.av-c{background:#E3E7EE;color:#3A4558}
+.av-xs{width:20px;height:20px;font-size:8.5px}
+.av-lg{width:40px;height:40px;font-size:12px}
+.tx{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.tx b{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx small{font-size:11.5px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.yw-card{background:var(--navy-2);border:1px solid rgba(244,190,20,.45);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;color:#ffffff;box-shadow:0 18px 40px -24px rgba(0,0,0,.7)}
+.cl-card{background:#ffffff;color:var(--ink);border-radius:16px;padding:14px 16px;box-shadow:0 26px 50px -24px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:10px}
+.cl-k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ok{width:22px;height:22px;border-radius:50%;background:#22A06B;color:#ffffff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.flow-v{width:2px;height:22px;margin:0 auto;background-image:linear-gradient(180deg,rgba(244,190,20,.8) 50%,transparent 50%);background-size:2px 8px;animation:flowv 1s linear infinite}
+.flow-short{height:18px}
+@keyframes flowv{to{background-position:0 8px}}
+.typing{display:inline-flex;gap:3px;margin-left:auto}
+.typing i{width:5px;height:5px;border-radius:50%;background:var(--yellow);animation:typ 1.2s ease-in-out infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes typ{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.pill{font-size:10.5px;font-weight:600;padding:4px 8px;border-radius:99px;background:#EEF1F5;color:#5B6475;white-space:nowrap;flex:none}
+.pill-g{background:#DDF3E8;color:#12704A}
+.pill-a{background:var(--warm);color:var(--gold)}
+
+/* Contrate */
+.rc-team .avs{display:flex}
+.rc-team .avs .av+.av{margin-left:-8px}
+.rc-list{background:#ffffff;color:var(--ink);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 26px 50px -24px rgba(0,0,0,.6)}
+.rc-hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px}
+.rc-rows{position:relative;display:flex;flex-direction:column;gap:6px}
+.rc-row{position:relative;z-index:1;display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:12px;background:#ffffff}
+.rc-row .tx small{color:var(--muted);opacity:1}
+.rc-pick{border-color:var(--yellow);background:var(--warm);animation:pick 8s var(--ease) infinite}
+@keyframes pick{0%,40%{border-color:var(--line);background:#ffffff}48%,100%{border-color:var(--yellow);background:var(--warm)}}
+.rc-sweep{position:absolute;left:-6px;right:-6px;height:52px;border-radius:14px;border:1.5px solid rgba(244,190,20,.9);z-index:2;pointer-events:none;animation:sweep 8s var(--ease) infinite}
+@keyframes sweep{0%{top:174px;opacity:0}8%{opacity:1}14%{top:174px}24%{top:116px}34%{top:58px}44%{top:0;opacity:1}52%,100%{top:0;opacity:0}}
+.rc-hire{animation:hire 8s var(--ease) infinite}
+.rc-hire-in{display:flex;align-items:center;gap:10px}
+.rc-hire .tx small{color:var(--muted);opacity:1}
+.av-ok{box-shadow:0 0 0 2px #22A06B}
+@keyframes hire{0%,50%{opacity:.35;transform:translateY(6px) scale(.98)}58%,100%{opacity:1;transform:none}}
+
+/* Reforce */
+.rf-frame{position:relative;border:1.5px dashed rgba(255,255,255,.4);border-radius:20px;padding:30px 16px 16px;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,.03)}
+.rf-tab{position:absolute;top:-12px;left:16px;background:#ffffff;color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:8px}
+.rf-team{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.rf-plus{color:var(--yellow);font-weight:700;margin:0 4px}
+.rf-in{animation:join 7s var(--ease) infinite;animation-delay:calc(var(--i) * .25s)}
+@keyframes join{0%{opacity:0;transform:translateX(-14px) scale(.8)}10%,100%{opacity:1;transform:none}}
+.rf-cap{width:100%;font-size:12px;color:var(--on-navy);margin-top:4px}
+.rf-board{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#ffffff;border-radius:14px;padding:10px}
+.rf-col{display:flex;flex-direction:column;gap:6px;background:var(--surface);border-radius:10px;padding:8px}
+.rf-h{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tk{position:relative;height:42px;background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:8px;box-sizing:border-box;display:flex;flex-direction:column;gap:5px}
+.tk i{display:block;height:5px;width:78%;border-radius:3px;background:#D5DBE4}
+.tk i.s{width:48%}
+.tk .av{position:absolute;right:6px;bottom:6px}
+.tk-ghost{border-style:dashed;background:transparent}
+.slot{position:relative;height:42px;border:1px dashed var(--line-2);border-radius:8px}
+.slot .tk{position:absolute;inset:-1px}
+.tk-y{border-color:var(--yellow);box-shadow:0 8px 18px -10px rgba(6,25,58,.45)}
+.tk-p1{animation:tk1 7s var(--ease) infinite}
+.tk-p2{animation:tk2 7s var(--ease) infinite}
+@keyframes tk1{0%,42%{opacity:1;transform:none}52%,100%{opacity:0;transform:translateX(14px)}}
+@keyframes tk2{0%,46%{opacity:0;transform:translateX(-14px)}58%,100%{opacity:1;transform:none}}
+.rf-am{align-self:center}
+
+/* Construa */
+.bd-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:14px;align-items:stretch}
+.bd-squad{flex-direction:column;align-items:stretch;gap:12px}
+.bd-pm{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.1)}
+.bd-rows{display:flex;flex-direction:column;gap:8px}
+.bd-row{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--on-navy)}
+.bd-dot{margin-left:auto;width:6px;height:6px;border-radius:50%;background:#22A06B;animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
+.bd-win{position:relative;background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 26px 50px -24px rgba(0,0,0,.6);display:flex;flex-direction:column}
+.bd-bar{display:flex;align-items:center;gap:5px;padding:8px 10px;background:var(--surface);border-bottom:1px solid var(--line)}
+.bd-bar i{width:7px;height:7px;border-radius:50%;background:#D5DBE4}
+.bd-bar span{margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--muted)}
+.bd-canvas{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:min-content;gap:7px;padding:10px}
+.bk{display:block;border-radius:6px;background:#E3E7EE;animation:build 9s var(--ease) infinite;animation-delay:calc(var(--i) * .35s)}
+.bk-nav{grid-column:1/-1;height:10px}
+.bk-hero{grid-column:1/-1;height:46px;background:var(--navy)}
+.bk-c{height:38px}
+.bk-row{grid-column:1/-1;height:16px;background:var(--warm)}
+@keyframes build{0%{opacity:0;transform:scale(.92)}8%,86%{opacity:1;transform:none}96%,100%{opacity:0}}
+.bd-badge{position:absolute;right:10px;bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;background:var(--navy);color:var(--yellow);padding:4px 8px;border-radius:6px}
+.bd-time{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.bd-line{height:3px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
+.bd-line span{display:block;height:100%;width:62%;background:var(--yellow);transform-origin:left;animation:grow 2.4s var(--ease) both .4s}
+.bd-ms{display:grid;grid-template-columns:repeat(4,1fr);font-size:11.5px;color:var(--on-navy-2)}
+.ms{display:flex;align-items:center;gap:6px}
+.ms::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);box-sizing:border-box;flex:none}
+.ms.done{color:#ffffff}.ms.done::before{background:var(--yellow);border-color:var(--yellow)}
+.ms.now{color:var(--yellow)}.ms.now::before{border-color:var(--yellow);animation:nowp 1.8s ease-out infinite}
+@keyframes nowp{0%{box-shadow:0 0 0 0 rgba(244,190,20,.5)}80%,100%{box-shadow:0 0 0 7px rgba(244,190,20,0)}}
+.bd-client{margin-top:14px;align-self:flex-end;flex-direction:row;align-items:center;gap:12px}
+.bd-client-t{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
+
+/* Quem faz o quê */
+.who{display:flex;flex-direction:column;font-size:14.5px}
+.who-r{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr}
+.who-c{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center}
+.who-hd .who-c{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom-color:var(--line-2)}
+.who-k{font-weight:600}
+.who .cur{background:var(--warm)}
+.who-hd .cur{background:var(--navy);color:var(--yellow);border-radius:14px 14px 0 0;border-bottom-color:var(--navy)}
+.who-r:last-child .cur{border-radius:0 0 14px 14px}
+.who-hd .who-c{cursor:default}
+.wp{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:5px 11px;border-radius:99px}
+.wp i{width:7px;height:7px;border-radius:2px}
+.wp-y{background:var(--navy);color:#ffffff}.wp-y i{background:var(--yellow)}
+.wp-c{background:#ffffff;color:var(--ink);border:1px solid var(--line-2)}.wp-c i{background:#C9D0DB}
+.who-btn{font:inherit;background:none;border:0;padding:0;color:inherit;cursor:pointer;text-transform:inherit;letter-spacing:inherit}
+
+@media (max-width: 960px){
+.viz2{justify-self:stretch;max-width:none}
+.vz-legend{justify-content:flex-start}
+.bd-grid{grid-template-columns:1fr}
+.bd-canvas{min-height:150px}
+.who-wrap{overflow-x:auto;margin:0 -24px;padding:0 24px}
+.who{min-width:620px}
+}
+@media (prefers-reduced-motion: reduce){
+.flow-v,.typing i,.rc-pick,.rc-sweep,.rc-hire,.rf-in,.tk-p1,.tk-p2,.bd-dot,.bk,.bd-line span,.ms.now::before{animation:none !important}
+.rc-sweep,.tk-p1{display:none}
+}
+
+/* tecnologias com logótipos (alternativa sem grupos, à BairesDev) */
+.stk2{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,5vw,72px);align-items:center}
+.stk2-l{display:flex;flex-direction:column;gap:16px}
+.stk2-r{display:flex;flex-direction:column;gap:14px;margin-right:calc(-1 * max(24px, (100vw - 1200px) / 2 + 24px));-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 88%,transparent)}
+.lg-row{overflow:hidden;padding:6px 0}
+.lg-row:nth-child(2){padding-left:40px}
+.lg-track{display:flex;width:max-content;gap:14px;margin:0;padding:0;list-style:none;animation:lgmq var(--dur) linear infinite}
+.lg-rev .lg-track{animation-direction:reverse}
+.stk2-r:hover .lg-track{animation-play-state:paused}
+@keyframes lgmq{to{transform:translateX(calc(-50% - 7px))}}
+.lg-card{display:flex;align-items:center;gap:12px;background:#ffffff;border:1px solid var(--line);border-radius:16px;padding:14px 20px 14px 16px;min-height:66px;box-sizing:border-box;white-space:nowrap;font-size:15.5px;font-weight:500;color:var(--ink);box-shadow:0 1px 0 rgba(6,25,58,.03);transition:transform .35s var(--ease),border-color .3s ease,box-shadow .35s var(--ease)}
+.lg-card img{width:34px;height:34px;object-fit:contain;flex:none}
+.lg-card:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 14px 28px -18px rgba(6,25,58,.35)}
+.lg-ai{width:10px;height:10px;align-self:flex-start;margin:-2px 0 0 -6px}
+@media (max-width: 960px){
+.stk2{grid-template-columns:minmax(0,1fr)}
+.stk2-r{margin-right:-24px;margin-left:-24px}
+.lg-row:nth-child(2){padding-left:0}
+.lg-card{min-height:56px;padding:10px 16px 10px 12px;font-size:14px}
+.lg-card img{width:28px;height:28px}
+}
+@media (prefers-reduced-motion: reduce){
+.lg-track{animation:none;flex-wrap:wrap;width:auto}
+.lg-card[aria-hidden="true"]{display:none}
+}
+
+/* revelação ao fazer scroll (CSS, sem JS) */
+@supports (animation-timeline: view()){
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 5% entry 55%}
+.rv-2{animation-range:entry 12% entry 62%}
+.rv-3{animation-range:entry 19% entry 69%}
+@keyframes rv{from{opacity:0;transform:translateY(28px)}}
+}
+
+/* logos */
+.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:26px 52px}
+.logos img{width:auto;opacity:.7;filter:grayscale(1);transition:opacity .3s ease,filter .3s ease}
+.logos img:hover{opacity:1;filter:none}
+
+/* benefícios */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{position:relative;background:#ffffff;border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;overflow:hidden;transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
+.card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 18px 40px -22px rgba(6,25,58,.28)}
+.card:hover::before{transform:scaleX(1)}
+.ic{width:44px;height:44px;border-radius:12px;background:var(--warm);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.card h3{margin:6px 0 0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.25}
+.card p{margin:0;font-size:14.5px;line-height:1.65;color:var(--body)}
+
+/* formatos */
+.fmt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.fmt-c{background:#ffffff;border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.fmt-c:hover{transform:translateY(-4px);box-shadow:0 22px 44px -24px rgba(6,25,58,.3)}
+.fmt-tag{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--warm);border-radius:6px;padding:4px 8px}
+.fmt-c h3{margin:0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:24px;letter-spacing:-0.01em}
+.fmt-c p{margin:0;font-size:15px;line-height:1.65;color:var(--body)}
+.ticks{list-style:none;margin:6px 0 0;padding:16px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;font-size:14.5px}
+.ticks li{display:flex;gap:10px;align-items:flex-start}
+.ticks svg{flex:none;margin-top:2px;color:var(--gold)}
+.also{display:grid;grid-template-columns:auto repeat(2,minmax(0,1fr));gap:18px;align-items:stretch;margin-top:18px}
+.also-t{align-self:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-right:12px}
+.also-c{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:16px;padding:18px 20px;text-decoration:none;color:var(--ink);background:#ffffff;transition:border-color .3s ease,background-color .3s ease}
+.also-c:hover{border-color:var(--navy);color:var(--ink)}
+.also-c .also-x{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.also-c b{font-size:15px}
+.also-c small{font-size:13px;color:var(--muted)}
+.also-c svg{flex:none;transition:transform .25s var(--ease)}
+.also-c:hover svg{transform:translateX(4px)}
+
+/* passos com progresso (inspirado no "how it works" da Lynxmind) */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;position:relative}
+.step{position:relative;border:1px solid var(--edge-navy);background:rgba(255,255,255,0.03);border-radius:18px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.step::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:var(--yellow);transform:scaleX(0);transform-origin:left;animation:stepbar 12s var(--ease) infinite;animation-delay:var(--sd)}
+.step::after{content:"";position:absolute;top:50%;right:-19px;width:20px;height:1px;background-image:linear-gradient(90deg,rgba(244,190,20,.6) 50%,transparent 50%);background-size:8px 1px;animation:dash 1.2s linear infinite}
+.step:last-child::after{display:none}
+@keyframes stepbar{0%{transform:scaleX(0);opacity:1}18%{transform:scaleX(1);opacity:1}25%{transform:scaleX(1);opacity:0}100%{transform:scaleX(0);opacity:0}}
+@keyframes dash{to{background-position:8px 0}}
+.step-n{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--yellow)}
+.step h3{margin:0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:20px}
+.step p{margin:0;font-size:14.5px;line-height:1.65;color:var(--on-navy)}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.stk{border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.stk-h{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sq{width:7px;height:7px;background:var(--yellow);border-radius:1px;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13.5px;font-weight:500;transition:border-color .25s ease,background-color .25s ease}
+.chips li:hover{border-color:var(--yellow);background:var(--warm)}
+.stk-ai{background:var(--navy);border-color:var(--navy);color:#ffffff}
+.stk-ai .stk-h{color:var(--on-navy-2)}
+.stk-ai .chips li{background:rgba(255,255,255,0.06);border-color:var(--edge-navy);color:#ffffff}
+
+/* casos */
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.case{text-decoration:none;color:#ffffff;background:rgba(255,255,255,0.04);border:1px solid var(--edge-navy);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .45s var(--ease),border-color .3s ease}
+.case:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.26);color:#ffffff}
+.case-img{height:180px;background:var(--navy-2);overflow:hidden}
+.case-img img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .8s var(--ease)}
+.case:hover .case-img img{transform:scale(1.04)}
+.case-b{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.case-k{margin:0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.15;color:var(--yellow)}
+.case-b p{margin:0;font-size:14.5px;line-height:1.6;color:var(--on-navy)}
+
+/* comparação */
+.cmp{display:flex;flex-direction:column;font-size:14.5px}
+.cmp-r{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;transition:background-color .25s ease}
+.cmp-r:not(.cmp-hd):hover{background:var(--surface)}
+.cmp-c{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.cmp-k{font-weight:600}
+.cmp-hd .cmp-c{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom-color:var(--line-2)}
+.cmp-hd .cmp-k{color:transparent}
+.cmp .us{background:var(--warm);font-weight:600}
+.cmp-hd .us{background:var(--navy);color:var(--yellow);border-radius:14px 14px 0 0;border-bottom-color:var(--navy)}
+.cmp-r:last-child .us{border-radius:0 0 14px 14px}
+.mk{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.mk-good{background:#DDF3E8;color:#12704A}
+.mk-mid{background:#EEF1F5;color:#5B6475}
+.mk-bad{background:#FBE5E2;color:#A3271A}
+
+/* FAQ */
+.faq{max-width:860px;display:flex;flex-direction:column;gap:10px}
+.faq-i{background:#ffffff;border:1px solid var(--line);border-radius:16px}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:0;font:inherit;font-size:16px;font-weight:600;color:var(--ink);text-align:left;padding:20px 22px;cursor:pointer;min-height:64px}
+.faq-q:hover{color:#013D74}
+.faq-pm{width:28px;height:28px;border-radius:50%;background:var(--surface);display:inline-flex;align-items:center;justify-content:center;flex:none;transition:transform .3s var(--ease)}
+.faq-a{margin:0;padding:0 22px 22px;font-size:15px;line-height:1.7;color:var(--body)}
+
+/* CTA final */
+.final{position:relative;overflow:hidden}
+.final-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 48px;padding-top:clamp(64px,8vw,104px);padding-bottom:clamp(64px,8vw,104px);position:relative}
+.final h2{max-width:640px}
+
+.foot{background:#041431;color:var(--on-navy-2);font-size:13px}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;padding-top:28px;padding-bottom:28px}
+
+@media (max-width: 960px){
+.nav,.hide-m{display:none !important}
+.hero-grid{grid-template-columns:1fr}
+.viz{justify-self:center;max-width:440px}
+.grid3,.stack,.cases{grid-template-columns:1fr}
+.fmt{grid-template-columns:1fr}
+.also{grid-template-columns:1fr}
+.steps{grid-template-columns:1fr}
+.step::after{display:none}
+.node-m{display:none}
+.node-in{padding:6px 10px 6px 6px;gap:7px}
+.node-n{font-size:12px}
+.node-av{width:22px;height:22px;font-size:9.5px}
+.core{width:58%;padding:14px}
+.core-t{font-size:16px}
+.viz{margin-bottom:24px}
+.cmp-wrap{overflow-x:auto;margin:0 -24px;padding:0 24px}
+.cmp{min-width:640px}
+}
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto}
+.rv,.node-in,.core-bar span,.viz-lines path,.dot::after,.step::before,.step::after{animation:none !important}
+.card,.fmt-c,.case,.case-img img{transition:none}
+}
+</style>
+</helmet>
+<div class="pg">
+
+<div class="demo" role="region" aria-label="Pré-visualização do mockup">
+<div class="wrap">
+<span class="demo-t">Mockup · ver a página de</span>
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3"><button type="button" class="demo-b" aria-pressed="{{t.on}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
+<span class="demo-t" style="margin-left: 12px">Tecnologias</span>
+<sc-for list="{{stackTabs}}" as="t" hint-placeholder-count="2"><button type="button" class="demo-b" aria-pressed="{{t.on}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
+</div>
+</div>
+
+<header class="hdr">
+<div class="wrap">
+<a href="#" aria-label="Yellowipe, página inicial" style="display: flex; align-items: center"><img src="/_blob/4eb33a48f536b4dfdc9e177d601a483d" alt="Yellowipe" style="height: 30px; width: auto; display: block"></a>
+<nav class="nav" aria-label="Principal">
+<a href="#" class="cur">Serviços <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
+<a href="#">Tecnologias <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
+<a href="#">Casos de sucesso</a>
+<a href="#">Sobre</a>
+<a href="#">Insights</a>
+<a href="#">Carreiras</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 12px; margin-left: auto">
+<div class="hide-m" style="display: flex; gap: 2px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px">
+<a href="#" aria-current="true" style="color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); border-radius: 6px; padding: 4px 7px">PT</a>
+<a href="#" style="color: var(--on-navy); text-decoration: none; padding: 4px 7px">BR</a>
+<a href="#" style="color: var(--on-navy); text-decoration: none; padding: 4px 7px">EN</a>
+</div>
+<a href="#contacto" class="btn-y" style="font-size: 14px; padding: 11px 18px; min-height: 44px; border-radius: 10px">Agendar conversa</a>
+</div>
+</div>
+</header>
+
+<main>
+<section class="hero on-navy">
+<img class="hero-tree" src="/_blob/7e4be3fbb3e0b5b33e759f2197426985" alt="" aria-hidden="true">
+<div class="wrap hero-grid">
+<div>
+<ol class="crumbs"><li><a href="#">Início</a></li><li aria-hidden="true">/</li><li><a href="#">Serviços</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: #ffffff">{{m.tag}}</li></ol>
+<p class="eyebrow eyebrow-y">{{m.eyebrow}}</p>
+<h1 class="h1">{{m.h1}} <span style="color: var(--yellow)">{{m.h1Hl}}</span></h1>
+<p class="hero-lead">{{m.lead}}</p>
+<ul class="badges"><sc-for list="{{m.badges}}" as="b" hint-placeholder-count="3"><li class="badge"><i aria-hidden="true"></i>{{b}}</li></sc-for></ul>
+<div class="hero-ctas">
+<a href="#contacto" class="btn-y">{{m.cta}} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="#como-funciona" class="lnk">Ver como funciona <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<div class="viz2" role="img" aria-label="{{m.vizLabel}}">
+<div class="vz-legend" aria-hidden="true"><span><i class="lg-y"></i>Yellowipe</span><span><i class="lg-c"></i>A sua empresa</span></div>
+
+<sc-if value="{{isContrate}}" hint-placeholder-val="{{ false }}">
+<div class="vz vz-c" aria-hidden="true">
+<div class="yw-card rc-team">
+<div class="avs"><span class="av av-y">MS</span><span class="av av-y">RP</span><span class="av av-y">JC</span></div>
+<div class="tx"><b>Recrutadores Yellowipe</b><small>A procurar: Tech lead Java · Lisboa</small></div>
+<span class="typing"><i></i><i></i><i></i></span>
+</div>
+<div class="flow-v"></div>
+<div class="rc-list">
+<div class="rc-hd"><b>Pipeline da vaga</b><span class="mono">Avaliados por engenheiros</span></div>
+<div class="rc-rows">
+<span class="rc-sweep"></span>
+<div class="rc-row rc-pick"><span class="av av-c">AS</span><span class="tx"><b>Ana S.</b><small>Java · Spring · 9 anos</small></span><span class="pill pill-g">Shortlist ✓</span></div>
+<div class="rc-row"><span class="av av-c">BT</span><span class="tx"><b>Bruno T.</b><small>Java · Kotlin · 7 anos</small></span><span class="pill pill-g">Avaliado ✓</span></div>
+<div class="rc-row"><span class="av av-c">CL</span><span class="tx"><b>Carla L.</b><small>Java · AWS · 8 anos</small></span><span class="pill pill-a">Entrevista técnica</span></div>
+<div class="rc-row"><span class="av av-c">DM</span><span class="tx"><b>Diogo M.</b><small>Java · Quarkus · 6 anos</small></span><span class="pill">Em triagem</span></div>
+</div>
+</div>
+<div class="flow-v"></div>
+<div class="cl-card rc-hire">
+<span class="cl-k">A sua empresa</span>
+<div class="rc-hire-in"><span class="av av-c av-ok">AS</span><span class="tx"><b>Ana S. · Tech lead Java</b><small>Contratação direta · começa a 3 de março</small></span><span class="ok">✓</span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isReforce}}" hint-placeholder-val="{{ true }}">
+<div class="vz vz-r" aria-hidden="true">
+<div class="rf-frame">
+<span class="rf-tab">A sua equipa · Pagamentos</span>
+<div class="rf-team">
+<span class="av av-c">JP</span><span class="av av-c">SM</span><span class="av av-c">LC</span>
+<span class="rf-plus">+</span>
+<span class="av av-y rf-in" style="--i: 0">FE</span><span class="av av-y rf-in" style="--i: 1">QA</span><span class="av av-y rf-in" style="--i: 2">DO</span>
+<span class="rf-cap">3 consultores Yellowipe nesta sprint</span>
+</div>
+<div class="rf-board">
+<div class="rf-col"><span class="rf-h">A fazer</span><span class="tk"><i></i><i class="s"></i><span class="av av-c av-xs">SM</span></span><span class="tk"><i></i><i class="s"></i><span class="av av-y av-xs">QA</span></span></div>
+<div class="rf-col"><span class="rf-h">Em curso</span><span class="tk"><i></i><i class="s"></i><span class="av av-c av-xs">JP</span></span><span class="slot"><span class="tk tk-y tk-p1"><i></i><i class="s"></i><span class="av av-y av-xs">FE</span></span></span></div>
+<div class="rf-col"><span class="rf-h">Feito</span><span class="tk"><i></i><i class="s"></i><span class="av av-y av-xs">DO</span></span><span class="slot"><span class="tk tk-y tk-p2"><i></i><i class="s"></i><span class="av av-y av-xs">FE</span></span></span></div>
+</div>
+</div>
+<div class="flow-v flow-short"></div>
+<div class="yw-card rf-am">
+<span class="av av-y">GC</span>
+<span class="tx"><b>Gestor de conta Yellowipe</b><small>Contrato, acompanhamento e substituição</small></span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isConstrua}}" hint-placeholder-val="{{ false }}">
+<div class="vz vz-b" aria-hidden="true">
+<div class="bd-grid">
+<div class="yw-card bd-squad">
+<div class="bd-pm"><span class="av av-y av-lg">PM</span><span class="tx"><b>Gestor de projeto</b><small>Responde pela entrega</small></span></div>
+<div class="bd-rows">
+<div class="bd-row"><span class="av av-y av-xs">UX</span><span>Design</span><i class="bd-dot"></i></div>
+<div class="bd-row"><span class="av av-y av-xs">FE</span><span>Front-end</span><i class="bd-dot" style="animation-delay: .4s"></i></div>
+<div class="bd-row"><span class="av av-y av-xs">BE</span><span>Back-end</span><i class="bd-dot" style="animation-delay: .8s"></i></div>
+<div class="bd-row"><span class="av av-y av-xs">QA</span><span>Qualidade</span><i class="bd-dot" style="animation-delay: 1.2s"></i></div>
+</div>
+</div>
+<div class="bd-win">
+<div class="bd-bar"><i></i><i></i><i></i><span>portal-clientes.app</span></div>
+<div class="bd-canvas">
+<span class="bk bk-nav" style="--i: 0"></span>
+<span class="bk bk-hero" style="--i: 1"></span>
+<span class="bk bk-c" style="--i: 2"></span><span class="bk bk-c" style="--i: 3"></span><span class="bk bk-c" style="--i: 4"></span>
+<span class="bk bk-row" style="--i: 5"></span>
+</div>
+<span class="bd-badge">Sprint 6 de 8</span>
+</div>
+</div>
+<div class="bd-time">
+<div class="bd-line"><span></span></div>
+<div class="bd-ms"><span class="ms done">Descoberta</span><span class="ms done">Desenho</span><span class="ms now">Construção</span><span class="ms">Go-live</span></div>
+</div>
+<div class="cl-card bd-client">
+<span class="cl-k">A sua empresa</span>
+<span class="bd-client-t">Define os objetivos e aprova cada demo <span class="ok">✓</span></span>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section aria-label="Clientes" style="border-bottom: 1px solid var(--line)">
+<div class="wrap" style="padding-top: 40px; padding-bottom: 44px">
+<div class="logos">
+<img src="/_blob/cdfad7e62e9abc275a70795b87329aea" alt="MC Sonae" style="height: 30px">
+<img src="/_blob/3c62f06aaf3e0fad8393aeb3f72ab9de" alt="Sky" style="height: 30px">
+<img src="/_blob/174ef5d2685e1a15b83f2f8ad76c0fba" alt="Efacec" style="height: 26px">
+<img src="/_blob/ffc0dd81a6b8984be6fb0670b7131373" alt="Xing" style="height: 24px">
+<img src="/_blob/56442b654147f1f8811ff37c7af10305" alt="Medicare" style="height: 24px">
+<img src="/_blob/610ea5da7b04e8c9619acbc6537fca50" alt="Zühlke" style="height: 32px">
+<img src="/_blob/08182d6fc8db37821ad7ec127d6fd4cf" alt="Clever Advertising" style="height: 28px">
+</div>
+</div>
+</section>
+
+<section class="sec" style="padding-top: clamp(56px, 7vw, 96px)">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div class="head rv">
+<p class="eyebrow">Quem faz o quê</p>
+<h2 class="h2">Um parceiro, três níveis de envolvimento.</h2>
+<p class="lead">{{m.whoLead}}</p>
+</div>
+<div class="who-wrap rv">
+<div class="who" role="table" aria-label="Responsabilidades da Yellowipe e da sua empresa em cada modelo">
+<div class="who-r who-hd" role="row"><span class="who-c" role="columnheader">Responsabilidade</span><sc-for list="{{whoCols}}" as="c" hint-placeholder-count="3"><span class="who-c {{c.cls}}" role="columnheader"><button type="button" class="who-btn" onClick="{{c.pick}}">{{c.t}}</button></span></sc-for></div>
+<sc-for list="{{whoRows}}" as="r" hint-placeholder-count="5">
+<div class="who-r" role="row"><span class="who-c who-k" role="rowheader">{{r.label}}</span><sc-for list="{{r.cells}}" as="c" hint-placeholder-count="3"><span class="who-c {{c.cls}}" role="cell"><span class="wp {{c.wp}}"><i aria-hidden="true"></i>{{c.t}}</span></span></sc-for></div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
+<div class="head rv">
+<p class="eyebrow">{{m.whyEyebrow}}</p>
+<h2 class="h2">{{m.whyTitle}}</h2>
+<p class="lead">{{m.whyLead}}</p>
+</div>
+<div class="grid3">
+<sc-for list="{{m.benefits}}" as="b" hint-placeholder-count="6">
+<article class="card rv {{b.rv}}">
+<span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{b.icon}}"></path></svg></span>
+<h3>{{b.t}}</h3>
+<p>{{b.x}}</p>
+</article>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section class="sec" style="background: var(--surface)">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 44px">
+<div class="head rv">
+<p class="eyebrow">Formatos</p>
+<h2 class="h2">{{m.fmtTitle}}</h2>
+<p class="lead">{{m.fmtLead}}</p>
+</div>
+<div>
+<div class="fmt">
+<sc-for list="{{m.formats}}" as="f" hint-placeholder-count="2">
+<article class="fmt-c rv {{f.rv}}">
+<span class="fmt-tag">{{f.tag}}</span>
+<h3>{{f.t}}</h3>
+<p>{{f.x}}</p>
+<ul class="ticks"><sc-for list="{{f.ticks}}" as="k" hint-placeholder-count="3"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{k}}</li></sc-for></ul>
+</article>
+</sc-for>
+</div>
+<div class="also rv">
+<span class="also-t">Também disponível</span>
+<sc-for list="{{also}}" as="a" hint-placeholder-count="2">
+<a href="#" class="also-c" onClick="{{a.pick}}"><span class="fmt-tag">{{a.tag}}</span><span class="also-x"><b>{{a.name}}</b><small>{{a.text}}</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section id="como-funciona" class="sec on-navy">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
+<div class="head rv">
+<p class="eyebrow">Como funciona</p>
+<h2 class="h2">{{m.stepsTitle}}</h2>
+<p class="lead">{{m.stepsLead}}</p>
+</div>
+<ol class="steps">
+<sc-for list="{{m.steps}}" as="s" hint-placeholder-count="4">
+<li class="step rv {{s.rv}}" style="--sd: {{s.sd}}"><span class="step-n">{{s.n}}</span><h3>{{s.t}}</h3><p>{{s.x}}</p></li>
+</sc-for>
+</ol>
+</div>
+</section>
+
+<sc-if value="{{stackLogos}}" hint-placeholder-val="{{ true }}">
+<section class="sec" style="background: var(--surface); overflow: hidden">
+<div class="wrap stk2">
+<div class="stk2-l rv">
+<p class="eyebrow">Tecnologias</p>
+<h2 class="h2">{{m.stackTitle}}</h2>
+<p class="lead">{{m.stackLead}}</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 10px">
+<a href="#contacto" class="btn-y">{{m.stackCta}} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="#" class="lnk lnk-d">Todas as tecnologias</a>
+</div>
+</div>
+<div class="stk2-r" aria-label="Tecnologias com que trabalhamos">
+<sc-for list="{{logoRows}}" as="row" hint-placeholder-count="3">
+<div class="lg-row {{row.cls}}"><ul class="lg-track" style="--dur: {{row.dur}}">
+<sc-for list="{{row.items}}" as="t" hint-placeholder-count="16"><li class="lg-card" aria-hidden="{{t.dup}}"><img src="{{t.src}}" alt="" width="34" height="34"><span>{{t.n}}</span><sc-if value="{{t.ai}}" hint-placeholder-val="{{ false }}"><svg class="lg-ai" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5C12.7 7.6 16.4 11.3 22.5 12 16.4 12.7 12.7 16.4 12 22.5 11.3 16.4 7.6 12.7 1.5 12 7.6 11.3 11.3 7.6 12 1.5Z" fill="#F4BE14"></path></svg></sc-if></li></sc-for>
+</ul></div>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{stackGroups}}" hint-placeholder-val="{{ false }}">
+<section class="sec">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px">
+<div class="head rv">
+<p class="eyebrow">Tecnologias</p>
+<h2 class="h2">{{m.stackTitle}}</h2>
+</div>
+<a href="#" class="lnk lnk-d rv">Todas as tecnologias <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="stack">
+<sc-for list="{{stack}}" as="g" hint-placeholder-count="6">
+<div class="stk rv {{g.rv}} {{g.cls}}">
+<span class="stk-h"><span class="sq" aria-hidden="true"></span>{{g.name}}</span>
+<ul class="chips"><sc-for list="{{g.items}}" as="t" hint-placeholder-count="5"><li>{{t}}</li></sc-for></ul>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+
+
+<section class="sec on-navy">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px">
+<div class="head rv">
+<p class="eyebrow">Casos de sucesso</p>
+<h2 class="h2">Resultados com números, não promessas.</h2>
+</div>
+<a href="#" class="lnk rv">Ver todos os casos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="cases">
+<a href="#" class="case rv">
+<div class="case-img"><img src="/_blob/f93fad7239beb5bba2dd025aacc0833e" alt="Plataforma da Clever Advertising"></div>
+<div class="case-b"><img src="/_blob/4f4b5f5de27f5c30a9120a6c7b55f189" alt="Clever Advertising" style="height: 22px; width: auto; align-self: flex-start"><p class="case-k">32 → 1.600+ testes</p><p>QA escalável em seis meses, com automação assistida por IA.</p></div>
+</a>
+<a href="#" class="case rv rv-2">
+<div class="case-img"><img src="/_blob/f2410cc99434d6fc69e007ab4dc50423" alt="Dashboard operacional da Linde"></div>
+<div class="case-b"><img src="/_blob/d1e4d36b7a28cf780538f093143b1ff3" alt="Linde" style="height: 22px; width: auto; align-self: flex-start"><p class="case-k">−94% no tempo de regressão</p><p>Suíte recuperada numa semana, com testes automatizados e CI/CD.</p></div>
+</a>
+<a href="#" class="case rv rv-3">
+<div class="case-img" style="display: flex; align-items: flex-end; justify-content: center; padding-top: 16px; box-sizing: border-box"><img src="/_blob/121dfb89983b97b41515560fe4cb7545" alt="Aplicação Hapvida" style="width: 72%; height: auto; object-fit: contain"></div>
+<div class="case-b"><img src="/_blob/ee90fef6f268df2b953b5cf0da785130" alt="Hapvida" style="height: 22px; width: auto; align-self: flex-start"><p class="case-k">Teleconsulta para milhões</p><p>Aplicação desenvolvida de ponta a ponta, com acesso remoto a cuidados de saúde.</p></div>
+</a>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div class="head rv">
+<p class="eyebrow">Comparação</p>
+<h2 class="h2">{{m.cmpTitle}}</h2>
+</div>
+<div class="cmp-wrap rv">
+<div class="cmp" role="table" aria-label="{{m.cmpTitle}}">
+<div class="cmp-r cmp-hd" role="row"><span class="cmp-c cmp-k" role="columnheader">Critério</span><sc-for list="{{m.cmpCols}}" as="c" hint-placeholder-count="3"><span class="cmp-c {{c.cls}}" role="columnheader">{{c.t}}</span></sc-for></div>
+<sc-for list="{{cmpRows}}" as="r" hint-placeholder-count="6">
+<div class="cmp-r" role="row"><span class="cmp-c cmp-k" role="rowheader">{{r.label}}</span><sc-for list="{{r.cells}}" as="c" hint-placeholder-count="3"><span class="cmp-c {{c.cls}}" role="cell"><span class="mk mk-{{c.tone}}" aria-hidden="true">{{c.glyph}}</span>{{c.t}}</span></sc-for></div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec" style="background: var(--surface)">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div class="head rv">
+<p class="eyebrow">Perguntas frequentes</p>
+<h2 class="h2">{{m.faqTitle}}</h2>
+</div>
+<div class="faq">
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="5">
+<div class="faq-i">
+<button type="button" class="faq-q" aria-expanded="{{f.open}}" onClick="{{f.toggle}}">{{f.q}}<span class="faq-pm" style="transform: rotate({{f.rot}})" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}"><p class="faq-a">{{f.a}}</p></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="contacto" class="final on-navy">
+<img class="hero-tree" src="/_blob/7e4be3fbb3e0b5b33e759f2197426985" alt="" aria-hidden="true" style="left: auto; right: -120px; bottom: -120px">
+<div class="wrap final-in">
+<div class="head rv">
+<p class="eyebrow eyebrow-y">Próximo passo</p>
+<h2 class="h2">{{m.finalTitle}}</h2>
+<p class="lead">Respondemos no mesmo dia útil.</p>
+</div>
+<div class="rv" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px">
+<a href="#" class="btn-y">{{m.cta}} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="#" class="lnk" style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 14px; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: rgba(255,255,255,0.4)">Ou envie-nos um email para [email comercial]@yellowipe.io</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<img src="/_blob/4eb33a48f536b4dfdc9e177d601a483d" alt="Yellowipe" style="height: 26px; width: auto">
+<p style="margin: 0">© 2026 Yellowipe. Parceiro de Capacidade Tecnológica em Portugal, no Brasil e nos Estados Unidos.</p>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { model: 'reforce', faq: 0, stack: 'logos' };
+  }
+  renderVals() {
+    var self = this;
+    var I = {
+      team: 'M16 19v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1M9 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M22 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8',
+      puzzle: 'M4 7h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4v-4a2 2 0 1 0 0-4z',
+      scale: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
+      clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M12 7v5l3 2',
+      swap: 'M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7',
+      chart: 'M3 3v18h18M7 15l4-4 3 3 5-6',
+      search: 'M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16M21 21l-4.3-4.3',
+      check: 'M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11',
+      globe: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18',
+      target: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8M12 12h.01',
+      eye: 'M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6',
+      layers: 'M12 3l9 5-9 5-9-5 9-5M3 13l9 5 9-5',
+      spark: 'M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6',
+      loop: 'M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5'
+    };
+    var M = {
+      contrate: {
+        label: 'Contrate · Recrutamento de TI', tag: 'Contrate', eyebrow: 'Contrate · Recrutamento de TI',
+        h1: 'Os nossos recrutadores encontram', h1Hl: 'o seu próximo profissional.',
+        lead: 'Uma equipa de recrutadores especializados em tecnologia procura, avalia e apresenta os candidatos certos. Contrata diretamente: o profissional passa a fazer parte da sua empresa.', whoLead: 'No Contrate, a Yellowipe encontra e avalia. A partir da contratação, o profissional é seu.',
+        badges: ['Recrutadores especializados em tech', 'Avaliação técnica antes da shortlist', 'Portugal, Brasil e EUA'],
+        cta: 'Abrir uma vaga',
+        vizLabel: 'Ilustração: recrutadores da Yellowipe avaliam candidatos e a sua empresa contrata diretamente o escolhido.',
+        coreKicker: 'Vaga em curso', coreTitle: 'Tech lead · Java', coreStatus: 'Shortlist enviada: 4 candidatos', vizChip: 'Avaliação técnica antes de chegar a si',
+        nodes: [['SO', 'Sourcing', 'Pesquisa ativa'], ['TR', 'Triagem', 'Perfil e condições'], ['AT', 'Avaliação técnica', 'Por engenheiros'], ['EN', 'Entrevistas', 'Só os finalistas'], ['PR', 'Proposta', 'E integração']],
+        whyEyebrow: 'Porquê o Contrate', whyTitle: 'Contrate melhor, sem parar a equipa para recrutar.',
+        whyLead: 'Tratamos do processo inteiro. A sua equipa só entrevista quem já passou na avaliação técnica.',
+        benefits: [
+          [I.search, 'Recrutadores de tecnologia', 'Falam a língua das stacks e distinguem um sénior de um currículo bem escrito.'],
+          [I.check, 'Avaliação técnica', 'Cada candidato da shortlist passou por avaliação técnica antes de chegar a si.'],
+          [I.clock, 'Menos tempo da sua equipa', 'Fazemos sourcing, triagem e agendamento. A equipa só entra nas entrevistas finais.'],
+          [I.target, 'Talento passivo', 'Chegamos a profissionais que não estão a responder a anúncios.'],
+          [I.globe, 'Três mercados', 'Recrutamento em Portugal, no Brasil e para equipas nos Estados Unidos.'],
+          [I.loop, 'Acompanhamento após a contratação', 'Seguimos a integração nos primeiros meses para confirmar que a escolha foi a certa.']
+        ],
+        fmtTitle: 'Do primeiro developer à liderança técnica.', fmtLead: 'O mesmo processo, ajustado à senioridade e à confidencialidade de cada vaga.',
+        formats: [
+          ['Vagas', 'Perfis para a sua equipa', 'Developers, QA, DevOps e dados para contratação permanente.', ['De júnior a arquiteto', 'Shortlist avaliada tecnicamente', 'Uma ou várias vagas em paralelo']],
+          ['Liderança', 'Lideranças tecnológicas', 'Tech leads, engineering managers e CTOs, com pesquisa direta e confidencial.', ['Pesquisa direta e discreta', 'Avaliação técnica e de liderança', 'Acompanhamento da integração']]
+        ],
+        stepsTitle: 'Da vaga aberta à contratação.', stepsLead: 'Um processo claro, com pontos de situação em cada fase.',
+        steps: [['Briefing', 'Definimos perfil, stack, senioridade e condições.'], ['Pesquisa', 'Sourcing ativo e triagem dos candidatos.'], ['Shortlist', 'Candidatos avaliados tecnicamente, com notas da avaliação.'], ['Contratação', 'Apoiamos entrevistas, proposta e integração.']],
+        stackTitle: 'Recrutamos em qualquer stack que a sua equipa use.', stackLead: 'Os nossos recrutadores trabalham com engenheiros que avaliam cada candidato na tecnologia da vaga, das mais usadas aos sistemas legados.', stackCta: 'Recrutar para a minha stack',
+        cmpTitle: 'Porque não recrutar sozinho?',
+        cmpCols: ['Yellowipe · Contrate', 'Recrutar internamente', 'Agência generalista'],
+        cmp: [
+          ['Conhecimento técnico', ['good', 'Recrutadores tech'], ['mid', 'Depende da equipa'], ['bad', 'Limitado']],
+          ['Avaliação técnica antes da shortlist', ['good', 'Sim'], ['mid', 'Tempo da sua equipa'], ['bad', 'Raramente']],
+          ['Acesso a talento passivo', ['good', 'Sim'], ['bad', 'Limitado'], ['mid', 'Parcial']],
+          ['Tempo da sua equipa', ['good', 'Só entrevistas finais'], ['bad', 'Todo o processo'], ['mid', 'Muita triagem']],
+          ['Mercados', ['good', 'Portugal, Brasil e EUA'], ['mid', 'Local'], ['mid', 'Variável']]
+        ],
+        faqTitle: 'O que nos perguntam sobre recrutamento.',
+        faqs: [
+          ['Que perfis recrutam?', 'Developers, QA, DevOps, dados e IA, de júnior a arquiteto, e lideranças como tech leads, engineering managers e CTOs.'],
+          ['Como avaliam tecnicamente os candidatos?', 'Com entrevistas técnicas conduzidas por engenheiros e, quando faz sentido, exercícios práticos. Recebe as notas da avaliação com a shortlist.'],
+          ['Quanto tempo demora?', '[Prazo médio até à shortlist a confirmar com a equipa de recrutamento.]'],
+          ['Como funciona o preço?', '[Modelo de preço a confirmar: percentagem do salário anual, retainer ou misto.]'],
+          ['Qual a diferença entre Contrate, Reforce e Construa?', 'No Contrate, a pessoa fica na sua empresa. No Reforce, especialistas da Yellowipe trabalham na sua equipa. No Construa, uma equipa da Yellowipe entrega a solução.']
+        ],
+        finalTitle: 'Que perfil precisa de contratar?'
+      },
+      reforce: {
+        label: 'Reforce · Outsourcing de TI', tag: 'Reforce', eyebrow: 'Reforce · Outsourcing de TI',
+        h1: 'Os nossos consultores,', h1Hl: 'a trabalhar dentro da sua equipa.',
+        lead: 'Consultores de tecnologia da Yellowipe juntam-se à sua equipa e trabalham com as suas ferramentas e prioridades. Gere o trabalho; nós tratamos do contrato, do acompanhamento e da substituição.', whoLead: 'No Reforce, os consultores são da Yellowipe e trabalham sob a sua direção. Gere o dia a dia; nós garantimos as pessoas.',
+        badges: ['Seleção técnica por seniores', 'Horas em comum com Europa e EUA', 'Desenvolvimento assistido por IA'],
+        cta: 'Pedir perfis',
+        vizLabel: 'Ilustração: consultores da Yellowipe dentro da equipa do cliente, acompanhados por um gestor de conta Yellowipe.',
+        coreKicker: 'A sua equipa', coreTitle: 'Plataforma de pagamentos', coreStatus: '3 especialistas a entrar na sprint 14', vizChip: 'Integrados no seu Jira, Git e rituais',
+        nodes: [['FE', 'Front-end sénior', 'React · TypeScript'], ['QA', 'QA automation', 'Playwright'], ['DO', 'DevOps', 'AWS · Terraform'], ['DE', 'Data engineer', 'Python · dbt'], ['TL', 'Tech lead', 'Java · Spring']],
+        whyEyebrow: 'Porquê o Reforce', whyTitle: 'Mais capacidade. Sem mudar a forma como trabalha.',
+        whyLead: 'Os especialistas juntam-se à sua equipa e trabalham com as suas ferramentas e processos. Mantém o controlo das prioridades.',
+        benefits: [
+          [I.team, 'Integração real', 'Usam o seu Jira, o seu Git e as suas cerimónias. Para a equipa, são mais colegas.'],
+          [I.puzzle, 'Competências que faltam', 'Cubra lacunas em cloud, dados, QA ou IA sem abrir um processo de recrutamento de meses.'],
+          [I.scale, 'Escala para cima e para baixo', 'Aumente a equipa para um lançamento e reduza depois, sem custos de contratação.'],
+          [I.clock, 'Fuso e língua compatíveis', 'Equipas em Portugal e no Brasil, em português e inglês, com horas em comum com a Europa e os EUA.'],
+          [I.swap, 'Substituição sem recomeçar', 'Se um perfil não encaixar, propomos alternativa sem voltar ao início do processo.'],
+          [I.chart, 'Acompanhamento contínuo', 'Um gestor de conta acompanha desempenho e satisfação, com pontos de situação regulares.']
+        ],
+        fmtTitle: 'Dois formatos. O mesmo nível de exigência.', fmtLead: 'Comece com um especialista ou com uma equipa completa, e mude de formato quando a necessidade mudar.',
+        formats: [
+          ['Alocação', 'Especialistas na sua equipa', 'Perfis individuais que entram na sua equipa. Define as prioridades e gere o dia a dia.', ['De um a vários perfis', 'Gestão técnica do seu lado', 'Ideal para lacunas e picos de trabalho']],
+          ['Equipa', 'Equipa dedicada', 'Uma equipa completa com tech lead da Yellowipe. Define o quê; nós organizamos o como.', ['Tech lead e QA incluídos', 'Menos gestão do seu lado', 'Ideal para frentes de produto contínuas']]
+        ],
+        stepsTitle: 'Da conversa à primeira sprint.', stepsLead: 'Só avança com quem escolher, e acompanhamos cada profissional depois da entrada.',
+        steps: [['Conversa', 'Percebemos a equipa, a stack e o que tem de ser entregue.'], ['Perfis', 'Apresentamos candidatos já avaliados tecnicamente, em [x] dias.'], ['Entrevistas', 'Entrevista quem quiser. Só avança com quem escolher.'], ['Integração', 'Onboarding nas suas ferramentas e acompanhamento contínuo.']],
+        stackTitle: 'A sua stack é a nossa stack.', stackLead: 'Consultores que já trabalham nas tecnologias que usa, das mais comuns às de nicho e aos sistemas legados, e com as ferramentas de IA que aceleram a entrega.', stackCta: 'Pedir especialistas na minha stack',
+        cmpTitle: 'Reforçar, contratar ou ir para longe?',
+        cmpCols: ['Yellowipe · Reforce', 'Contratar internamente', 'Offshore distante'],
+        cmp: [
+          ['Tempo até começar', ['good', 'Semanas'], ['bad', 'Meses'], ['good', 'Semanas']],
+          ['Horas em comum', ['good', 'Europa e EUA'], ['good', 'Total'], ['bad', 'Poucas']],
+          ['Seleção técnica', ['good', 'Por engenheiros seniores'], ['mid', 'Depende da equipa'], ['mid', 'Variável']],
+          ['Língua e cultura', ['good', 'Português e inglês'], ['good', 'Total'], ['mid', 'Variável']],
+          ['Custos fixos e encargos', ['good', 'Nenhuns'], ['bad', 'Salário, encargos e recrutamento'], ['good', 'Nenhuns']],
+          ['Escalar ou reduzir', ['good', 'Flexível'], ['bad', 'Lento'], ['mid', 'Contratos rígidos']]
+        ],
+        faqTitle: 'O que nos perguntam sobre o Reforce.',
+        faqs: [
+          ['O que é o outsourcing de TI no modelo Reforce?', 'São profissionais da Yellowipe que trabalham dentro da sua equipa, com as suas ferramentas e prioridades. A relação contratual é connosco; o dia a dia é consigo.'],
+          ['Qual a diferença entre alocação e equipa dedicada?', 'Na alocação, gere os especialistas como parte da sua equipa. Na equipa dedicada, um tech lead da Yellowipe organiza o trabalho a partir das prioridades que define.'],
+          ['Quanto tempo demora a ter alguém na equipa?', '[Prazo médio até aos primeiros perfis e até ao arranque a confirmar.]'],
+          ['Os profissionais usam ferramentas de IA?', 'Sim. Trabalham com assistentes como Claude Code, Cursor e GitHub Copilot, sempre dentro das regras de segurança da sua empresa.'],
+          ['Quanto custa?', 'Depende dos perfis, da senioridade e da duração. Enviamos uma proposta depois da primeira conversa.']
+        ],
+        finalTitle: 'Diga-nos que perfis faltam na sua equipa.'
+      },
+      construa: {
+        label: 'Construa · Desenvolvimento de software', tag: 'Construa', eyebrow: 'Construa · Desenvolvimento de software',
+        h1: 'A nossa equipa e o nosso gestor', h1Hl: 'a construir o seu produto.',
+        lead: 'Uma equipa completa da Yellowipe, liderada por um gestor de projeto, constrói a solução de ponta a ponta. Define o objetivo e aprova as entregas; nós respondemos pelo resultado.', whoLead: 'No Construa, a Yellowipe responde pela entrega: equipa, gestão e qualidade. Define o objetivo e aprova cada demo.',
+        badges: ['Equipa completa e gerida', 'Demos no fim de cada sprint', 'Testes automáticos desde o início'],
+        cta: 'Falar do projeto',
+        vizLabel: 'Ilustração: equipa Yellowipe com gestor de projeto a construir o produto do cliente, sprint a sprint.',
+        coreKicker: 'O seu produto', coreTitle: 'Portal de clientes', coreStatus: 'Sprint 6 entregue · 3 funcionalidades em produção', vizChip: 'Código revisto por engenheiros seniores',
+        nodes: [['PM', 'Product manager', 'Roadmap e prioridades'], ['UX', 'UX e UI', 'Protótipos e testes'], ['EN', 'Engenharia', 'Web, mobile e APIs'], ['QA', 'Qualidade', 'Testes automáticos'], ['DO', 'DevOps', 'CI/CD e cloud']],
+        whyEyebrow: 'Porquê o Construa', whyTitle: 'Software crítico entregue, sem sobrecarregar a sua equipa.',
+        whyLead: 'Define os objetivos e as prioridades. Nós tratamos da execução, com uma equipa que se responsabiliza pelo resultado.',
+        benefits: [
+          [I.target, 'Foco no negócio', 'Define objetivos e prioridades; a execução diária fica connosco.'],
+          [I.layers, 'Equipa completa', 'Produto, design, engenharia, QA e DevOps numa só equipa, já habituada a trabalhar junta.'],
+          [I.eye, 'Visibilidade total', 'Demos no fim de cada sprint e métricas de qualidade partilhadas consigo.'],
+          [I.check, 'Qualidade desde o primeiro dia', 'Testes automáticos e CI/CD em cada alteração, como no caso Linde.'],
+          [I.spark, 'IA no processo', 'Desenvolvimento acelerado com assistentes de código, sempre revisto por engenheiros seniores.'],
+          [I.loop, 'Continuidade', 'A mesma equipa mantém e evolui o produto depois do lançamento.']
+        ],
+        fmtTitle: 'Um projeto fechado ou uma equipa de produto.', fmtLead: 'Escolha pelo grau de certeza que já tem sobre o que quer construir.',
+        formats: [
+          ['Projeto', 'Âmbito fechado', 'Âmbito, prazo e orçamento definidos à partida, com entregas por fases.', ['Ideal para MVPs e módulos', 'Plano de entregas acordado', 'Passagem com documentação']],
+          ['Produto', 'Equipa de produto contínua', 'Uma equipa estável que evolui o produto a partir de um roadmap partilhado.', ['Roadmap revisto consigo', 'Ideal para produtos em crescimento', 'Mesma equipa ao longo do tempo']]
+        ],
+        stepsTitle: 'Do problema ao software em produção.', stepsLead: 'Sprints curtas, demos frequentes e qualidade medida em cada entrega.',
+        steps: [['Descoberta', 'Objetivos, utilizadores e restrições técnicas.'], ['Desenho', 'Arquitetura, protótipos e plano de entregas.'], ['Construção', 'Sprints com demos e testes automáticos.'], ['Go-live e evolução', 'Lançamento acompanhado e melhoria contínua.']],
+        stackTitle: 'Construímos na stack que faz sentido para si.', stackLead: 'Escolhemos a tecnologia com a sua equipa: a que já usa, ou a que melhor serve o produto, sempre com IA no processo de desenvolvimento.', stackCta: 'Falar do projeto',
+        cmpTitle: 'Construir connosco, montar equipa ou juntar freelancers?',
+        cmpCols: ['Yellowipe · Construa', 'Montar equipa interna', 'Freelancers'],
+        cmp: [
+          ['Tempo até arrancar', ['good', 'Semanas'], ['bad', 'Meses'], ['mid', 'Rápido, mas disperso']],
+          ['Equipa completa, do produto ao QA', ['good', 'Sim'], ['mid', 'Tem de a montar'], ['bad', 'Raramente']],
+          ['Responsabilidade pela entrega', ['good', 'Da Yellowipe'], ['mid', 'Sua'], ['bad', 'Repartida']],
+          ['Qualidade e testes', ['good', 'Automáticos desde o início'], ['mid', 'Depende'], ['mid', 'Variável']],
+          ['Continuidade após o lançamento', ['good', 'A mesma equipa'], ['good', 'Sim'], ['bad', 'Incerta']]
+        ],
+        faqTitle: 'O que nos perguntam sobre o Construa.',
+        faqs: [
+          ['Que tipo de projetos fazem?', 'Aplicações web e mobile, plataformas enterprise, soluções de IA e cloud, de MVPs a sistemas críticos para milhões de utilizadores.'],
+          ['Trabalham com âmbito fechado?', 'Sim, para projetos com requisitos claros. Quando o produto ainda está a ser descoberto, recomendamos uma equipa de produto contínua.'],
+          ['De quem é o código?', 'O código e a propriedade intelectual são seus. [Confirmar a redação com o jurídico.]'],
+          ['Usam IA no desenvolvimento?', 'Sim, com assistentes de código e testes gerados com IA, sempre revistos por engenheiros seniores.'],
+          ['Quanto custa?', 'Depende do âmbito e da equipa. Depois da descoberta, enviamos uma proposta com plano de entregas.']
+        ],
+        finalTitle: 'Conte-nos o que quer construir.'
+      }
+    };
+    var order = ['contrate', 'reforce', 'construa'];
+    var short = { contrate: 'O talento certo, em contratação permanente.', reforce: 'Especialistas integrados na sua equipa.', construa: 'Uma equipa que entrega a solução.' };
+    var names = { contrate: 'Recrutamento de TI', reforce: 'Outsourcing de TI', construa: 'Desenvolvimento de software' };
+    var id = self.state.model, m = M[id];
+    var rvs = ['', 'rv-2', 'rv-3'];
+    var pos = [[20, 12, '-34px', '-24px', '-6deg'], [80, 10, '30px', '-28px', '5deg'], [86, 50, '38px', '6px', '-4deg'], [76, 86, '26px', '30px', '6deg'], [18, 80, '-32px', '26px', '-5deg']];
+    var view = {
+      label: m.label, tag: m.tag, eyebrow: m.eyebrow, h1: m.h1, h1Hl: m.h1Hl, lead: m.lead, badges: m.badges, cta: m.cta,
+      vizLabel: m.vizLabel, coreKicker: m.coreKicker, coreTitle: m.coreTitle, coreStatus: m.coreStatus, vizChip: m.vizChip,
+      whyEyebrow: m.whyEyebrow, whyTitle: m.whyTitle, whyLead: m.whyLead,
+      benefits: m.benefits.map(function (b, i) { return { icon: b[0], t: b[1], x: b[2], rv: rvs[i % 3] }; }),
+      fmtTitle: m.fmtTitle, fmtLead: m.fmtLead,
+      formats: m.formats.map(function (f, i) { return { tag: f[0], t: f[1], x: f[2], ticks: f[3], rv: rvs[i] }; }),
+      stepsTitle: m.stepsTitle, stepsLead: m.stepsLead,
+      steps: m.steps.map(function (s, i) { return { n: '0' + (i + 1), t: s[0], x: s[1], sd: (i * 3) + 's', rv: rvs[Math.min(i, 2)] }; }),
+      stackTitle: m.stackTitle, stackLead: m.stackLead, stackCta: m.stackCta, cmpTitle: m.cmpTitle,
+      cmpCols: m.cmpCols.map(function (c, i) { return { t: c, cls: i === 0 ? 'us' : '' }; }),
+      faqTitle: m.faqTitle, finalTitle: m.finalTitle, whoLead: m.whoLead
+    };
+    var LOGOS = [[{"n": "React", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48ZyBmaWxsPSIjNjFEQUZCIj48Y2lyY2xlIGN4PSI2NCIgY3k9IjY0IiByPSIxMS40Ii8+PHBhdGggZD0iTTEwNy4zIDQ1LjJjLTIuMi0uOC00LjUtMS42LTYuOS0yLjMuNi0yLjQgMS4xLTQuOCAxLjUtNy4xIDIuMS0xMy4yLS4yLTIyLjUtNi42LTI2LjEtMS45LTEuMS00LTEuNi02LjQtMS42LTcgMC0xNS45IDUuMi0yNC45IDEzLjktOS04LjctMTcuOS0xMy45LTI0LjktMTMuOS0yLjQgMC00LjUuNS02LjQgMS42LTYuNCAzLjctOC43IDEzLTYuNiAyNi4xLjQgMi4zLjkgNC43IDEuNSA3LjEtMi40LjctNC43IDEuNC02LjkgMi4zQzguMiA1MCAxLjQgNTYuNiAxLjQgNjRzNi45IDE0IDE5LjMgMTguOGMyLjIuOCA0LjUgMS42IDYuOSAyLjMtLjYgMi40LTEuMSA0LjgtMS41IDcuMS0yLjEgMTMuMi4yIDIyLjUgNi42IDI2LjEgMS45IDEuMSA0IDEuNiA2LjQgMS42IDcuMSAwIDE2LTUuMiAyNC45LTEzLjkgOSA4LjcgMTcuOSAxMy45IDI0LjkgMTMuOSAyLjQgMCA0LjUtLjUgNi40LTEuNiA2LjQtMy43IDguNy0xMyA2LjYtMjYuMS0uNC0yLjMtLjktNC43LTEuNS03LjEgMi40LS43IDQuNy0xLjQgNi45LTIuMyAxMi41LTQuOCAxOS4zLTExLjQgMTkuMy0xOC44cy02LjgtMTQtMTkuMy0xOC44ek05Mi41IDE0LjdjNC4xIDIuNCA1LjUgOS44IDMuOCAyMC4zLS4zIDIuMS0uOCA0LjMtMS40IDYuNi01LjItMS4yLTEwLjctMi0xNi41LTIuNS0zLjQtNC44LTYuOS05LjEtMTAuNC0xMyA3LjQtNy4zIDE0LjktMTIuMyAyMS0xMi4zIDEuMyAwIDIuNS4zIDMuNS45ek04MS4zIDc0Yy0xLjggMy4yLTMuOSA2LjQtNi4xIDkuNi0zLjcuMy03LjQuNC0xMS4yLjQtMy45IDAtNy42LS4xLTExLjItLjQtMi4yLTMuMi00LjItNi40LTYtOS42LTEuOS0zLjMtMy43LTYuNy01LjMtMTAgMS42LTMuMyAzLjQtNi43IDUuMy0xMCAxLjgtMy4yIDMuOS02LjQgNi4xLTkuNiAzLjctLjMgNy40LS40IDExLjItLjQgMy45IDAgNy42LjEgMTEuMi40IDIuMiAzLjIgNC4yIDYuNCA2IDkuNiAxLjkgMy4zIDMuNyA2LjcgNS4zIDEwLTEuNyAzLjMtMy40IDYuNi01LjMgMTB6bTguMy0zLjNjMS41IDMuNSAyLjcgNi45IDMuOCAxMC4zLTMuNC44LTcgMS40LTEwLjggMS45IDEuMi0xLjkgMi41LTMuOSAzLjYtNiAxLjItMi4xIDIuMy00LjIgMy40LTYuMnpNNjQgOTcuOGMtMi40LTIuNi00LjctNS40LTYuOS04LjMgMi4zLjEgNC42LjIgNi45LjIgMi4zIDAgNC42LS4xIDYuOS0uMi0yLjIgMi45LTQuNSA1LjctNi45IDguM3ptLTE4LjYtMTVjLTMuOC0uNS03LjQtMS4xLTEwLjgtMS45IDEuMS0zLjMgMi4zLTYuOCAzLjgtMTAuMyAxLjEgMiAyLjIgNC4xIDMuNCA2LjEgMS4yIDIuMiAyLjQgNC4xIDMuNiA2LjF6bS03LTI1LjVjLTEuNS0zLjUtMi43LTYuOS0zLjgtMTAuMyAzLjQtLjggNy0xLjQgMTAuOC0xLjktMS4yIDEuOS0yLjUgMy45LTMuNiA2LTEuMiAyLjEtMi4zIDQuMi0zLjQgNi4yek02NCAzMC4yYzIuNCAyLjYgNC43IDUuNCA2LjkgOC4zLTIuMy0uMS00LjYtLjItNi45LS4yLTIuMyAwLTQuNi4xLTYuOS4yIDIuMi0yLjkgNC41LTUuNyA2LjktOC4zem0yMi4yIDIxbC0zLjYtNmMzLjguNSA3LjQgMS4xIDEwLjggMS45LTEuMSAzLjMtMi4zIDYuOC0zLjggMTAuMy0xLjEtMi4xLTIuMi00LjItMy40LTYuMnpNMzEuNyAzNWMtMS43LTEwLjUtLjMtMTcuOSAzLjgtMjAuMyAxLS42IDIuMi0uOSAzLjUtLjkgNiAwIDEzLjUgNC45IDIxIDEyLjMtMy41IDMuOC03IDguMi0xMC40IDEzLTUuOC41LTExLjMgMS40LTE2LjUgMi41LS42LTIuMy0xLTQuNS0xLjQtNi42ek03IDY0YzAtNC43IDUuNy05LjcgMTUuNy0xMy40IDItLjggNC4yLTEuNSA2LjQtMi4xIDEuNiA1IDMuNiAxMC4zIDYgMTUuNi0yLjQgNS4zLTQuNSAxMC41LTYgMTUuNUMxNS4zIDc1LjYgNyA2OS42IDcgNjR6bTI4LjUgNDkuM2MtNC4xLTIuNC01LjUtOS44LTMuOC0yMC4zLjMtMi4xLjgtNC4zIDEuNC02LjYgNS4yIDEuMiAxMC43IDIgMTYuNSAyLjUgMy40IDQuOCA2LjkgOS4xIDEwLjQgMTMtNy40IDcuMy0xNC45IDEyLjMtMjEgMTIuMy0xLjMgMC0yLjUtLjMtMy41LS45ek05Ni4zIDkzYzEuNyAxMC41LjMgMTcuOS0zLjggMjAuMy0xIC42LTIuMi45LTMuNS45LTYgMC0xMy41LTQuOS0yMS0xMi4zIDMuNS0zLjggNy04LjIgMTAuNC0xMyA1LjgtLjUgMTEuMy0xLjQgMTYuNS0yLjUuNiAyLjMgMSA0LjUgMS40IDYuNnptOS0xNS42Yy0yIC44LTQuMiAxLjUtNi40IDIuMS0xLjYtNS0zLjYtMTAuMy02LTE1LjYgMi40LTUuMyA0LjUtMTAuNSA2LTE1LjUgMTMuOCA0IDIyLjEgMTAgMjIuMSAxNS42IDAgNC43LTUuOCA5LjctMTUuNyAxMy40eiIvPjwvZz48L3N2Zz4=", "ai": false}, {"n": "Angular", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjREQwMDMxIiBkPSJNIDY0IDE1LjM1OTM3NSBMIDE2LjMzMjAzMSAzMi4zNTkzNzUgTCAyMy42MDE1NjIgOTUuMzg2NzE5IEwgNjQgMTE3Ljc2MTcxOSBMIDEwNC4zOTg0MzggOTUuMzg2NzE5IEwgMTExLjY2Nzk2OSAzMi4zNTkzNzUgWiIvPjxwYXRoIGZpbGw9IiNDMzAwMkYiIGQ9Ik0gNjQgMTUuMzU5Mzc1IEwgNjQgMTE3Ljc2MTcxOSBMIDEwNC4zOTg0MzggOTUuMzg2NzE5IEwgMTExLjY2Nzk2OSAzMi4zNTkzNzUgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0gNjQgMjYuNjc1NzgxIEwgMzQuMjAzMTI1IDkzLjQ5MjE4OCBMIDQ1LjMxMjUgOTMuNDkyMTg4IEwgNTEuMzAwNzgxIDc4LjUzOTA2MiBMIDc2LjU5Mzc1IDc4LjUzOTA2MiBMIDgyLjU4NTkzOCA5My40OTIxODggTCA5My42OTUzMTIgOTMuNDkyMTg4IFogTSA3Mi43MDMxMjUgNjkuMzI0MjE5IEwgNTUuMjk2ODc1IDY5LjMyNDIxOSBMIDY0IDQ4LjM4MjgxMiBaIi8+PC9zdmc+", "ai": false}, {"n": "Vue.js", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBkPSJNMjUuOTk3IDkuMzkzbDIzLjAwMi4wMDlMNjQuMDM1IDM0LjM2IDc5LjAxOCA5LjQwNCAxMDIgOS4zOTggNjQuMTUgNzUuMDUzeiIgZmlsbD0iIzM1NDk1ZSIvPjxwYXRoIGQ9Ik0uOTEgOS41NjlsMjUuMDY3LS4xNzIgMzguMTUgNjUuNjU5TDEwMS45OCA5LjQwMWwyNS4xMS4wMjYtNjIuOTY2IDEwOC4wNnoiIGZpbGw9IiM0MWI4ODMiLz48L3N2Zz4=", "ai": false}, {"n": "TypeScript", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjIuNjcgNDdoOTkuNjd2NzMuNjdIMjIuNjd6Ii8+PHBhdGggZmlsbD0iIzAwN2FjYyIgZD0iTTEuNSA2My45MXY2Mi41aDEyNXYtMTI1SDEuNXptMTAwLjczLTVhMTUuNTYgMTUuNTYgMCAwMTcuODIgNC41IDIwLjU4IDIwLjU4IDAgMDEzIDRjMCAuMTYtNS40IDMuODEtOC42OSA1Ljg1LS4xMi4wOC0uNi0uNDQtMS4xMy0xLjIzYTcuMDkgNy4wOSAwIDAwLTUuODctMy41M2MtMy43OS0uMjYtNi4yMyAxLjczLTYuMjEgNWE0LjU4IDQuNTggMCAwMC41NCAyLjM0Yy44MyAxLjczIDIuMzggMi43NiA3LjI0IDQuODYgOC45NTAgMy44NSAxMi43OCA2LjM5IDE1LjE2IDEwIDIuNjYgNCAzLjI1IDEwLjQ2IDEuNDUgMTUuMjQtMiA1LjItNi45IDguNzMtMTMuODMgOS45YTM4LjMyIDM4LjMyIDAgMDEtOS41Mi0uMSAyMyAyMyAwIDAxLTEyLjcyLTYuNjNjLTEuMTUtMS4yNy0zLjM5LTQuNTgtMy4yNS00LjgyYTkuMzQwIDkuMzQwIDAgMDExLjE1LS43M0w4MiAxMDFsMy41OS0yLjA4Ljc1IDEuMTFhMTYuNzggMTYuNzggMCAwMDQuNzQgNC41NGM0IDIuMSA5LjQ2IDEuODEgMTIuMTYtLjYyYTUuNDMgNS40MyAwIDAwLjY5LTYuOTJjLTEtMS4zOS0zLTIuNTYtOC41OS01LTYuNDUtMi43OC05LjIzLTQuNS0xMS43Ny03LjI0YTE2LjQ4IDE2LjQ4IDAgMDEtMy40My02LjI1IDI1IDI1IDAgMDEtLjIyLThjMS4zMy02LjIzIDYtMTAuNTggMTIuODItMTEuODcwYTMxLjY2IDMxLjY2IDAgMDE5LjQ5LjI2em0tMjkuMzQgNS4yNHY1LjEySDU2LjY2djQ2LjIzSDQ1LjE1VjY5LjI2SDI4Ljg4di01YTQ5LjE5IDQ5LjE5IDAgMDEuMTItNS4xN0MyOS4wOCA1OSAzOSA1OSA1MSA1OWgyMS44M3oiLz48L3N2Zz4=", "ai": false}, {"n": "JavaScript", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjRjBEQjRGIiBkPSJNMS40MDggMS40MDhoMTI1LjE4NHYxMjUuMTg1SDEuNDA4eiIvPjxwYXRoIGZpbGw9IiMzMjMzMzAiIGQ9Ik0xMTYuMzQ3IDk2LjczNmMtLjkxNy01LjcxMS00LjY0MS0xMC41MDgtMTUuNjcyLTE0Ljk4MS0zLjgzMi0xLjc2MS04LjEwNC0zLjAyMi05LjM3Ny01LjkyNi0uNDUyLTEuNjktLjUxMi0yLjY0Mi0uMjI2LTMuNjY1LjgyMS0zLjMyIDQuNzg0LTQuMzU1IDcuOTI1LTMuNDAzIDIuMDIzLjY3OCAzLjkzOCAyLjIzNyA1LjA5MyA0LjcyNCA1LjQwMi0zLjQ5OCA1LjM5MS0zLjQ3NSA5LjE2My01Ljg3OS0xLjM4MS0yLjE0MS0yLjExOC0zLjEyOS0zLjAyMi00LjA0NS0zLjI0OS0zLjYyOS03LjY3Ni01LjQ5OC0xNC43NTYtNS4zNTVsLTMuNjg4LjQ3N2MtMy41MzQuODkzLTYuOTAyIDIuNzQ4LTguODc3IDUuMjM1LTUuOTI2IDYuNzI0LTQuMjM2IDE4LjQ5MiAyLjk3NSAyMy4zMzUgNy4xMDQgNS4zMzIgMTcuNTQgNi41NDUgMTguODczIDExLjUzMSAxLjI5NyA2LjEwNC00LjQ4NiA4LjA4LTEwLjIzNCA3LjM3OC00LjIzNi0uODgxLTYuNTkyLTMuMDM0LTkuMTM5LTYuOTQ5LTQuNjg4IDIuNzEzLTQuNjg4IDIuNzEzLTkuNTA4IDUuNDg1IDEuMTQzIDIuNDk5IDIuMzQ0IDMuNjMgNC4yNiA1Ljc5NSA5LjA2OCA5LjE5OCAzMS43NiA4Ljc0NiAzNS44My01LjE3Ni4xNjUtLjQ3OCAxLjI2MS0zLjY2Ni4zOC04LjU4MXpNNjkuNDYyIDU4Ljk0M0g1Ny43NTNsLS4wNDggMzAuMjcyYzAgNi40MzguMzMzIDEyLjM0LS43MTQgMTQuMTQ5LTEuNzEzIDMuNTU4LTYuMTUyIDMuMTE3LTguMTc1IDIuNDI3LTIuMDU5LTEuMDEyLTMuMTA2LTIuNDUxLTQuMzE5LTQuNDg1LS4zMzMtLjU4NC0uNTgzLTEuMDM2LS42NjctMS4wNzFsLTkuNTIgNS44M2MxLjU4MyAzLjI0OSAzLjkxNSA2LjA2OSA2LjkwMiA3LjkwMSA0LjQ2MiAyLjY3OCAxMC40NTkgMy40OTkgMTYuNzMxIDIuMDU5IDQuMDgyLTEuMTg5IDcuNjA0LTMuNjUyIDkuNDQ4LTcuNDAxIDIuNjY2LTQuOTE1IDIuMDk0LTEwLjg2NCAyLjA3LTE3LjQ0NC4wNi0xMC43MzUuMDAxLTIxLjQ2OC4wMDEtMzIuMjM3eiIvPjwvc3ZnPg==", "ai": false}, {"n": "Node.js", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSJ1cmwoI25kLWEpIiBkPSJNNjYuOTU4LjgyNWE2LjA3IDYuMDcgMCAwIDAtNi4wMzUgMEwxMS4xMDMgMjkuNzZjLTEuODk1IDEuMDcyLTIuOTYgMy4wOTUtMi45NiA1LjI0djU3Ljk4OGMwIDIuMTQzIDEuMTgzIDQuMTY3IDIuOTU4IDUuMjRsNDkuODIgMjguOTM0YTYuMDcgNi4wNyAwIDAgMCA2LjAzNiAwbDQ5LjgyLTI4LjkzNWMxLjg5NC0xLjA3MiAyLjk1OC0zLjA5NiAyLjk1OC01LjI0VjM1YzAtMi4xNDQtMS4xODMtNC4xNjctMi45NTgtNS4yNHoiLz48cGF0aCBmaWxsPSJ1cmwoI25kLWIpIiBkPSJNMTE2Ljg5NyAyOS43NiA2Ni44NDEuODI1QTguMTYxIDguMTYxIDAgMCAwIDY1LjMwMi4yM0w5LjIxIDk2Ljc5OGE2LjI1MSA2LjI1MSAwIDAgMCAxLjY1NyAxLjQzbDUwLjA1NyAyOC45MzRjMS40Mi44MzMgMy4wNzYgMS4wNzIgNC42MTUuNTk1bDUyLjY2LTk2LjkyNWEzLjcwMiAzLjcwMiAwIDAgMC0xLjMwMi0xLjA3MnoiLz48cGF0aCBmaWxsPSJ1cmwoI25kLWMpIiBkPSJNMTE2Ljg5OCA5OC4yMjVjMS40Mi0uODMzIDIuNDg1LTIuMjYyIDIuOTU4LTMuODFMNjUuMDY2LjEwOGMtMS40Mi0uMjM4LTIuOTU5LS4xMTktNC4yNi43MTVMMTEuMTA0IDI5LjYzOWw1My42MDYgOTguMzU1Yy43MS0uMTIgMS41NC0uMzU4IDIuMjUtLjcxNXoiLz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9Im5kLWEiIHgxPSIzNC41MTMiIHgyPSIyNy4xNTciIHkxPSIxNS41MzUiIHkyPSIzMC40NDgiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyOS4yNDIgLTczLjcxNSkgc2NhbGUoNi4xODUyMykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjM0Y4NzNGIi8+PHN0b3Agb2Zmc2V0PSIuMzMiIHN0b3AtY29sb3I9IiMzRjhCM0QiLz48c3RvcCBvZmZzZXQ9Ii42MzciIHN0b3AtY29sb3I9IiMzRTk2MzgiLz48c3RvcCBvZmZzZXQ9Ii45MzQiIHN0b3AtY29sb3I9IiMzREE5MkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzREFFMkIiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibmQtYiIgeDE9IjMwLjAwOSIgeDI9IjUwLjUzMyIgeTE9IjIzLjM1OSIgeTI9IjguMjg4IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMjkuMjQyIC03My43MTUpIHNjYWxlKDYuMTg1MjMpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIuMTM4IiBzdG9wLWNvbG9yPSIjM0Y4NzNGIi8+PHN0b3Agb2Zmc2V0PSIuNDAyIiBzdG9wLWNvbG9yPSIjNTJBMDQ0Ii8+PHN0b3Agb2Zmc2V0PSIuNzEzIiBzdG9wLWNvbG9yPSIjNjRCNzQ5Ii8+PHN0b3Agb2Zmc2V0PSIuOTA4IiBzdG9wLWNvbG9yPSIjNkFCRjRCIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9Im5kLWMiIHgxPSIyMS45MTciIHgyPSI0MC41NTUiIHkxPSIyMi4yNjEiIHkyPSIyMi4yNjEiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyOS4yNDIgLTczLjcxNSkgc2NhbGUoNi4xODUyMykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9Ii4wOTIiIHN0b3AtY29sb3I9IiM2QUJGNEIiLz48c3RvcCBvZmZzZXQ9Ii4yODciIHN0b3AtY29sb3I9IiM2NEI3NDkiLz48c3RvcCBvZmZzZXQ9Ii41OTgiIHN0b3AtY29sb3I9IiM1MkEwNDQiLz48c3RvcCBvZmZzZXQ9Ii44NjIiIHN0b3AtY29sb3I9IiMzRjg3M0YiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48L3N2Zz4=", "ai": false}, {"n": "Python", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48bGluZWFyR3JhZGllbnQgaWQ9InB5LWEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNzAuMjUyIiB5MT0iMTIzNy40NzYiIHgyPSIxNzAuNjU5IiB5Mj0iMTE1MS4wODkiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoLjU2MyAwIDAgLS41NjggLTI5LjIxNSA3MDcuODE3KSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNUE5RkQ0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMzA2OTk4Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InB5LWIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjA5LjQ3NCIgeTE9IjEwOTguODExIiB4Mj0iMTczLjYyIiB5Mj0iMTE0OS41MzciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoLjU2MyAwIDAgLS41NjggLTI5LjIxNSA3MDcuODE3KSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRkZENDNCIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZFODczIi8+PC9saW5lYXJHcmFkaWVudD48cGF0aCBmaWxsPSJ1cmwoI3B5LWEpIiBkPSJNNjMuMzkxIDEuOTg4Yy00LjIyMi4wMi04LjI1Mi4zNzktMTEuOCAxLjAwNy0xMC40NSAxLjg0Ni0xMi4zNDYgNS43MS0xMi4zNDYgMTIuODM3djkuNDExaDI0LjY5M3YzLjEzN0gyOS45NzdjLTcuMTc2IDAtMTMuNDYgNC4zMTMtMTUuNDI2IDEyLjUyMS0yLjI2OCA5LjQwNS0yLjM2OCAxNS4yNzUgMCAyNS4wOTYgMS43NTUgNy4zMTEgNS45NDcgMTIuNTE5IDEzLjEyNCAxMi41MTloOC40OTFWNjcuMjM0YzAtOC4xNTEgNy4wNTEtMTUuMzQgMTUuNDI2LTE1LjM0aDI0LjY2NWM2Ljg2NiAwIDEyLjM0Ni01LjY1NCAxMi4zNDYtMTIuNTQ4VjE1LjgzM2MwLTYuNjkzLTUuNjQ2LTExLjcyMC0xMi4zNDYtMTIuODM3LTQuMjQ0LS43MDYtOC42NDUtMS4wMjctMTIuODY2LTEuMDA4ek01MC4wMzcgOS41NTdjMi41NSAwIDQuNjM0IDIuMTE3IDQuNjM0IDQuNzIxIDAgMi41OTMtMi4wODMgNC42OTAtNC42MzQgNC42OTAtMi41NjAgMC00LjYzMy0yLjA5Ny00LjYzMy00LjY5MC0uMDAxLTIuNjA0IDIuMDczLTQuNzIxIDQuNjMzLTQuNzIxeiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxMC4yNikiLz48cGF0aCBmaWxsPSJ1cmwoI3B5LWIpIiBkPSJNOTEuNjgyIDI4LjM4MHYxMC45NjZjMCA4LjUwMC03LjIwOCAxNS42NTUtMTUuNDI2IDE1LjY1NUg1MS41OTFjLTYuNzU2IDAtMTIuMzQ2IDUuNzgzLTEyLjM0NiAxMi41NDl2MjMuNTE1YzAgNi42OTEgNS44MTggMTAuNjI4IDEyLjM0NiAxMi41NDcgNy44MTYgMi4yOTcgMTUuMzEyIDIuNzEzIDI0LjY2NSAwIDYuMjE2LTEuODAxIDEyLjM0Ni01LjQyMyAxMi4zNDYtMTIuNTQ3di05LjQxMkg2My45Mzh2LTMuMTM4aDM3LjAxMmM3LjE3NiAwIDkuODUyLTUuMDA1IDEyLjM0OC0xMi41MTkgMi41NzgtNy43MzUgMi40NjctMTUuMTc0IDAtMjUuMDk2LTEuNzc0LTcuMTQ1LTUuMTYxLTEyLjUyMS0xMi4zNDgtMTIuNTIxaC05LjI2OHpNNzcuODA5IDg3LjkyN2MyLjU2MSAwIDQuNjM0IDIuMDk3IDQuNjM0IDQuNjkyIDAgMi42MDItMi4wNzQgNC43MTktNC42MzQgNC43MTktMi41NTAgMC00LjYzMy0yLjExNy00LjYzMy00LjcxOSAwLTIuNTk1IDIuMDgzLTQuNjkyIDQuNjMzLTQuNjkyeiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxMC4yNikiLz48L3N2Zz4=", "ai": false}, {"n": "Java", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjMDA3NEJEIiBkPSJNNDcuNjE3IDk4LjEycy00Ljc2NyAyLjc3NCAzLjM5NyAzLjcxYzkuODkyIDEuMTMgMTQuOTQ3Ljk2OCAyNS44NDUtMS4wOTIgMCAwIDIuODcxIDEuNzk1IDYuODczIDMuMzUxLTI0LjQzOSAxMC40Ny01NS4zMDgtLjYwNy0zNi4xMTUtNS45Njl6bS0yLjk4OC0xMy42NjVzLTUuMzQ4IDMuOTU5IDIuODIzIDQuODA1YzEwLjU2NyAxLjA5MSAxOC45MSAxLjE4IDMzLjM1NC0xLjYgMCAwIDEuOTkzIDIuMDI1IDUuMTMyIDMuMTMxLTI5LjU0MiA4LjY0LTYyLjQ0Ni42OC00MS4zMDktNi4zMzZ6Ii8+PHBhdGggZmlsbD0iI0VBMkQyRSIgZD0iTTY5LjgwMiA2MS4yNzFjNi4wMjUgNi45MzUtMS41OCAxMy4xNy0xLjU4IDEzLjE3czE1LjI4OS03Ljg5MSA4LjI2OS0xNy43NzdjLTYuNTU5LTkuMjE1LTExLjU4Ny0xMy43OTIgMTUuNjM1LTI5LjU4IDAgLjAwMS00Mi43MzEgMTAuNjctMjIuMzI0IDM0LjE4N3oiLz48cGF0aCBmaWxsPSIjMDA3NEJEIiBkPSJNMTAyLjEyMyAxMDguMjI5czMuNTI5IDIuOTEtMy44ODggNS4xNTljLTE0LjEwMiA0LjI3Mi01OC43MDYgNS41Ni03MS4wOTQuMTcxLTQuNDUxLTEuOTM4IDMuODk5LTQuNjI1IDYuNTI2LTUuMTkyIDIuNzM5LS41OTMgNC4zMDMtLjQ4NSA0LjMwMy0uNDg1LTQuOTUzLTMuNDg3LTMyLjAxMyA2Ljg1LTEzLjc0MyA5LjgxNSA0OS44MjEgOC4wNzYgOTAuODE3LTMuNjM3IDc3Ljg5Ni05LjQ2OHpNNDkuOTEyIDcwLjI5NHMtMjIuNjg2IDUuMzg5LTguMDMzIDcuMzQ4YzYuMTg4LjgyOCAxOC41MTguNjM4IDMwLjAxMS0uMzI2IDkuMzktLjc4OSAxOC44MTMtMi40NzQgMTguODEzLTIuNDc0cy0zLjMwOCAxLjQxOS01LjcwNCAzLjA1M2MtMjMuMDQyIDYuMDYxLTY3LjU0NCAzLjIzOC01NC43MzEtMi45NTggMTAuODMyLTUuMjM5IDE5LjY0NC00LjY0MyAxOS42NDQtNC42NDN6bTQwLjY5NyAyMi43NDdjMjMuNDIxLTEyLjE2NyAxMi41OTEtMjMuODYwIDUuMDMyLTIyLjI4NS0xLjg0OC4zODUtMi42NzcuNzItMi42NzcuNzJzLjY4OC0xLjA3OSAyLTEuNTQzYzE0Ljk1My01LjI1NSAyNi40NTEgMTUuNTAzLTQuODIzIDIzLjcyNSAwLS4wMDIuMzU5LS4zMjcuNDY4LS42MTd6Ii8+PHBhdGggZmlsbD0iI0VBMkQyRSIgZD0iTTc2LjQ5MSAxLjU4N1M4OS40NTkgMTQuNTYzIDY0LjE4OCAzNC41MWMtMjAuMjY2IDE2LjAwNi00LjYyMSAyNS4xMy0uMDA3IDM1LjU1OS0xMS44MzEtMTAuNjczLTIwLjUwOS0yMC4wNzAtMTQuNjg4LTI4LjgxNUM1OC4wNDEgMjguNDIgODEuNzIyIDIyLjE5NSA3Ni40OTEgMS41ODd6Ii8+PHBhdGggZmlsbD0iIzAwNzRCRCIgZD0iTTUyLjIxNCAxMjYuMDIxYzIyLjQ3NiAxLjQzNyA1Ny0uOCA1Ny44MTctMTEuNDM2IDAgMC0xLjU3MSA0LjAzMi0xOC41NzcgNy4yMzEtMTkuMTg2IDMuNjEyLTQyLjg1NCAzLjE5MS01Ni44ODcuODc0IDAgLjAwMSAyLjg3NSAyLjM4MSAxNy42NDcgMy4zMzF6Ii8+PC9zdmc+", "ai": false}], [{"n": ".NET", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzUxMkJENCIgZD0iTTI0IDguNzdoLTIuNDY4djcuNTY1aC0xLjQyNVY4Ljc3aC0yLjQ2MlY3LjUzSDI0em0tNi44NTIgNy41NjVoLTQuODIxVjcuNTNoNC42M3YxLjI0aC0zLjIwNXYyLjQ5NGgyLjk1M3YxLjIzNGgtMi45NTN2Mi42MDRoMy4zOTZ6bS02LjcwOCAwSDguODgyTDQuNzggOS44NjNhMi44OTYgMi44OTYgMCAwIDEtLjI1OC0uNTFoLS4wMzZjLjAzMi4xODkuMDQ4LjU5Mi4wNDggMS4yMXY1Ljc3MkgzLjE1N1Y3LjUzaDEuNjU5bDMuOTY1IDYuMzJjLjE2Ny4yNjEuMjc1LjQ0Mi4zMjMuNTRoLjAyNGMtLjA0LS4yMzMtLjA2LS42MjktLjA2LTEuMTg1VjcuNTI5aDEuMzcyem0tOC43MDMtLjY5M2EuODY4LjgyOSAwIDAgMS0uODY5LjgyOS44NjguODI5IDAgMCAxLS44NjgtLjgzLjg2OC44MjkgMCAwIDEgLjg2OC0uODI4Ljg2OC44MjkgMCAwIDEgLjg2OS44MjlaIi8+PC9zdmc+", "ai": false}, {"n": "C#", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjOUI0Rjk2IiBkPSJNMTE1LjQgMzAuN0w2Ny4xIDIuOWMtLjgtLjUtMS45LS43LTMuMS0uNy0xLjIgMC0yLjMuMy0zLjEuN2wtNDggMjcuOWMtMS43IDEtMi45IDMuNS0yLjkgNS40djU1LjdjMCAxLjEuMiAyLjQgMSAzLjVsMTA2LjgtNjJjLS42LTEuMi0xLjUtMi4xLTIuNC0yLjd6Ii8+PHBhdGggZmlsbD0iIzY4MjE3QSIgZD0iTTEwLjcgOTUuM2MuNS44IDEuMiAxLjUgMS45IDEuOWw0OC4yIDI3LjljLjguNSAxLjkuNyAzLjEuNyAxLjIgMCAyLjMtLjMgMy4xLS43bDQ4LTI3LjljMS43LTEgMi45LTMuNSAyLjktNS40VjM2LjFjMC0uOS0uMS0xLjktLjYtMi44bC0xMDYuNiA2MnoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNODUuMyA3Ni4xQzgxLjEgODMuNSA3My4xIDg4LjUgNjQgODguNWMtMTMuNSAwLTI0LjUtMTEtMjQuNS0yNC41czExLTI0LjUgMjQuNS0yNC41YzkuMSAwIDE3LjEgNSAyMS4zIDEyLjVsMTMtNy41Yy02LjgtMTEuOS0xOS42LTIwLTM0LjMtMjAtMjEuOCAwLTM5LjUgMTcuNy0zOS41IDM5LjVzMTcuNyAzOS41IDM5LjUgMzkuNWMxNC42IDAgMjcuNC04IDM0LjItMTkuOGwtMTIuOS03LjZ6TTk3IDY2LjJsLjktNC4zaC00LjJ2LTQuN2g1LjFMMTAwIDUxaDQuOWwtMS4yIDYuMWgzLjhsMS4yLTYuMWg0LjhsLTEuMiA2LjFoMi40djQuN2gtMy4zbC0uOSA0LjNoNC4ydjQuN2gtNS4xbC0xLjIgNmgtNC45bDEuMi02aC0zLjhsLTEuMiA2aC00LjhsMS4yLTZoLTIuNHYtNC43SDk3em00LjggMGgzLjhsLjktNC4zaC0zLjhsLS45IDQuM3oiLz48L3N2Zz4=", "ai": false}, {"n": "Go", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48ZyBmaWxsPSIjMDBhY2Q3IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMS4xNTYgNTQuODI5Yy0uMjQzIDAtLjMwMy0uMTIyLS4xODItLjMwM2wxLjI3My0xLjYzN2MuMTItLjE4Mi40MjQtLjMwMy42NjYtLjMwM0gzNC41NWMuMjQzIDAgLjMwMy4xODIuMTgyLjM2NGwtMS4wMyAxLjU3NmMtLjEyMS4xODEtLjQyNC4zNjMtLjYwNi4zNjN6TTIuMDA0IDYwLjQwNGMtLjI0MiAwLS4zMDMtLjEyLS4xODItLjMwM2wxLjI3My0xLjYzNmMuMTIxLS4xODIuNDI0LS4zMDMuNjY3LS4zMDNoMjcuNjM2Yy4yNDIgMCAuMzY0LjE4Mi4zMDMuMzY0bC0uNDg1IDEuNDU0Yy0uMDYuMjQzLS4zMDMuMzY0LS41NDUuMzY0ek0xNi42NyA2NS45ODBjLS4yNDIgMC0uMzAyLS4xODItLjE4MS0uMzY0bC44NDgtMS41MTVjLjEyMi0uMTgyLjM2NC0uMzYzLjYwNy0uMzYzaDEyLjEyYy4yNDMgMCAuMzY0LjE4MS4zNjQuNDI0bC0uMTIgMS40NTRjMCAuMjQzLS4yNDMuNDI1LS40MjUuNDI1ek03OS41OCA1My43MzhjLTMuODE5Ljk3MC02LjQyNSAxLjY5Ny0xMC4xODIgMi42NjYtLjkxMC4yNDMtLjk3MC4zMDMtMS43NTgtLjYwNi0uOTA5LTEuMDMwLTEuNTc2LTEuNjk3LTIuODQ4LTIuMzAzLTMuODE5LTEuODc4LTcuNTE2LTEuMzMzLTEwLjk3MC45MTAtNC4xMjEgMi42NjYtNi4yNDIgNi42MDUtNi4xODIgMTEuNTE0LjA2MCA0Ljg0OSAzLjM5NCA4Ljg0OSA4LjE4MiA5LjUxNiA0LjEyMS41NDUgNy41NzYtLjkxMCAxMC4zMDMtNCAuNTQ1LS42NjcgMS4wMzAtMS4zOTQgMS42MzYtMi4yNDNINTYuMDY0Yy0xLjI3MiAwLTEuNTc1LS43ODgtMS4xNTEtMS44MTguNzg4LTEuODc5IDIuMjQyLTUuMDMwIDMuMDkwLTYuNjA2LjE4My0uMzY0LjYwNy0uOTcwIDEuNTE2LS45NzBoMjIuMDYwYy0uMTIwIDEuNjM3LS4xMjAgMy4yNzMtLjM2MyA0LjkxMC0uNjY3IDQuMzYzLTIuMzAzIDguMzYzLTQuOTcwIDExLjg3OC00LjM2NCA1Ljc1OC0xMC4wNjAgOS4zMzMtMTcuMjczIDEwLjMwMy01LjkzOS43ODgtMTEuNDU0LS4zNjQtMTYuMzAyLTQtNC40ODUtMy4zOTQtNy4wMzAtNy44NzktNy42OTctMTMuNDU0LS43ODgtNi42MDYgMS4xNTEtMTIuNTQ2IDUuMTUxLTE3Ljc1OCA0LjMwMy01LjYzNiAxMC05LjIxMiAxNi45NzAtMTAuNDg1IDUuNjk3LTEuMDMwIDExLjE1MS0uMzYzIDE2LjA2MCAyLjk3MCAzLjIxMiAyLjEyMSA1LjUxNSA1LjAzMCA3LjAzMCA4LjU0NS4zNjQuNTQ2LjEyMi44NDktLjYwNiAxLjAzMHoiLz48cGF0aCBkPSJNOTkuNjQwIDg3LjI1M2MtNS41MTUtLjEyMi0xMC41NDYtMS42OTctMTQuNzg4LTUuMzM0LTMuNTc2LTMuMDkwLTUuODE4LTcuMDMwLTYuNTQ1LTExLjY5Ny0xLjA5MS02Ljg0OC43ODctMTIuOTA5IDQuOTA5LTE4LjMwMiA0LjQyNC01LjgxOSA5Ljc1Ny04Ljg0OSAxNi45NzAtMTAuMTIyIDYuMTgxLTEuMDkwIDEyLS40ODQgMTcuMjcyIDMuMDkxIDQuNzg4IDMuMjczIDcuNzU3IDcuNjk3IDguNTQ1IDEzLjUxNSAxLjAzMCA4LjE4Mi0xLjMzMyAxNC44NDktNi45NzAgMjAuNTQ2LTQgNC4wNjAtOC45MDkgNi42MDYtMTQuNTQ1IDcuNzU3LTEuNjM2LjMwMy0zLjI3My4zNjQtNC44NDguNTQ2em0xNC40MjQtMjQuNDg1Yy0uMDYwLS43ODgtLjA2MC0xLjM5NC0uMTgyLTItMS4wOTAtNi02LjYwNi05LjM5NC0xMi4zNjMtOC4wNjAtNS42MzcgMS4yNzItOS4yNzMgNC44NDgtMTAuNjA2IDEwLjU0NS0xLjA5MSA0LjcyNyAxLjIxMiA5LjUxNSA1LjU3NSAxMS40NTQgMy4zMzQgMS40NTUgNi42NjcgMS4yNzMgOS44NzktLjM2MyA0Ljc4OC0yLjQ4NSA3LjM5NC02LjM2NCA3LjY5Ny0xMS41NzZ6IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48L2c+PC9zdmc+", "ai": false}, {"n": "Swift", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjZjA1MTM4IiBkPSJNMTI2LjMzIDM0LjA2YTM5LjMyIDM5LjMyIDAgMDAtLjc5LTcuODMgMjguNzggMjguNzggMCAwMC0yLjY1LTcuNTggMjguODQgMjguODQgMCAwMC00Ljc2LTYuMzIgMjMuNDIgMjMuNDIgMCAwMC02LjYyLTQuNTUgMjcuMjcgMjcuMjcgMCAwMC03LjY4LTIuNTNjLTIuNjUtLjUxLTUuNTYtLjUxLTguMjEtLjc2SDMwLjI1YTQ1LjQ2IDQ1LjQ2IDAgMDAtNi4wOS41MSAyMS44MiAyMS44MiAwIDAwLTUuODIgMS41MmMtLjUzLjI1LTEuMzIuNTEtMS44NS43NmEzMy44MiAzMy44MiAwIDAwLTUgMy4yOGMtLjUzLjUxLTEuMDYuNzYtMS41OSAxLjI2YTIyLjQxIDIyLjQxIDAgMDAtNC43NiA2LjMyIDIzLjYxIDIzLjYxIDAgMDAtMi42NSA3LjU4IDc4LjUgNzguNSAwIDAwLS43OSA3LjgzdjYwLjM5YTM5LjMyIDM5LjMyIDAgMDAuNzkgNy44MyAyOC43OCAyOC43OCAwIDAwMi42NSA3LjU4IDI4Ljg0IDI4Ljg0IDAgMDA0Ljc2IDYuMzIgMjMuNDIgMjMuNDIgMCAwMDYuNjIgNC41NSAyNy4yNyAyNy4yNyAwIDAwNy42OCAyLjUzYzIuNjUuNTEgNS41Ni41MSA4LjIxLjc2aDYzLjIyYTQ1LjA4IDQ1LjA4IDAgMDA4LjIxLS43NiAyNy4yNyAyNy4yNyAwIDAwNy42OC0yLjUzIDMwLjEzIDMwLjEzIDAgMDA2LjYyLTQuNTUgMjIuNDEgMjIuNDEgMCAwMDQuNzYtNi4zMiAyMy42MSAyMy42MSAwIDAwMi42NS03LjU4IDc4LjQ5IDc4LjQ5IDAgMDAuNzktNy44M1YzNC4wNnoiLz48cGF0aCBmaWxsPSIjZmVmZWZlIiBkPSJNODUgOTYuNWMtMTEuMTEgNi4xMy0yNi4zOCA2Ljc2LTQxLjc1LjQ3QTY0LjUzIDY0LjUzIDAgMDExMy44NCA3M2E1MCA1MCAwIDAwMTAuODUgNi4zMmMxNS44NyA3LjEgMzEuNzMgNi42MSA0Mi45IDAtMTUuOS0xMS42Ni0yOS40LTI2LjgyLTM5LjQ2LTM5LjJhNDMuNDcgNDMuNDcgMCAwMS01LjI5LTYuODJjMTIuMTYgMTAuNjEgMzEuNSAyNCAzOC4zOCAyNy43OWEyNzEuNzcgMjcxLjc3IDAgMDEtMjctMzIuMzQgMjY2LjggMjY2LjggMCAwMDQ0LjQ3IDM0Ljg3Yy43MS4zOCAxLjI2LjcgMS43IDFhMzIuNyAzMi43IDAgMDAxLjIxLTMuNTFjMy43MS0xMi44OS0uNTMtMjcuNTQtOS43OS0zOS42N0M5My4yNSAzMy44MSAxMDYgNTcuMDUgMTAwLjY2IDc2LjUxYy0uMTQuNTMtLjI5IDEtLjQ1IDEuNTVsLjE5LjIyYzEwLjU5IDEyLjYzMCA3LjY4MCAyNiA2LjM1MCAyMy41QzEwMSA5MSA5MC4zNyA5NC4zMyA4NSA5Ni41eiIvPjwvc3ZnPg==", "ai": false}, {"n": "Kotlin", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9Imt0LWEiIHgxPSI1MDAuMDAzIiB4Mj0iLS4wOTciIHkxPSI1NzkuMTA2IiB5Mj0iMTA3OS4yMDYiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUuNTM0IC05Ni43NzQpIHNjYWxlKC4xOTM5KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iLjAwMyIgc3RvcC1jb2xvcj0iI2U0NDg1NyIvPjxzdG9wIG9mZnNldD0iLjQ2OSIgc3RvcC1jb2xvcj0iI2M3MTFlMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzdmNTJmZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGZpbGw9InVybCgja3QtYSkiIGQ9Ik0xMTIuNDg0IDExMi40ODRIMTUuNTE2VjE1LjUxNmg5Ni45NjhMNjQgNjRabTAgMCIvPjwvc3ZnPg==", "ai": false}, {"n": "iOS", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjMDYxOTNBIiBkPSJNOTcuOTA1IDY3Ljg4NWMuMTc0IDE4LjggMTYuNDk0IDI1LjA1NyAxNi42NzQgMjUuMTM3LS4xMzguNDQtMi42MDcgOC45MTYtOC41OTcgMTcuNjY5LTUuMTc4IDcuNTY4LTEwLjU1MyAxNS4xMDgtMTkuMDE4IDE1LjI2Ni04LjMxOC4xNTItMTAuOTkzLTQuOTM0LTIwLjUwNC00LjkzNC05LjUwOCAwLTEyLjQ3OSA0Ljc3Ni0yMC4zNTQgNS4wODYtOC4xNzIuMzEtMTQuMzk1LTguMTg1LTE5LjYxNi0xNS43MjRDMTUuODIyIDk0Ljk2MSA3LjY2OSA2Ni44IDE4LjYxNiA0Ny43OTFjNS40MzgtOS40NCAxNS4xNTgtMTUuNDE3IDI1LjcwNy0xNS41NzEgOC4wMjQtLjE1MyAxNS41OTggNS4zOTggMjAuNTAzIDUuMzk4IDQuOTAyIDAgMTQuMTA2LTYuNjc2IDIzLjc4Mi01LjY5NiA0LjA1MS4xNjkgMTUuNDIxIDEuNjM2IDIyLjcyMiAxMi4zMjQtLjU4Ny4zNjUtMTMuNTY2IDcuOTIxLTEzLjQyNSAyMy42MzlNODIuMjcyIDIxLjcxOWM0LjMzOC01LjI1MSA3LjI1OC0xMi41NjMgNi40NjItMTkuODM2LTYuMjU0LjI1MS0xMy44MTYgNC4xNjctMTguMzAxIDkuNDE2LTQuMDIwIDQuNjQ3LTcuNTQwIDEyLjA4Ny02LjU5MSAxOS4yMTYgNi45NzEuNTQwIDE0LjA5MS0zLjU0MiAxOC40MzAtOC43OTYiLz48L3N2Zz4=", "ai": false}, {"n": "Amazon Web Services", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjMjUyZjNlIiBkPSJNMzYuMzc5IDUzLjY0YzAgMS41Ni4xNjggMi44MjUuNDY1IDMuNzUuMzM2LjkyNi43NTggMS45MzggMS4zNDcgMy4wMzIuMjA3LjMzNi4yOTMuNjcyLjI5My45NjkgMCAuNDE4LS4yNTQuODQtLjggMS4yNjFsLTIuNjUzIDEuNzdjLS4zNzkuMjUtLjc1OC4zNzktMS4wOTMuMzc5LS40MjIgMC0uODQ0LS4yMTEtMS4yNjYtLjU5YTEzLjI4IDEzLjI4IDAgMCAxLTEuNTE2LTEuOTgwIDM0LjE1MyAzNC4xNTMgMCAwIDEtMS4zMDQtMi40ODVjLTMuMjgyIDMuODc1LTcuNDEwIDUuODEzLTEyLjM4MCA1LjgxMy0zLjUzNSAwLTYuMzU1LTEuMDEyLTguNDIxLTMuMDMyLTIuMDYzLTIuMDIzLTMuMTE0LTQuNzE4LTMuMTE0LTguMDg2IDAtMy41NzggMS4yNjItNi40ODQgMy44MzMtOC42NzEgMi41NjYtMi4xOTIgNS45NzYtMy4yODYgMTAuMzE2LTMuMjg2IDEuNDMwIDAgMi45MDIuMTI1IDQuNDYwLjMzNiAxLjU2MC4yMTEgMy4xNjEuNTQ3IDQuODQ1LjkyNnYtMy4wNzRjMC0zLjIwMC0uNjc2LTUuNDMwLTEuOTgwLTYuNzM0QzI2LjA2MSAzMi42MzMgMjMuNzg4IDMyIDIwLjU0NiAzMmMtMS40NzMgMC0yLjk4OC4xNjgtNC41NDcuNTQ3YTMzLjQxNiAzMy40MTYgMCAwIDAtNC41NDcgMS40MzNjLS42NzYuMjkzLTEuMTgwLjQ2MS0xLjQ3My41NDctLjI5Ni4wODItLjUwNy4xMjUtLjY3NS4xMjUtLjU5MCAwLS44ODMtLjQyMi0uODgzLTEuMzA0di0yLjA2M2MwLS42NzYuMDgyLTEuMTgwLjI5My0xLjQ3Ni4yMTAtLjI5My41OTAtLjU4NiAxLjE4MC0uODgzIDEuNDcyLS43NTggMy4yNDItMS4zOTAgNS4zMDQtMS44OTUgMi4wNjMtLjU0NyA0LjI1NC0uOCA2LjU3MC0uOCA1LjAwOCAwIDguNjcyIDEuMTM2IDExLjAzMiAzLjQxMCAyLjMxNiAyLjI3MyAzLjQ5MiA1LjcyNiAzLjQ5MiAxMC4zNTl2MTMuNjQwWm0tMTcuMDk0IDYuNDAzYzEuMzg3IDAgMi44MjAtLjI1NCA0LjMzNi0uNzU4IDEuNTE2LS41MDggMi44NjMtMS40MzMgNC0yLjY5NS42NzItLjggMS4xODAtMS42ODQgMS40MzAtMi42OTUuMjU0LTEuMDEyLjQyMi0yLjIzMC40MjItMy42NjV2LTEuNzY1YTM0LjQwMSAzNC40MDEgMCAwIDAtMy44NzEtLjcxOSAzMS44MTYgMzEuODE2IDAgMCAwLTMuOTYxLS4yNTBjLTIuODIwIDAtNC44ODMuNTQ3LTYuMjc0IDEuNjg0LTEuMzg3IDEuMTM2LTIuMDYyIDIuNzM0LTIuMDYyIDQuODQwIDAgMS45ODAuNTA0IDMuNDUzIDEuNTU4IDQuNDY0IDEuMDEyIDEuMDUxIDIuNDg1IDEuNTU5IDQuNDIyIDEuNTU5Wm0zMy44MDkgNC41NDdjLS43NTggMC0xLjI2Mi0uMTI1LTEuNTk4LS40MjItLjM0MC0uMjU0LS42MzMtLjg0MC0uODg3LTEuNjQwTDQwLjcxNSAyOS45ODBjLS4yNTAtLjg0My0uMzgwLTEuMzkwLS4zODAtMS42ODcgMC0uNjcyLjMzNy0xLjA1MCAxLjAxMy0xLjA1MGg0LjEyNWMuOCAwIDEuMzQ3LjEyNCAxLjY0NC40MjEuMzM2LjI1MC41OTAuODQwLjg0MCAxLjY0MGw3LjA3NCAyNy44NzYgNi41NzAtMjcuODc1Yy4yMDgtLjg0MC40NjItMS4zOTAuNzk3LTEuNjQwLjM0MC0uMjU1LjkzMC0uNDIzIDEuNjg4LS40MjNoMy4zNjdjLjggMCAxLjM0OC4xMjUgMS42ODQuNDIyLjMzNi4yNTAuNjMzLjg0MC44IDEuNjQwbDYuNjUzIDI4LjIxMiA3LjI4NS0yOC4yMTFjLjI1MC0uODQwLjU0Ny0xLjM5MC44NDAtMS42NDAuMzM2LS4yNTUuODg3LS40MjMgMS42NDQtLjQyM2gzLjkxNGMuNjc2IDAgMS4wNTUuMzM2IDEuMDU1IDEuMDUxIDAgLjIxMC0uMDQzLjQyMi0uMDg2LjY3Ni0uMDQzLjI1NC0uMTI1LjU5MC0uMjkzIDEuMDUwTDgwLjgwMSA2Mi41NzBjLS4yNTQuODQwLS41NDcgMS4zODctLjg4NyAxLjY0MC0uMzM2LjI1NS0uODgzLjQyMy0xLjU5OC40MjNoLTMuNjIwYy0uODAxIDAtMS4zNDgtLjEzMC0xLjY4NC0uNDIyLS4zNDAtLjI5Ny0uNjMzLS44NDQtLjgwMS0xLjY4NGwtNi41MjctMjcuMTYwLTYuNDg1IDI3LjExN2MtLjIxMC44NDQtLjQ2MCAxLjM5MS0uOCAxLjY4NC0uMzM3LjI5Ny0uOTI2LjQyMi0xLjY4NC40MjJabTU0LjEwNSAxLjEzN2MtMi4xODcgMC00LjM3OS0uMjU0LTYuNDg0LS43NTgtMi4xMDYtLjUwNC0zLjc0Ni0xLjA1NS00Ljg0MC0xLjY4NC0uNjc2LS4zNzktMS4xMzctLjgtMS4zMDUtMS4xODBhMi45MTkgMi45MTkgMCAwIDEtLjI1NC0xLjE4MHYtMi4xNDhjMC0uODgyLjMzNi0xLjMwNC45NzAtMS4zMDQuMjUwIDAgLjUwMy4wNDMuNzU3LjEyOS4yNTAuMDgyLjYyOS4yNTAgMS4wNTAuNDE4YTIzLjEwMiAyMy4xMDIgMCAwIDAgNC42MzQgMS40NzZjMS42ODMuMzM2IDMuMzI0LjUwNCA1LjAxMS41MDQgMi42NTMgMCA0LjcxNS0uNDY1IDYuMTQ1LTEuMzkwIDEuNDMzLS45MjYgMi4xOTEtMi4yNzQgMi4xOTEtNCAwLTEuMTgwLS4zNzktMi4xNDUtMS4xMzYtMi45NDYtLjc1OC0uOC0yLjE5Mi0xLjUxNi00LjI1NC0yLjE5MWwtNi4xMDYtMS44OTVjLTMuMDc0LS45NjktNS4zNDgtMi4zOTgtNi43MzQtNC4yOTMtMS4zOTAtMS44NTUtMi4xMDYtMy45MTgtMi4xMDYtNi4xMDUgMC0xLjc3MC4zODAtMy4zMjggMS4xMzctNC42NzZhMTAuODI5IDEwLjgyOSAwIDAgMSAzLjAzMS0zLjQ1M2MxLjI2Mi0uOTY1IDIuNjk2LTEuNjg0IDQuMzgwLTIuMTg4IDEuNjgzLS41MDQgMy40NTItLjcxNSA1LjMwNC0uNzE1LjkyNiAwIDEuODk0LjA0MyAyLjgyMC4xNjguOTY5LjEyNSAxLjg1Mi4yOTMgMi43MzguNDYxLjg0MC4yMTEgMS42NDEuNDIyIDIuMzk5LjY3Ni43NTguMjU0IDEuMzQ4LjUwNCAxLjc3MC43NTguNTkwLjMzNiAxLjAxMS42NzIgMS4yNjEgMS4wNTAuMjU0LjM0MC4zNzkuODAyLjM3OSAxLjM5MXYxLjk4MGMwIC44ODQtLjMzNiAxLjM0OC0uOTY5IDEuMzQ4LS4zMzYgMC0uODgzLS4xNzEtMS41OTctLjUwNy0yLjQwMy0xLjA5NC01LjA5OC0xLjY0MS04LjA4Ni0xLjY0MS0yLjM5OSAwLTQuMjkzLjM3OS01LjU5OCAxLjE4MC0xLjMwOS43OTctMS45ODAgMi4wMjAtMS45ODAgMy43NDYgMCAxLjE4MC40MjEgMi4xOTEgMS4yNjEgMi45ODguODQ0LjggMi40MDMgMS42MDIgNC42MzMgMi4zMTZsNS45ODAgMS44OTVjMy4wMzIuOTY5IDUuMjIwIDIuMzE2IDYuNTI0IDQuMDQzIDEuMzA1IDEuNzI3IDEuOTM4IDMuNzA3IDEuOTM4IDUuODk1IDAgMS44MTItLjM4MCAzLjQ1My0xLjA5NCA0Ljg4Mi0uNzU4IDEuNDM0LTEuNzcwIDIuNjk2LTMuMDc0IDMuNzA3LTEuMzA1IDEuMDUxLTIuODY0IDEuODA5LTQuNjcyIDIuMzYwLTEuODk1LjU4Ni0zLjg3NS44ODMtNi4wMjQuODgzWiIvPjxwYXRoIGZpbGw9IiNmOTAiIGQ9Ik0xMTggNzMuMzQ4Yy00LjQzMi4wNjMtOS42NjQgMS4wNTItMTMuNjIxIDMuODMyLTEuMjIzLjg4My0xLjAxMiAyLjA2Mi4zMzYgMS44OTQgNC41MDgtLjU0NyAxNC40NDAtMS43MjYgMTYuMjEwLjU0NyAxLjc3MCAyLjIzMC0xLjk3NiAxMS42MjAtMy42NjMgMTUuNzkwLS41MDQgMS4yNjAuNTkwIDEuNzY5IDEuNzI2LjggNy40MTAtNi4yMzEgOS4zNDgtMTkuMjQyIDcuODMyLTIxLjEzNy0uNzU3LS45MjUtNC4zODgtMS43OTAtOC44MjAtMS43MjZ6TTEuNjMwIDc1Ljg1OWMtLjkyNy4xMTYtMS4zNDcgMS4yMzYtLjM2OCAyLjEyMSAxNi41MDggMTQuOTAyIDM4LjM1OSAyMy44NzIgNjIuNjEzIDIzLjg3MiAxNy4zMDUgMCAzNy40MzAtNS40MzAgNTEuMjgxLTE1LjY2MCAyLjI3My0xLjY4OC4yOTctNC4yNTQtMi4wMjAtMy4yMDQtMTUuNTM0IDYuNTcwLTMyLjQyMSA5Ljc3MC00Ny43ODggOS43NzAtMjIuNzc4IDAtNDQuOC02LjI3My02Mi42NTMtMTYuNjMzLS4zOTAtLjIzMS0uNzU1LS4zMDQtMS4wNjQtLjI2NnoiLz48L3N2Zz4=", "ai": false}, {"n": "Azure", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImF6LWEiIHgxPSI2MC45MTkiIHkxPSI5LjYwMiIgeDI9IjE4LjY2NyIgeTI9IjEzNC40MjMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjMTE0QThCIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDY2OUJDIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImF6LWMiIHgxPSI2OC43NDIiIHkxPSI1Ljk2MSIgeDI9IjExNS4xMjIiIHkyPSIxMjkuNTI1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzNDQ0JGNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzI4OTJERiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik00Ni4wOS4wMDJoNDAuNjg1TDQ0LjU0MSAxMjUuMTM3YTYuNDg1IDYuNDg1IDAgMDEtNi4xNDYgNC40MTNINi43MzNhNi40ODIgNi40ODIgMCAwMS01LjI2Mi0yLjY5OSA2LjQ3NCA2LjQ3NCAwIDAxLS44NzYtNS44NDhMMzkuOTQ0IDQuNDE0QTYuNDg4IDYuNDg4IDAgMDE0Ni4wOTAgMHoiIGZpbGw9InVybCgjYXotYSkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC41ODcgNC40NjgpIHNjYWxlKC45MTkwNCkiLz48cGF0aCBkPSJNOTcuMjggODEuNjA3SDM3Ljk4N2EyLjc0MyAyLjc0MyAwIDAwLTEuODc0IDQuNzUxbDM4LjEgMzUuNTYyYTUuOTkxIDUuOTkxIDAgMDA0LjA4NyAxLjYxaDMzLjU3NHoiIGZpbGw9IiMwMDc4ZDQiLz48cGF0aCBkPSJNOTguMDU1IDQuNDA4QTYuNDc2IDYuNDc2IDAgMDA5MS45MTcuMDAySDQ2LjU3NWE2LjQ3OCA2LjQ3OCAwIDAxNi4xMzcgNC40MDZsMzkuMzUwIDExNi41OTRhNi40NzYgNi40NzYgMCAwMS02LjEzNyA4LjU1MGg0NS4zNDRhNi40ODAgNi40ODAgMCAwMDYuMTM2LTguNTUweiIgZmlsbD0idXJsKCNhei1jKSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLjU4NyA0LjQ2OCkgc2NhbGUoLjkxOTA0KSIvPjwvc3ZnPg==", "ai": false}], [{"n": "Google Cloud", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjZWE0NTM1IiBkPSJNODAuNiA0MC4zaC40bC0uMi0uMiAxNC0xNHYtLjNjLTExLjgtMTAuNC0yOC4xLTE0LTQzLjItOS41QzM2LjUgMjAuOCAyNC45IDMyLjggMjAuNyA0OGMuMi0uMS41LS4yLjgtLjIgNS4yLTMuNCAxMS40LTUuNCAxNy45LTUuNCAyLjIgMCA0LjMuMiA2LjQuNi4xLS4xLjItLjEuMy0uMSA5LTkuOSAyNC4yLTExLjEgMzQuNi0yLjZoLS4xeiIvPjxwYXRoIGZpbGw9IiM1NTdlYmYiIGQ9Ik0xMDguMSA0Ny44Yy0yLjMtOC41LTcuMS0xNi4yLTEzLjgtMjIuMUw4MCAzOS45YzYgNC45IDkuNSAxMi4zIDkuMyAyMHYyLjVjMTYuOSAwIDE2LjkgMjUuMiAwIDI1LjJINjMuOXYyMGgtLjFsLjEuMmgyNS40YzE0LjYuMSAyNy41LTkuMyAzMS44LTIzLjEgNC4zLTEzLjgtMS0yOC44LTEzLTM2Ljl6Ii8+PHBhdGggZmlsbD0iIzM2YTg1MiIgZD0iTTM5IDEwNy45aDI2LjNWODcuN0gzOWMtMS45IDAtMy43LS40LTUuNC0xLjFsLTE1LjIgMTQuNnYuMmM2IDQuMyAxMy4yIDYuNiAyMC43IDYuNnoiLz48cGF0aCBmaWxsPSIjZjliYzE1IiBkPSJNNDAuMiA0MS45Yy0xNC45LjEtMjguMSA5LjMtMzIuOSAyMi44LTQuOCAxMy42IDAgMjguNSAxMS44IDM3LjNsMTUuNi0xNC45Yy04LjYtMy43LTEwLjYtMTQuNS00LTIwLjggNi42LTYuNCAxNy44LTQuNCAyMS43IDMuOEw2OCA1NS4yQzYxLjQgNDYuOSA1MS4xIDQyIDQwLjIgNDIuMXoiLz48L3N2Zz4=", "ai": false}, {"n": "Kubernetes", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzMyNkNFNSIgZD0iTTEwLjIwNCAxNC4zNWwuMDA3LjAxLS45OTkgMi40MTNhNS4xNzEgNS4xNzEgMCAwIDEtMi4wNzUtMi41OTdsMi41NzgtLjQzNy4wMDQuMDA1YS40NC40NCAwIDAgMSAuNDg0LjYwNnptLS44MzMtMi4xMjlhLjQ0LjQ0IDAgMCAwIC4xNzMtLjc1NmwuMDAyLS4wMTFMNy41ODUgOS43YTUuMTQzIDUuMTQzIDAgMCAwLS43MyAzLjI1NWwyLjUxNC0uNzI1LjAwMi0uMDA5em0xLjE0NS0xLjk4YS40NC40NCAwIDAgMCAuNjk5LS4zMzdsLjAxLS4wMDUuMTUtMi42MmE1LjE0NCA1LjE0NCAwIDAgMC0zLjAxIDEuNDQybDIuMTQ3IDEuNTIzLjAwNC0uMDAyem0uNzYgMi43NWwuNzIzLjM0OS43MjItLjM0Ny4xOC0uNzgtLjUtLjYyM2gtLjgwNGwtLjUuNjIzLjE3OS43Nzl6bTEuNS0zLjA5NWEuNDQuNDQgMCAwIDAgLjcuMzM2bC4wMDguMDAzIDIuMTM0LTEuNTEzYTUuMTg4IDUuMTg4IDAgMCAwLTIuOTkyLTEuNDQybC4xNDggMi42MTUuMDAyLjAwMXptMTAuODc2IDUuOTdsLTUuNzczIDcuMTgxYTEuNiAxLjYgMCAwIDEtMS4yNDguNTk0bC05LjI2MS4wMDNhMS42IDEuNiAwIDAgMS0xLjI0Ny0uNTk2bC01Ljc3Ni03LjE4YTEuNTgzIDEuNTgzIDAgMCAxLS4zMDctMS4zNEwyLjEgNS41NzNjLjEwOC0uNDcuNDI1LS44NjQuODYzLTEuMDczTDExLjMwNS41MTNhMS42MDYgMS42MDYgMCAwIDEgMS4zODUgMGw4LjM0NSAzLjk4NWMuNDM4LjIwOS43NTUuNjA0Ljg2MyAxLjA3M2wyLjA2MiA4Ljk1NWMuMTA4LjQ3LS4wMDUuOTYzLS4zMDggMS4zNHptLTMuMjg5LTIuMDU3Yy0uMDQyLS4wMS0uMTAzLS4wMjYtLjE0NS0uMDM0LS4xNzQtLjAzMy0uMzE1LS4wMjUtLjQ3OS0uMDM4LS4zNS0uMDM3LS42MzgtLjA2Ny0uODk1LS4xNDgtLjEwNS0uMDQtLjE4LS4xNjUtLjIxNi0uMjE2bC0uMjAxLS4wNTlhNi40NSA2LjQ1IDAgMCAwLS4xMDUtMi4zMzIgNi40NjUgNi40NjUgMCAwIDAtLjkzNi0yLjE2M2MuMDUyLS4wNDcuMTUtLjEzMy4xNzctLjE1OS4wMDgtLjA5LjAwMS0uMTgzLjA5NC0uMjgyLjE5Ny0uMTg1LjQ0NC0uMzM4Ljc0My0uNTIyLjE0Mi0uMDg0LjI3My0uMTM3LjQxNS0uMjQyLjAzMi0uMDI0LjA3Ni0uMDYyLjExLS4wODkuMjQtLjE5MS4yOTUtLjUyLjEyMy0uNzM2LS4xNzItLjIxNi0uNTA2LS4yMzYtLjc0NS0uMDQ1LS4wMzQuMDI3LS4wOC4wNjItLjExMS4wODgtLjEzNC4xMTYtLjIxNy4yMy0uMzMuMzUtLjI0Ni4yNS0uNDUuNDU4LS42NzMuNjA5LS4wOTcuMDU2LS4yMzkuMDM3LS4zMDMuMDMzbC0uMTkuMTM1YTYuNTQ1IDYuNTQ1IDAgMCAwLTQuMTQ2LTIuMDAzbC0uMDEyLS4yMjNjLS4wNjUtLjA2Mi0uMTQzLS4xMTUtLjE2My0uMjUtLjAyMi0uMjY4LjAxNS0uNTU3LjA1Ny0uOTA1LjAyMy0uMTYzLjA2MS0uMjk4LjA2OC0uNDc1LjAwMS0uMDQtLjAwMS0uMDk5LS4wMDEtLjE0MiAwLS4zMDYtLjIyNC0uNTU1LS41LS41NTUtLjI3NSAwLS40OTkuMjQ5LS40OTkuNTU1bC4wMDEuMDE0YzAgLjA0MS0uMDAyLjA5MiAwIC4xMjguMDA2LjE3Ny4wNDQuMzEyLjA2Ny40NzUuMDQyLjM0OC4wNzguNjM3LjA1Ni45MDZhLjU0NS41NDUgMCAwIDEtLjE2Mi4yNThsLS4wMTIuMjExYTYuNDI0IDYuNDI0IDAgMCAwLTQuMTY2IDIuMDAzIDguMzczIDguMzczIDAgMCAxLS4xOC0uMTI4Yy0uMDkuMDEyLS4xOC4wNC0uMjk3LS4wMjktLjIyMy0uMTUtLjQyNy0uMzU4LS42NzMtLjYwOC0uMTEzLS4xMi0uMTk1LS4yMzQtLjMyOS0uMzQ5LS4wMy0uMDI2LS4wNzctLjA2Mi0uMTExLS4wODhhLjU5NC41OTQgMCAwIDAtLjM0OC0uMTMyLjQ4MS40ODEgMCAwIDAtLjM5OC4xNzZjLS4xNzIuMjE2LS4xMTcuNTQ2LjEyMy43MzdsLjAwNy4wMDUuMTA0LjA4M2MuMTQyLjEwNS4yNzIuMTU5LjQxNC4yNDIuMjk5LjE4NS41NDYuMzM4Ljc0My41MjIuMDc2LjA4Mi4wOS4yMjYuMS4yODhsLjE2LjE0M2E2LjQ2MiA2LjQ2MiAwIDAgMC0xLjAyIDQuNTA2bC0uMjA4LjA2Yy0uMDU1LjA3Mi0uMTMzLjE4NC0uMjE1LjIxNy0uMjU3LjA4MS0uNTQ2LjExLS44OTUuMTQ3LS4xNjQuMDE0LS4zMDUuMDA2LS40OC4wMzktLjAzNy4wMDctLjA5LjAyLS4xMzMuMDNsLS4wMDQuMDAyLS4wMDcuMDAyYy0uMjk1LjA3MS0uNDg0LjM0Mi0uNDIzLjYwOC4wNjEuMjY3LjM0OS40MjkuNjQ1LjM2NWwuMDA3LS4wMDEuMDEtLjAwMy4xMjktLjAyOWMuMTctLjA0Ni4yOTQtLjExMy40NDgtLjE3Mi4zMy0uMTE4LjYwNC0uMjE3Ljg3LS4yNTYuMTEyLS4wMDkuMjMuMDY5LjI4OC4xMDFsLjIxNy0uMDM3YTYuNSA2LjUgMCAwIDAgMi44OCAzLjU5NmwtLjA5LjIxOGMuMDMzLjA4NC4wNjkuMTk5LjA0NC4yODItLjA5Ny4yNTItLjI2My41MTctLjQ1Mi44MTMtLjA5MS4xMzYtLjE4NS4yNDItLjI2OC4zOTktLjAyLjAzNy0uMDQ1LjA5NS0uMDY0LjEzNC0uMTI4LjI3NS0uMDM0LjU5MS4yMTMuNzEuMjQ4LjEyLjU1Ni0uMDA3LjY5LS4yODJ2LS4wMDJjLjAyLS4wMzkuMDQ2LS4wOS4wNjItLjEyNy4wNy0uMTYyLjA5NC0uMzAxLjE0NC0uNDU4LjEzMi0uMzMyLjIwNS0uNjguMzg3LS44OTcuMDUtLjA2LjEzLS4wODIuMjE1LS4xMDVsLjExMy0uMjA1YTYuNDUzIDYuNDUzIDAgMCAwIDQuNjA5LjAxMmwuMTA2LjE5MmMuMDg2LjAyOC4xOC4wNDIuMjU2LjE1NS4xMzYuMjMyLjIyOS41MDcuMzQyLjg0LjA1LjE1Ni4wNzQuMjk1LjE0NS40NTcuMDE2LjAzNy4wNDMuMDkuMDYyLjEyOS4xMzMuMjc2LjQ0Mi40MDIuNjkuMjgyLjI0Ny0uMTE4LjM0MS0uNDM1LjIxMy0uNzEtLjAyLS4wMzktLjA0NS0uMDk2LS4wNjUtLjEzNC0uMDgzLS4xNTYtLjE3Ny0uMjYxLS4yNjgtLjM5OC0uMTktLjI5Ni0uMzQ2LS41NDEtLjQ0My0uNzkzLS4wNC0uMTMuMDA3LS4yMS4wMzgtLjI5NC0uMDE4LS4wMjItLjA1OS0uMTQ0LS4wODMtLjIwMmE2LjQ5OSA2LjQ5OSAwIDAgMCAyLjg4LTMuNjIyYy4wNjQuMDEuMTc2LjAzLjIxMy4wMzguMDc1LS4wNS4xNDQtLjExNC4yOC0uMTA0LjI2Ni4wMzkuNTQuMTM4Ljg3LjI1Ni4xNTQuMDYuMjc3LjEyOC40NDguMTczLjAzNi4wMS4wODguMDE5LjEzLjAyOGwuMDA5LjAwMy4wMDcuMDAxYy4yOTcuMDY0LjU4NC0uMDk4LjY0NS0uMzY1LjA2LS4yNjYtLjEyOC0uNTM3LS40MjMtLjYwOHpNMTYuNCA5LjcwMWwtMS45NSAxLjc0NnYuMDA1YS40NC40NCAwIDAgMCAuMTczLjc1N2wuMDAzLjAxIDIuNTI2LjcyOGE1LjE5OSA1LjE5OSAwIDAgMC0uMTA4LTEuNjc0QTUuMjA4IDUuMjA4IDAgMCAwIDE2LjQgOS43em0tNC4wMTMgNS4zMjVhLjQzNy40MzcgMCAwIDAtLjQwNC0uMjMyLjQ0LjQ0IDAgMCAwLS4zNzIuMjMzaC0uMDAybC0xLjI2OCAyLjI5MmE1LjE2NCA1LjE2NCAwIDAgMCAzLjMyNi4wMDNsLTEuMjctMi4yOTZoLS4wMXptMS44ODgtMS4yOTNhLjQ0LjQ0IDAgMCAwLS4yNy4wMzYuNDQuNDQgMCAwIDAtLjIxNC41NzJsLS4wMDMuMDA0IDEuMDEgMi40MzhhNS4xNSA1LjE1IDAgMCAwIDIuMDgxLTIuNjE1bC0yLjYtLjQ0LS4wMDQuMDA1eiIvPjwvc3ZnPg==", "ai": false}, {"n": "Terraform", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik03Ny45NDEgNDQuNXYzNi44MzZMNDYuMzI0IDYyLjkxOFYyNi4wODJ6bTAgMCIgZmlsbD0iIzVjNGVlNSIvPjxwYXRoIGQ9Ik04MS40MSA4MS4zMzZsMzEuNjMzLTE4LjQxOFYyNi4wODJMODEuNDEgNDQuNXptMCAwIiBmaWxsPSIjNDA0MGIyIi8+PHBhdGggZD0iTTExLjI0MiA0Mi4zNkw0Mi44NiA2MC43NzZWMjMuOTQxTDExLjI0MiA1LjUyM3ptMCAwTTc3Ljk0MSA4NS4zNzVMNDYuMzI0IDY2Ljk1N3YzNi44MmwzMS42MTcgMTguNDE4em0wIDAiIGZpbGw9IiM1YzRlZTUiLz48L2c+PC9zdmc+", "ai": false}, {"n": "Claude Code", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0Q5Nzc1NyIgZD0ibTQuNzE0NCAxNS45NTU1IDQuNzE3NC0yLjY0NzEuMDc5LS4yMzA3LS4wNzktLjEyNzVoLS4yMzA3bC0uNzg5My0uMDQ4Ni0yLjY5NTYtLjA3MjktMi4zMzc1LS4wOTcxLTIuMjY0Ni0uMTIxNC0uNTcwNy0uMTIxNS0uNTM0My0uNzA0Mi4wNTQ2LS4zNTIyLjQ3OTctLjMyMTguNjg2LjA2MDggMS41MTc5LjEwMzIgMi4yNzY3LjE1NzggMS42NTE0LjA5NzIgMi40NDY4LjI1NWguMzg4NmwuMDU0Ni0uMTU3OS0uMTMzNi0uMDk3MS0uMTAzMi0uMDk3Mkw2Ljk3MyA5LjgzNTZsLTIuNTUtMS42ODc5LTEuMzM1Ni0uOTcxNC0uNzIyNS0uNDkxOC0uMzY0My0uNDYxNC0uMTU3OC0xLjAwNzguNjU1Ny0uNzIyNS44ODAzLjA2MDcuMjI0Ni4wNjA3Ljg5MjUuNjg2IDEuOTA2NCAxLjQ3NTQgMi40ODkzIDEuODMzNi4zNjQzLjMwMzUuMTQ1Ny0uMTAzMi4wMTgyLS4wNzI4LS4xNjQtLjI3MzMtMS4zNTM5LTIuNDQ2Ny0xLjQ0NS0yLjQ4OTMtLjY0MzUtMS4wMzItLjE3LS42MTk0Yy0uMDYwNy0uMjU1LS4xMDMyLS40Njc0LS4xMDMyLS43Mjg1TDYuMjg3LjEzMzUgNi42OTk3IDBsLjk5NTcuMTMzNi40MTkuMzY0Mi42MTkyIDEuNDE0NyAxLjAwMTggMi4yMjgyIDEuNTU0MyAzLjAyOTYuNDU1My44OTg1LjI0MjkuODMxOC4wOTEuMjU1aC4xNTc5di0uMTQ1N2wuMTI3NS0xLjcwNi4yMzY4LTIuMDk0Ny4yMzA3LTIuNjk1Ny4wNzg5LS43NTg5LjM3NjQtLjkxMDcuNzQ2OC0uNDkxOC41ODI4LjI3OTMuNDc5Ny42ODYtLjA2NjguNDQzMy0uMjg1MyAxLjg1MTctLjU1ODYgMi45MDIxLS4zNjQzIDEuOTQyOWguMjEyNWwuMjQyOS0uMjQyOS45ODM1LTEuMzA1MyAxLjY1MTQtMi4wNjQzLjcyODYtLjgxOTYuODUtLjkwNDYuNTQ2NC0uNDMxMWgxLjAzMjFsLjc1OSAxLjEyOTMtLjM0IDEuMTY1Ny0xLjA2MjUgMS4zNDc4LS44ODA0IDEuMTQxNC0xLjI2MjggMS43LS43ODkzIDEuMzYuMDcyOS4xMDkzLjE4ODItLjAxODMgMi44NTM1LS42MDcgMS41NDIxLS4yNzk0IDEuODM5Ni0uMzE1Ny44MzE4LjM4ODYuMDkxLjM5NDYtLjMyNzguODA3NS0xLjk2Ny40ODU3LTIuMzA3Mi40NjE0LTMuNDM2NC44MTM2LS4wNDI1LjAzMDQuMDQ4Ni4wNjA3IDEuNTQ4Mi4xNDU3LjY2MTguMDM2NGgxLjYyMWwzLjAxNzUuMjI0Ny43ODkyLjUyMi40NzM2LjYzNzYtLjA3OS40ODU3LTEuMjE0Mi42MTkzLTEuNjM5My0uMzg4Ni0zLjgyNS0uOTEwNy0xLjMxMTMtLjMyNzloLS4xODIydi4xMDkzbDEuMDkyOSAxLjA2ODYgMi4wMDM1IDEuODA5MiAyLjUwNzUgMi4zMzE0LjEyNzUuNTc2OC0uMzIxOC40NTU0LS4zNC0uMDQ4Ni0yLjIwMzktMS42NTc1LS44NS0uNzQ2OC0xLjkyNDYtMS42MjFoLS4xMjc1di4xN2wuNDQzMi42NDk2IDIuMzQzNiAzLjUyMTQuMTIxNCAxLjA4MDctLjE3LjM1MjEtLjYwNzEuMjEyNS0uNjY3OS0uMTIxNC0xLjM3MjEtMS45MjQ2TDE0LjM4IDE3Ljk1OWwtMS4xNDE0LTEuOTQyOC0uMTM5Ny4wNzktLjY3NCA3LjI1NTItLjMxNTYuMzcwMy0uNzI4Ni4yNzkzLS42MDcxLS40NjE0LS4zMjE4LS43NDY4LjMyMTgtMS40NzUzLjM4ODYtMS45MjQ2LjMxNTctMS41My4yODUzLTEuOTAwNC4xNy0uNjMxNC0uMDEyMS0uMDQyNS0uMTM5Ny4wMTgyLTEuNDMyOCAxLjk2NzItMi4xNzk2IDIuOTQ0Ni0xLjcyNDMgMS44NDU2LS40MTI4LjE2NC0uNzE2NC0uMzcwNC4wNjY3LS42NjE4LjQwMDgtLjU4ODkgMi4zODYtMy4wMzU3IDEuNDM4OS0xLjg4Mi45MjktMS4wODY4LS4wMDYyLS4xNTc5aC0uMDU0NmwtNi4zMzg1IDQuMTE2NC0xLjEyOTMuMTQ1Ny0uNDg1Ny0uNDU1NC4wNjA4LS43NDY3LjIzMDctLjI0MjkgMS45MDY0LTEuMzExNFoiLz48L3N2Zz4=", "ai": true}, {"n": "Cursor", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzA2MTkzQSIgZD0iTTExLjUwMy4xMzEgMS44OTEgNS42NzhhLjg0Ljg0IDAgMCAwLS40Mi43MjZ2MTEuMTg4YzAgLjMuMTYyLjU3NS40Mi43MjRsOS42MDkgNS41NWExIDEgMCAwIDAgLjk5OCAwbDkuNjEtNS41NWEuODQuODQgMCAwIDAgLjQyLS43MjRWNi40MDRhLjg0Ljg0IDAgMCAwLS40Mi0uNzI2TDEyLjQ5Ny4xMzFhMS4wMTAgMS4wMTAgMCAwIDAtLjk5NiAwTTIuNjU3IDYuMzM4aDE4LjU1Yy4yNjMgMCAuNDMuMjg3LjI5Ny41MTVMMTIuMjMgMjIuOTE4Yy0uMDYyLjEwNy0uMjI5LjA2NC0uMjI5LS4wNlYxMi4zMzVhLjU5LjU5IDAgMCAwLS4yOTUtLjUxbC05LjExLTUuMjU3Yy0uMTA5LS4wNjMtLjA2NC0uMjMuMDYxLS4yMyIvPjwvc3ZnPg==", "ai": true}, {"n": "GitHub Copilot", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzA2MTkzQSIgZD0iTTIzLjkyMiAxNi45OTdDMjMuMDYxIDE4LjQ5MiAxOC4wNjMgMjIuMDIwIDEyIDIyLjAyMCA1LjkzNyAyMi4wMjAuOTM5IDE4LjQ5Mi4wNzggMTYuOTk3QS42NDEuNjQxIDAgMCAxIDAgMTYuNzQxdi0yLjg2OWEuODgzLjg4MyAwIDAgMSAuMDUzLS4yMjBjLjM3Mi0uOTM1IDEuMzQ3LTIuMjkyIDIuNjA1LTIuNjU2LjE2Ny0uNDI5LjQxNC0xLjA1NS42NDQtMS41MTdhMTAuMDk4IDEwLjA5OCAwIDAgMS0uMDUyLTEuMDg2YzAtMS4zMzEuMjgyLTIuNDk5IDEuMTMyLTMuMzY4LjM5Ny0uNDA2Ljg5MC0uNzE3IDEuNDc0LS45NTJDNy4yNTUgMi45MzcgOS4yNDggMS45ODAgMTEuOTc4IDEuOTgwYzIuNzMxIDAgNC43NjcuOTU3IDYuMTY2IDIuMDkzLjU4NC4yMzUgMS4wNzcuNTQ2IDEuNDc0Ljk1Mi44NTAuODY5IDEuMTMyIDIuMDM3IDEuMTMyIDMuMzY4IDAgLjM2OC0uMDE0LjczMy0uMDUyIDEuMDg2LjIzMC40NjIuNDc3IDEuMDg4LjY0NCAxLjUxNyAxLjI1OC4zNjQgMi4yMzMgMS43MjEgMi42MDUgMi42NTZhLjg0MS44NDEgMCAwIDEgLjA1My4yMjB2Mi44NjlhLjY0MS42NDEgMCAwIDEtLjA3OC4yNTZabS0xMS43NTAtNS45OTJoLS4zNDRhNC4zNTkgNC4zNTkgMCAwIDEtLjM1NS41MDhjLS43NzAuOTQ3LTEuOTE4IDEuNDkyLTMuNTA4IDEuNDkyLTEuNzI1IDAtMi45ODktLjM1OS0zLjc4Mi0xLjI1OWEyLjEzNyAyLjEzNyAwIDAgMS0uMDg1LS4xMDRMNCAxMS43NDZ2Ni41ODVjMS40MzUuNzc5IDQuNTE0IDIuMTc5IDggMi4xNzkgMy40ODYgMCA2LjU2NS0xLjQwMCA4LTIuMTc5di02LjU4NWwtLjA5OC0uMTA0cy0uMDMzLjA0NS0uMDg1LjEwNGMtLjc5My45MDAtMi4wNTcgMS4yNTktMy43ODIgMS4yNTktMS41OTAgMC0yLjczOC0uNTQ1LTMuNTA4LTEuNDkyYTQuMzU5IDQuMzU5IDAgMCAxLS4zNTUtLjUwOFptMi4zMjggMy4yNTBjLjU0OSAwIDEgLjQ1MSAxIDF2MmMwIC41NDktLjQ1MSAxLTEgMS0uNTQ5IDAtMS0uNDUxLTEtMXYtMmMwLS41NDkuNDUxLTEgMS0xWm0tNSAwYy41NDkgMCAxIC40NTEgMSAxdjJjMCAuNTQ5LS40NTEgMS0xIDEtLjU0OSAwLTEtLjQ1MS0xLTF2LTJjMC0uNTQ5LjQ1MS0xIDEtMVptMy4zMTMtNi4xODVjLjEzNiAxLjA1Ny40MDMgMS45MTMuODc4IDIuNDk3LjQ0Mi41NDQgMS4xMzQuOTM4IDIuMzQ0LjkzOCAxLjU3MyAwIDIuMjkyLS4zMzcgMi42NTctLjc1MS4zODQtLjQzNS41NTgtMS4xNTAuNTU4LTIuMzYxIDAtMS4xNDAtLjI0My0xLjg0Ny0uNzA1LTIuMzE5LS40NzctLjQ4OC0xLjMxOS0uODYyLTIuODI0LTEuMDI1LTEuNDg3LS4xNjEtMi4xOTIuMTM4LTIuNTMzLjUyOS0uMjY5LjMwNy0uNDM3LjgwOC0uNDM4IDEuNTc4di4wMjFjMCAuMjY1LjAyMS41NjIuMDYzLjg5M1ptLTEuNjI2IDBjLjA0Mi0uMzMxLjA2My0uNjI4LjA2My0uODk0di0uMDIwYy0uMDAxLS43NzAtLjE2OS0xLjI3MS0uNDM4LTEuNTc4LS4zNDEtLjM5MS0xLjA0Ni0uNjkwLTIuNTMzLS41MjktMS41MDUuMTYzLTIuMzQ3LjUzNy0yLjgyNCAxLjAyNS0uNDYyLjQ3Mi0uNzA1IDEuMTc5LS43MDUgMi4zMTkgMCAxLjIxMS4xNzUgMS45MjYuNTU4IDIuMzYxLjM2NS40MTQgMS4wODQuNzUxIDIuNjU3Ljc1MSAxLjIxMCAwIDEuOTAyLS4zOTQgMi4zNDQtLjkzOC40NzUtLjU4NC43NDItMS40NDAuODc4LTIuNDk3WiIvPjwvc3ZnPg==", "ai": true}, {"n": "OpenAI Codex", "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzA2MTkzQSIgZD0iTTIyLjI4MTkgOS44MjExYTUuOTg0NyA1Ljk4NDcgMCAwIDAtLjUxNTctNC45MTA4IDYuMDQ2MiA2LjA0NjIgMCAwIDAtNi41MDk4LTIuOUE2LjA2NTEgNi4wNjUxIDAgMCAwIDQuOTgwNyA0LjE4MThhNS45ODQ3IDUuOTg0NyAwIDAgMC0zLjk5NzcgMi45IDYuMDQ2MiA2LjA0NjIgMCAwIDAgLjc0MjcgNy4wOTY2IDUuOTggNS45OCAwIDAgMCAuNTExIDQuOTEwNyA2LjA1MSA2LjA1MSAwIDAgMCA2LjUxNDYgMi45MDAxQTUuOTg0NyA1Ljk4NDcgMCAwIDAgMTMuMjU5OSAyNGE2LjA1NTcgNi4wNTU3IDAgMCAwIDUuNzcxOC00LjIwNTggNS45ODk0IDUuOTg5NCAwIDAgMCAzLjk5NzctMi45MDAxIDYuMDU1NyA2LjA1NTcgMCAwIDAtLjc0NzUtNy4wNzI5em0tOS4wMjIgMTIuNjA4MWE0LjQ3NTUgNC40NzU1IDAgMCAxLTIuODc2NC0xLjA0MDhsLjE0MTktLjA4MDQgNC43NzgzLTIuNzU4MmEuNzk0OC43OTQ4IDAgMCAwIC4zOTI3LS42ODEzdi02LjczNjlsMi4wMiAxLjE2ODZhLjA3MS4wNzEgMCAwIDEgLjAzOC4wNTJ2NS41ODI2YTQuNTA0IDQuNTA0IDAgMCAxLTQuNDk0NSA0LjQ5NDR6bS05LjY2MDctNC4xMjU0YTQuNDcwOCA0LjQ3MDggMCAwIDEtLjUzNDYtMy4wMTM3bC4xNDIuMDg1MiA0Ljc4MyAyLjc1ODJhLjc3MTIuNzcxMiAwIDAgMCAuNzgwNiAwbDUuODQyOC0zLjM2ODV2Mi4zMzI0YS4wODA0LjA4MDQgMCAwIDEtLjAzMzIuMDYxNUw5Ljc0IDE5Ljk1MDJhNC40OTkyIDQuNDk5MiAwIDAgMS02LjE0MDgtMS42NDY0ek0yLjM0MDggNy44OTU2YTQuNDg1IDQuNDg1IDAgMCAxIDIuMzY1NS0xLjk3MjhWMTEuNmEuNzY2NC43NjY0IDAgMCAwIC4zODc5LjY3NjVsNS44MTQ0IDMuMzU0My0yLjAyMDEgMS4xNjg1YS4wNzU3LjA3NTcgMCAwIDEtLjA3MSAwbC00LjgzMDMtMi43ODY1QTQuNTA0IDQuNTA0IDAgMCAxIDIuMzQwOCA3Ljg3MnptMTYuNTk2MyAzLjg1NThMMTMuMTAzOCA4LjM2NCAxNS4xMTkyIDcuMmEuMDc1Ny4wNzU3IDAgMCAxIC4wNzEgMGw0LjgzMDMgMi43OTEzYTQuNDk0NCA0LjQ5NDQgMCAwIDEtLjY3NjUgOC4xMDQydi01LjY3NzJhLjc5Ljc5IDAgMCAwLS40MDctLjY2N3ptMi4wMTA3LTMuMDIzMWwtLjE0Mi0uMDg1Mi00Ljc3MzUtMi43ODE4YS43NzU5Ljc3NTkgMCAwIDAtLjc4NTQgMEw5LjQwOSA5LjIyOTdWNi44OTc0YS4wNjYyLjA2NjIgMCAwIDEgLjAyODQtLjA2MTVsNC44MzAzLTIuNzg2NmE0LjQ5OTIgNC40OTkyIDAgMCAxIDYuNjgwMiA0LjY2ek04LjMwNjUgMTIuODYzbC0yLjAyLTEuMTYzOGEuMDgwNC4wODA0IDAgMCAxLS4wMzgtLjA1NjdWNi4wNzQyYTQuNDk5MiA0LjQ5OTIgMCAwIDEgNy4zNzU3LTMuNDUzN2wtLjE0Mi4wODA1TDguNzA0IDUuNDU5YS43OTQ4Ljc5NDggMCAwIDAtLjM5MjcuNjgxM3ptMS4wOTc2LTIuMzY1NGwyLjYwMi0xLjQ5OTggMi42MDY5IDEuNDk5OHYyLjk5OTRsLTIuNTk3NCAxLjQ5OTctMi42MDY3LTEuNDk5N1oiLz48L3N2Zz4=", "ai": true}]];
+    var glyph = { good: '✓', mid: '–', bad: '✕' };
+    return {
+      m: view,
+      stackLogos: self.state.stack === 'logos', stackGroups: self.state.stack !== 'logos',
+      stackTabs: [['logos', 'Logótipos'], ['grupos', 'Por grupos']].map(function (o) { return { label: o[1], on: self.state.stack === o[0], pick: function () { self.setState({ stack: o[0] }); } }; }),
+      logoRows: LOGOS.map(function (r, i) { var items = r.map(function (t) { return { n: t.n, src: t.src, ai: t.ai, dup: false }; }); return { cls: i === 1 ? 'lg-rev' : '', dur: [52, 60, 48][i] + 's', items: items.concat(r.map(function (t) { return { n: t.n, src: t.src, ai: t.ai, dup: true }; })) }; }),
+      isContrate: id === 'contrate', isReforce: id === 'reforce', isConstrua: id === 'construa',
+      whoCols: order.map(function (k) { return { t: M[k].tag, cls: k === id ? 'cur' : '', pick: function () { self.setState({ model: k, faq: 0 }); } }; }),
+      whoRows: [
+        ['Encontrar e avaliar o profissional', 'y', 'y', 'y'],
+        ['Contrato do profissional', 'c', 'y', 'y'],
+        ['Gestão do dia a dia', 'c', 'c', 'y'],
+        ['Responsabilidade pela entrega', 'c', 'c', 'y'],
+        ['Acompanhamento e substituição', 'y', 'y', 'y']
+      ].map(function (r) { return { label: r[0], cells: r.slice(1).map(function (w, i) { return { t: w === 'y' ? 'Yellowipe' : 'A sua empresa', wp: w === 'y' ? 'wp-y' : 'wp-c', cls: order[i] === id ? 'cur' : '' }; }) }; }),
+      tabs: order.map(function (k) { return { label: M[k].label, on: k === id, pick: function () { self.setState({ model: k, faq: 0 }); } }; }),
+      nodes: m.nodes.map(function (n, i) { var p = pos[i]; return { ab: n[0], name: n[1], meta: n[2], x: p[0], y: p[1], sx: p[2], sy: p[3], sr: p[4], d: (0.15 + i * 0.12) + 's' }; }),
+      also: order.filter(function (k) { return k !== id; }).map(function (k) { return { tag: M[k].tag, name: names[k], text: short[k], pick: function () { self.setState({ model: k, faq: 0 }); } }; }),
+      stack: [
+        ['Front-end', ['React', 'Angular', 'Vue.js', 'TypeScript']],
+        ['Back-end', ['Node.js', 'Python', 'Java', '.NET', 'Go', 'PHP']],
+        ['Mobile', ['iOS · Swift', 'Android · Kotlin', 'React Native']],
+        ['Cloud e DevOps', ['AWS', 'Azure', 'Google Cloud', 'Kubernetes', 'Terraform']],
+        ['Dados e QA', ['dbt', 'Spark', 'Playwright', 'Cypress', 'Selenium']],
+        ['Desenvolvimento com IA', ['Claude Code', 'Cursor', 'GitHub Copilot', 'OpenAI Codex'], 'stk-ai']
+      ].map(function (g, i) { return { name: g[0], items: g[1], cls: g[2] || '', rv: rvs[i % 3] }; }),
+      cmpRows: m.cmp.map(function (r) { return { label: r[0], cells: r.slice(1).map(function (c, i) { return { tone: c[0], t: c[1], glyph: glyph[c[0]], cls: i === 0 ? 'us' : '' }; }) }; }),
+      faqs: m.faqs.map(function (f, i) { var open = self.state.faq === i; return { q: f[0], a: f[1], open: open, rot: open ? '45deg' : '0deg', toggle: function () { self.setState({ faq: open ? -1 : i }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>
