@@ -4,7 +4,7 @@
 
 HSTS com preload, `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` restritiva, sem `X-Powered-By`.
 
-**Pendente:** Content-Security-Policy com nonce, quando a plataforma de consentimento e o GTM estiverem escolhidos. Origens previstas: `googletagmanager.com`, `google-analytics.com`, `challenges.cloudflare.com`, o calendário e a plataforma de consentimento.
+**Pendente:** Content-Security-Policy com nonce, quando a plataforma de consentimento e o GTM estiverem escolhidos. Origens previstas: `googletagmanager.com`, `google-analytics.com`, `*.clarity.ms`, `c.bing.com`, `challenges.cloudflare.com`, o calendário e a plataforma de consentimento.
 
 ## Rota de leads
 
@@ -18,7 +18,7 @@ HSTS com preload, `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGI
 ## Privacidade (RGPD em Portugal, LGPD no Brasil)
 
 - Banner com "Recusar" e "Aceitar" com o mesmo peso; a escolha pode ser mudada no rodapé ("Cookies").
-- Antes do consentimento: nenhum GTM, pixel ou cookie de atribuição. Só o cookie da própria escolha (`yw_consent`, 180 dias).
+- Antes do consentimento: nenhum GTM, Clarity, pixel ou cookie de atribuição. Só o cookie da própria escolha (`yw_consent`, 180 dias).
 - Consent Mode do Google com tudo `denied` por omissão.
 - Formulário: base legal = diligências pré-contratuais a pedido do titular; marketing só com caixa própria, desmarcada por omissão.
 - Política de privacidade por mercado (RGPD e LGPD), fornecida pelo jurídico.

@@ -85,7 +85,7 @@ export function CvDrop({
     'min-h-11 w-full min-w-0 rounded-[10px] border border-line-strong bg-white px-3 py-2.5 font-sans text-[14px] text-ink';
   const cvBad = bad.includes('cv');
   return (
-    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-3">
+    <form data-clarity-mask="True" onSubmit={onSubmit} noValidate className="flex flex-col gap-3">
       <input type="hidden" name="kind" value="spontaneous" />
       <input type="hidden" name="locale" value={locale} />
       <label

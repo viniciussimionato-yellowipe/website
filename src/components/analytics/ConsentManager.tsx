@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { rememberFirstTouch } from '@/lib/analytics/attribution';
+import { applyClarityConsent } from '@/lib/analytics/clarity';
 import type { Consent } from '@/lib/analytics/consent';
 import {
   CONSENT_COOKIE,
@@ -11,8 +12,8 @@ import {
 } from '@/lib/analytics/consent';
 
 /**
- * Banner de consentimento e carregamento do GTM (modo básico do Consent Mode):
- * o GTM só é carregado depois de o visitante aceitar análise.
+ * Banner de consentimento e carregamento do GTM (modo básico do Consent Mode) e do
+ * Clarity: ambos só são carregados depois de o visitante aceitar análise.
  * Substituir por uma plataforma certificada pela Google quando for escolhida
  * (decisão aberta, docs/08-seguranca-e-privacidade.md) mantendo este contrato.
  */
@@ -63,6 +64,7 @@ export function ConsentManager({ texts }: { texts: Texts }) {
       if (existing.analytics) {
         rememberFirstTouch();
         loadGtm(existing);
+        applyClarityConsent(true);
       }
     } else {
       // Mostrar depois da primeira pintura para não afetar o LCP.
@@ -84,6 +86,7 @@ export function ConsentManager({ texts }: { texts: Texts }) {
     if (consent) {
       if (consent.analytics) rememberFirstTouch();
       loadGtm(consent);
+      applyClarityConsent(consent.analytics);
     }
     setVisible(false);
   };

@@ -3,7 +3,17 @@
  * novo entra aqui primeiro, com as suas propriedades, e depois no GTM.
  * Regra: nenhum dado pessoal (nome, email, telefone, empresa) vai para o dataLayer.
  */
+import { clarityTrack } from './clarity';
+
 export type AnalyticsEvents = {
+  /**
+   * Página vista (carga inicial e cada navegação no cliente), com o tipo de página para
+   * segmentar no GA4 e no Clarity. No GTM é o gatilho do page_view do GA4.
+   * pagina_id = id do modelo, serviço, tecnologia ou caso.
+   */
+  page_context: { tipo_pagina: string; idioma: string; pagina_id?: string };
+  /** Core Web Vitals reais (LCP, INP, CLS, FCP, TTFB) da página de entrada. CLS × 1000. */
+  web_vitals: { metrica: string; valor: number; classificacao: string; tipo_pagina: string };
   cta_click: {
     cta_id: string;
     cta_text: string;
@@ -46,4 +56,5 @@ export function track<E extends EventName>(event: E, params: AnalyticsEvents[E])
   const w = window as DataLayerWindow;
   w.dataLayer = w.dataLayer ?? [];
   w.dataLayer.push({ event, ...params });
+  clarityTrack(event, params);
 }

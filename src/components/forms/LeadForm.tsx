@@ -223,6 +223,7 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
 
   return (
     <form
+      data-clarity-mask="True"
       ref={formRef}
       onSubmit={onSubmit}
       onFocusCapture={onFirstInteraction}

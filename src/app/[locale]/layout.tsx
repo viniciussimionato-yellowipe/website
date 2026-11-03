@@ -9,6 +9,7 @@ import type { Locale } from '@/lib/i18n/locales';
 import { allRoutes, alternatesFor, pathFor } from '@/lib/routing';
 import { organizationLd, websiteLd } from '@/lib/seo/jsonld';
 import { ConsentManager } from '@/components/analytics/ConsentManager';
+import { RouteAnalytics } from '@/components/analytics/RouteAnalytics';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -91,6 +92,7 @@ export default async function LocaleLayout({
         </main>
         <Footer locale={locale} dict={dict} />
         <ConsentManager texts={dict.consent} />
+        <RouteAnalytics locale={locale} />
         <JsonLd data={[organizationLd(), websiteLd(locale)]} />
       </body>
     </html>

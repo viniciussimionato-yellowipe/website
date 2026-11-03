@@ -424,7 +424,7 @@ function ApplyForm({
   const field =
     'min-h-11 min-w-0 rounded-[10px] border border-line-strong bg-white px-3 py-[11px] font-sans text-[14px] text-ink';
   return (
-    <form onSubmit={onSubmit} noValidate className={box}>
+    <form data-clarity-mask="True" onSubmit={onSubmit} noValidate className={box}>
       <b className="text-[16px]">{t.apply}</b>
       <input type="hidden" name="kind" value="application" />
       <input type="hidden" name="locale" value={locale} />
@@ -529,6 +529,7 @@ function JobAlert({
 
   return (
     <form
+      data-clarity-mask="True"
       onSubmit={onSubmit}
       noValidate
       className="flex flex-col gap-1.5 rounded-2xl bg-warm p-[18px] text-[13px] text-body"
