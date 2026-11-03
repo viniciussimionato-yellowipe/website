@@ -9,7 +9,8 @@ import { localeConfig } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { CaseViewTracker } from '@/components/analytics/CaseViewTracker';
 import { LeadForm } from '@/components/forms/LeadForm';
-import { CaseCards, FinalCta, PageHero, Section } from './shared';
+import { ContactBlock } from '@/components/forms/ContactBlock';
+import { CaseCards, PageHero, Section } from './shared';
 import { ServicesHub } from './ServicesHub';
 import { TechnologiesHub } from './TechnologiesHub';
 import type { Crumb } from './shared';
@@ -118,12 +119,11 @@ export function CasePage({ locale, dict, item }: Base & { item: CaseStudy }) {
           </div>
         </div>
       </section>
-      <FinalCta
-        title={dict.contact.lead}
-        label={dict.common.bookCall}
-        href={contactHref(locale)}
-        ctaId={`caso-${item.id}-final`}
-        pageType="caso"
+      <ContactBlock
+        locale={locale}
+        dict={dict}
+        formId={`caso-${item.id}`}
+        ctaId={`caso-${item.id}-formulario`}
       />
       <CaseViewTracker caseId={item.id} sector={item.sector} />
     </>

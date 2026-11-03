@@ -2,12 +2,13 @@
 
 ## Caminho de um lead
 
-1. CTA (`TrackedLink`, evento `cta_click`) leva ao formulário e guarda na sessão o CTA, a página e o modelo (`src/lib/analytics/cta-context.ts`). O formulário envia-os ao CRM (`yw_cta_id`, `yw_cta_page`) e, se o CTA veio de uma página de modelo, já abre com a intenção escolhida.
-2. Formulário em três passos (`src/components/forms/LeadForm.tsx`): intenção → contacto → pedido.
-3. `POST /api/lead` (`src/app/api/lead/route.ts`):
+1. O formulário está na própria página: home, modelos, serviços, tecnologias e casos terminam com a secção `ContactBlock` (`src/components/forms/ContactBlock.tsx`) e os CTAs da página apontam para `#contacto`. O cabeçalho continua a levar a `/contacto/`.
+2. CTA (`TrackedLink`, evento `cta_click`) leva ao formulário e guarda na sessão o CTA, a página e o modelo (`src/lib/analytics/cta-context.ts`). O formulário envia-os ao CRM (`yw_cta_id`, `yw_cta_page`) e, numa página de modelo (ou vindo de uma), já abre com a intenção escolhida.
+3. Formulário em três passos (`src/components/forms/LeadForm.tsx`): intenção → contacto → pedido.
+4. `POST /api/lead` (`src/app/api/lead/route.ts`):
    origem do próprio site → limite por IP → tamanho → armadilha para bots → validação (zod) → Turnstile → `handleLead`.
-4. `handleLead` (`src/lib/leads/handle.ts`): pontua (`scoring.ts`), decide o destino (`assign.ts`) e entrega (`destinations.ts`).
-5. Resposta ao browser: só o próximo passo (`calendar`, `email` ou `jobs`). Nunca a pontuação.
+5. `handleLead` (`src/lib/leads/handle.ts`): pontua (`scoring.ts`), decide o destino (`assign.ts`) e entrega (`destinations.ts`).
+6. Resposta ao browser: só o próximo passo (`calendar`, `email` ou `jobs`). Nunca a pontuação.
 
 ## Pontuação
 

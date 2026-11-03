@@ -6,7 +6,7 @@ import { useId, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import type { FormEvent } from 'react';
 import type { Dictionary } from '@/dictionaries';
 import { getAttribution } from '@/lib/analytics/attribution';
-import { parseCta, readCtaRaw } from '@/lib/analytics/cta-context';
+import { parseCta, readCtaRaw, subscribeCta } from '@/lib/analytics/cta-context';
 import { track } from '@/lib/analytics/events';
 import type { Locale } from '@/lib/i18n/locales';
 import { localeConfig } from '@/lib/i18n/locales';
@@ -29,7 +29,9 @@ type Props = {
   privacyHref: string | null;
   formId: string;
   ctaId?: string;
-  /** `dark`: cartão escuro sobre fundo navy (secção Fale connosco da home). */
+  /** Página de modelo: intenção sugerida (tem prioridade sobre o último CTA da sessão). */
+  model?: string;
+  /** `dark`: cartão escuro sobre fundo navy (secção Fale connosco, ContactBlock). */
   tone?: 'light' | 'dark';
 };
 
@@ -40,7 +42,6 @@ const MODEL_INTENT: Record<string, Intent> = {
   reforce: 'augment',
   construa: 'build',
 };
-const noSubscribe = () => () => {};
 
 function readSignals() {
   try {
@@ -85,7 +86,7 @@ const styles = {
   },
 } as const;
 
-export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light' }: Props) {
+export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 'light' }: Props) {
   const c = styles[tone];
   const dark = tone === 'dark';
   const field = c.field;
@@ -105,9 +106,10 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, tone = 'light'
   const [step, setStep] = useState(1);
   const [chosen, setChosen] = useState<Intent | null>(null);
   // Lido depois da hidratação (o servidor não tem sessionStorage): sem diferenças no HTML.
-  const ctaRaw = useSyncExternalStore(noSubscribe, readCtaRaw, () => null);
+  const ctaRaw = useSyncExternalStore(subscribeCta, readCtaRaw, () => null);
   const lastCta = useMemo(() => parseCta(ctaRaw), [ctaRaw]);
-  const intent = chosen ?? (lastCta?.model ? MODEL_INTENT[lastCta.model] : undefined) ?? null;
+  const suggestedModel = model ?? lastCta?.model;
+  const intent = chosen ?? (suggestedModel ? MODEL_INTENT[suggestedModel] : undefined) ?? null;
   const sourceCta = lastCta?.ctaId ?? ctaId ?? formId;
   const [status, setStatus] = useState<Status>('idle');
   const [meetingUrl, setMeetingUrl] = useState<string | null>(null);

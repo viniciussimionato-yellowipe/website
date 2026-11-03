@@ -14,7 +14,8 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { TrackedLink } from '@/components/ui/TrackedLink';
 import { ArrowRight } from '@/components/ui/icons';
 import { TechLogo } from '@/components/ui/TechLogo';
-import { CaseCards, FaqList, FinalCta } from './shared';
+import { ContactBlock } from '@/components/forms/ContactBlock';
+import { CaseCards, FaqList } from './shared';
 
 /**
  * Página por tecnologia (mockup TecnologiaNet v1, benchmark BairesDev /technologies/*).
@@ -94,7 +95,7 @@ export function TechnologyPage({ locale, dict, view }: Props) {
               {view.pitch}
             </p>
             <TrackedLink
-              href={contact}
+              href="#contacto"
               ctaId={ctaId('hero')}
               position="hero"
               pageType="tecnologia"
@@ -353,12 +354,14 @@ export function TechnologyPage({ locale, dict, view }: Props) {
         </section>
       )}
 
-      <FinalCta
+      <ContactBlock
+        locale={locale}
+        dict={dict}
+        formId={`tecnologia-${view.id}`}
+        ctaId={ctaId('formulario')}
+        eyebrow={dict.modelPage.finalEyebrow}
         title={fill(t.finalTitle, v)}
-        label={fill(t.cta, v)}
-        href={contact}
-        ctaId={ctaId('final')}
-        pageType="tecnologia"
+        lead={dict.modelPage.finalLead}
       />
       <JsonLd
         data={breadcrumbLd(crumbs.map((c) => ({ name: c.name, url: absoluteUrl(c.href) })))}

@@ -69,7 +69,7 @@ Mapas de calor e gravações para perceber _porquê_ as visitas orgânicas conve
 
 ### Atribuição ao CTA de origem
 
-`TrackedLink` guarda o último CTA da sessão (`sessionStorage`, `yw_last_cta`: id do CTA, página e modelo). O formulário envia-o ao CRM (`yw_cta_id`, `yw_cta_page`) e ao GA4 (`cta_id` no `generate_lead`), e pré-escolhe a intenção quando o CTA vem de uma página de modelo. Assim um lead feito em `/contacto/` fica atribuído à página de serviço onde a decisão foi tomada.
+`TrackedLink` guarda o último CTA da sessão (`sessionStorage`, `yw_last_cta`: id do CTA, página e modelo). O formulário envia-o ao CRM (`yw_cta_id`, `yw_cta_page`) e ao GA4 (`cta_id` no `generate_lead`), e pré-escolhe a intenção quando o CTA vem de uma página de modelo. O `form_id` diz em que página estava o formulário (`home-contacto`, `servico-<id>`, `modelo-<id>`, `tecnologia-<id>`, `caso-<id>`); quando o visitante chega ao formulário sem clicar num CTA, o CTA atribuído é `<tipo>-<id>-formulario`. Um lead feito em `/contacto/` (cabeçalho) fica atribuído à página onde foi clicado o CTA.
 
 ### Segmentos a guardar no Clarity
 

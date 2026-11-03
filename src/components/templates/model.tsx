@@ -6,9 +6,9 @@ import { getContent, publishedCases } from '@/content';
 import type { Model } from '@/content/schema';
 import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
-import { localeConfig } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { breadcrumbLd, faqLd, localizeFaq, serviceLd } from '@/lib/seo/jsonld';
+import { ContactBlock } from '@/components/forms/ContactBlock';
 import { LogosStrip } from '@/components/home/HomeSections';
 import { ModelViz } from '@/components/models/ModelViz';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -41,15 +41,14 @@ export function ModelPage({ locale, dict, model }: Props) {
   const href = pathFor(locale, { kind: 'model', id: model.id })!;
   const home = pathFor(locale, { kind: 'home' })!;
   const hub = pathFor(locale, { kind: 'servicesHub' });
-  const contact = pathFor(locale, { kind: 'contact' })!;
   const techHub = pathFor(locale, { kind: 'technologiesHub' });
   const casesHub = pathFor(locale, { kind: 'casesHub' });
   const name = L(model.name, locale);
   const steps = L(model.howItWorks, locale);
   const faq = localizeFaq(model.faq, locale);
-  const email = site.contacts[localeConfig[locale].market].email;
+  // Os CTAs levam ao formulário no fim da própria página (ContactBlock).
   const cta = (position: string) => ({
-    href: contact,
+    href: '#contacto',
     ctaId: `modelo-${model.id}-${position}`,
     position,
     pageType: 'modelo',
@@ -546,31 +545,17 @@ export function ModelPage({ locale, dict, model }: Props) {
         </section>
       )}
 
-      {/* Próximo passo */}
-      <section id="contacto" className="relative overflow-hidden bg-navy text-white">
-        <Image
-          src="/images/hero-tree.png"
-          alt=""
-          aria-hidden="true"
-          width={1324}
-          height={1500}
-          className="pointer-events-none absolute -right-[120px] -bottom-[120px] h-auto w-[460px] opacity-[0.14]"
-        />
-        <div className="container-site relative flex flex-wrap items-center justify-between gap-x-12 gap-y-7 py-[clamp(64px,8vw,104px)]">
-          <Head eyebrow={t.finalEyebrow} title={page.finalTitle} lead={t.finalLead} dark narrow />
-          <div className="rv flex flex-wrap items-center gap-x-7 gap-y-3">
-            <TrackedLink {...cta('final')} className={ctaClass}>
-              {page.hero.cta} <ArrowRight strokeWidth={2.2} />
-            </TrackedLink>
-            <a
-              href={`mailto:${email}`}
-              className="inline-flex min-h-11 items-center font-mono text-[14px] text-white underline decoration-white/40 underline-offset-[5px] hover:text-yellow"
-            >
-              {t.emailPrefix} {email}
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Próximo passo: formulário na própria página */}
+      <ContactBlock
+        locale={locale}
+        dict={dict}
+        formId={`modelo-${model.id}`}
+        ctaId={`modelo-${model.id}-formulario`}
+        eyebrow={t.finalEyebrow}
+        title={page.finalTitle}
+        lead={t.finalLead}
+        model={model.id}
+      />
 
       <JsonLd
         data={breadcrumbLd(crumbs.map((c) => ({ name: c.name, url: absoluteUrl(c.href) })))}

@@ -155,39 +155,3 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
     </div>
   );
 }
-
-export function FinalCta({
-  title,
-  label,
-  href,
-  ctaId,
-  pageType,
-  model,
-}: {
-  title: string;
-  label: string;
-  href: string;
-  ctaId: string;
-  pageType: string;
-  model?: string;
-}) {
-  return (
-    <section className="bg-navy text-white">
-      <div className="container-site flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between">
-        <p className="max-w-[640px] font-display text-[clamp(24px,2.6vw,32px)] leading-tight font-semibold">
-          {title}
-        </p>
-        <TrackedLink
-          href={href}
-          ctaId={ctaId}
-          position="final"
-          pageType={pageType}
-          model={model}
-          className="btn-primary"
-        >
-          {label} <ArrowRight />
-        </TrackedLink>
-      </div>
-    </section>
-  );
-}
