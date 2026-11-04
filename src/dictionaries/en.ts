@@ -3,7 +3,7 @@ import type { Dictionary } from './pt';
 /** en: written for US buyers (nearshore from Portugal and Brazil). Full English pages arrive in sprint 4. */
 const en: Dictionary = {
   meta: {
-    homeTitle: 'Nearshore tech talent and software development | Yellowipe',
+    homeTitle: 'Yellowipe | Nearshore tech talent and software development',
     homeDescription:
       'We hire talent, augment teams and build solutions in AI, software, cloud and QA, with engineers in Portugal and Brazil.',
     /** Titles ≤ 60 and descriptions 70–160 characters (content:check). */

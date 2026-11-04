@@ -3,7 +3,7 @@ import type { Dictionary } from './pt';
 /** pt-BR: não é tradução automática de pt-PT. Termos do mercado brasileiro (equipe, alocação, cases, usuários). */
 const br: Dictionary = {
   meta: {
-    homeTitle: 'Recrutamento tech, alocação de TI e software | Yellowipe',
+    homeTitle: 'Yellowipe | Recrutamento tech, alocação de TI e software',
     homeDescription:
       'Contratamos talento, reforçamos equipes e construímos soluções em IA, software, cloud e QA, no Brasil, em Portugal e nos EUA.',
     /** Títulos ≤ 60 e descrições 70–160 caracteres (content:check). */
