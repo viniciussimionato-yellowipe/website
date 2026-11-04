@@ -6,12 +6,12 @@ import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { CookieSettingsButton } from '@/components/analytics/CookieSettingsButton';
-import { LinkedInIcon } from '@/components/ui/icons';
+import { AiAssistantLogo, LinkedInIcon, type AiAssistant } from '@/components/ui/icons';
 
 type Props = { locale: Locale; dict: Dictionary };
 
 /** Prompt dos botões "Resumir com IA" (como a BairesDev). O URL é o da home do idioma. */
-function summarizeLinks(locale: Locale) {
+function summarizeLinks(locale: Locale): { name: AiAssistant; href: string }[] {
   const url = absoluteUrl(`/${locale}/`);
   const text =
     locale === 'en'
@@ -121,8 +121,9 @@ export function Footer({ locale, dict }: Props) {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="text-on-navy-2 no-underline hover:text-white"
+                className="inline-flex items-center gap-1.5 text-on-navy-2 no-underline hover:text-white"
               >
+                <AiAssistantLogo name={s.name} />
                 {s.name}
               </a>
             ))}
