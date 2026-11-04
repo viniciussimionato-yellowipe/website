@@ -44,7 +44,14 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   applicationName: site.name,
-  icons: { icon: '/favicon.ico' },
+  // Ícone da marca (só a árvore), do Drive de assets: ICON POSITIVO.svg
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   formatDetection: { telephone: false },
 };
 
