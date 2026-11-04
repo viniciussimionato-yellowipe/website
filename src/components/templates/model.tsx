@@ -86,24 +86,7 @@ export function ModelPage({ locale, dict, model }: Props) {
         />
         <div className="container-site relative grid grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] items-center gap-[clamp(40px,5vw,72px)] pt-[clamp(56px,7vw,96px)] pb-[clamp(64px,8vw,112px)] max-[960px]:grid-cols-1">
           <div>
-            <nav aria-label="Breadcrumb">
-              <ol className="m-0 mb-[22px] flex list-none flex-wrap gap-2 p-0 text-[13px] text-on-navy-2">
-                {crumbs.map((c, i) =>
-                  i < crumbs.length - 1 ? (
-                    <li key={c.href} className="flex gap-2">
-                      <Link href={c.href} className="text-on-navy-2 no-underline hover:text-white">
-                        {c.name}
-                      </Link>
-                      <span aria-hidden="true">/</span>
-                    </li>
-                  ) : (
-                    <li key={c.href} aria-current="page" className="text-white">
-                      {c.name}
-                    </li>
-                  ),
-                )}
-              </ol>
-            </nav>
+            {/* Sem breadcrumb visível; o caminho fica só no JSON-LD (BreadcrumbList). */}
             <p className={`${eyebrowClass} text-yellow`}>
               {name} · {L(model.keyword, locale)}
             </p>
