@@ -44,6 +44,15 @@ export type AnalyticsEvents = {
     origem?: 'formulario' | 'vaga' | 'espontanea';
     vaga?: string;
   };
+  /**
+   * Candidato encaminhado do formulário de clientes para Carreiras: escolheu "Procuro
+   * emprego" (origem intencao) ou escreveu uma mensagem de candidato (origem mensagem).
+   */
+  candidate_redirect: {
+    form_id: string;
+    origem: 'intencao' | 'mensagem';
+    destino: 'vagas' | 'cv';
+  };
   job_open: { vaga: string; area: string };
   job_alert_submit: { idioma: string };
   meeting_booked: { origem_cta: string; mercado: string };

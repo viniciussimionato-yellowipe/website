@@ -177,8 +177,26 @@ const en: Dictionary = {
       unsure: 'Not sure yet',
       job: "I'm looking for a job",
     },
-    jobRedirect:
-      'For job applications, please see our open positions: the recruitment team replies there.',
+    jobPanelTitle: 'Great to hear you want to work with us!',
+    jobPanelText:
+      'This form is for companies. Applications go through our open positions or by sending your CV, where the recruitment team replies.',
+    jobsCta: 'See open positions',
+    cvCta: 'Send my CV',
+    candidateHint:
+      'Looking for a job? Applications go through our open positions, where the recruitment team replies.',
+    candidateHintLink: 'See positions',
+    /** Typical job-seeker phrases (lowercase, no accents). "position" alone is left out: clients use it too. */
+    candidateKeywords: [
+      'my cv',
+      'my resume',
+      'looking for a job',
+      'looking for work',
+      'job application',
+      'apply for',
+      'internship',
+      'work with you',
+      'work at yellowipe',
+    ],
     step2Title: 'Your details',
     name: 'Name',
     email: 'Work email',

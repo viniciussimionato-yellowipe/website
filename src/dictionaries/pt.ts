@@ -182,8 +182,26 @@ const pt = {
       unsure: 'Ainda não sei',
       job: 'Procuro emprego',
     },
-    jobRedirect:
-      'Para candidaturas, veja as vagas abertas: a equipa de recrutamento responde por lá.',
+    jobPanelTitle: 'Que bom que quer trabalhar connosco!',
+    jobPanelText:
+      'Este formulário é para empresas. As candidaturas seguem pelas vagas abertas ou pelo envio de CV, onde a equipa de recrutamento responde.',
+    jobsCta: 'Ver vagas abertas',
+    cvCta: 'Enviar o meu CV',
+    candidateHint:
+      'Procura emprego? As candidaturas seguem pelas vagas abertas, onde a equipa de recrutamento responde.',
+    candidateHintLink: 'Ver vagas',
+    /** Expressões típicas de quem procura emprego (sem acentos, minúsculas). "vaga" fica de fora: clientes também a usam. */
+    candidateKeywords: [
+      'meu cv',
+      'meu curriculo',
+      'procuro emprego',
+      'procuro trabalho',
+      'candidatura',
+      'candidatar',
+      'estagio',
+      'trabalhar convosco',
+      'trabalhar na yellowipe',
+    ],
     step2Title: 'Os seus contactos',
     name: 'Nome',
     email: 'Email profissional',

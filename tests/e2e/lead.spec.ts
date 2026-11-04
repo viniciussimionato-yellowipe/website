@@ -80,3 +80,44 @@ test('páginas de serviço, tecnologia e caso têm o formulário na página', as
     await expect(page.locator('#contacto form'), path).toHaveCount(1);
   }
 });
+
+test('"Procuro emprego" leva às vagas e não deixa enviar o formulário de clientes', async ({
+  page,
+}) => {
+  await page.goto('/pt/contacto/');
+  const form = page.locator('form').filter({ hasText: 'O que procura?' });
+  await form.getByLabel('Procuro emprego', { exact: true }).check();
+  await expect(form.getByRole('status')).toContainText('Que bom que quer trabalhar connosco');
+  await expect(form.getByRole('button', { name: 'Continuar' })).toHaveCount(0);
+  await expect(form.getByRole('button', { name: 'Enviar pedido' })).toHaveCount(0);
+  await expect(form.getByRole('link', { name: 'Enviar o meu CV' })).toHaveAttribute(
+    'href',
+    /\/pt\/carreiras\/#cv$/,
+  );
+
+  // Mudar de ideias volta ao fluxo normal.
+  await form.getByLabel('Contratar talento', { exact: true }).check();
+  await expect(form.getByRole('button', { name: 'Continuar' })).toBeVisible();
+
+  await form.getByLabel('Procuro emprego', { exact: true }).check();
+  await form.getByRole('link', { name: /Ver vagas abertas/ }).click();
+  await expect(page).toHaveURL(/\/pt\/carreiras\/vagas\/$/);
+});
+
+test('mensagem com cara de candidatura mostra o caminho para as vagas', async ({ page }) => {
+  await page.goto('/pt/contacto/');
+  const form = page.locator('form').filter({ hasText: 'O que procura?' });
+  await form.getByLabel('Contratar talento', { exact: true }).check();
+  await form.getByRole('button', { name: 'Continuar' }).click();
+  await form.getByLabel('Nome', { exact: true }).fill('Teste Automático');
+  await form.getByLabel('Email profissional', { exact: true }).fill('teste@empresa-exemplo.pt');
+  await form.getByLabel('Empresa', { exact: true }).fill('Empresa Exemplo');
+  await form.getByRole('button', { name: 'Continuar' }).click();
+  const message = form.getByLabel('Mensagem', { exact: true });
+  await message.fill('Precisamos de dois developers React a partir de março.');
+  await expect(form.getByText('Procura emprego?')).toHaveCount(0);
+  await message.fill('Olá, envio o meu currículo para uma oportunidade.');
+  await expect(form.getByText('Procura emprego?')).toBeVisible();
+  // O aviso não bloqueia: o envio continua disponível para clientes.
+  await expect(form.getByRole('button', { name: 'Enviar pedido' })).toBeEnabled();
+});

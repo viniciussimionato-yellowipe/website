@@ -19,6 +19,9 @@ import { ArrowRight } from '@/components/ui/icons';
  * - Sinais de comportamento (preços, casos vistos) vêm do sessionStorage, se existirem.
  * - O último CTA da sessão (cta-context.ts) vai para o CRM e, se veio de uma página de
  *   modelo, pré-escolhe a intenção (o visitante pode mudar).
+ * - É um formulário para empresas: "Procuro emprego" não avança e leva às vagas e ao envio
+ *   de CV, e uma mensagem com cara de candidatura mostra um aviso com o mesmo caminho.
+ *   Os candidatos nunca entram no CRM (AGENTS.md, regra 6).
  */
 type Intent = 'hire' | 'augment' | 'build' | 'unsure' | 'job';
 type Status = 'idle' | 'sending' | 'done-calendar' | 'done-email' | 'error';
@@ -31,6 +34,8 @@ type Props = {
   ctaId?: string;
   /** Página de modelo: intenção sugerida (tem prioridade sobre o último CTA da sessão). */
   model?: string;
+  /** Para onde vão os candidatos: vagas abertas e envio de CV (Carreiras). */
+  careers: { jobs: string | null; cv: string | null };
   /** `dark`: cartão escuro sobre fundo navy (secção Fale connosco, ContactBlock). */
   tone?: 'light' | 'dark';
 };
@@ -42,6 +47,13 @@ const MODEL_INTENT: Record<string, Intent> = {
   reforce: 'augment',
   construa: 'build',
 };
+
+/** Minúsculas e sem acentos, para comparar com `candidateKeywords`. */
+const normalize = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 
 function readSignals() {
   try {
@@ -86,7 +98,16 @@ const styles = {
   },
 } as const;
 
-export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 'light' }: Props) {
+export function LeadForm({
+  locale,
+  t,
+  privacyHref,
+  formId,
+  ctaId,
+  model,
+  careers,
+  tone = 'light',
+}: Props) {
   const c = styles[tone];
   const dark = tone === 'dark';
   const field = c.field;
@@ -116,6 +137,14 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
   const [badFields, setBadFields] = useState<string[]>([]);
   const turnstileKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const isJob = intent === 'job';
+  const [looksLikeCandidate, setLooksLikeCandidate] = useState(false);
+  const keywords = useMemo(() => t.candidateKeywords.map(normalize), [t.candidateKeywords]);
+  const onMessage = (value: string) => {
+    const text = normalize(value);
+    setLooksLikeCandidate(keywords.some((k) => text.includes(k)));
+  };
+  const toCareers = (origem: 'intencao' | 'mensagem', destino: 'vagas' | 'cv') =>
+    track('candidate_redirect', { form_id: formId, origem, destino });
 
   const onFirstInteraction = () => {
     if (started.current) return;
@@ -145,6 +174,8 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    // Candidatos não seguem por aqui (o painel de "Procuro emprego" não tem botão de envio).
+    if (isJob) return;
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
@@ -200,18 +231,14 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
         setStatus('error');
         return;
       }
-      if (isJob) {
-        track('candidate_submit', { idioma: locale });
-      } else {
-        track('generate_lead', {
-          form_id: formId,
-          intencao: intent ?? 'unsure',
-          mercado: payload.country ?? localeConfig[locale].market,
-          idioma: locale,
-          faixa_pontuacao: body.band ?? 'unknown',
-          cta_id: sourceCta,
-        });
-      }
+      track('generate_lead', {
+        form_id: formId,
+        intencao: intent ?? 'unsure',
+        mercado: payload.country ?? localeConfig[locale].market,
+        idioma: locale,
+        faixa_pontuacao: body.band ?? 'unknown',
+        cta_id: sourceCta,
+      });
       if (body.next === 'calendar' && body.meetingUrl) {
         setMeetingUrl(body.meetingUrl);
         setStatus('done-calendar');
@@ -243,7 +270,7 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
     );
   }
 
-  const steps = isJob ? 2 : 3;
+  const steps = isJob ? 1 : 3;
 
   return (
     <form
@@ -306,7 +333,37 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
             </label>
           ))}
         </div>
-        {isJob && <p className={`mt-3 mb-0 text-[14px] ${c.soft}`}>{t.jobRedirect}</p>}
+        {isJob && (
+          <div
+            role="status"
+            className={`mt-4 flex flex-col gap-3 rounded-xl p-[18px] ${
+              dark ? 'border border-yellow/40 bg-yellow/8' : 'border border-line-strong bg-warm'
+            }`}
+          >
+            <p className="m-0 text-[16px] font-semibold">{t.jobPanelTitle}</p>
+            <p className={`m-0 text-[14.5px] leading-[1.6] ${c.soft}`}>{t.jobPanelText}</p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              {careers.jobs && (
+                <Link
+                  href={careers.jobs}
+                  onClick={() => toCareers('intencao', 'vagas')}
+                  className={`${submitClass} no-underline`}
+                >
+                  {t.jobsCta} <ArrowRight strokeWidth={2.2} />
+                </Link>
+              )}
+              {careers.cv && (
+                <Link
+                  href={careers.cv}
+                  onClick={() => toCareers('intencao', 'cv')}
+                  className={`inline-flex min-h-11 items-center text-[15px] font-semibold underline underline-offset-4 ${c.noteLink}`}
+                >
+                  {t.cvCta}
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
       </fieldset>
 
       <fieldset
@@ -346,37 +403,33 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
             className={field}
           />
         </div>
-        {!isJob && (
-          <>
-            <div>
-              <label htmlFor={`${uid}-company`} className={label}>
-                {t.company}
-                {req}
-              </label>
-              <input
-                id={`${uid}-company`}
-                name="company"
-                required
-                maxLength={160}
-                autoComplete="organization"
-                aria-invalid={badFields.includes('company') || undefined}
-                className={field}
-              />
-            </div>
-            <div>
-              <label htmlFor={`${uid}-title`} className={label}>
-                {t.jobTitle}
-              </label>
-              <input
-                id={`${uid}-title`}
-                name="jobTitle"
-                maxLength={120}
-                autoComplete="organization-title"
-                className={field}
-              />
-            </div>
-          </>
-        )}
+        <div>
+          <label htmlFor={`${uid}-company`} className={label}>
+            {t.company}
+            {req}
+          </label>
+          <input
+            id={`${uid}-company`}
+            name="company"
+            required
+            maxLength={160}
+            autoComplete="organization"
+            aria-invalid={badFields.includes('company') || undefined}
+            className={field}
+          />
+        </div>
+        <div>
+          <label htmlFor={`${uid}-title`} className={label}>
+            {t.jobTitle}
+          </label>
+          <input
+            id={`${uid}-title`}
+            name="jobTitle"
+            maxLength={120}
+            autoComplete="organization-title"
+            className={field}
+          />
+        </div>
         <div>
           <label htmlFor={`${uid}-country`} className={label}>
             {t.country}
@@ -410,50 +463,46 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
           </label>
           <input id={`${uid}-areas`} name="areas" maxLength={300} className={field} />
         </div>
-        {!isJob && (
-          <>
-            <div>
-              <label htmlFor={`${uid}-headcount`} className={label}>
-                {t.headcount}
-              </label>
-              <input
-                id={`${uid}-headcount`}
-                name="headcount"
-                type="number"
-                min={1}
-                max={500}
-                inputMode="numeric"
-                className={field}
-              />
-            </div>
-            <div>
-              <label htmlFor={`${uid}-size`} className={label}>
-                {t.companySize}
-              </label>
-              <select id={`${uid}-size`} name="companySize" defaultValue="" className={field}>
-                <option value="">—</option>
-                {(Object.keys(t.sizes) as (keyof typeof t.sizes)[]).map((k) => (
-                  <option key={k} value={k}>
-                    {t.sizes[k]}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="sm:col-span-2">
-              <label htmlFor={`${uid}-start`} className={label}>
-                {t.start}
-              </label>
-              <select id={`${uid}-start`} name="start" defaultValue="" className={field}>
-                <option value="">—</option>
-                {(Object.keys(t.starts) as (keyof typeof t.starts)[]).map((k) => (
-                  <option key={k} value={k}>
-                    {t.starts[k]}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </>
-        )}
+        <div>
+          <label htmlFor={`${uid}-headcount`} className={label}>
+            {t.headcount}
+          </label>
+          <input
+            id={`${uid}-headcount`}
+            name="headcount"
+            type="number"
+            min={1}
+            max={500}
+            inputMode="numeric"
+            className={field}
+          />
+        </div>
+        <div>
+          <label htmlFor={`${uid}-size`} className={label}>
+            {t.companySize}
+          </label>
+          <select id={`${uid}-size`} name="companySize" defaultValue="" className={field}>
+            <option value="">—</option>
+            {(Object.keys(t.sizes) as (keyof typeof t.sizes)[]).map((k) => (
+              <option key={k} value={k}>
+                {t.sizes[k]}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="sm:col-span-2">
+          <label htmlFor={`${uid}-start`} className={label}>
+            {t.start}
+          </label>
+          <select id={`${uid}-start`} name="start" defaultValue="" className={field}>
+            <option value="">—</option>
+            {(Object.keys(t.starts) as (keyof typeof t.starts)[]).map((k) => (
+              <option key={k} value={k}>
+                {t.starts[k]}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="sm:col-span-2">
           <label htmlFor={`${uid}-message`} className={label}>
             {t.message}
@@ -463,8 +512,22 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
             name="message"
             rows={4}
             maxLength={2000}
+            onChange={(e) => onMessage(e.target.value)}
+            aria-describedby={looksLikeCandidate ? `${uid}-candidate` : undefined}
             className={field}
           />
+          {looksLikeCandidate && careers.jobs && (
+            <p id={`${uid}-candidate`} className={`mt-2 mb-0 text-[14px] leading-[1.55] ${c.soft}`}>
+              {t.candidateHint}{' '}
+              <Link
+                href={careers.jobs}
+                onClick={() => toCareers('mensagem', 'vagas')}
+                className={`font-semibold ${c.noteLink}`}
+              >
+                {t.candidateHintLink}
+              </Link>
+            </p>
+          )}
         </div>
         <label className={`flex items-start gap-3 text-[14px] sm:col-span-2 ${c.soft}`}>
           <input type="checkbox" name="consentMarketing" className={`mt-1 ${c.radio}`} />
@@ -473,7 +536,7 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
       </fieldset>
 
       {turnstileKey && (
-        <div hidden={step !== steps}>
+        <div hidden={isJob || step !== steps}>
           <Script
             src="https://challenges.cloudflare.com/turnstile/v0/api.js"
             strategy="lazyOnload"
@@ -491,34 +554,37 @@ export function LeadForm({ locale, t, privacyHref, formId, ctaId, model, tone = 
         </p>
       )}
 
-      <div className="flex flex-wrap items-center gap-3">
-        {step > 1 && (
-          <button
-            type="button"
-            onClick={() => goTo(step - 1)}
-            className={`min-h-[52px] cursor-pointer px-2 text-[15px] font-medium underline-offset-4 hover:underline ${c.soft}`}
-          >
-            {t.back}
-          </button>
-        )}
-        {/* Keys diferentes: sem elas o React reutiliza o mesmo <button> e muda-lhe o type
-            para submit durante o clique em "Continuar", e o browser envia o formulário
-            antes de mostrar o último passo. */}
-        {step < steps ? (
-          <button key="next" type="button" onClick={() => goTo(step + 1)} className={submitClass}>
-            {t.next} <ArrowRight strokeWidth={2.2} />
-          </button>
-        ) : (
-          <button
-            key="submit"
-            type="submit"
-            disabled={status === 'sending'}
-            className={`${submitClass} disabled:opacity-60`}
-          >
-            {status === 'sending' ? t.sending : t.submit} <ArrowRight strokeWidth={2.2} />
-          </button>
-        )}
-      </div>
+      {/* "Procuro emprego": sem navegação nem envio, só o caminho para as vagas. */}
+      {!isJob && (
+        <div className="flex flex-wrap items-center gap-3">
+          {step > 1 && (
+            <button
+              type="button"
+              onClick={() => goTo(step - 1)}
+              className={`min-h-[52px] cursor-pointer px-2 text-[15px] font-medium underline-offset-4 hover:underline ${c.soft}`}
+            >
+              {t.back}
+            </button>
+          )}
+          {/* Keys diferentes: sem elas o React reutiliza o mesmo <button> e muda-lhe o type
+              para submit durante o clique em "Continuar", e o browser envia o formulário
+              antes de mostrar o último passo. */}
+          {step < steps ? (
+            <button key="next" type="button" onClick={() => goTo(step + 1)} className={submitClass}>
+              {t.next} <ArrowRight strokeWidth={2.2} />
+            </button>
+          ) : (
+            <button
+              key="submit"
+              type="submit"
+              disabled={status === 'sending'}
+              className={`${submitClass} disabled:opacity-60`}
+            >
+              {status === 'sending' ? t.sending : t.submit} <ArrowRight strokeWidth={2.2} />
+            </button>
+          )}
+        </div>
+      )}
 
       <p className={`m-0 text-[13px] leading-[1.55] ${c.note}`}>
         {privacyHref ? (

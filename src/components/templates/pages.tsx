@@ -9,7 +9,7 @@ import { localeConfig } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { CaseViewTracker } from '@/components/analytics/CaseViewTracker';
 import { LeadForm } from '@/components/forms/LeadForm';
-import { ContactBlock } from '@/components/forms/ContactBlock';
+import { ContactBlock, careerLinks } from '@/components/forms/ContactBlock';
 import { CaseCards, PageHero, Section } from './shared';
 import { ServicesHub } from './ServicesHub';
 import { TechnologiesHub } from './TechnologiesHub';
@@ -159,6 +159,7 @@ export function ContactPage({ locale, dict }: Base) {
             privacyHref={pathFor(locale, { kind: 'privacy' })}
             formId="pagina-contacto"
             ctaId="contacto-formulario"
+            careers={careerLinks(locale)}
           />
         </div>
       </section>

@@ -5,6 +5,7 @@
 1. O formulário está na própria página: home, modelos, serviços, tecnologias e casos terminam com a secção `ContactBlock` (`src/components/forms/ContactBlock.tsx`) e os CTAs da página apontam para `#contacto`. O cabeçalho continua a levar a `/contacto/`.
 2. CTA (`TrackedLink`, evento `cta_click`) leva ao formulário e guarda na sessão o CTA, a página e o modelo (`src/lib/analytics/cta-context.ts`). O formulário envia-os ao CRM (`yw_cta_id`, `yw_cta_page`) e, numa página de modelo (ou vindo de uma), já abre com a intenção escolhida.
 3. Formulário em três passos (`src/components/forms/LeadForm.tsx`): intenção → contacto → pedido.
+   É um formulário para empresas. "Procuro emprego" não avança: mostra um painel com ligação às vagas abertas e ao envio de CV (Carreiras), sem botão de envio. Uma mensagem com expressões de candidato (`candidateKeywords` nos dicionários) mostra um aviso com o mesmo caminho, sem bloquear o envio.
 4. `POST /api/lead` (`src/app/api/lead/route.ts`):
    origem do próprio site → limite por IP → tamanho → armadilha para bots → validação (zod) → Turnstile → `handleLead`.
 5. `handleLead` (`src/lib/leads/handle.ts`): pontua (`scoring.ts`), decide o destino (`assign.ts`) e entrega (`destinations.ts`).

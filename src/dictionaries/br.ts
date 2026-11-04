@@ -180,8 +180,27 @@ const br: Dictionary = {
       unsure: 'Ainda não sei',
       job: 'Procuro emprego',
     },
-    jobRedirect:
-      'Para candidaturas, veja as vagas abertas: a equipe de recrutamento responde por lá.',
+    jobPanelTitle: 'Que bom que você quer trabalhar com a gente!',
+    jobPanelText:
+      'Este formulário é para empresas. As candidaturas são feitas pelas vagas abertas ou pelo envio de currículo, onde a equipe de recrutamento responde.',
+    jobsCta: 'Ver vagas abertas',
+    cvCta: 'Enviar meu currículo',
+    candidateHint:
+      'Procurando emprego? As candidaturas são feitas pelas vagas abertas, onde a equipe de recrutamento responde.',
+    candidateHintLink: 'Ver vagas',
+    /** Expressões típicas de quem procura emprego (sem acentos, minúsculas). "vaga" fica de fora: clientes também a usam. */
+    candidateKeywords: [
+      'meu cv',
+      'meu curriculo',
+      'procuro emprego',
+      'procurando emprego',
+      'procuro trabalho',
+      'candidatura',
+      'candidatar',
+      'estagio',
+      'trabalhar com voces',
+      'trabalhar na yellowipe',
+    ],
     step2Title: 'Seus contatos',
     name: 'Nome',
     email: 'E-mail corporativo',

@@ -9,25 +9,26 @@
 
 ## Eventos
 
-| Evento              | Quando dispara                         | Propriedades                                                            | Implementado                |
-| ------------------- | -------------------------------------- | ----------------------------------------------------------------------- | --------------------------- |
-| `page_context`      | Carga inicial e cada navegação         | `tipo_pagina`, `pagina_id`, `idioma`                                    | sim                         |
-| `web_vitals`        | LCP, INP, CLS, FCP e TTFB reais        | `metrica`, `valor`, `classificacao`, `tipo_pagina`                      | sim                         |
-| `cta_click`         | Clique em qualquer CTA (`TrackedLink`) | `cta_id`, `cta_text`, `posicao`, `tipo_pagina`, `modelo`                | sim                         |
-| `form_start`        | Primeiro foco no formulário            | `form_id`, `pagina_conversao`                                           | sim                         |
-| `form_step`         | Passo concluído                        | `form_id`, `passo`, `intencao`                                          | sim                         |
-| `generate_lead`     | Envio aceite                           | `form_id`, `intencao`, `mercado`, `idioma`, `faixa_pontuacao`, `cta_id` | sim                         |
-| `form_error`        | Validação falhou (browser ou servidor) | `form_id`, `passo`, `campos` (nomes, nunca valores)                     | sim                         |
-| `contact_click`     | Clique em email ou telefone            | `canal`, `tipo_pagina`                                                  | sim                         |
-| `faq_open`          | Pergunta frequente aberta              | `pergunta`, `tipo_pagina`                                               | sim                         |
-| `candidate_submit`  | Envio com "Procuro emprego"            | `idioma`                                                                | sim                         |
-| `meeting_booked`    | Reunião marcada                        | `origem_cta`, `mercado`                                                 | integração com o calendário |
-| `calculator_result` | Estimativa mostrada                    | `perfis`, `mercado`, `modelo`                                           | sprint 5                    |
-| `calculator_email`  | Pedido do detalhe                      | `perfis`, `mercado`                                                     | sprint 5                    |
-| `resource_download` | Relatório ou guia                      | `recurso_id`                                                            | fase de conteúdo            |
-| `case_view`         | Caso aberto                            | `caso_id`, `setor`                                                      | sim                         |
-| `whatsapp_click`    | Clique num link wa.me (`/br/`)         | `pagina`                                                                | sim (falta o link no site)  |
-| `language_switch`   | Mudança de idioma                      | `de`, `para`                                                            | sim                         |
+| Evento               | Quando dispara                                                 | Propriedades                                                            | Implementado                |
+| -------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------- | --------------------------- |
+| `page_context`       | Carga inicial e cada navegação                                 | `tipo_pagina`, `pagina_id`, `idioma`                                    | sim                         |
+| `web_vitals`         | LCP, INP, CLS, FCP e TTFB reais                                | `metrica`, `valor`, `classificacao`, `tipo_pagina`                      | sim                         |
+| `cta_click`          | Clique em qualquer CTA (`TrackedLink`)                         | `cta_id`, `cta_text`, `posicao`, `tipo_pagina`, `modelo`                | sim                         |
+| `form_start`         | Primeiro foco no formulário                                    | `form_id`, `pagina_conversao`                                           | sim                         |
+| `form_step`          | Passo concluído                                                | `form_id`, `passo`, `intencao`                                          | sim                         |
+| `generate_lead`      | Envio aceite                                                   | `form_id`, `intencao`, `mercado`, `idioma`, `faixa_pontuacao`, `cta_id` | sim                         |
+| `form_error`         | Validação falhou (browser ou servidor)                         | `form_id`, `passo`, `campos` (nomes, nunca valores)                     | sim                         |
+| `contact_click`      | Clique em email ou telefone                                    | `canal`, `tipo_pagina`                                                  | sim                         |
+| `faq_open`           | Pergunta frequente aberta                                      | `pergunta`, `tipo_pagina`                                               | sim                         |
+| `candidate_submit`   | Envio com "Procuro emprego"                                    | `idioma`                                                                | sim                         |
+| `candidate_redirect` | Candidato encaminhado do formulário de clientes para Carreiras | `form_id`, `origem` (intencao, mensagem), `destino` (vagas, cv)         | sim                         |
+| `meeting_booked`     | Reunião marcada                                                | `origem_cta`, `mercado`                                                 | integração com o calendário |
+| `calculator_result`  | Estimativa mostrada                                            | `perfis`, `mercado`, `modelo`                                           | sprint 5                    |
+| `calculator_email`   | Pedido do detalhe                                              | `perfis`, `mercado`                                                     | sprint 5                    |
+| `resource_download`  | Relatório ou guia                                              | `recurso_id`                                                            | fase de conteúdo            |
+| `case_view`          | Caso aberto                                                    | `caso_id`, `setor`                                                      | sim                         |
+| `whatsapp_click`     | Clique num link wa.me (`/br/`)                                 | `pagina`                                                                | sim (falta o link no site)  |
+| `language_switch`    | Mudança de idioma                                              | `de`, `para`                                                            | sim                         |
 
 ## Atribuição
 

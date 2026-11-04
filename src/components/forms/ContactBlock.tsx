@@ -28,6 +28,12 @@ type Props = {
   model?: string;
 };
 
+/** Vagas abertas e envio de CV (secção #cv de Carreiras), para onde o formulário leva os candidatos. */
+export function careerLinks(locale: Locale) {
+  const careers = pathFor(locale, { kind: 'careers' });
+  return { jobs: pathFor(locale, { kind: 'jobs' }), cv: careers ? `${careers}#cv` : null };
+}
+
 function splitLast(text: string): [string, string] {
   const i = text.lastIndexOf(' ');
   return i < 0 ? ['', text] : [text.slice(0, i), text.slice(i + 1)];
@@ -88,6 +94,7 @@ export function ContactBlock({ locale, dict, formId, ctaId, eyebrow, title, lead
           formId={formId}
           ctaId={ctaId}
           model={model}
+          careers={careerLinks(locale)}
           tone="dark"
         />
       </div>
