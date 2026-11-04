@@ -106,9 +106,9 @@ export function Hero({ locale, dict }: P) {
             ctaId="hero-agendar"
             position="hero"
             pageType="home"
-            className="btn-primary"
+            className="btn-outline-light"
           >
-            {dict.common.bookCall} <ArrowRight strokeWidth={2.2} />
+            {dict.common.bookCall} <ArrowRight strokeWidth={2.2} className="text-yellow" />
           </TrackedLink>
         </div>
       </div>

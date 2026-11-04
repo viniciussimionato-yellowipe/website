@@ -101,6 +101,10 @@
   .btn-navy {
     @apply inline-flex min-h-[48px] items-center gap-2.5 rounded-[var(--radius-btn)] bg-navy px-[22px] py-3.5 text-[15px] font-semibold text-white no-underline transition-[background-color,transform] duration-150 hover:bg-navy-hover hover:text-white active:scale-[0.97];
   }
+  /* Botão secundário em fundo navy: o amarelo cheio fica reservado ao header. */
+  .btn-outline-light {
+    @apply inline-flex min-h-[50px] items-center gap-2.5 rounded-[var(--radius-btn)] border-[1.5px] border-white/40 bg-transparent px-6 py-3.5 text-[15.5px] font-semibold text-white no-underline transition-[border-color,background-color,transform] duration-150 hover:border-yellow hover:bg-yellow/[0.08] hover:text-white active:scale-[0.97];
+  }
   .skip-link {
     @apply absolute -top-16 left-4 z-50 rounded-[10px] bg-yellow px-4 py-3 font-semibold text-navy no-underline focus:top-3;
   }
