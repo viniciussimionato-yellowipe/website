@@ -254,10 +254,26 @@ const en: Dictionary = {
     cookies: 'Cookies',
   },
   consent: {
-    title: 'Cookies',
-    text: 'We only use analytics and advertising cookies if you accept. You can change your choice at any time under “Cookies” in the footer.',
-    accept: 'Accept',
+    title: 'Cookies on this site',
+    text: 'Essential cookies keep the site working. Analytics and advertising cookies are only used if you accept, and you can change your choice any time under “Cookies” in the footer.',
+    accept: 'Accept all',
     reject: 'Reject',
+    customize: 'Customise',
+    save: 'Save choices',
+    privacy: 'Privacy policy',
+    alwaysOn: 'Always on',
+    necessary: {
+      title: 'Essential',
+      text: 'Language, form security and this choice.',
+    },
+    analytics: {
+      title: 'Analytics',
+      text: 'Google Analytics and Microsoft Clarity, to see which pages help and what to improve.',
+    },
+    ads: {
+      title: 'Advertising',
+      text: 'Measuring the results of our Google campaigns.',
+    },
   },
   tech: {
     eyebrow: 'Technologies · {category}',

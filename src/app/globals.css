@@ -798,3 +798,19 @@
     animation: none !important;
   }
 }
+
+/* Banner de cookies: entra de baixo, sem movimento se o visitante o pedir. */
+.consent-in {
+  animation: consent-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes consent-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .consent-in {
+    animation: none;
+  }
+}

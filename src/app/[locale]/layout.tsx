@@ -94,7 +94,10 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer locale={locale} dict={dict} />
-        <ConsentManager texts={dict.consent} />
+        <ConsentManager
+          texts={dict.consent}
+          privacyHref={pathFor(locale, { kind: 'privacy' }) ?? undefined}
+        />
         <RouteAnalytics locale={locale} />
         <JsonLd data={[organizationLd(), websiteLd(locale)]} />
       </body>
