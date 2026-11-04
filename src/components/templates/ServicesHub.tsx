@@ -119,7 +119,6 @@ export function ServicesHub({ locale, dict }: Props) {
           countOne: t.countOne,
           withAi: t.withAi,
           see: t.see,
-          talk: t.talk,
           emptyTitle: t.emptyTitle,
           emptyText: t.emptyText,
           emptyCta: t.emptyCta,

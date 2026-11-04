@@ -71,7 +71,6 @@ function splitLast(text: string): [string, string] {
 
 export function Hero({ locale, dict }: P) {
   const contact = pathFor(locale, { kind: 'contact' })!;
-  const cases = pathFor(locale, { kind: 'casesHub' });
   const rotation = dict.hero.rotation
     .map((id) => findArea(id))
     .filter((a) => a !== undefined)
@@ -111,14 +110,6 @@ export function Hero({ locale, dict }: P) {
           >
             {dict.common.bookCall} <ArrowRight strokeWidth={2.2} />
           </TrackedLink>
-          {cases && (
-            <Link
-              href={cases}
-              className="inline-flex min-h-11 items-center gap-2 text-[15.5px] font-medium text-on-navy no-underline hover:text-white"
-            >
-              {dict.hero.secondaryCta} <ArrowRight />
-            </Link>
-          )}
         </div>
       </div>
     </section>
@@ -507,12 +498,12 @@ export function ProcessSection({ locale, dict }: P) {
         <div className="flex justify-center">
           <TrackedLink
             href={contact}
-            ctaId="processo-conversa"
+            ctaId="processo-agendar"
             position="processo"
             pageType="home"
-            className="btn-navy"
+            className="btn-primary"
           >
-            {dict.process.cta} <ArrowRight strokeWidth={2.2} className="text-yellow" />
+            {dict.common.bookCall} <ArrowRight strokeWidth={2.2} />
           </TrackedLink>
         </div>
       </div>

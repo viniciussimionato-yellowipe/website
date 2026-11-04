@@ -24,7 +24,6 @@ const br: Dictionary = {
     skip: 'Pular para o conteúdo',
     home: 'Início',
     bookCall: 'Agendar conversa',
-    talkToUs: 'Fale com a gente',
     requestProfiles: 'Pedir perfis',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
@@ -66,7 +65,6 @@ const br: Dictionary = {
     titleHighlight: 'capacidade real de execução.',
     lead: 'Contratamos talento, reforçamos equipes e construímos soluções em',
     rotation: ['ia', 'software', 'cloud-devops', 'qualidade', 'design', 'emergentes'],
-    secondaryCta: 'Ver cases de sucesso',
   },
   models: {
     eyebrow: 'Como trabalhamos com você',
@@ -77,7 +75,7 @@ const br: Dictionary = {
     titleStart: 'Dominamos a sua stack e as ferramentas de IA',
     titleEnd: 'que a aceleram.',
     lead: 'Experiência em dezenas de tecnologias e linguagens, incluindo os assistentes de IA que estão mudando a forma de construir software.',
-    link: 'Ver todas as tecnologias',
+    link: 'Todas as tecnologias',
   },
   areas: {
     eyebrow: 'O que fazemos',
@@ -87,14 +85,14 @@ const br: Dictionary = {
     leadEnd: 'e cases reais por trás.',
     withAi: 'Com IA:',
     availableAs: 'Disponível como',
-    seeServices: 'Ver todos os serviços de',
+    seeServices: 'Todos os serviços de',
   },
   cases: {
     eyebrow: 'Cases de sucesso',
     title: 'Execução que gera resultados reais.',
     yearsLabel: 'anos entregando tecnologia',
     productsLabel: 'produtos levados até o go-live',
-    seeAll: 'Ver todos os cases de sucesso',
+    seeAll: 'Todos os cases de sucesso',
   },
   markets: {
     eyebrow: 'Três mercados',
@@ -118,7 +116,6 @@ const br: Dictionary = {
       },
       { title: 'Acompanhamento', text: 'Gestão contínua do desempenho e das entregas.' },
     ],
-    cta: 'Começar com uma conversa',
   },
   faq: {
     eyebrow: 'Perguntas frequentes',
@@ -267,7 +264,7 @@ const br: Dictionary = {
   },
   tech: {
     eyebrow: 'Tecnologias · {category}',
-    cta: 'Pedir perfis {name}',
+    cta: 'Agendar conversa',
     expert: 'Especialista {name} Yellowipe',
     expertNote: 'Avaliado em entrevista técnica',
     servicesTitle: 'O que fazemos com {name}',
@@ -303,11 +300,10 @@ const br: Dictionary = {
     countOne: '1 serviço',
     withAi: 'Com IA:',
     see: 'Ver serviço',
-    talk: 'Falar sobre isso',
     emptyTitle: 'Não encontramos “{q}” nesta lista.',
     emptyText:
       'Se faz parte de um produto digital, de dados ou de um time de tecnologia, é provável que já tenhamos feito. Conte para a gente o que você precisa.',
-    emptyCta: 'Falar com a Yellowipe',
+    emptyCta: 'Agendar conversa',
     modelsTitle: 'Três formas de trabalhar com a gente',
     modelsLead: 'O mesmo serviço, no modelo que serve ao seu time.',
     modelCta: 'Como funciona',
@@ -318,7 +314,7 @@ const br: Dictionary = {
     missingTitle: 'Não encontrou o que procura?',
     missingText:
       'A lista mostra os serviços mais pedidos. Se o seu desafio passa por software, dados ou times de tecnologia, a gente conversa sobre ele.',
-    missingCta: 'Falar sobre o meu projeto',
+    missingCta: 'Agendar conversa',
     missingNote: 'Respondemos no mesmo dia útil.',
   },
   techHub: {
@@ -336,11 +332,11 @@ const br: Dictionary = {
     emptyTitle: 'Não encontramos “{q}” nesta lista.',
     emptyText:
       'A lista mostra as stacks mais pedidas, não tudo o que fazemos. Conte para a gente o que você usa e confirmamos se temos especialistas.',
-    emptyCta: 'Falar sobre a minha stack',
+    emptyCta: 'Agendar conversa',
     missingTitle: 'A sua stack não está aqui?',
     missingText:
       'Esta lista mostra as stacks que mais pedem para a gente. Nossa rede de especialistas vai além dela, das linguagens legadas às plataformas de nicho. Conte o que você usa.',
-    missingCta: 'Falar sobre a minha stack',
+    missingCta: 'Agendar conversa',
     missingNote: 'Respondemos no mesmo dia útil.',
   },
   careers: {
@@ -353,6 +349,7 @@ const br: Dictionary = {
     lead: 'Projetos de tecnologia em empresas do Brasil, de Portugal e dos EUA. Remoto, híbrido ou de mudança para Portugal, com quem acompanha a sua carreira.',
     ctaJobs: 'Ver vagas abertas',
     ctaCv: 'Enviar CV espontâneo',
+    mapLabels: { us: 'Estados Unidos', br: 'Brasil', pt: 'Portugal' },
     factJobs: 'vagas geridas com clientes',
     factMarkets: 'mercados: Brasil, Portugal e EUA',
     factRemote: 'Remoto',
@@ -572,7 +569,7 @@ const br: Dictionary = {
   },
   svc: {
     eyebrow: 'Serviços · {area}',
-    cta: 'Falar sobre {name}',
+    cta: 'Agendar conversa',
     team: 'Equipe Yellowipe',
     teamNote: 'Engenheiros avaliados em entrevista técnica',
     offeringsTitle: 'O que fazemos em {name}',

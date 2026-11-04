@@ -24,7 +24,6 @@ const en: Dictionary = {
     skip: 'Skip to content',
     home: 'Home',
     bookCall: 'Book a call',
-    talkToUs: 'Talk to us',
     requestProfiles: 'Request profiles',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -66,7 +65,6 @@ const en: Dictionary = {
     titleHighlight: 'real delivery capacity.',
     lead: 'We hire talent, augment teams and build solutions in',
     rotation: ['ia', 'software', 'cloud-devops', 'qualidade', 'design', 'emergentes'],
-    secondaryCta: 'See case studies',
   },
   models: {
     eyebrow: 'How we work with you',
@@ -77,7 +75,7 @@ const en: Dictionary = {
     titleStart: 'We master your stack and the AI tools',
     titleEnd: 'that speed it up.',
     lead: 'Experience across dozens of technologies and languages, including the AI assistants that are changing how software gets built.',
-    link: 'See all technologies',
+    link: 'All technologies',
   },
   areas: {
     eyebrow: 'What we do',
@@ -87,14 +85,14 @@ const en: Dictionary = {
     leadEnd: 'and real cases behind it.',
     withAi: 'With AI:',
     availableAs: 'Available as',
-    seeServices: 'See all services in',
+    seeServices: 'All services in',
   },
   cases: {
     eyebrow: 'Case studies',
     title: 'Delivery that produces real results.',
     yearsLabel: 'years delivering technology',
     productsLabel: 'products taken to go-live',
-    seeAll: 'See all case studies',
+    seeAll: 'All case studies',
   },
   markets: {
     eyebrow: 'Three markets',
@@ -115,7 +113,6 @@ const en: Dictionary = {
       { title: 'Kickoff', text: 'Team selected and onboarded in [X] weeks, using your tools.' },
       { title: 'Ongoing support', text: 'Continuous management of performance and delivery.' },
     ],
-    cta: 'Start with a call',
   },
   faq: {
     eyebrow: 'FAQ',
@@ -264,7 +261,7 @@ const en: Dictionary = {
   },
   tech: {
     eyebrow: 'Technologies · {category}',
-    cta: 'Request {name} profiles',
+    cta: 'Book a call',
     expert: 'Yellowipe {name} specialist',
     expertNote: 'Assessed in a technical interview',
     servicesTitle: 'What we do with {name}',
@@ -301,11 +298,10 @@ const en: Dictionary = {
     countOne: '1 service',
     withAi: 'With AI:',
     see: 'See service',
-    talk: 'Talk about this',
     emptyTitle: 'We couldn’t find “{q}” in this list.',
     emptyText:
       'If it is part of a digital product, a data platform or a tech team, we have probably done it. Tell us what you need.',
-    emptyCta: 'Talk to Yellowipe',
+    emptyCta: 'Book a call',
     modelsTitle: 'Three ways to work with us',
     modelsLead: 'The same service, in the model that suits your team.',
     modelCta: 'How it works',
@@ -316,7 +312,7 @@ const en: Dictionary = {
     missingTitle: 'Can’t find what you need?',
     missingText:
       'This list shows our most requested services. If your challenge involves software, data or tech teams, let’s talk about it.',
-    missingCta: 'Talk about my project',
+    missingCta: 'Book a call',
     missingNote: 'We reply on the same business day.',
   },
   techHub: {
@@ -334,11 +330,11 @@ const en: Dictionary = {
     emptyTitle: 'We couldn’t find “{q}” in this list.',
     emptyText:
       'This list shows the stacks we are asked for most, not everything we do. Tell us what you use and we will confirm whether we have specialists.',
-    emptyCta: 'Talk about my stack',
+    emptyCta: 'Book a call',
     missingTitle: 'Your stack isn’t here?',
     missingText:
       'This list shows the stacks we are asked for most. Our specialist network goes beyond it, from legacy languages to niche platforms. Tell us what you use.',
-    missingCta: 'Talk about my stack',
+    missingCta: 'Book a call',
     missingNote: 'We reply on the same business day.',
   },
   careers: {
@@ -351,6 +347,7 @@ const en: Dictionary = {
     lead: 'Technology projects at companies in Portugal, Brazil and the US. Remote, hybrid or relocating to Portugal, with people who follow your career.',
     ctaJobs: 'See open roles',
     ctaCv: 'Send an open application',
+    mapLabels: { us: 'United States', br: 'Brazil', pt: 'Portugal' },
     factJobs: 'roles managed with clients',
     factMarkets: 'markets: Portugal, Brazil and the US',
     factRemote: 'Remote',
@@ -570,7 +567,7 @@ const en: Dictionary = {
   },
   svc: {
     eyebrow: 'Services · {area}',
-    cta: 'Talk to us about {name}',
+    cta: 'Book a call',
     team: 'Yellowipe team',
     teamNote: 'Engineers assessed in a technical interview',
     offeringsTitle: 'What we do in {name}',

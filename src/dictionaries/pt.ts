@@ -26,7 +26,6 @@ const pt = {
     skip: 'Saltar para o conteúdo',
     home: 'Início',
     bookCall: 'Agendar conversa',
-    talkToUs: 'Falar connosco',
     requestProfiles: 'Pedir perfis',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
@@ -68,7 +67,6 @@ const pt = {
     titleHighlight: 'capacidade real de execução.',
     lead: 'Contratamos talento, reforçamos equipas e construímos soluções em',
     rotation: ['ia', 'software', 'cloud-devops', 'qualidade', 'design', 'emergentes'],
-    secondaryCta: 'Ver casos de sucesso',
   },
   models: {
     eyebrow: 'Como trabalhamos consigo',
@@ -79,7 +77,7 @@ const pt = {
     titleStart: 'Dominamos a sua stack e as ferramentas de IA',
     titleEnd: 'que a aceleram.',
     lead: 'Experiência em dezenas de tecnologias e linguagens, incluindo os assistentes de IA que estão a mudar a forma como se constrói software.',
-    link: 'Ver todas as tecnologias',
+    link: 'Todas as tecnologias',
   },
   areas: {
     eyebrow: 'O que fazemos',
@@ -89,14 +87,14 @@ const pt = {
     leadEnd: 'e casos reais por trás.',
     withAi: 'Com IA:',
     availableAs: 'Disponível como',
-    seeServices: 'Ver todos os serviços de',
+    seeServices: 'Todos os serviços de',
   },
   cases: {
     eyebrow: 'Casos de sucesso',
     title: 'Execução que gera resultados reais.',
     yearsLabel: 'anos a entregar tecnologia',
     productsLabel: 'produtos levados até ao go-live',
-    seeAll: 'Ver todos os casos de sucesso',
+    seeAll: 'Todos os casos de sucesso',
   },
   markets: {
     eyebrow: 'Três mercados',
@@ -120,7 +118,6 @@ const pt = {
       },
       { title: 'Acompanhamento', text: 'Gestão contínua do desempenho e das entregas.' },
     ],
-    cta: 'Começar com uma conversa',
   },
   faq: {
     eyebrow: 'Perguntas frequentes',
@@ -269,7 +266,7 @@ const pt = {
   },
   tech: {
     eyebrow: 'Tecnologias · {category}',
-    cta: 'Pedir perfis {name}',
+    cta: 'Agendar conversa',
     expert: 'Especialista {name} Yellowipe',
     expertNote: 'Avaliado em entrevista técnica',
     servicesTitle: 'O que fazemos com {name}',
@@ -305,11 +302,10 @@ const pt = {
     countOne: '1 serviço',
     withAi: 'Com IA:',
     see: 'Ver serviço',
-    talk: 'Falar sobre isto',
     emptyTitle: 'Não encontrámos “{q}” nesta lista.',
     emptyText:
       'Se faz parte de um produto digital, de dados ou de uma equipa de tecnologia, é provável que já o tenhamos feito. Conte-nos o que precisa.',
-    emptyCta: 'Falar com a Yellowipe',
+    emptyCta: 'Agendar conversa',
     modelsTitle: 'Três formas de trabalhar connosco',
     modelsLead: 'O mesmo serviço, no modelo que serve a sua equipa.',
     modelCta: 'Como funciona',
@@ -320,7 +316,7 @@ const pt = {
     missingTitle: 'Não encontra o que procura?',
     missingText:
       'A lista mostra os serviços mais pedidos. Se o seu desafio passa por software, dados ou equipas de tecnologia, falamos sobre ele.',
-    missingCta: 'Falar sobre o meu projeto',
+    missingCta: 'Agendar conversa',
     missingNote: 'Respondemos no mesmo dia útil.',
   },
   techHub: {
@@ -338,11 +334,11 @@ const pt = {
     emptyTitle: 'Não encontrámos “{q}” nesta lista.',
     emptyText:
       'A lista mostra as stacks mais pedidas, não tudo o que fazemos. Conte-nos o que usa e confirmamos se temos especialistas.',
-    emptyCta: 'Falar sobre a minha stack',
+    emptyCta: 'Agendar conversa',
     missingTitle: 'A sua stack não está aqui?',
     missingText:
       'Esta lista mostra as stacks que mais nos pedem. A nossa rede de especialistas vai além dela, das linguagens legadas às plataformas de nicho. Diga-nos o que usa.',
-    missingCta: 'Falar sobre a minha stack',
+    missingCta: 'Agendar conversa',
     missingNote: 'Respondemos no mesmo dia útil.',
   },
   careers: {
@@ -355,6 +351,7 @@ const pt = {
     lead: 'Projetos de tecnologia em empresas de Portugal, do Brasil e dos EUA. Remoto, híbrido ou de mudança para Portugal, com quem acompanha a sua carreira.',
     ctaJobs: 'Ver vagas abertas',
     ctaCv: 'Enviar CV espontâneo',
+    mapLabels: { us: 'Estados Unidos', br: 'Brasil', pt: 'Portugal' },
     factJobs: 'vagas geridas com clientes',
     factMarkets: 'mercados: Portugal, Brasil e EUA',
     factRemote: 'Remoto',
@@ -574,7 +571,7 @@ const pt = {
   },
   svc: {
     eyebrow: 'Serviços · {area}',
-    cta: 'Falar sobre {name}',
+    cta: 'Agendar conversa',
     team: 'Equipa Yellowipe',
     teamNote: 'Engenheiros avaliados em entrevista técnica',
     offeringsTitle: 'O que fazemos em {name}',

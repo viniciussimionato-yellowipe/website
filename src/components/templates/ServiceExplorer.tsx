@@ -29,7 +29,6 @@ type Labels = {
   countOne: string;
   withAi: string;
   see: string;
-  talk: string;
   emptyTitle: string;
   emptyText: string;
   emptyCta: string;
@@ -216,9 +215,11 @@ function ServiceCard({
         <b className="text-[16.5px] font-semibold text-ink">{item.name}</b>
         <span className="text-[14px] leading-relaxed text-body">{item.summary}</span>
       </span>
-      <span className="mt-auto inline-flex items-center gap-2 pt-3 text-[13.5px] font-semibold text-ink group-hover:text-gold">
-        {item.href ? labels.see : labels.talk} <ArrowRight size={13} />
-      </span>
+      {item.href && (
+        <span className="mt-auto inline-flex items-center gap-2 pt-3 text-[13.5px] font-semibold text-ink group-hover:text-gold">
+          {labels.see} <ArrowRight size={13} />
+        </span>
+      )}
     </>
   );
   return (

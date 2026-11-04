@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { CSSProperties } from 'react';
 import { site } from '@/config/site';
 import { ptToBr } from '@/content/technologies/templates';
 import type { Dictionary } from '@/dictionaries';
@@ -22,18 +21,18 @@ import type { JobView } from './JobsBoard';
  */
 type Base = { locale: Locale; dict: Dictionary };
 
+/** Etiquetas do mapa: posição em % do mapa (public/images/careers/map-zoom.svg). */
+const MAP_LABELS = [
+  { id: 'us', left: 35.45, top: 31.45 },
+  { id: 'br', left: 57.27, top: 65.2 },
+  { id: 'pt', left: 75.77, top: 30.61 },
+] as const;
+
 const sec = 'py-[clamp(64px,8vw,112px)]';
 const h2 =
   'm-0 font-display text-[clamp(30px,3.4vw,44px)] leading-[1.1] font-semibold tracking-[-0.02em]';
 const eyebrow = 'eyebrow m-0 text-[12.5px]';
 const lead = 'm-0 max-w-[620px] text-[16.5px] leading-[1.7]';
-
-/** Pinos do mapa: posição em % do mapa e lado (mockup Carreiras v3). */
-const PINS = [
-  { left: 82.53, top: 20.96, src: '/images/careers/avatar-1.svg' },
-  { left: 56.51, top: 69.7, src: '/images/careers/avatar-2.svg' },
-  { left: 64.67, top: 57.73, src: '/images/careers/avatar-3.svg' },
-];
 
 export async function CareersPage({ locale, dict }: Base) {
   const t = dict.careers;
@@ -44,20 +43,40 @@ export async function CareersPage({ locale, dict }: Base) {
 
   return (
     <>
-      {/* Topo: promessa e mapa de pontos com consultores em Portugal, Brasil e EUA */}
-      <section className="relative overflow-hidden bg-navy text-white">
-        <div className="container-site relative grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-[clamp(40px,5vw,72px)] pt-[clamp(56px,7vw,96px)] pb-[clamp(64px,8vw,112px)] max-[960px]:grid-cols-[minmax(0,1fr)]">
-          <div>
+      {/* Topo: promessa sobre um mapa de pontos em zoom (Américas e Península Ibérica),
+          com EUA, Brasil e Portugal em destaque (mockup "Carreiras · topo com mapa em zoom") */}
+      <section className="crz relative overflow-hidden bg-navy text-white">
+        <div className="crz-map" aria-hidden="true">
+          <Image
+            src="/images/careers/map-zoom.svg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-contain"
+            priority
+          />
+          {MAP_LABELS.map((m) => (
+            <span
+              key={m.id}
+              className={`crz-lab crz-${m.id}`}
+              style={{ left: `${m.left}%`, top: `${m.top}%` }}
+            >
+              {t.mapLabels[m.id]}
+            </span>
+          ))}
+        </div>
+        <div className="container-site relative z-[2] w-full">
+          <div className="max-w-[540px] py-[clamp(56px,7vw,104px)] max-[960px]:pb-0">
             <p className={`${eyebrow} text-yellow`}>{t.eyebrow}</p>
             <h1 className="mt-3.5 mb-0 font-display text-[clamp(40px,4.6vw,62px)] leading-[1.04] font-semibold tracking-[-0.03em]">
               {t.titleStart}
               <br />
               <span className="cr-mark">{t.titleMark}</span>
             </h1>
-            <p className="mt-[22px] mb-0 max-w-[560px] text-[17.5px] leading-[1.7] text-on-navy">
+            <p className="mt-[22px] mb-0 max-w-[520px] text-[17.5px] leading-[1.7] text-on-navy">
               {t.lead}
             </p>
-            <div className="mt-[34px] flex flex-wrap items-center gap-x-4 gap-y-3">
+            <div className="mt-[34px] flex flex-wrap items-center gap-x-7 gap-y-3">
               {jobsHref && (
                 <Link href={jobsHref} className="btn-primary min-h-[52px] rounded-full px-[26px]">
                   {t.ctaJobs} <ArrowRight strokeWidth={2.2} />
@@ -65,12 +84,12 @@ export async function CareersPage({ locale, dict }: Base) {
               )}
               <a
                 href="#cv"
-                className="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-white/35 px-[22px] py-3.5 text-[15px] font-semibold text-white no-underline hover:border-white hover:text-white"
+                className="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-white no-underline hover:text-yellow"
               >
-                {t.ctaCv}
+                {t.ctaCv} <ArrowRight />
               </a>
             </div>
-            <ul className="mt-10 mb-0 flex max-w-[580px] list-none overflow-hidden rounded-2xl border border-white/12 p-0 max-[560px]:flex-col">
+            <ul className="mt-10 mb-0 flex max-w-[540px] list-none overflow-hidden rounded-2xl border border-white/12 bg-navy/60 p-0 backdrop-blur-[2px] max-[560px]:flex-col">
               {[
                 { b: site.facts.jobsManaged, s: t.factJobs, y: true },
                 { b: String(site.markets.length), s: t.factMarkets },
@@ -89,27 +108,6 @@ export async function CareersPage({ locale, dict }: Base) {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="cr-map" aria-hidden="true">
-            <Image
-              src="/images/careers/map.svg"
-              alt=""
-              fill
-              sizes="(min-width: 961px) 640px, 100vw"
-              className="object-contain"
-              priority
-            />
-            {PINS.map((p, i) => (
-              <div
-                key={p.src}
-                className="cr-pin"
-                style={{ left: `${p.left}%`, top: `${p.top}%`, '--i': i } as CSSProperties}
-              >
-                <span className="cr-pin-av">
-                  <Image src={p.src} alt="" width={64} height={64} className="block size-full" />
-                </span>
-              </div>
-            ))}
           </div>
         </div>
       </section>

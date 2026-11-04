@@ -216,12 +216,12 @@ export function Header({ locale, dict, alternatesIndex }: Props) {
           </TrackedLink>
           <TrackedLink
             href={contact}
-            ctaId="header-falar-mobile"
+            ctaId="header-agendar-mobile"
             position="header-mobile"
             pageType="global"
-            className="inline-flex min-h-11 items-center rounded-[10px] bg-yellow px-3.5 py-2.5 text-[13.5px] font-semibold text-navy no-underline hover:bg-yellow-hi hover:text-navy min-[961px]:hidden"
+            className="inline-flex min-h-11 items-center rounded-[10px] bg-yellow px-3 py-2.5 text-[13px] font-semibold whitespace-nowrap text-navy no-underline hover:bg-yellow-hi hover:text-navy min-[961px]:hidden"
           >
-            {dict.common.talkToUs}
+            {dict.common.bookCall}
           </TrackedLink>
           <MobileMenu
             openLabel={dict.common.openMenu}
