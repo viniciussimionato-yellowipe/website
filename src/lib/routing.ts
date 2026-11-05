@@ -34,13 +34,28 @@ type StaticKind =
 
 const staticSegments: Record<StaticKind, Partial<Record<Locale, string>>> = {
   servicesHub: { pt: 'servicos', br: 'servicos' },
-  technologiesHub: { pt: 'tecnologias', br: 'tecnologias', en: 'technologies' },
-  casesHub: { pt: 'casos', br: 'cases', en: 'case-studies' },
-  careers: { pt: 'carreiras', br: 'carreiras', en: 'careers' },
-  jobs: { pt: 'carreiras/vagas', br: 'carreiras/vagas', en: 'careers/jobs' },
-  contact: { pt: 'contacto', br: 'contato', en: 'contact' },
-  privacy: { pt: 'politica-de-privacidade', br: 'politica-de-privacidade', en: 'privacy-policy' },
-  thanks: { pt: 'obrigado', br: 'obrigado', en: 'thank-you' },
+  technologiesHub: {
+    pt: 'tecnologias',
+    br: 'tecnologias',
+    en: 'technologies',
+    'en-gb': 'technologies',
+  },
+  casesHub: { pt: 'casos', br: 'cases', en: 'case-studies', 'en-gb': 'case-studies' },
+  careers: { pt: 'carreiras', br: 'carreiras', en: 'careers', 'en-gb': 'careers' },
+  jobs: {
+    pt: 'carreiras/vagas',
+    br: 'carreiras/vagas',
+    en: 'careers/jobs',
+    'en-gb': 'careers/jobs',
+  },
+  contact: { pt: 'contacto', br: 'contato', en: 'contact', 'en-gb': 'contact' },
+  privacy: {
+    pt: 'politica-de-privacidade',
+    br: 'politica-de-privacidade',
+    en: 'privacy-policy',
+    'en-gb': 'privacy-policy',
+  },
+  thanks: { pt: 'obrigado', br: 'obrigado', en: 'thank-you', 'en-gb': 'thank-you' },
 };
 
 const join = (locale: Locale, ...parts: string[]) => `/${[locale, ...parts].join('/')}/`;

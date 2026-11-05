@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { britishDeep } from '@/lib/i18n/british';
 import type { Locale } from '@/lib/i18n/locales';
 import { Area, CaseStudy, Market, Model, Service, TechStack, Technology } from './schema';
 import type {
@@ -64,8 +65,33 @@ export function getContent(): Content {
     responsibilities,
     stacks: z.array(TechStack).parse(stacks),
   };
+  addBritish(cache);
   assertStackLinks(cache);
   return cache;
+}
+
+const LOCALE_KEYS = new Set(['pt', 'br', 'en', 'en-gb']);
+
+/**
+ * en-GB deriva do inglês americano (ver src/lib/i18n/british.ts): cada valor
+ * localizado com `en` e sem `en-gb` escrito à mão recebe a versão britânica.
+ * Slugs ficam iguais nas duas versões (só muda o prefixo /en/ ↔ /en-gb/).
+ */
+function addBritish(node: unknown, key?: string): void {
+  if (Array.isArray(node)) {
+    for (const item of node) addBritish(item);
+    return;
+  }
+  if (!node || typeof node !== 'object') return;
+  const obj = node as Record<string, unknown>;
+  const keys = Object.keys(obj);
+  if ('en' in obj && keys.every((k) => LOCALE_KEYS.has(k))) {
+    if (obj['en-gb'] === undefined && obj.en !== undefined) {
+      obj['en-gb'] = key === 'slug' ? obj.en : britishDeep(obj.en);
+    }
+    return;
+  }
+  for (const k of keys) addBritish(obj[k], k);
 }
 
 type WithSlug = {

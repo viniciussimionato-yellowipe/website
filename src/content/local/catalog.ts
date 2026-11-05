@@ -1,4 +1,5 @@
 import type { z } from 'zod';
+import type { Localized } from '@/lib/i18n/locales';
 import type { Market, Technology } from '../schema';
 
 /** Faixa de stack da home (duas linhas). `ai` mostra a faísca (no mockup v7, só no Claude Code); `highlight` destaca a primeira de cada linha. */
@@ -53,7 +54,7 @@ export const technologies: {
  */
 export const technologyGroups: {
   id: string;
-  name: { pt: string; br: string; en: string };
+  name: Localized<string>;
   stackIds: string[];
   menu?: string[];
   /** Só na página Tecnologias (portefólio completo), fora do mega-menu. */

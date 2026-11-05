@@ -818,3 +818,20 @@
     animation: none;
   }
 }
+
+/* Menu do seletor de idioma: abre de cima, sem movimento se o visitante o pedir. */
+.lang-menu {
+  animation: lang-menu 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top right;
+}
+@keyframes lang-menu {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-menu {
+    animation: none;
+  }
+}

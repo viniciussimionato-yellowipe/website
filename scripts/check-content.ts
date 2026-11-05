@@ -14,6 +14,7 @@ import { getJobs } from '@/lib/jobs';
 import { auditTechPage, buildTechPage } from '@/content/technologies/build';
 import br from '@/dictionaries/br';
 import en from '@/dictionaries/en';
+import enGb from '@/dictionaries/en-gb';
 import pt from '@/dictionaries/pt';
 import { locales } from '@/lib/i18n/locales';
 import type { Locale } from '@/lib/i18n/locales';
@@ -56,7 +57,7 @@ for (const e of seoEntries) {
 }
 // 2c. Todas as rotas indexáveis, com o título e a descrição que vão para o HTML
 // (dicionários, modelos, serviços, tecnologias e casos): a mesma função do generateMetadata.
-const dicts = { pt, br, en } as const;
+const dicts = { pt, br, en, 'en-gb': enGb } as const;
 for (const l of locales) {
   for (const route of allRoutes(l)) {
     if (isNoindexRoute(route)) continue;

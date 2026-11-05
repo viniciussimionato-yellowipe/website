@@ -5,7 +5,7 @@ import { findService, publishedCases } from '@/content';
 import type { CaseStudy, Service } from '@/content/schema';
 import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
-import { localeConfig } from '@/lib/i18n/locales';
+import { localeConfig, localize } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { CaseViewTracker } from '@/components/analytics/CaseViewTracker';
 import { LeadForm } from '@/components/forms/LeadForm';
@@ -21,7 +21,7 @@ import type { Crumb } from './shared';
  */
 type Base = { locale: Locale; dict: Dictionary };
 
-const L = <T,>(v: { pt: T; br?: T; en?: T }, locale: Locale): T => v[locale] ?? v.pt;
+const L = localize;
 const homeCrumb = (locale: Locale, dict: Dictionary): Crumb => ({
   name: dict.common.home,
   href: pathFor(locale, { kind: 'home' })!,

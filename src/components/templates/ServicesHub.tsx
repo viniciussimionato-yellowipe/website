@@ -8,6 +8,7 @@ import { getContent, publishedCases } from '@/content';
 import { AI_TOOLS } from '@/content/technologies/build';
 import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
+import { localize } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { breadcrumbLd } from '@/lib/seo/jsonld';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -26,7 +27,7 @@ import type { ServiceArea, ServiceItem } from './ServiceExplorer';
  */
 type Props = { locale: Locale; dict: Dictionary };
 
-const L = <T,>(v: { pt: T; br?: T; en?: T }, locale: Locale): T => v[locale] ?? v.pt;
+const L = localize;
 const fill = (s: string, vars: Record<string, string | number>) =>
   s.replace(/\{(\w+)\}/g, (m, k: string) => String(vars[k] ?? m));
 const hasFile = (logo?: string) =>

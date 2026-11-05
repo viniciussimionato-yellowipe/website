@@ -25,6 +25,34 @@ describe('máquina de conteúdo de tecnologias', () => {
     assert.equal(pathFor('pt', { kind: 'technology', id: 'dotnet' }), '/pt/tecnologias/dotnet/');
     assert.equal(pathFor('br', { kind: 'technology', id: 'dotnet' }), '/br/tecnologias/dotnet/');
     assert.equal(pathFor('en', { kind: 'technology', id: 'dotnet' }), '/en/technologies/dotnet/');
+    assert.equal(
+      pathFor('en-gb', { kind: 'technology', id: 'dotnet' }),
+      '/en-gb/technologies/dotnet/',
+    );
+  });
+
+  it('páginas em inglês sem português e com o artigo certo', () => {
+    const PT = /[ãõçáíóúâêôàé]|(?<!\p{L})(de|das|dos|para|com|não|testes|dados)(?!\p{L})/u;
+    const NAMES =
+      /São Paulo|Florianópolis|Belo Horizonte|Brasília|Lisboa|Porto|Braga|Coimbra|Curitiba|Recife/g;
+    for (const t of stacks.filter((s) => s.status === 'published'))
+      for (const l of ['en', 'en-gb'] as const) {
+        const v = buildTechPage(t, l);
+        const text = { ...v, relatedServiceIds: [], caseIds: [] };
+        const all = JSON.stringify(text).replace(NAMES, '');
+        assert.ok(!PT.test(all), `${t.id} ${l}: ${all.match(PT)?.[0]}`);
+        assert.ok(!/\ba [AEIOU]/.test(all), `${t.id} ${l}: artigo "a" antes de vogal`);
+      }
+  });
+
+  it('pt-BR sem termos de pt-PT nas páginas de tecnologia', () => {
+    const PT_PT =
+      /(?<!\p{L})(equipas?|ecrãs?|utilizador(es)?|registos?|telemóve(l|is)|contacto|ficheiros?|monitorização|modelação|controlo|deteção|base de dados|bases de dados|consigo|está a \p{L}+r)(?!\p{L})/iu;
+    for (const t of stacks.filter((s) => s.status === 'published')) {
+      const v = buildTechPage(t, 'br');
+      const all = JSON.stringify({ ...v, relatedServiceIds: [], caseIds: [] });
+      assert.ok(!PT_PT.test(all), `${t.id}: ${all.match(PT_PT)?.[0]}`);
+    }
   });
 
   it('o conteúdo é moldado pela stack (páginas diferentes na mesma categoria)', () => {

@@ -9,7 +9,12 @@ import { z } from 'zod';
 
 const text = z.string().min(1);
 const localized = <T extends z.ZodTypeAny>(inner: T) =>
-  z.object({ pt: inner, br: inner.optional(), en: inner.optional() });
+  z.object({
+    pt: inner,
+    br: inner.optional(),
+    en: inner.optional(),
+    'en-gb': inner.optional(),
+  });
 
 export const LocalizedText = localized(text);
 export const LocalizedList = localized(z.array(text).min(1));

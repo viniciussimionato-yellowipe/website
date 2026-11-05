@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { findArea, findCase, findService, getContent } from '@/content';
 import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
+import { localize } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { TrackedLink } from '@/components/ui/TrackedLink';
 import { ArrowRight, Sparkle } from '@/components/ui/icons';
-import { LanguageSwitcher } from './LanguageSwitcher';
+import { LanguageGrid, LanguageSwitcher } from './LanguageSwitcher';
 import { MegaItem, MegaNav } from './MegaNav';
 import { MobileMenu } from './MobileMenu';
 import type { MobileSection } from './MobileMenu';
@@ -38,7 +39,7 @@ const TECH_COLUMNS = [
   ['cloud-devops', 'dados'],
 ];
 
-const L = <T,>(v: { pt: T; br?: T; en?: T }, locale: Locale): T => v[locale] ?? v.pt;
+const L = localize;
 
 /**
  * Cabeçalho com mega-menus de Serviços e Tecnologias (estrutura inspirada na BairesDev,
@@ -229,6 +230,13 @@ export function Header({ locale, dict, alternatesIndex }: Props) {
             sections={mobileSections}
             links={plainItems}
             cta={{ label: dict.common.bookCall, href: contact }}
+            languages={
+              <LanguageGrid
+                locale={locale}
+                label={dict.common.languages}
+                alternatesIndex={alternatesIndex}
+              />
+            }
           />
         </div>
       </div>

@@ -48,7 +48,8 @@ describe('routing', () => {
 
   it('hreflang recíproco com x-default', () => {
     const map = hreflangMap({ kind: 'home' });
-    assert.deepEqual(Object.keys(map).sort(), ['en', 'pt-BR', 'pt-PT', 'x-default']);
+    assert.deepEqual(Object.keys(map).sort(), ['en-GB', 'en-US', 'pt-BR', 'pt-PT', 'x-default']);
+    assert.ok(map['en-GB']!.endsWith('/en-gb/'));
     assert.ok(map['x-default']!.endsWith('/pt/'));
   });
 
@@ -58,5 +59,15 @@ describe('routing', () => {
     assert.equal(detectLocale('pt-PT', null), 'pt');
     assert.equal(detectLocale('de-DE', 'DE'), 'en');
     assert.equal(detectLocale(null, null), 'pt');
+  });
+
+  it('distingue inglês americano e britânico', () => {
+    assert.equal(detectLocale('en-GB,en;q=0.9', 'US'), 'en-gb');
+    assert.equal(detectLocale('en-US,en;q=0.9', 'GB'), 'en');
+    assert.equal(detectLocale('en', 'GB'), 'en-gb');
+    assert.equal(detectLocale('en', 'US'), 'en');
+    assert.equal(detectLocale('en-AU', null), 'en-gb');
+    assert.equal(detectLocale('de-DE', 'IE'), 'en-gb');
+    assert.equal(detectLocale('pt-PT,en-GB;q=0.8', 'GB'), 'pt');
   });
 });

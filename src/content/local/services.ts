@@ -148,7 +148,7 @@ export const services: ServiceInput[] = [
     {
       pt: 'Diagnóstico, priorização de casos de uso e roadmap para toda a organização.',
       br: 'Diagnóstico, priorização de casos de uso e roadmap para toda a organização.',
-      en: 'Assessment, use-case prioritisation and a roadmap for the whole organisation.',
+      en: 'Assessment, use-case prioritization and a roadmap for the whole organization.',
     },
   ),
 
@@ -214,7 +214,7 @@ export const services: ServiceInput[] = [
     'modernizacao-de-sistemas',
     'cloud-devops',
     build,
-    { pt: 'Modernização de sistemas', br: 'Modernização de sistemas', en: 'Legacy modernisation' },
+    { pt: 'Modernização de sistemas', br: 'Modernização de sistemas', en: 'Legacy modernization' },
     {
       pt: 'Sistemas legados reescritos ou decompostos por fases, sem parar o negócio.',
       br: 'Sistemas legados reescritos ou decompostos por fases, sem parar o negócio.',

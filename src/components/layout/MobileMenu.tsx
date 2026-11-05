@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useState } from 'react';
+import type { ReactNode } from 'react';
 import { ChevronDown, CloseIcon, MenuIcon } from '@/components/ui/icons';
 
 type MobileLink = { label: string; href: string; tag?: string };
@@ -18,13 +19,15 @@ type Props = {
   sections: MobileSection[];
   links: { label: string; href: string }[];
   cta: { label: string; href: string };
+  /** Seletor de idioma (grelha com bandeiras), no fim do menu. */
+  languages?: ReactNode;
 };
 
 /**
  * Menu mobile: Serviços e Tecnologias em acordeão, o resto em links diretos.
  * Botão com aria-expanded; fecha com Escape e ao escolher um link.
  */
-export function MobileMenu({ openLabel, closeLabel, sections, links, cta }: Props) {
+export function MobileMenu({ openLabel, closeLabel, sections, links, cta, languages }: Props) {
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<number | null>(0);
   const panelId = useId();
@@ -149,6 +152,7 @@ export function MobileMenu({ openLabel, closeLabel, sections, links, cta }: Prop
         >
           {cta.label}
         </Link>
+        {languages}
       </div>
     </div>
   );

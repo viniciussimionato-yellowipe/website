@@ -1,4 +1,6 @@
+import { britishDeep } from '@/lib/i18n/british';
 import type { Locale } from '@/lib/i18n/locales';
+import { isEnglish } from '@/lib/i18n/locales';
 import type { ModelId, TechCategory, TechStack } from '../schema';
 import {
   CATEGORY_LABEL,
@@ -10,6 +12,7 @@ import {
   PROFILES,
   RELATED_SERVICES,
   ROLE_NOUN,
+  CHIP_EN,
   SERVICES,
   STEPS,
   TOOL_GROUP,
@@ -64,7 +67,7 @@ const SEO_DESC_MAX = 160;
 
 /** Texto de um modelo no idioma pedido, com {name}/{role} resolvidos. pt-BR deriva do pt-PT. */
 function pick(t: Two, locale: Locale, vars: Record<string, string>): string {
-  const base = locale === 'en' ? t.en : t.pt;
+  const base = isEnglish(locale) ? t.en : t.pt;
   const filled = base.replace(/\{(\w+)\}/g, (m, k: string) => vars[k] ?? m);
   return locale === 'br' ? ptToBr(filled) : filled;
 }
@@ -74,10 +77,36 @@ const DESC_TAIL: Two = {
   en: 'Assessed specialists in Portugal and Brazil.',
 };
 
+/** Artigo indefinido inglês pelo som: "an Angular", "an AWS", "a React", "a .NET". */
+export function article(name: string): 'a' | 'an' {
+  if (/^(SAP|SQL|HTML|MS|XML|LLM|NLP|R)\b/.test(name)) return 'an';
+  if (/^(Uni|Use|Ubu|One)/.test(name)) return 'a';
+  return /^[aeiou]/i.test(name) ? 'an' : 'a';
+}
+
+/** Etiquetas (camadas e serviços) no idioma da página: as que não são nomes de tecnologia. */
+function chip(text: string, locale: Locale): string {
+  if (locale === 'br') return ptToBr(text);
+  if (isEnglish(locale)) return CHIP_EN[text] ?? text;
+  return text;
+}
+
+/**
+ * Página de uma tecnologia num idioma. en-GB é a página americana com a ortografia
+ * britânica (ver src/lib/i18n/british.ts).
+ */
 export function buildTechPage(stack: TechStack, locale: Locale): TechPageView {
+  if (locale === 'en-gb') {
+    return britishDeep(buildTechPageIn(stack, 'en-gb'));
+  }
+  return buildTechPageIn(stack, locale);
+}
+
+function buildTechPageIn(stack: TechStack, locale: Locale): TechPageView {
   const c = stack.category;
   const name = stack.short ?? stack.name;
-  const vars = { name, role: '' };
+  const a = article(name);
+  const vars = { name, role: '', a, A: a === 'an' ? 'An' : 'A' };
   vars.role = pick(stack.role ?? ROLE_NOUN[c], locale, vars);
   const p = (t: Two) => pick(t, locale, vars);
 
@@ -103,7 +132,10 @@ export function buildTechPage(stack: TechStack, locale: Locale): TechPageView {
     pitch,
     version: stack.version,
     seo: { title, description },
-    layers: stack.layers.map((chips, i) => ({ label: p(labels[i]!), chips })),
+    layers: stack.layers.map((chips, i) => ({
+      label: p(labels[i]!),
+      chips: chips.map((x) => chip(x, locale)),
+    })),
     services: SERVICES[c].map((s) => {
       const o = stack.serviceOverrides[s.id];
       return {
@@ -111,7 +143,7 @@ export function buildTechPage(stack: TechStack, locale: Locale): TechPageView {
         title: p(o?.title ?? s.title),
         pain: p(o?.pain ?? s.pain),
         text: p(o?.text ?? s.text),
-        tags: stack.serviceTags[s.id] ?? [],
+        tags: (stack.serviceTags[s.id] ?? []).map((x) => chip(x, locale)),
       };
     }),
     models: MODELS.map((m) => ({

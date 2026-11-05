@@ -2,7 +2,8 @@ import { findCase, findService, findStack, getContent } from '@/content';
 import { buildServicePage } from '@/content/services/build';
 import { buildTechPage } from '@/content/technologies/build';
 import type { Dictionary } from '@/dictionaries';
-import type { Locale } from '@/lib/i18n/locales';
+import type { Localized, Locale } from '@/lib/i18n/locales';
+import { localize } from '@/lib/i18n/locales';
 import type { Route } from '@/lib/routing';
 
 export type PageSeo = { title: string; description: string; image?: string; noindex?: boolean };
@@ -12,7 +13,7 @@ export type PageSeo = { title: string; description: string; image?: string; noin
  * content:check, que valida todas as rotas dos três idiomas (título ≤ 60, descrição 70–160).
  */
 export function seoFor(locale: Locale, route: Route, dict: Dictionary): PageSeo {
-  const pickL = (v: { pt: string; br?: string; en?: string }) => v[locale] ?? v.pt;
+  const pickL = (v: Localized<string>) => localize(v, locale);
   switch (route.kind) {
     case 'model': {
       const m = getContent().models.find((x) => x.id === route.id)!;

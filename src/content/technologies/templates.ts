@@ -158,7 +158,7 @@ export const TOOL_GROUP: Record<string, Two> = {
   performance: { pt: 'Performance e carga', en: 'Performance and load' },
   management: { pt: 'Gestão de testes', en: 'Test management' },
   devices: { pt: 'Dispositivos e browsers', en: 'Devices and browsers' },
-  bi: { pt: 'BI e visualização', en: 'BI and visualisation' },
+  bi: { pt: 'BI e visualização', en: 'BI and visualization' },
   orchestration: { pt: 'Orquestração', en: 'Orchestration' },
   storage: { pt: 'Armazenamento', en: 'Storage' },
   processing: { pt: 'Processamento', en: 'Processing' },
@@ -202,12 +202,12 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
       },
       text: {
         pt: 'Auditoria e otimização de carregamento, renderização e bundles em {name}.',
-        en: 'Audits and optimisation of loading, rendering and bundles in {name}.',
+        en: 'Audits and optimization of loading, rendering and bundles in {name}.',
       },
     },
     {
       id: 'modernization',
-      title: { pt: 'Modernização de front-end', en: 'Front-end modernisation' },
+      title: { pt: 'Modernização de front-end', en: 'Front-end modernization' },
       pain: {
         pt: 'O front-end legado trava cada nova funcionalidade.',
         en: 'The legacy front-end slows every new feature.',
@@ -264,7 +264,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
       },
       text: {
         pt: 'Diagnóstico, estabilização e novas funcionalidades em apps {name}.',
-        en: 'Diagnosis, stabilisation and new features for {name} apps.',
+        en: 'Diagnosis, stabilization and new features for {name} apps.',
       },
     },
     {
@@ -276,7 +276,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
       },
       text: {
         pt: 'Monitorização de falhas, otimização de arranque e consumo em {name}.',
-        en: 'Crash monitoring and start-up and battery optimisation in {name}.',
+        en: 'Crash monitoring and start-up and battery optimization in {name}.',
       },
     },
     {
@@ -331,7 +331,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
     },
     {
       id: 'modernization',
-      title: { pt: 'Modernização de sistemas {name}', en: '{name} system modernisation' },
+      title: { pt: 'Modernização de sistemas {name}', en: '{name} system modernization' },
       pain: {
         pt: 'O sistema legado trava cada nova funcionalidade.',
         en: 'The legacy system blocks every new feature.',
@@ -374,7 +374,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
       },
       text: {
         pt: 'Modelação de dados, caching e otimização de consultas em aplicações {name}.',
-        en: 'Data modelling, caching and query optimisation in {name} applications.',
+        en: 'Data modeling, caching and query optimization in {name} applications.',
       },
     },
     {
@@ -479,7 +479,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
     },
     {
       id: 'cost',
-      title: { pt: 'Otimização de custos', en: 'Cost optimisation' },
+      title: { pt: 'Otimização de custos', en: 'Cost optimization' },
       pain: { pt: 'A fatura cresce todos os meses.', en: 'The bill grows every month.' },
       text: {
         pt: 'Visibilidade de custos e redução de desperdício em {name}, sem perder performance.',
@@ -592,7 +592,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
       },
       text: {
         pt: 'Uma plataforma {name} que junta os dados da empresa num só lugar, pronta a crescer.',
-        en: 'A {name} platform that brings company data into one place, ready to grow.',
+        en: '{A} {name} platform that brings company data into one place, ready to grow.',
       },
     },
     {
@@ -630,7 +630,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
     },
     {
       id: 'migration',
-      title: { pt: 'Migração e modernização', en: 'Migration and modernisation' },
+      title: { pt: 'Migração e modernização', en: 'Migration and modernization' },
       pain: {
         pt: 'O data warehouse antigo já não escala.',
         en: 'The old data warehouse no longer scales.',
@@ -649,21 +649,21 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
       },
       text: {
         pt: 'Otimização de processamento, armazenamento e custos em {name}.',
-        en: 'Processing, storage and cost optimisation in {name}.',
+        en: 'Processing, storage and cost optimization in {name}.',
       },
     },
   ],
   database: [
     {
       id: 'design',
-      title: { pt: 'Modelação e arquitetura', en: 'Modelling and architecture' },
+      title: { pt: 'Modelação e arquitetura', en: 'Modeling and architecture' },
       pain: {
         pt: 'O modelo de dados cresceu sem regras.',
         en: 'The data model grew without rules.',
       },
       text: {
         pt: 'Modelação, normalização e índices em {name} pensados para o produto.',
-        en: '{name} modelling, normalisation and indexes designed for the product.',
+        en: '{name} modeling, normalization and indexes designed for the product.',
       },
     },
     {
@@ -739,7 +739,7 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
     },
     {
       id: 'customization',
-      title: { pt: 'Desenvolvimento e personalização', en: 'Development and customisation' },
+      title: { pt: 'Desenvolvimento e personalização', en: 'Development and customization' },
       pain: {
         pt: 'A solução standard não cobre o seu negócio.',
         en: 'The standard solution does not cover your business.',
@@ -886,7 +886,7 @@ export const FAQ_COMMON: FaqTpl[] = [
   {
     q: {
       pt: 'Como avaliam um especialista em {name}?',
-      en: 'How do you assess a {name} specialist?',
+      en: 'How do you assess {a} {name} specialist?',
     },
     a: {
       pt: 'Com entrevistas técnicas conduzidas por engenheiros que trabalham com {name} e, quando faz sentido, um exercício prático. Recebe as notas da avaliação com cada perfil.',
@@ -1215,7 +1215,7 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
       role: { pt: 'Tech lead {name}', en: '{name} tech lead' },
       bio: {
         pt: 'Liderou modernizações de sistemas críticos sem parar a operação.',
-        en: 'Led critical system modernisations without stopping operations.',
+        en: 'Led critical system modernizations without stopping operations.',
       },
       years: 12,
       city: 'Porto',
@@ -1467,7 +1467,7 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
       role: { pt: 'Programador SQL {name}', en: '{name} SQL developer' },
       bio: {
         pt: 'Procedimentos, consultas e relatórios otimizados.',
-        en: 'Optimised procedures, queries and reports.',
+        en: 'Optimized procedures, queries and reports.',
       },
       years: 7,
       city: 'Porto',
@@ -1640,7 +1640,7 @@ export const MODELS: { id: ModelId; title: Two; text: Two; yw: Two; cl: Two; cta
     title: { pt: 'Projeto {name} de ponta a ponta', en: 'End-to-end {name} project' },
     text: {
       pt: 'Uma equipa Yellowipe com gestor de projeto constrói ou moderniza a sua solução.',
-      en: 'A Yellowipe team with a project manager builds or modernises your solution.',
+      en: 'A Yellowipe team with a project manager builds or modernizes your solution.',
     },
     yw: { pt: 'Responde pela entrega', en: 'Owns delivery' },
     cl: { pt: 'Define objetivos e aprova', en: 'Sets goals and approves' },
@@ -1660,6 +1660,58 @@ export const RELATED_SERVICES: Record<TechCategory, string[]> = {
   database: ['modernizacao-de-sistemas', 'migracao-para-cloud', 'aplicacoes-enterprise'],
   enterprise: ['aplicacoes-enterprise', 'modernizacao-de-sistemas', 'automacao-de-testes'],
   ai: ['ia-generativa', 'agentes-de-ia', 'desenvolvimento-ia-ml'],
+};
+
+/**
+ * Etiquetas das camadas e dos serviços escritas em português em stacks.ts. Nomes de
+ * tecnologias ficam iguais em todos os idiomas; estas traduzem-se nas páginas em inglês
+ * (o pt-BR passa por ptToBr). Uma etiqueta nova em português entra aqui também:
+ * tests/unit/technologies.test.ts falha se aparecer português numa página em inglês.
+ */
+export const CHIP_EN: Record<string, string> = {
+  Monólito: 'Monolith',
+  'Monólito → serviços': 'Monolith → services',
+  Módulos: 'Modules',
+  Regressão: 'Regression',
+  Pirâmide: 'Test pyramid',
+  Métricas: 'Metrics',
+  Paralelização: 'Parallelization',
+  Exploratórios: 'Exploratory',
+  'Matriz de dispositivos': 'Device matrix',
+  Distribuído: 'Distributed',
+  Cenários: 'Scenarios',
+  'Dados de teste': 'Test data',
+  'Exploratórios de API': 'Exploratory API testing',
+  Integrações: 'Integrations',
+  'Modelo semântico': 'Semantic model',
+  Certificação: 'Certification',
+  Agregações: 'Aggregations',
+  'Bases de dados': 'Databases',
+  'Testes de dados': 'Data tests',
+  'Cargas diárias': 'Daily loads',
+  Aplicações: 'Applications',
+  Tópicos: 'Topics',
+  Microsserviços: 'Microservices',
+  Partições: 'Partitions',
+  Retenção: 'Retention',
+  Índices: 'Indexes',
+  Monitorização: 'Monitoring',
+  'Planos de execução': 'Execution plans',
+  Modelação: 'Modeling',
+  Planos: 'Plans',
+  'Serviço ao cliente': 'Customer service',
+  Citações: 'Citations',
+  Memória: 'Memory',
+  'Aprovação humana': 'Human approval',
+  Classificação: 'Classification',
+  Extração: 'Extraction',
+  'Custo de GPU': 'GPU cost',
+  'Dados na empresa': 'On-premises data',
+  'Dados históricos': 'Historical data',
+  Previsão: 'Forecasting',
+  Visão: 'Computer vision',
+  Deteção: 'Detection',
+  'Dados anonimizados': 'Anonymized data',
 };
 
 /**
@@ -1687,6 +1739,19 @@ const BR: [string, string][] = [
   ],
   ['No caso Clever', 'No case da Clever'],
   ['sob controlo', 'sob controle'],
+  ['Controlo', 'Controle'],
+  ['Modelação', 'Modelagem'],
+  ['modelação', 'modelagem'],
+  ['Deteção', 'Detecção'],
+  ['deteção', 'detecção'],
+  ['registos', 'registros'],
+  ['Registos', 'Registros'],
+  ['Registo', 'Registro'],
+  ['Utilizadores', 'Usuários'],
+  ['utilizador', 'usuário'],
+  ['Utilizador', 'Usuário'],
+  ['telemóveis', 'celulares'],
+  ['stock', 'estoque'],
   ['de raiz', 'do zero'],
   ['folhas de cálculo', 'planilhas'],
   ['Os pedidos de suporte acumulam-se', 'Os chamados de suporte se acumulam'],
@@ -1702,6 +1767,15 @@ const BR: [string, string][] = [
   ['a nossa base de dados', 'o nosso banco de dados'],
   ['bases de dados', 'bancos de dados'],
   ['Bases de dados', 'Bancos de dados'],
+  // Base de dados → banco de dados (masculino): artigos e contrações primeiro.
+  ['na base de dados', 'no banco de dados'],
+  ['da base de dados', 'do banco de dados'],
+  ['à base de dados', 'ao banco de dados'],
+  ['a base de dados', 'o banco de dados'],
+  ['base de dados', 'banco de dados'],
+  ['Base de dados', 'Banco de dados'],
+  ['com metas acordadas consigo', 'com metas acordadas com você'],
+  ['acordado consigo', 'acordado com você'],
   ['sem desenho', 'sem planejamento'],
   ['Desenho', 'Design'],
   ['desenho', 'design'],
@@ -1749,6 +1823,15 @@ const BR: [string, string][] = [
 const BR_RE = BR.map(
   ([from, to]) => [new RegExp(`(?<!\\p{L})${from}(?!\\p{L})`, 'gu'), to] as const,
 );
+/** "está a chegar" → "está chegando": em pt-BR o progressivo usa o gerúndio. */
+const PROGRESSIVE =
+  /(?<!\p{L})(est(?:á|ão|amos|ou|ava|avam|ar|eja|ejam)|continua(?:m)?|anda(?:m)?|fica(?:m)?) a (\p{L}+?)(ar|er|ir)(?!\p{L})/gu;
+
 export function ptToBr(text: string): string {
-  return BR_RE.reduce((s, [re, to]) => s.replace(re, to), text);
+  const out = BR_RE.reduce((s, [re, to]) => s.replace(re, to), text);
+  return out.replace(
+    PROGRESSIVE,
+    (_m, aux: string, stem: string, end: string) =>
+      `${aux} ${stem}${end === 'ar' ? 'ando' : end === 'er' ? 'endo' : 'indo'}`,
+  );
 }

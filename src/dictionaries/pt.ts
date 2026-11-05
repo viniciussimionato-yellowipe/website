@@ -254,6 +254,7 @@ const pt = {
     contact: 'Contacto',
     rights: 'Todos os direitos reservados.',
     summarize: 'Resumir esta página com',
+    summarizePrompt: 'Resume e explica o que a Yellowipe faz, a partir de {url}',
     privacy: 'Política de privacidade',
     terms: 'Termos',
     cookies: 'Cookies',

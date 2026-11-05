@@ -89,7 +89,7 @@ export const models: z.input<typeof Model>[] = [
     idealFor: {
       pt: 'Ideal para lançar produtos novos ou modernizar sistemas com uma equipa que assume a entrega.',
       br: 'Ideal para lançar produtos novos ou modernizar sistemas com uma equipe que assume a entrega.',
-      en: 'Ideal for launching new products or modernising systems with a team that owns delivery.',
+      en: 'Ideal for launching new products or modernizing systems with a team that owns delivery.',
     },
     howItWorks: construa.howItWorks,
     caseIds: ['clever', 'hapvida'],

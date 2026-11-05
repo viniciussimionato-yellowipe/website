@@ -999,7 +999,7 @@ export const stacks: In[] = [
         },
         a: {
           pt: 'Sim. Revemos esperas, seletores e dados de teste, e paralelizamos com Selenium Grid. Quando faz sentido, migramos as suites mais instáveis para Playwright.',
-          en: 'Yes. We review waits, selectors and test data, and parallelise with Selenium Grid. Where it makes sense, we move the flakiest suites to Playwright.',
+          en: 'Yes. We review waits, selectors and test data, and parallelize with Selenium Grid. Where it makes sense, we move the flakiest suites to Playwright.',
         },
       },
     ],
@@ -1411,7 +1411,7 @@ export const stacks: In[] = [
         },
         text: {
           pt: 'Spark SQL e formatos otimizados para analisar anos de dados em minutos.',
-          en: 'Spark SQL and optimised formats to analyse years of data in minutes.',
+          en: 'Spark SQL and optimized formats to analyze years of data in minutes.',
         },
       },
     },
@@ -1615,7 +1615,7 @@ export const stacks: In[] = [
         },
         a: {
           pt: 'Muitas vezes, sim: reduz licenças e abre caminho a serviços geridos. Avaliamos primeiro o código PL/SQL e as dependências para estimar esforço e risco.',
-          en: 'Often, yes: it cuts licences and opens the door to managed services. We first assess PL/SQL code and dependencies to estimate effort and risk.',
+          en: 'Often, yes: it cuts licenses and opens the door to managed services. We first assess PL/SQL code and dependencies to estimate effort and risk.',
         },
       },
     ],
@@ -1679,7 +1679,7 @@ export const stacks: In[] = [
     logo: '/images/tech/oracle.svg',
     pitch: {
       pt: 'Oracle Database estável e otimizado, com especialistas em PL/SQL, performance e migração.',
-      en: 'Stable, optimised Oracle Database, with specialists in PL/SQL, performance and migration.',
+      en: 'Stable, optimized Oracle Database, with specialists in PL/SQL, performance and migration.',
     },
     version: 'Oracle 19c · 23ai',
     layers: [
@@ -1727,7 +1727,7 @@ export const stacks: In[] = [
     logo: '/images/tech/mongodb.svg',
     pitch: {
       pt: 'MongoDB bem modelado e escalável, para produtos com dados flexíveis e muito tráfego.',
-      en: 'Well-modelled, scalable MongoDB for products with flexible data and heavy traffic.',
+      en: 'Well-modeled, scalable MongoDB for products with flexible data and heavy traffic.',
     },
     version: 'MongoDB 8 · Atlas',
     layers: [
@@ -2150,7 +2150,7 @@ export const stacks: In[] = [
         title: { pt: 'Visão computacional e linguagem', en: 'Computer vision and language' },
         pain: {
           pt: 'Imagens e textos são analisados à mão.',
-          en: 'Images and text are analysed by hand.',
+          en: 'Images and text are analyzed by hand.',
         },
         text: {
           pt: 'Modelos de visão e de linguagem em PyTorch para classificar, extrair e detetar.',

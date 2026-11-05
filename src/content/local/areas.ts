@@ -87,7 +87,7 @@ export const areas: z.input<typeof Area>[] = [
     description: {
       pt: 'Infraestrutura que acelera as entregas: pipelines, cloud e sistemas modernizados sem parar a operação.',
       br: 'Infraestrutura que acelera as entregas: pipelines, cloud e sistemas modernizados sem parar a operação.',
-      en: 'Infrastructure that speeds up delivery: pipelines, cloud and modernised systems without stopping operations.',
+      en: 'Infrastructure that speeds up delivery: pipelines, cloud and modernized systems without stopping operations.',
     },
     ai: {
       pt: 'infraestrutura como código e pipelines escritos e revistos com apoio de IA, e operações de modelos (MLOps).',

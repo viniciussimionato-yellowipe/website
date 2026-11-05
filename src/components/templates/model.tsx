@@ -6,6 +6,7 @@ import { getContent, publishedCases } from '@/content';
 import type { Model } from '@/content/schema';
 import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
+import { localize } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { breadcrumbLd, faqLd, localizeFaq, serviceLd } from '@/lib/seo/jsonld';
 import { ContactBlock } from '@/components/forms/ContactBlock';
@@ -22,7 +23,7 @@ import { ArrowRight, BenefitIcon, CheckIcon, Sparkle } from '@/components/ui/ico
  */
 type Props = { locale: Locale; dict: Dictionary; model: Model };
 
-const L = <T,>(v: { pt: T; br?: T; en?: T }, locale: Locale): T => v[locale] ?? v.pt;
+const L = localize;
 
 const sectionPad = 'py-[clamp(72px,9vw,120px)]';
 const h2Class =

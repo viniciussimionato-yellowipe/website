@@ -11,14 +11,9 @@ import { AiAssistantLogo, LinkedInIcon, type AiAssistant } from '@/components/ui
 type Props = { locale: Locale; dict: Dictionary };
 
 /** Prompt dos botões "Resumir com IA" (como a BairesDev). O URL é o da home do idioma. */
-function summarizeLinks(locale: Locale): { name: AiAssistant; href: string }[] {
+function summarizeLinks(locale: Locale, template: string): { name: AiAssistant; href: string }[] {
   const url = absoluteUrl(`/${locale}/`);
-  const text =
-    locale === 'en'
-      ? `Summarise what Yellowipe does, based on ${url}`
-      : locale === 'br'
-        ? `Resuma e explique o que a Yellowipe faz, a partir de ${url}`
-        : `Resume e explica o que a Yellowipe faz, a partir de ${url}`;
+  const text = template.replace('{url}', url);
   const prompt = encodeURIComponent(text);
   return [
     { name: 'ChatGPT', href: `https://chatgpt.com/?q=${prompt}` },
@@ -115,7 +110,7 @@ export function Footer({ locale, dict }: Props) {
           </p>
           <p className="m-0 flex flex-wrap items-center gap-x-3.5 gap-y-1.5">
             <span>{dict.footer.summarize}</span>
-            {summarizeLinks(locale).map((s) => (
+            {summarizeLinks(locale, dict.footer.summarizePrompt).map((s) => (
               <a
                 key={s.name}
                 href={s.href}

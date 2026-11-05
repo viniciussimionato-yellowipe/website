@@ -7,6 +7,7 @@ import { AI_TOOLS } from '@/content/technologies/build';
 import type { TechPageView } from '@/content/technologies/build';
 import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
+import { isEnglish } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { breadcrumbLd, faqLd, serviceLd } from '@/lib/seo/jsonld';
 import { LogosStrip } from '@/components/home/HomeSections';
@@ -40,7 +41,7 @@ export function TechnologyPage({ locale, dict, view }: Props) {
   const hub = pathFor(locale, { kind: 'technologiesHub' })!;
   const home = pathFor(locale, { kind: 'home' })!;
   const contact = pathFor(locale, { kind: 'contact' })!;
-  const tag = (id: string) => (locale === 'en' ? MODEL_TAG[id]!.en : MODEL_TAG[id]!.pt);
+  const tag = (id: string) => (isEnglish(locale) ? MODEL_TAG[id]!.en : MODEL_TAG[id]!.pt);
   const crumbs = [
     { name: dict.common.home, href: home },
     { name: dict.templates.technologiesTitle, href: hub },
