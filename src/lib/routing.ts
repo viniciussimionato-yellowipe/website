@@ -33,7 +33,7 @@ type StaticKind =
   | 'thanks';
 
 const staticSegments: Record<StaticKind, Partial<Record<Locale, string>>> = {
-  servicesHub: { pt: 'servicos', br: 'servicos' },
+  servicesHub: { pt: 'servicos', br: 'servicos', en: 'services', 'en-gb': 'services' },
   technologiesHub: {
     pt: 'tecnologias',
     br: 'tecnologias',

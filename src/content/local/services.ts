@@ -24,16 +24,58 @@ function draft(
     areaId,
     status: servicePages[id] ? 'published' : 'draft',
     name,
-    slug: { pt: id, br: slugBr },
-    keyword: { pt: name.pt, br: name.br, en: name.en },
+    slug: { pt: id, br: slugBr, en: slugify(name.en) },
+    keyword: { pt: name.pt, br: name.br, en: KEYWORD_EN[id] ?? name.en },
     summary,
     models,
     page: servicePages[id],
     seo: {
-      title: { pt: `${name.pt} | Yellowipe`, br: `${name.br} | Yellowipe` },
-      description: { pt: summary.pt, br: summary.br },
+      title: {
+        pt: `${name.pt} | Yellowipe`,
+        br: `${name.br} | Yellowipe`,
+        en: `${name.en} | Yellowipe`,
+      },
+      description: { pt: summary.pt, br: summary.br, en: summary.en },
     },
   };
+}
+
+/**
+ * Palavra-chave em inglês (título SEO e topo da página): a forma como um comprador nos
+ * EUA pesquisa o serviço, quando o nome curto do menu não chega.
+ */
+const KEYWORD_EN: Record<string, string> = {
+  'aplicacoes-web': 'Web application development',
+  'aplicacoes-enterprise': 'Enterprise application development',
+  'aplicacoes-cloud': 'Cloud application development',
+  'ia-generativa': 'Generative AI development',
+  'agentes-de-ia': 'AI agent development',
+  'desenvolvimento-ia-ml': 'AI and machine learning development',
+  'transformacao-com-ia': 'AI transformation consulting',
+  'realidade-aumentada-e-virtual': 'AR and VR development',
+  blockchain: 'Blockchain development services',
+  iot: 'IoT development services',
+  'devops-e-devsecops': 'DevOps and DevSecOps services',
+  'migracao-para-cloud': 'Cloud migration services',
+  'modernizacao-de-sistemas': 'Legacy system modernization',
+  'pipelines-ci-cd': 'CI/CD pipeline implementation',
+  'testes-de-performance': 'Performance testing services',
+  'testes-de-seguranca': 'Security and penetration testing',
+  'testes-manuais': 'Manual QA testing services',
+  'ux-ui-design': 'UX and UI design services',
+  'web-design': 'Website design and development',
+  'developers-e-engenharia': 'Software developer recruitment',
+  'recrutamento-dados-e-ia': 'Data and AI recruitment',
+  'recrutamento-cloud-devops-qa': 'Cloud, DevOps and QA recruitment',
+  'liderancas-tecnologicas': 'Tech leadership recruitment',
+};
+
+/** "AI/ML development" → "ai-ml-development". */
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
 const all: ModelIds = ['contrate', 'reforce', 'construa'];
@@ -58,7 +100,11 @@ export const services: ServiceInput[] = [
     areaId: 'software',
     status: 'published',
     name: { pt: 'Aplicações mobile', br: 'Desenvolvimento de aplicativos', en: 'Mobile apps' },
-    slug: { pt: 'desenvolvimento-de-aplicacoes-mobile', br: 'desenvolvimento-de-aplicativos' },
+    slug: {
+      pt: 'desenvolvimento-de-aplicacoes-mobile',
+      br: 'desenvolvimento-de-aplicativos',
+      en: 'mobile-app-development',
+    },
     keyword: {
       pt: 'desenvolvimento de aplicações mobile',
       br: 'desenvolvimento de aplicativos',
@@ -75,10 +121,12 @@ export const services: ServiceInput[] = [
       title: {
         pt: 'Desenvolvimento de aplicações mobile | Yellowipe',
         br: 'Desenvolvimento de aplicativos | Yellowipe',
+        en: 'Mobile app development | Yellowipe',
       },
       description: {
         pt: 'Apps iOS e Android do desenho à publicação, com testes automáticos. Caso Hapvida: teleconsulta para milhões.',
         br: 'Aplicativos iOS e Android do desenho à publicação, com testes automatizados. Case Hapvida: teleconsulta para milhões.',
+        en: 'iOS and Android apps from design to store release, with automated tests. Hapvida case study: telehealth for millions.',
       },
     },
   },
@@ -239,8 +287,12 @@ export const services: ServiceInput[] = [
     areaId: 'qualidade',
     status: 'published',
     name: { pt: 'Automação de testes', br: 'Automação de testes', en: 'Test automation' },
-    slug: { pt: 'automacao-de-testes', br: 'automacao-de-testes' },
-    keyword: { pt: 'automação de testes', br: 'automação de testes', en: 'test automation' },
+    slug: { pt: 'automacao-de-testes', br: 'automacao-de-testes', en: 'test-automation' },
+    keyword: {
+      pt: 'automação de testes',
+      br: 'automação de testes',
+      en: 'test automation services',
+    },
     summary: {
       pt: 'Suites automáticas que crescem com o produto e cortam o tempo de regressão.',
       br: 'Suítes automatizadas que crescem com o produto e cortam o tempo de regressão.',
@@ -249,10 +301,15 @@ export const services: ServiceInput[] = [
     models: all,
     page: servicePages['automacao-de-testes'],
     seo: {
-      title: { pt: 'Automação de testes | Yellowipe', br: 'Automação de testes | Yellowipe' },
+      title: {
+        pt: 'Automação de testes | Yellowipe',
+        br: 'Automação de testes | Yellowipe',
+        en: 'Test automation | Yellowipe',
+      },
       description: {
         pt: 'Testes automáticos integrados no CI/CD. Clever: de 32 para 1.600+ testes em seis meses. Linde: −94% na regressão.',
         br: 'Testes automatizados integrados ao CI/CD. Clever: de 32 para 1.600+ testes em seis meses. Linde: −94% na regressão.',
+        en: 'Automated tests built into CI/CD. Clever: from 32 to 1,600+ tests in six months. Linde: −94% regression time.',
       },
     },
   },

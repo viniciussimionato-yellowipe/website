@@ -30,7 +30,8 @@ describe('routing', () => {
       pathFor('br', { kind: 'model', id: 'reforce' }),
       '/br/alocacao-de-profissionais-ti/',
     );
-    assert.equal(pathFor('en', { kind: 'model', id: 'reforce' }), null);
+    assert.equal(pathFor('en', { kind: 'model', id: 'reforce' }), '/en/staff-augmentation/');
+    assert.equal(pathFor('en-gb', { kind: 'model', id: 'reforce' }), '/en-gb/staff-augmentation/');
   });
 
   it('só serviços publicados e com página têm URL', () => {

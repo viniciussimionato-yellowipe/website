@@ -1,4 +1,6 @@
+import { britishDeep } from '@/lib/i18n/british';
 import type { Locale } from '@/lib/i18n/locales';
+import { isEnglish } from '@/lib/i18n/locales';
 import type { ModelId, Service } from '../schema';
 import { ptToBr } from '../technologies/templates';
 import {
@@ -14,6 +16,7 @@ import {
   STEPS_RECRUITMENT,
 } from './templates';
 import type { AreaId } from './templates';
+import { SERVICES_EN } from './en';
 import { programmaticTitle } from '@/lib/seo/titles';
 
 /**
@@ -54,6 +57,12 @@ const SEO_DESC_MIN = 70;
 const SEO_DESC_MAX = 160;
 
 const DESC_TAIL = 'Especialistas avaliados em Portugal e no Brasil.';
+const DESC_TAIL_EN = 'Assessed specialists in Portugal and Brazil.';
+
+/** Texto pt-PT → inglês (catálogo ./en.ts); nomes de tecnologias ficam iguais. */
+export function toEnglish(text: string): string {
+  return SERVICES_EN[text] ?? text;
+}
 
 /** "Aplicações web" → "aplicações web"; "IoT", "UX e UI Design" e "DevOps…" ficam como estão. */
 export function inSentence(name: string): string {
@@ -63,20 +72,30 @@ export function inSentence(name: string): string {
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-/** Só há páginas de serviço em pt e br; outro idioma recebe a versão pt. */
+/**
+ * Página de um serviço num idioma. pt-BR adapta o pt-PT (toBr); inglês traduz cada texto
+ * pelo catálogo ./en.ts; en-GB é a página americana com ortografia britânica.
+ */
 export function buildServicePage(service: Service, locale: Locale): ServicePageView {
+  if (locale === 'en-gb') return britishDeep(buildServicePageIn(service, 'en-gb'));
+  return buildServicePageIn(service, locale);
+}
+
+function buildServicePageIn(service: Service, locale: Locale): ServicePageView {
   const facts = service.page;
   if (!facts) throw new Error(`serviço sem página: ${service.id}`);
   const area = service.areaId as AreaId;
   const br = locale === 'br';
-  const name = (br ? service.name.br : undefined) ?? service.name.pt;
+  const en = isEnglish(locale);
+  const name = (br ? service.name.br : en ? service.name.en : undefined) ?? service.name.pt;
   const vars: Record<string, string> = {
     name: inSentence(name),
-    role: ROLE[area],
+    role: en ? toEnglish(ROLE[area]) : ROLE[area],
   };
-  // Texto de modelo: resolve {name}/{role} e adapta a pt-BR.
+  // Texto de modelo: traduz (inglês), resolve {name}/{role} e adapta a pt-BR.
   const p = (t: string) => {
-    const filled = t.replace(/\{(\w+)\}/g, (m, k: string) => vars[k] ?? m);
+    const base = en ? toEnglish(t) : t;
+    const filled = base.replace(/\{(\w+)\}/g, (m, k: string) => vars[k] ?? m);
     return br ? toBr(filled) : filled;
   };
   const q = (t: string) => {
@@ -87,10 +106,12 @@ export function buildServicePage(service: Service, locale: Locale): ServicePageV
       : out;
   };
 
-  const keyword = cap((br ? service.keyword.br : undefined) ?? service.keyword.pt);
+  const keyword = cap(
+    (br ? service.keyword.br : en ? service.keyword.en : undefined) ?? service.keyword.pt,
+  );
   const pitch = p(facts.pitch);
   const title = programmaticTitle(keyword, locale);
-  const withTail = `${pitch} ${p(DESC_TAIL)}`;
+  const withTail = `${pitch} ${en ? DESC_TAIL_EN : p(DESC_TAIL)}`;
   const description = withTail.length <= SEO_DESC_MAX ? withTail : pitch;
 
   const steps = area === 'recrutamento' ? STEPS_RECRUITMENT : STEPS;
@@ -100,7 +121,7 @@ export function buildServicePage(service: Service, locale: Locale): ServicePageV
     areaId: area,
     keyword,
     pitch,
-    note: facts.note,
+    note: p(facts.note),
     seo: { title, description },
     layers: LAYERS[area].map((label, i) => ({ label: p(label), chips: facts.layers[i]!.map(p) })),
     offerings: facts.offerings.map((o) => ({
