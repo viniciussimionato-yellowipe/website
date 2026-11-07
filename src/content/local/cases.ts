@@ -15,21 +15,17 @@ export const cases: z.input<typeof CaseStudy>[] = [
     market: 'PT', // [confirmar]
     slug: {
       pt: 'clever-automacao-de-testes',
-      br: 'clever-automacao-de-testes',
-      en: 'clever-test-automation',
     },
-    headline: { pt: '32 → 1.600+ testes', br: '32 → 1.600+ testes', en: '32 → 1,600+ tests' },
+    headline: { pt: '32 → 1.600+ testes' },
     summary: {
       pt: 'Uma suíte de testes estagnada transformada num processo de QA escalável em seis meses, com automação assistida por IA.',
-      br: 'Uma suíte de testes estagnada transformada em um processo de QA escalável em seis meses, com automação assistida por IA.',
-      en: 'A stalled test suite turned into a scalable QA process in six months, with AI-assisted automation.',
     },
     metrics: [
       {
         value: '32 → 1.600+',
-        label: { pt: 'testes automatizados', br: 'testes automatizados', en: 'automated tests' },
+        label: { pt: 'testes automatizados' },
       },
-      { value: '6', label: { pt: 'meses', br: 'meses', en: 'months' } },
+      { value: '6', label: { pt: 'meses' } },
     ],
     serviceIds: ['automacao-de-testes'],
     areaIds: ['qualidade'],
@@ -40,13 +36,9 @@ export const cases: z.input<typeof CaseStudy>[] = [
     seo: {
       title: {
         pt: 'Clever: de 32 para 1.600+ testes | Caso Yellowipe',
-        br: 'Clever: de 32 para 1.600+ testes | Case Yellowipe',
-        en: 'Clever: from 32 to 1,600+ tests | Yellowipe',
       },
       description: {
         pt: 'Como a Yellowipe transformou uma suíte estagnada num processo de QA escalável em seis meses, com automação assistida por IA.',
-        br: 'Como a Yellowipe transformou uma suíte estagnada em um processo de QA escalável em seis meses, com automação assistida por IA.',
-        en: 'How Yellowipe turned a stalled suite into a scalable QA process in six months, with AI-assisted automation.',
       },
     },
   },
@@ -58,27 +50,21 @@ export const cases: z.input<typeof CaseStudy>[] = [
     market: 'PT', // [confirmar]
     slug: {
       pt: 'linde-tempo-de-regressao',
-      br: 'linde-tempo-de-regressao',
-      en: 'linde-regression-time',
     },
     headline: {
       pt: '−94% no tempo de regressão',
-      br: '−94% no tempo de regressão',
-      en: '−94% regression time',
     },
     summary: {
       pt: 'Uma suíte com 88% de falhas recuperada numa semana, com 128 testes automatizados e CI/CD.',
-      br: 'Uma suíte com 88% de falhas recuperada em uma semana, com 128 testes automatizados e CI/CD.',
-      en: 'A suite with an 88% failure rate recovered in one week, with 128 automated tests and CI/CD.',
     },
     metrics: [
       {
         value: '−94%',
-        label: { pt: 'tempo de regressão', br: 'tempo de regressão', en: 'regression time' },
+        label: { pt: 'tempo de regressão' },
       },
       {
         value: '128',
-        label: { pt: 'testes automatizados', br: 'testes automatizados', en: 'automated tests' },
+        label: { pt: 'testes automatizados' },
       },
     ],
     serviceIds: ['automacao-de-testes', 'pipelines-ci-cd'],
@@ -90,13 +76,9 @@ export const cases: z.input<typeof CaseStudy>[] = [
     seo: {
       title: {
         pt: 'Linde: −94% no tempo de regressão | Caso Yellowipe',
-        br: 'Linde: −94% no tempo de regressão | Case Yellowipe',
-        en: 'Linde: 94% less regression time | Yellowipe',
       },
       description: {
         pt: 'Suíte com 88% de falhas recuperada numa semana: 128 testes automatizados e CI/CD.',
-        br: 'Suíte com 88% de falhas recuperada em uma semana: 128 testes automatizados e CI/CD.',
-        en: 'A suite with 88% failures recovered in a week: 128 automated tests and CI/CD.',
       },
     },
   },
@@ -106,18 +88,14 @@ export const cases: z.input<typeof CaseStudy>[] = [
     client: 'Hapvida',
     sector: 'Saúde',
     market: 'BR',
-    slug: { pt: 'hapvida-teleconsulta', br: 'hapvida-teleconsulta', en: 'hapvida-telehealth' },
+    slug: { pt: 'hapvida-teleconsulta' },
     headline: {
       pt: 'Teleconsulta para milhões',
-      br: 'Teleconsulta para milhões',
-      en: 'Telehealth for millions',
     },
     summary: {
       pt: 'Desenvolvimento end-to-end da aplicação Hapvida, com acesso remoto a cuidados de saúde.',
-      br: 'Desenvolvimento end-to-end do aplicativo Hapvida, com acesso remoto a cuidados de saúde.',
-      en: 'End-to-end development of the Hapvida app, with remote access to healthcare.',
     },
-    metrics: [{ value: '[X] milhões', label: { pt: 'utilizadores', br: 'usuários', en: 'users' } }],
+    metrics: [{ value: '[X] milhões', label: { pt: 'utilizadores' } }],
     serviceIds: ['aplicacoes-mobile'],
     areaIds: ['software', 'design'],
     models: ['construa'],
@@ -128,13 +106,9 @@ export const cases: z.input<typeof CaseStudy>[] = [
     seo: {
       title: {
         pt: 'Hapvida: teleconsulta para milhões | Caso Yellowipe',
-        br: 'Hapvida: teleconsulta para milhões | Case Yellowipe',
-        en: 'Hapvida: telehealth for millions | Yellowipe',
       },
       description: {
         pt: 'Desenvolvimento end-to-end da aplicação Hapvida, com acesso remoto a cuidados de saúde para milhões de pessoas.',
-        br: 'Desenvolvimento end-to-end do aplicativo Hapvida, com acesso remoto a cuidados de saúde para milhões de pessoas.',
-        en: 'End-to-end development of the Hapvida app, giving millions remote access to healthcare.',
       },
     },
   },

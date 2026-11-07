@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { contentTranslations } from '@/i18n';
 import { britishDeep } from '@/lib/i18n/british';
 import type { Locale } from '@/lib/i18n/locales';
 import { Area, CaseStudy, Market, Model, Service, TechStack, Technology } from './schema';
@@ -30,6 +31,9 @@ import { stacks } from './technologies/stacks';
  * Trocar para o CMS = escrever um adaptador que devolve o mesmo `Content`
  * (ver docs/adr/0003-camada-de-conteudo.md). Tudo é validado ao carregar:
  * conteúdo inválido parte o build em vez de chegar ao site.
+ *
+ * O conteúdo em ./local está em pt-PT; as traduções vêm de src/i18n/<idioma>/content.json
+ * (docs/adr/0010-traducoes-em-json.md) e o en-GB que não estiver lá deriva do en.
  */
 export type Content = {
   models: ModelT[];
@@ -65,9 +69,41 @@ export function getContent(): Content {
     responsibilities,
     stacks: z.array(TechStack).parse(stacks),
   };
+  for (const l of ['br', 'en', 'en-gb'] as const)
+    applyTranslations(cache, contentTranslations[l], l);
   addBritish(cache);
   assertStackLinks(cache);
   return cache;
+}
+
+const isLocalizedNode = (o: Record<string, unknown>) =>
+  'pt' in o && Object.keys(o).every((k) => LOCALE_KEYS.has(k));
+
+/**
+ * Junta as traduções de um idioma ao conteúdo pt-PT. O JSON tem a forma do conteúdo:
+ * objetos pelas mesmas chaves, listas de itens com `id` indexadas pelo id e as outras
+ * listas pela posição. Onde o conteúdo tem { pt }, o JSON tem o texto traduzido.
+ */
+export function applyTranslations(node: unknown, tree: unknown, locale: Locale): void {
+  if (tree === undefined || tree === null || !node || typeof node !== 'object') return;
+  if (Array.isArray(node)) {
+    const t = tree as Record<string, unknown>;
+    node.forEach((item, i) => {
+      const id =
+        item && typeof item === 'object' && typeof (item as { id?: unknown }).id === 'string'
+          ? (item as { id: string }).id
+          : String(i);
+      applyTranslations(item, t[id], locale);
+    });
+    return;
+  }
+  const obj = node as Record<string, unknown>;
+  if (isLocalizedNode(obj)) {
+    obj[locale] = tree;
+    return;
+  }
+  const t = tree as Record<string, unknown>;
+  for (const [k, v] of Object.entries(obj)) applyTranslations(v, t[k], locale);
 }
 
 const LOCALE_KEYS = new Set(['pt', 'br', 'en', 'en-gb']);

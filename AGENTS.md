@@ -26,7 +26,7 @@ Site da Yellowipe em Next.js 16 (App Router), React 19, TypeScript estrito e Tai
 - Componentes de servidor por omissão. `'use client'` só para interação (rotação, abas, formulário, menu, consentimento).
 - Um evento de tracking novo entra primeiro em `src/lib/analytics/events.ts`.
 - Uma regra de pontuação nova muda `src/lib/leads/scoring.ts` **e** `tests/unit/scoring.test.ts`.
-- Textos novos de interface: as três versões em `src/dictionaries/` (o TypeScript obriga).
+- Textos e traduções: `src/i18n/<idioma>/*.json` (ver `src/i18n/README.md`). Texto novo de interface entra em `pt`, `br` e `en` (o TypeScript obriga); en-GB deriva do en. `npm run i18n:check` antes de fazer commit.
 - Commits em Conventional Commits (`feat:`, `fix:`, `content:`, `seo:`…), em português.
 
 ## Imagens do mockup

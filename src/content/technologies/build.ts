@@ -12,12 +12,12 @@ import {
   PROFILES,
   RELATED_SERVICES,
   ROLE_NOUN,
-  CHIP_EN,
   SERVICES,
   STEPS,
   TOOL_GROUP,
-  ptToBr,
 } from './templates';
+import { technologyEn } from '@/i18n';
+import { ptToBr } from '@/lib/i18n/brazilian';
 import type { Two } from './templates';
 import { programmaticTitle } from '@/lib/seo/titles';
 
@@ -65,17 +65,26 @@ const SEO_TITLE_MAX = 60;
 const SEO_DESC_MIN = 70;
 const SEO_DESC_MAX = 160;
 
-/** Texto de um modelo no idioma pedido, com {name}/{role} resolvidos. pt-BR deriva do pt-PT. */
-function pick(t: Two, locale: Locale, vars: Record<string, string>): string {
-  const base = isEnglish(locale) ? t.en : t.pt;
+/**
+ * Texto pt-PT de um modelo (Two) ou da stack ({ pt, en? }) no idioma pedido, com
+ * {name}/{role} resolvidos. Inglês: a tradução da stack ou o catálogo
+ * src/i18n/en/technologies.json; pt-BR deriva do pt-PT pelo glossário.
+ */
+type Text = Two | { pt: string; en?: string };
+function pick(t: Text, locale: Locale, vars: Record<string, string>): string {
+  const base =
+    typeof t === 'string'
+      ? isEnglish(locale)
+        ? technologyEn(t)
+        : t
+      : isEnglish(locale)
+        ? (t.en ?? technologyEn(t.pt))
+        : t.pt;
   const filled = base.replace(/\{(\w+)\}/g, (m, k: string) => vars[k] ?? m);
   return locale === 'br' ? ptToBr(filled) : filled;
 }
 
-const DESC_TAIL: Two = {
-  pt: 'Especialistas avaliados em Portugal e no Brasil.',
-  en: 'Assessed specialists in Portugal and Brazil.',
-};
+const DESC_TAIL: Two = 'Especialistas avaliados em Portugal e no Brasil.';
 
 /** Artigo indefinido inglês pelo som: "an Angular", "an AWS", "a React", "a .NET". */
 export function article(name: string): 'a' | 'an' {
@@ -87,7 +96,7 @@ export function article(name: string): 'a' | 'an' {
 /** Etiquetas (camadas e serviços) no idioma da página: as que não são nomes de tecnologia. */
 function chip(text: string, locale: Locale): string {
   if (locale === 'br') return ptToBr(text);
-  if (isEnglish(locale)) return CHIP_EN[text] ?? text;
+  if (isEnglish(locale)) return technologyEn(text);
   return text;
 }
 
@@ -108,11 +117,11 @@ function buildTechPageIn(stack: TechStack, locale: Locale): TechPageView {
   const a = article(name);
   const vars = { name, role: '', a, A: a === 'an' ? 'An' : 'A' };
   vars.role = pick(stack.role ?? ROLE_NOUN[c], locale, vars);
-  const p = (t: Two) => pick(t, locale, vars);
+  const p = (t: Text) => pick(t, locale, vars);
 
   const keyword = p({
-    pt: stack.keyword?.pt ?? KEYWORD[c].pt,
-    en: stack.keyword?.en ?? KEYWORD[c].en,
+    pt: stack.keyword?.pt ?? KEYWORD[c],
+    en: stack.keyword?.en ?? technologyEn(KEYWORD[c]),
   });
   const pitch = p(stack.pitch);
 

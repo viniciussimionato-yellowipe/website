@@ -8,7 +8,6 @@ import type { ServicePageView } from '@/content/services/build';
 import { AI_TOOLS } from '@/content/technologies/build';
 import type { Dictionary } from '@/dictionaries';
 import type { Locale } from '@/lib/i18n/locales';
-import { isEnglish } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 import { breadcrumbLd, faqLd, serviceLd } from '@/lib/seo/jsonld';
 import { LogosStrip } from '@/components/home/HomeSections';
@@ -29,12 +28,6 @@ type Props = { locale: Locale; dict: Dictionary; view: ServicePageView };
 const fill = (s: string, vars: Record<string, string>) =>
   s.replace(/\{(\w+)\}/g, (m, k: string) => vars[k] ?? m);
 
-const MODEL_TAG: Record<string, { pt: string; en: string }> = {
-  contrate: { pt: 'Contrate', en: 'Hire' },
-  reforce: { pt: 'Reforce', en: 'Augment' },
-  construa: { pt: 'Construa', en: 'Build' },
-};
-
 export function ServicePage({ locale, dict, view }: Props) {
   const t = dict.svc;
   const tt = dict.tech;
@@ -45,7 +38,7 @@ export function ServicePage({ locale, dict, view }: Props) {
   const hub = pathFor(locale, { kind: 'servicesHub' });
   const home = pathFor(locale, { kind: 'home' })!;
   const contact = pathFor(locale, { kind: 'contact' })!;
-  const tag = (id: string) => (isEnglish(locale) ? MODEL_TAG[id]!.en : MODEL_TAG[id]!.pt);
+  const tag = (id: string) => dict.nav.modelTag[id as keyof typeof dict.nav.modelTag];
   const crumbs = [
     { name: dict.common.home, href: home },
     ...(hub ? [{ name: dict.templates.allServicesTitle, href: hub }] : []),

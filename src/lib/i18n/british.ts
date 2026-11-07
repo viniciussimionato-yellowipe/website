@@ -1,10 +1,13 @@
+import glossary from '@/i18n/en-gb/glossary.json' with { type: 'json' };
+
 /**
  * Inglês americano → inglês britânico (en-GB).
  *
  * O inglês do site escreve-se em americano (en, a fonte). A versão britânica deriva
  * daqui: só muda a ortografia, porque o vocabulário de tecnologia e de negócio é o mesmo
- * nos dois mercados. Diferenças que não são de ortografia escrevem-se à mão em
- * `src/dictionaries/en-gb.ts` (dicionário) ou no campo `en-gb` do conteúdo.
+ * nos dois mercados. As listas de palavras estão em src/i18n/en-gb/glossary.json;
+ * frases que mudam de outra forma escrevem-se à mão em src/i18n/en-gb/ui.json ou
+ * src/i18n/en-gb/content.json.
  *
  * Regras (Oxford/Cambridge, o uso mais comum na imprensa e nas empresas do Reino Unido):
  * - -ize/-ization → -ise/-isation; -yze → -yse;
@@ -18,119 +21,11 @@
  * americana nem um texto en com ortografia britânica.
  */
 
-/** Palavras com -iz- que não são o sufixo -ize (ou que são nomes próprios). */
-const IZE_KEEP = new Set([
-  'size',
-  'sizes',
-  'sized',
-  'sizing',
-  'resize',
-  'resized',
-  'resizing',
-  'oversize',
-  'oversized',
-  'downsize',
-  'downsizing',
-  'right-size',
-  'right-sizing',
-  'prize',
-  'prizes',
-  'seize',
-  'seized',
-  'capsize',
-  'citizen',
-  'citizens',
-  'kustomize',
-  'optimizely',
-  'bizagi',
-]);
-
+const IZE_KEEP = new Set(glossary.izeKeep);
 /** Termos que nunca se tocam: nomes de produtos, bibliotecas e marcas. */
-const KEEP = [
-  'Kustomize',
-  'Optimizely',
-  'Harbor',
-  'Vapor',
-  'Azure Monitor',
-  'Unity Catalog',
-  'AWS Glue Data Catalog',
-  'Data Catalog',
-  'Service Catalog',
-  'Partner Center',
-  'Security Center',
-  'Defender for Cloud',
-  'Hugging Face Tokenizers',
-];
-
+const KEEP: readonly string[] = glossary.keep;
 /** Pares US → GB que não seguem as regras gerais (formas em minúsculas). */
-const WORDS: Record<string, string> = {
-  // -or → -our
-  color: 'colour',
-  colors: 'colours',
-  colored: 'coloured',
-  behavior: 'behaviour',
-  behaviors: 'behaviours',
-  behavioral: 'behavioural',
-  favor: 'favour',
-  favors: 'favours',
-  favorite: 'favourite',
-  favorites: 'favourites',
-  favorable: 'favourable',
-  honor: 'honour',
-  labor: 'labour',
-  neighbor: 'neighbour',
-  neighbors: 'neighbours',
-  flavor: 'flavour',
-  flavors: 'flavours',
-  rumor: 'rumour',
-  humor: 'humour',
-  endeavor: 'endeavour',
-  endeavors: 'endeavours',
-  // -er → -re
-  center: 'centre',
-  centers: 'centres',
-  centered: 'centred',
-  datacenter: 'datacentre',
-  datacenters: 'datacentres',
-  fiber: 'fibre',
-  theater: 'theatre',
-  liter: 'litre',
-  // -og → -ogue
-  catalog: 'catalogue',
-  catalogs: 'catalogues',
-  // -ense → -ence (substantivos)
-  license: 'licence',
-  licenses: 'licences',
-  defense: 'defence',
-  offense: 'offence',
-  // consoante dobrada
-  modeling: 'modelling',
-  modeled: 'modelled',
-  modeler: 'modeller',
-  labeled: 'labelled',
-  labeling: 'labelling',
-  traveling: 'travelling',
-  traveled: 'travelled',
-  traveler: 'traveller',
-  travelers: 'travellers',
-  canceled: 'cancelled',
-  canceling: 'cancelling',
-  fueled: 'fuelled',
-  signaling: 'signalling',
-  leveled: 'levelled',
-  leveling: 'levelling',
-  enroll: 'enrol',
-  enrollment: 'enrolment',
-  fulfill: 'fulfil',
-  fulfillment: 'fulfilment',
-  skillful: 'skilful',
-  // outras
-  gray: 'grey',
-  mold: 'mould',
-  aging: 'ageing',
-  toward: 'towards',
-  judgment: 'judgement',
-};
+const WORDS: Record<string, string> = glossary.words;
 
 function matchCase(source: string, target: string): string {
   if (source === source.toUpperCase() && source.length > 1) return target.toUpperCase();
@@ -141,11 +36,14 @@ function matchCase(source: string, target: string): string {
 const IZE = /\b([A-Za-z-]*?[a-z])(i|y)z(e|es|ed|ing|er|ers|able|ation|ations|ational)\b/g;
 const WORD = /\b[A-Za-z]+\b/g;
 
-/** Vocabulário que muda no Reino Unido (não é ortografia). */
-const PHRASES: [RegExp, string][] = [
-  [/\bbusiness day(s?)\b/g, 'working day$1'],
-  [/\bBusiness day(s?)\b/g, 'Working day$1'],
-];
+/** Vocabulário que muda no Reino Unido (não é ortografia): "business day" → "working day". */
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const PHRASES: [RegExp, string][] = Object.entries(
+  glossary.phrases as Record<string, string>,
+).flatMap(([us, gb]): [RegExp, string][] => [
+  [new RegExp(`\\b${us}\\b`, 'g'), gb],
+  [new RegExp(`\\b${cap(us)}\\b`, 'g'), cap(gb)],
+]);
 
 function convertSegment(text: string): string {
   let out = PHRASES.reduce((s, [re, to]) => s.replace(re, to), text);

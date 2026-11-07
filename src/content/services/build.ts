@@ -2,10 +2,9 @@ import { britishDeep } from '@/lib/i18n/british';
 import type { Locale } from '@/lib/i18n/locales';
 import { isEnglish } from '@/lib/i18n/locales';
 import type { ModelId, Service } from '../schema';
-import { ptToBr } from '../technologies/templates';
+import { serviceEn } from '@/i18n';
+import { BR_QUESTION_VERBS, ptToBrServices as toBr } from '@/lib/i18n/brazilian';
 import {
-  BR_QUESTION_VERBS,
-  BR_SERVICES,
   FAQ_AREA,
   FAQ_COMMON,
   LAYERS,
@@ -16,7 +15,6 @@ import {
   STEPS_RECRUITMENT,
 } from './templates';
 import type { AreaId } from './templates';
-import { SERVICES_EN } from './en';
 import { programmaticTitle } from '@/lib/seo/titles';
 
 /**
@@ -57,12 +55,8 @@ const SEO_DESC_MIN = 70;
 const SEO_DESC_MAX = 160;
 
 const DESC_TAIL = 'Especialistas avaliados em Portugal e no Brasil.';
-const DESC_TAIL_EN = 'Assessed specialists in Portugal and Brazil.';
-
-/** Texto pt-PT → inglês (catálogo ./en.ts); nomes de tecnologias ficam iguais. */
-export function toEnglish(text: string): string {
-  return SERVICES_EN[text] ?? text;
-}
+/** Texto pt-PT → inglês (catálogo src/i18n/en/services.json); termos iguais passam. */
+export const toEnglish = serviceEn;
 
 /** "Aplicações web" → "aplicações web"; "IoT", "UX e UI Design" e "DevOps…" ficam como estão. */
 export function inSentence(name: string): string {
@@ -111,7 +105,7 @@ function buildServicePageIn(service: Service, locale: Locale): ServicePageView {
   );
   const pitch = p(facts.pitch);
   const title = programmaticTitle(keyword, locale);
-  const withTail = `${pitch} ${en ? DESC_TAIL_EN : p(DESC_TAIL)}`;
+  const withTail = `${pitch} ${p(DESC_TAIL)}`;
   const description = withTail.length <= SEO_DESC_MAX ? withTail : pitch;
 
   const steps = area === 'recrutamento' ? STEPS_RECRUITMENT : STEPS;
@@ -158,15 +152,6 @@ function buildServicePageIn(service: Service, locale: Locale): ServicePageView {
     caseIds: facts.caseIds,
     relatedServiceIds: facts.related,
   };
-}
-
-const BR_SERVICES_RE = BR_SERVICES.map(
-  ([from, to]) => [new RegExp(`(?<!\\p{L})${from}(?!\\p{L})`, 'gu'), to] as const,
-);
-
-/** pt-PT → pt-BR: glossário dos serviços e depois o partilhado. */
-function toBr(text: string): string {
-  return ptToBr(BR_SERVICES_RE.reduce((s, [re, to]) => s.replace(re, to), text));
 }
 
 function rotate<T>(arr: T[], n: number): T[] {

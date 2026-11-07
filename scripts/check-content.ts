@@ -12,10 +12,7 @@ import { getContent, isAvailable } from '@/content';
 import { auditServicePage, buildServicePage } from '@/content/services/build';
 import { getJobs } from '@/lib/jobs';
 import { auditTechPage, buildTechPage } from '@/content/technologies/build';
-import br from '@/dictionaries/br';
-import en from '@/dictionaries/en';
-import enGb from '@/dictionaries/en-gb';
-import pt from '@/dictionaries/pt';
+import { getDictionary } from '@/dictionaries';
 import { locales } from '@/lib/i18n/locales';
 import type { Locale } from '@/lib/i18n/locales';
 import { allRoutes, isNoindexRoute, pathFor } from '@/lib/routing';
@@ -57,11 +54,10 @@ for (const e of seoEntries) {
 }
 // 2c. Todas as rotas indexáveis, com o título e a descrição que vão para o HTML
 // (dicionários, modelos, serviços, tecnologias e casos): a mesma função do generateMetadata.
-const dicts = { pt, br, en, 'en-gb': enGb } as const;
 for (const l of locales) {
   for (const route of allRoutes(l)) {
     if (isNoindexRoute(route)) continue;
-    const { title, description, noindex } = seoFor(l, route, dicts[l]);
+    const { title, description, noindex } = seoFor(l, route, getDictionary(l));
     if (noindex) continue;
     const where = `[${l}] ${pathFor(l, route)}`;
     if (title.length > 60) errors.push(`${where}: título com ${title.length} caracteres (máx. 60)`);
@@ -93,7 +89,7 @@ function scan(value: unknown, where: string) {
   }
 }
 scan(site, 'site');
-scan({ pt, br, en }, 'dicionário');
+scan({ pt: getDictionary('pt'), br: getDictionary('br'), en: getDictionary('en') }, 'dicionário');
 scan(content.models, 'modelos');
 scan(
   content.services.filter((s) => s.status === 'published'),

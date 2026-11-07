@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { site } from '@/config/site';
-import { ptToBr } from '@/content/technologies/templates';
+import { ptToBr } from '@/lib/i18n/brazilian';
 import type { Dictionary } from '@/dictionaries';
 import { daysSince, getJobs } from '@/lib/jobs';
 import type { Job } from '@/lib/jobs';

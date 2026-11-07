@@ -1,0 +1,662 @@
+{
+  "meta": {
+    "homeTitle": "Yellowipe | Nearshore tech talent and software development",
+    "homeDescription": "We hire talent, augment teams and build solutions in AI, software, cloud and QA, with engineers in Portugal and Brazil.",
+    "servicesTitle": "IT services: software, AI, cloud and QA | Yellowipe",
+    "servicesDescription": "Software development, AI, cloud, data and quality engineering, with teams we hire, augment or build for your project.",
+    "technologiesTitle": "Developers and teams by technology | Yellowipe",
+    "casesTitle": "Case studies in software and tech teams | Yellowipe",
+    "casesDescription": "Real Yellowipe client projects: the problem, what we did and the numbers behind the result. See how we work.",
+    "contactTitle": "Contact us: tech teams and software projects | Yellowipe",
+    "contactDescription": "Tell us what you need: hire tech talent, augment your team or build a product. We reply within one business day.",
+    "privacyDescription": "How Yellowipe handles the personal data of clients, candidates and website visitors, in line with the GDPR.",
+    "marketSuffix": ""
+  },
+  "common": {
+    "skip": "Skip to content",
+    "home": "Home",
+    "bookCall": "Book a call",
+    "requestProfiles": "Request profiles",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "languages": "Languages",
+    "readCase": "Read the case study",
+    "seeAll": "See all",
+    "learnMore": "Learn more"
+  },
+  "nav": {
+    "services": "Services",
+    "cases": "Case studies",
+    "sectors": "Industries",
+    "about": "About",
+    "insights": "Insights",
+    "allServices": "All services",
+    "models": "Models",
+    "areas": "Areas",
+    "technologies": "Technologies",
+    "careers": "Careers",
+    "allTechnologies": "All technologies",
+    "servicesIntro": "From talent to go-live, in the model that fits your team:",
+    "technologiesIntro": "Engineers and teams fluent in the stack you already use, and in the AI tools that speed up delivery.",
+    "recruitProfiles": "Tech recruitment: profiles we hire",
+    "modelShort": {
+      "contrate": "The right talent for your team, hired permanently.",
+      "reforce": "Specialists embedded in your team, using your tools.",
+      "construa": "Teams that build the solution, from definition to go-live."
+    },
+    "modelTech": {
+      "contrate": "We recruit developers in any stack",
+      "reforce": "Specialists in the stack you already use",
+      "construa": "Complete teams for your product"
+    },
+    "modelTag": {
+      "contrate": "Hire",
+      "reforce": "Augment",
+      "construa": "Build"
+    }
+  },
+  "hero": {
+    "eyebrow": "Technology Capability Partner",
+    "titleStart": "We turn digital strategy into",
+    "titleHighlight": "real delivery capacity.",
+    "lead": "We hire talent, augment teams and build solutions in",
+    "rotation": ["ia", "software", "cloud-devops", "qualidade", "design", "emergentes"]
+  },
+  "models": {
+    "eyebrow": "How we work with you",
+    "title": "From hiring to delivery. You decide how far we go.",
+    "lead": "Three engagement models, depending on your priorities, timelines and how much ownership you want to keep. You can switch models at any time."
+  },
+  "stack": {
+    "titleStart": "We know your stack and the AI tools",
+    "titleEnd": "that speed it up.",
+    "lead": "Experience across dozens of technologies and languages, including the AI assistants that are changing how software gets built.",
+    "link": "All technologies"
+  },
+  "areas": {
+    "eyebrow": "What we do",
+    "title": "Seven areas of expertise. One partner.",
+    "leadStart": "From custom software to tech recruitment, we cover the full delivery cycle,",
+    "leadStrong": "with AI in every area",
+    "leadEnd": "backed by real case studies.",
+    "withAi": "With AI:",
+    "availableAs": "Available as",
+    "seeServices": "All services in"
+  },
+  "cases": {
+    "eyebrow": "Case studies",
+    "title": "Execution that delivers real results.",
+    "yearsLabel": "years delivering technology",
+    "productsLabel": "products taken to go-live",
+    "seeAll": "All case studies"
+  },
+  "markets": {
+    "eyebrow": "Three markets",
+    "title": "One network of talent and delivery.",
+    "short": {
+      "PT": "Portugal",
+      "BR": "Brazil",
+      "US": "US"
+    },
+    "show": "See",
+    "lead": "Local presence, specialist talent and delivery capacity in Portugal, Brazil and the United States."
+  },
+  "process": {
+    "eyebrow": "How we start",
+    "title": "From the first call to a team that delivers.",
+    "steps": [
+      {
+        "title": "First call",
+        "text": "We understand the challenge, the timeline and how much ownership you want to keep."
+      },
+      {
+        "title": "Proposal",
+        "text": "Model, profiles and kickoff plan within [X] business days."
+      },
+      {
+        "title": "Kickoff",
+        "text": "Team selected and onboarded in [X] weeks, using your tools."
+      },
+      {
+        "title": "Ongoing support",
+        "text": "Continuous management of performance and delivery."
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "What people ask us before starting.",
+    "items": [
+      {
+        "q": "What technology services does Yellowipe offer?",
+        "a": "Custom software, artificial intelligence, cloud and DevOps, quality and testing, product design, emerging technologies and tech recruitment. Each area is available in one or more of our three models: Hire, Augment and Build."
+      },
+      {
+        "q": "Do your teams work with AI?",
+        "a": "Yes. Our teams use tools such as Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Gemini and Windsurf every day, and adapt to the ones your team already uses. To build AI products we work with OpenAI, Azure AI, Amazon SageMaker, Google Vertex AI and Hugging Face."
+      },
+      {
+        "q": "What is the difference between Hire, Augment and Build?",
+        "a": "With Hire, we recruit professionals who join your company. With Augment, our specialists join your team and work under your management. With Build, we own delivery of the solution, from product definition to go-live."
+      },
+      {
+        "q": "How much does it cost to work with Yellowipe?",
+        "a": "It depends on the model, profiles, seniority and duration. After the first call, we send a proposal with the model, team and kickoff plan within [X] business days."
+      },
+      {
+        "q": "How long does it take to start a team?",
+        "a": "Usually [X] weeks from proposal approval until the team is onboarded and working with your tools."
+      },
+      {
+        "q": "Which markets do you work in?",
+        "a": "Portugal, Brazil and the United States, with talent and delivery capacity across all three."
+      },
+      {
+        "q": "Do you have experience in my industry?",
+        "a": "We work with retail, media, energy, healthcare and technology companies, among others, including MC Sonae, Sky, Efacec and Hapvida."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Talk to us",
+    "title": "Hire. Augment. Build.",
+    "lead": "Tell us what you need and we reply within one business day.",
+    "leadIntro": "One partner, from talent to go-live.",
+    "addressLabel": "Address",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "careersLabel": "Careers",
+    "careersText": "See our open positions",
+    "markets": "Portugal · Brazil · United States",
+    "emailCta": "Or email us at"
+  },
+  "form": {
+    "stepOf": "Step {n} of {total}",
+    "formTitle": "Contact request",
+    "formIntro": "Three quick steps. We route you to the right person in your market.",
+    "requiredNote": "Required fields",
+    "step1Title": "What are you looking for?",
+    "intents": {
+      "hire": "Hire talent",
+      "augment": "Augment my team",
+      "build": "Build a solution",
+      "unsure": "Not sure yet",
+      "job": "I’m looking for a job"
+    },
+    "jobPanelTitle": "Great to hear you want to work with us!",
+    "jobPanelText": "This form is for companies. Job applications go through our open positions or a resume submission, where our recruitment team will reply.",
+    "jobsCta": "See open positions",
+    "cvCta": "Send my resume",
+    "candidateHint": "Looking for a job? Applications go through our open positions, where our recruitment team will reply.",
+    "candidateHintLink": "See positions",
+    "candidateKeywords": [
+      "my cv",
+      "my resume",
+      "looking for a job",
+      "looking for work",
+      "job application",
+      "apply for",
+      "internship",
+      "work with you",
+      "work at yellowipe"
+    ],
+    "step2Title": "Your details",
+    "name": "Name",
+    "email": "Work email",
+    "company": "Company",
+    "jobTitle": "Job title (optional)",
+    "country": "Country",
+    "countries": {
+      "PT": "Portugal",
+      "BR": "Brazil",
+      "US": "United States",
+      "OTHER": "Other"
+    },
+    "step3Title": "Your request (optional)",
+    "areas": "Areas or profiles",
+    "headcount": "Number of people",
+    "companySize": "Company size",
+    "sizes": {
+      "1-9": "1 to 9",
+      "10-49": "10 to 49",
+      "50-249": "50 to 249",
+      "250+": "250 or more",
+      "unknown": "Prefer not to say"
+    },
+    "start": "When do you want to start?",
+    "starts": {
+      "now": "Now",
+      "lt3m": "Within 3 months",
+      "3to6m": "In 3 to 6 months",
+      "gt6m": "Later",
+      "unknown": "Not sure yet"
+    },
+    "message": "Message",
+    "marketing": "Send me Yellowipe content by email (optional).",
+    "privacy": "By submitting, you agree to our privacy policy.",
+    "privacyStart": "By submitting, you agree to our",
+    "privacyLink": "Privacy policy",
+    "back": "Back",
+    "next": "Continue",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "successCalendar": "Thank you! Now pick a time that works for the call:",
+    "openCalendar": "Open calendar",
+    "successEmail": "Thank you! We received your request and will reply by email within one business day.",
+    "error": "We couldn’t send your request. Check the highlighted fields or try again in a moment.",
+    "required": "Required field",
+    "invalidEmail": "Enter a valid email"
+  },
+  "footer": {
+    "tagline": "Technology Capability Partner in Portugal, Brazil and the United States.",
+    "services": "Services",
+    "company": "Company",
+    "resources": "Resources",
+    "about": "About us",
+    "careers": "Careers and jobs",
+    "marketsLink": "Markets",
+    "salaryGuide": "IT salary guide",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "summarize": "Summarize this page with",
+    "summarizePrompt": "Summarize what Yellowipe does, based on {url}",
+    "privacy": "Privacy policy",
+    "terms": "Terms",
+    "cookies": "Cookies"
+  },
+  "consent": {
+    "title": "Cookies on this site",
+    "text": "Essential cookies keep the site working. Analytics and advertising cookies are only used if you accept, and you can change your choice any time under “Cookies” in the footer.",
+    "accept": "Accept all",
+    "reject": "Reject",
+    "customize": "Customize",
+    "save": "Save choices",
+    "privacy": "Privacy policy",
+    "alwaysOn": "Always on",
+    "necessary": {
+      "title": "Essential",
+      "text": "Language, form security and this choice."
+    },
+    "analytics": {
+      "title": "Analytics",
+      "text": "Google Analytics and Microsoft Clarity, to see which pages help and what to improve."
+    },
+    "ads": {
+      "title": "Advertising",
+      "text": "Measuring the results of our Google campaigns."
+    }
+  },
+  "tech": {
+    "eyebrow": "Technologies · {category}",
+    "cta": "Book a call",
+    "expert": "Yellowipe {name} specialist",
+    "expertNote": "Assessed in a technical interview",
+    "servicesTitle": "What we do with {name}",
+    "servicesLead": "Every service starts from a concrete problem and is available in all three models.",
+    "modelsTitle": "Three ways to work with us on {name}",
+    "yellowipe": "Yellowipe",
+    "client": "Your company",
+    "profilesTitle": "{name} profiles we put forward",
+    "profilesNote": "Illustrative profiles. Real backgrounds are shared with each proposal.",
+    "years": "years",
+    "assessed": "Assessed",
+    "toolsTitle": "The {name} ecosystem we know",
+    "aiTitle": "AI coding tools we use",
+    "aiNote": "Always reviewed by senior engineers.",
+    "casesTitle": "{name} case studies",
+    "processTitle": "How we start",
+    "faqTitle": "{name} FAQ",
+    "relatedTech": "Related technologies",
+    "relatedServices": "Related services",
+    "finalTitle": "Need someone with {name} on your team?",
+    "hubLead": "Pick a stack to see services, profiles and tools."
+  },
+  "servicesHub": {
+    "eyebrow": "Services",
+    "title": "What do you need to build?",
+    "titleMark": "We have the team for it.",
+    "ai": "(AI included.)",
+    "lead": "{services} services across {areas} areas, in three models: we hire for you, augment your team or deliver the project.",
+    "search": "Search a service",
+    "all": "All",
+    "filter": "Filter:",
+    "count": "{n} services",
+    "countOne": "1 service",
+    "withAi": "With AI:",
+    "see": "See service",
+    "emptyTitle": "We couldn’t find “{q}” in this list.",
+    "emptyText": "If it’s part of a digital product, a data platform or a tech team, we’ve probably done it. Tell us what you need.",
+    "emptyCta": "Book a call",
+    "modelsTitle": "Three ways to work with us",
+    "modelsLead": "The same service, in the model that suits your team.",
+    "modelCta": "How it works",
+    "stackTitle": "Yes, we work in the stack you already use.",
+    "stackLead": "And with the AI tools your team has adopted.",
+    "stackCta": "See all technologies",
+    "casesTitle": "Results with numbers",
+    "missingTitle": "Can’t find what you need?",
+    "missingText": "This list shows our most requested services. If your challenge involves software, data or tech teams, let’s talk about it.",
+    "missingCta": "Book a call",
+    "missingNote": "We reply within one business day."
+  },
+  "techHub": {
+    "eyebrow": "Technologies",
+    "title": "What’s your stack?",
+    "titleMark": "We have the experts for it.",
+    "ai": "(AI included.)",
+    "lead": "{stacks} stacks and more than {tools} frameworks and tools, with assessed specialists in Portugal and Brazil. Find yours.",
+    "search": "Search a stack or tool",
+    "all": "All",
+    "filter": "Filter:",
+    "count": "{n} technologies",
+    "countOne": "1 technology",
+    "via": "Includes {term}",
+    "emptyTitle": "We couldn’t find “{q}” in this list.",
+    "emptyText": "This list shows the stacks we’re asked for most, not everything we do. Tell us what you use and we’ll confirm whether we have specialists.",
+    "emptyCta": "Book a call",
+    "missingTitle": "Your stack isn’t here?",
+    "missingText": "This list shows the stacks we’re asked for most. Our specialist network goes beyond it, from legacy languages to niche platforms. Tell us what you use.",
+    "missingCta": "Book a call",
+    "missingNote": "We reply within one business day."
+  },
+  "careers": {
+    "metaTitle": "Tech careers | Yellowipe",
+    "metaDescription": "Technology projects in Portugal, Brazil and the US. Remote, hybrid or relocation to Portugal, with ongoing career support.",
+    "eyebrow": "Careers · Portugal and Brazil",
+    "titleStart": "Your next project,",
+    "titleMark": "from wherever you are.",
+    "lead": "Technology projects at companies in Portugal, Brazil and the US. Remote, hybrid or relocating to Portugal, with people who support your career.",
+    "ctaJobs": "See open roles",
+    "ctaCv": "Send an open application",
+    "mapLabels": {
+      "us": "United States",
+      "br": "Brazil",
+      "pt": "Portugal"
+    },
+    "factJobs": "roles managed with clients",
+    "factMarkets": "markets: Portugal, Brazil and the US",
+    "factRemote": "Remote",
+    "factRemoteLabel": "or hybrid, for most roles",
+    "whyEyebrow": "Why Yellowipe",
+    "whyTitle": "Projects that count on your resume. People you can count on.",
+    "why": [
+      {
+        "icon": "projects",
+        "title": "Name-brand projects",
+        "text": "Teams at Linde, Sword, Hapvida and other companies in Portugal, Brazil and the US, with products in production."
+      },
+      {
+        "icon": "career",
+        "title": "Career support",
+        "text": "A Yellowipe contact who knows your path, runs regular reviews and plans the next step with you."
+      },
+      {
+        "icon": "training",
+        "title": "Training and certifications",
+        "text": "Support for cloud, data and QA certifications. [Training policy and budget to be confirmed.]"
+      },
+      {
+        "icon": "ai",
+        "title": "AI in your daily work",
+        "text": "Work with Claude Code, Cursor and GitHub Copilot, with clear security and review rules."
+      },
+      {
+        "icon": "remote",
+        "title": "Remote, hybrid or relocation",
+        "text": "Most roles are remote or hybrid. If you want to move to Portugal, we help with the process."
+      },
+      {
+        "icon": "community",
+        "title": "Technical community",
+        "text": "Consultant meetups, knowledge sharing and mentoring from seniors to juniors. [Format to be confirmed.]"
+      }
+    ],
+    "pathsEyebrow": "Two ways to work with us",
+    "pathsTitle": "Yellowipe consultant or hired by the client. You always know which.",
+    "pathsLead": "Every role states the contract type. No surprises halfway through.",
+    "paths": [
+      {
+        "tag": "Outsourcing",
+        "title": "Yellowipe consultant",
+        "text": "Your contract is with us and your project is at a client. When the project ends, we find the next one with you.",
+        "items": [
+          "Yellowipe contract and salary [PT/BR contract type to be confirmed]",
+          "Career follow-up and regular reviews",
+          "A change of project when it makes sense for you"
+        ]
+      },
+      {
+        "tag": "Placement",
+        "title": "Hired by the client",
+        "text": "We make the introduction and prepare you for the interviews. You join the company team directly.",
+        "items": [
+          "Direct contract with the client company",
+          "Feedback at every stage of the process",
+          "Support when negotiating the offer"
+        ]
+      }
+    ],
+    "stepsEyebrow": "How it works",
+    "stepsTitle": "From application to offer, always knowing where you stand.",
+    "steps": [
+      {
+        "title": "Application",
+        "text": "Send your resume or LinkedIn. A person reads it, not an automated filter."
+      },
+      {
+        "title": "Intro call",
+        "text": "We talk about what you are looking for: stack, project, model and salary."
+      },
+      {
+        "title": "Technical interview",
+        "text": "With engineers in your field, then with the client. We give feedback at every stage."
+      },
+      {
+        "title": "Offer",
+        "text": "A clear offer, with the contract type and conditions in writing. [Average timeline to be confirmed.]"
+      }
+    ],
+    "jobsEyebrow": "Open roles",
+    "jobsTitle": "Some opportunities this week.",
+    "seeAllJobs": "See all roles ({n})",
+    "quotesEyebrow": "Already on the team",
+    "quotesTitle": "In our consultants’ words.",
+    "quotes": [
+      {
+        "text": "[Real testimonial to be collected: project, growth and support.]",
+        "initials": "XX",
+        "name": "[Name]",
+        "role": "QA Engineer · Lisbon"
+      },
+      {
+        "text": "[Real testimonial to be collected: relocating to Portugal with Yellowipe’s support.]",
+        "initials": "XX",
+        "name": "[Name]",
+        "role": "Java Developer · Porto"
+      },
+      {
+        "text": "[Real testimonial to be collected: remote project from Brazil.]",
+        "initials": "XX",
+        "name": "[Name]",
+        "role": "Data Engineer · Recife"
+      }
+    ],
+    "faqEyebrow": "FAQ",
+    "faqTitle": "What people ask us before going ahead.",
+    "faq": [
+      {
+        "q": "What types of contract are there?",
+        "a": "Yellowipe consultant (outsourcing), with a contract with us, or direct hiring by the client (placement). Each role says which. [Contract types in Portugal and Brazil to be detailed.]"
+      },
+      {
+        "q": "Is the salary paid in euros?",
+        "a": "For roles in Portugal and Europe, yes. For roles in Brazil, in reais. [Confirm exceptions.]"
+      },
+      {
+        "q": "Can I work remotely?",
+        "a": "Yes, most roles are remote or hybrid. The model is shown on every role."
+      },
+      {
+        "q": "What do I need to move to Portugal?",
+        "a": "We explain the visa and arrival process and, for roles with relocation, we support the first steps. [Scope of support to be confirmed.]"
+      },
+      {
+        "q": "What is the cost of living in Portugal?",
+        "a": "It depends a lot on the city. We share references for housing, transport and food costs during the process."
+      },
+      {
+        "q": "How long does the process take?",
+        "a": "[Average timeline to be confirmed.] We give feedback at every stage, even when the answer is no."
+      }
+    ],
+    "cvEyebrow": "Open application",
+    "cvTitle": "Didn’t find the right role? Leave us your resume.",
+    "cvLead": "We let you know when a project comes up that matches your stack, your seniority and the way you want to work.",
+    "cvDrop": "Drop your resume or LinkedIn profile",
+    "cvHint": "PDF or DOCX, up to 5 MB",
+    "cvChoose": "Choose file",
+    "cvSubmit": "Send application"
+  },
+  "jobs": {
+    "metaTitle": "Tech jobs | Yellowipe",
+    "metaDescription": "Tech roles in Portugal, Brazil and remote, as a Yellowipe consultant or hired directly by the client.",
+    "count": "{n} open roles",
+    "titleStart": "Find your",
+    "titleMark": "next project.",
+    "lead": "Roles in Portugal, Brazil and remote, as a Yellowipe consultant or hired directly by the client.",
+    "searchLabel": "Search roles",
+    "searchPlaceholder": "Role, technology or city",
+    "searchHint": "E.g. Java, Data Engineer, Lisbon",
+    "filters": "Filters",
+    "groupArea": "Area",
+    "groupSeniority": "Seniority",
+    "groupRegion": "Location",
+    "groupMode": "Work model",
+    "groupContract": "Contract",
+    "area": {
+      "dev": "Development",
+      "dados": "Data and AI",
+      "cloud": "Cloud and DevOps",
+      "qa": "Quality",
+      "erp": "SAP and CRM",
+      "gestao": "Product and management"
+    },
+    "seniority": {
+      "junior": "Junior",
+      "mid": "Mid",
+      "senior": "Senior"
+    },
+    "region": {
+      "PT": "Portugal",
+      "BR": "Brazil",
+      "INTL": "International"
+    },
+    "mode": {
+      "remote": "Remote",
+      "hybrid": "Hybrid",
+      "onsite": "On-site"
+    },
+    "contract": {
+      "consultant": "Yellowipe consultant",
+      "direct": "Direct hire"
+    },
+    "clear": "Clear filters",
+    "alertTitle": "Get new roles by email",
+    "alertText": "Only the ones that match these filters. Once a week.",
+    "alertPlaceholder": "you@example.com",
+    "alertSubmit": "Turn on",
+    "alertDone": "Alert on. We’ll email you new roles once a week.",
+    "shown": "{n} roles",
+    "sorted": "Newest first",
+    "today": "today",
+    "day": "1 day ago",
+    "days": "{n} days ago",
+    "week": "1 week ago",
+    "weeks": "{n} weeks ago",
+    "emptyTitle": "No roles match these filters, for now.",
+    "emptyText": "Leave your resume and we’ll let you know when a matching project comes up.",
+    "emptyCta": "Send an open application",
+    "detail": "Role details",
+    "close": "Close",
+    "english": "English",
+    "about": "The project",
+    "requirements": "What we are looking for",
+    "contractTitle": "Contract type",
+    "contractText": {
+      "consultant": "Yellowipe consultant: you’re contracted by us and work on a client project, with career support. [PT/BR contract type to be confirmed.]",
+      "direct": "Direct hire: you join the client’s team. We support the whole process and the offer negotiation."
+    },
+    "apply": "Apply",
+    "name": "Name",
+    "email": "Email",
+    "linkedin": "LinkedIn (optional)",
+    "attach": "Attach resume",
+    "submit": "Send application",
+    "note": "A person on our team reads every application and replies. [Timeline to be confirmed.]",
+    "sending": "Sending…",
+    "done": "Application sent. A person on our team will read it and reply.",
+    "error": "We couldn’t send your application. Check the fields and try again.",
+    "cvOrLinkedin": "Attach your resume or add your LinkedIn profile.",
+    "cvInvalid": "Your resume must be a PDF or DOCX, up to 5 MB.",
+    "privacyStart": "Your data only goes to our recruitment team. See the",
+    "privacyLink": "privacy policy"
+  },
+  "svc": {
+    "eyebrow": "Services · {area}",
+    "cta": "Book a call",
+    "team": "Yellowipe team",
+    "teamNote": "Engineers assessed in a technical interview",
+    "offeringsTitle": "What we do in {name}",
+    "offeringsLead": "Each offering starts from a concrete problem in your company.",
+    "modelsTitle": "How you can work with us",
+    "profilesTitle": "Profiles we put forward",
+    "techTitle": "Technologies we use in {name}",
+    "techLead": "Each technology has its own page, with services, profiles and tools.",
+    "toolsTitle": "Tools",
+    "faqTitle": "{name} FAQ",
+    "finalTitle": "Ready to talk about {name}?"
+  },
+  "modelPage": {
+    "client": "Your company",
+    "seeHow": "See how it works",
+    "whoEyebrow": "Who does what",
+    "whoTitle": "One partner, three levels of involvement.",
+    "whoLabel": "Yellowipe’s and your company’s responsibilities in each model",
+    "whoHeader": "Responsibility",
+    "formatsEyebrow": "Formats",
+    "alsoAvailable": "Also available",
+    "allTechnologies": "All technologies",
+    "casesTitle": "Results with numbers, not promises.",
+    "seeAllCases": "See all case studies",
+    "comparisonEyebrow": "Comparison",
+    "criterion": "Criterion",
+    "finalEyebrow": "Next step",
+    "finalLead": "We reply within one business day.",
+    "emailPrefix": "Or email us at"
+  },
+  "templates": {
+    "problems": "When it makes sense",
+    "deliverables": "What we deliver",
+    "withAi": "With AI",
+    "technologies": "Technologies",
+    "related": "Related services",
+    "faq": "FAQ",
+    "howItWorks": "How it works",
+    "cases": "Case studies",
+    "allServicesTitle": "Services",
+    "allServicesLead": "Seven areas of expertise, available through our Hire, Augment and Build models.",
+    "casesTitle": "Case studies",
+    "casesLead": "Real projects, with numbers.",
+    "contactTitle": "Contact",
+    "thanksTitle": "Thank you",
+    "thanksText": "We received your request and will reply within one business day.",
+    "privacyTitle": "Privacy policy",
+    "technologiesTitle": "Technologies",
+    "technologiesLead": "Hire developers, augment your team or build the product in the stack you already use, with AI tools every day.",
+    "technologiesCta": "Need someone in this stack?",
+    "careersTitle": "Careers",
+    "careersText": "[Open positions: link to the jobs page or ATS. Copy about working at Yellowipe to be supplied.]",
+    "notFoundTitle": "Page not found",
+    "notFoundText": "The page you are looking for does not exist or has moved."
+  }
+}

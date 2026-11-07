@@ -22,7 +22,9 @@
     "test:e2e": "playwright test",
     "lhci": "lhci autorun",
     "content:check": "tsx scripts/check-content.ts",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test:unit && npm run content:check",
+    "i18n:check": "tsx scripts/i18n.ts check",
+    "i18n:missing": "tsx scripts/i18n.ts missing",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test:unit && npm run content:check && npm run i18n:check",
     "prepare": "husky"
   },
   "dependencies": {

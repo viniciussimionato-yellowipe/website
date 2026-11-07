@@ -62,27 +62,27 @@ export const technologyGroups: {
 }[] = [
   {
     id: 'front-end',
-    name: { pt: 'Front-end', br: 'Front-end', en: 'Front-end' },
+    name: { pt: 'Front-end' },
     stackIds: ['react', 'angular', 'nextjs', 'vue', 'typescript'],
   },
   {
     id: 'mobile',
-    name: { pt: 'Mobile', br: 'Mobile', en: 'Mobile' },
+    name: { pt: 'Mobile' },
     stackIds: ['react-native', 'flutter', 'ios-swift', 'android-kotlin'],
   },
   {
     id: 'back-end',
-    name: { pt: 'Back-end', br: 'Back-end', en: 'Back-end' },
+    name: { pt: 'Back-end' },
     stackIds: ['java', 'python', 'dotnet', 'nodejs', 'php', 'go'],
   },
   {
     id: 'cloud-devops',
-    name: { pt: 'Cloud e DevOps', br: 'Cloud e DevOps', en: 'Cloud and DevOps' },
+    name: { pt: 'Cloud e DevOps' },
     stackIds: ['aws', 'azure', 'google-cloud', 'kubernetes', 'docker', 'terraform'],
   },
   {
     id: 'dados',
-    name: { pt: 'Dados', br: 'Dados', en: 'Data' },
+    name: { pt: 'Dados' },
     stackIds: [
       'power-bi',
       'databricks',
@@ -100,20 +100,18 @@ export const technologyGroups: {
     id: 'ia',
     name: {
       pt: 'IA e machine learning',
-      br: 'IA e machine learning',
-      en: 'AI and machine learning',
     },
     stackIds: ['openai', 'claude', 'langchain', 'hugging-face', 'pytorch'],
     hubOnly: true,
   },
   {
     id: 'enterprise',
-    name: { pt: 'ERP, CRM e low-code', br: 'ERP, CRM e low-code', en: 'ERP, CRM and low-code' },
+    name: { pt: 'ERP, CRM e low-code' },
     stackIds: ['salesforce', 'sap', 'outsystems'],
   },
   {
     id: 'qa',
-    name: { pt: 'Qualidade e testes', br: 'Qualidade e testes', en: 'Quality and testing' },
+    name: { pt: 'Qualidade e testes' },
     stackIds: ['playwright', 'selenium', 'cypress', 'appium', 'jmeter', 'postman'],
   },
 ];
@@ -121,31 +119,25 @@ export const technologyGroups: {
 export const markets: z.input<typeof Market>[] = [
   {
     id: 'PT',
-    name: { pt: 'Portugal', br: 'Portugal', en: 'Portugal' },
+    name: { pt: 'Portugal' },
     description: {
       pt: 'Recrutamento, equipas e entrega de projetos para empresas portuguesas e europeias.',
-      br: 'Recrutamento, equipes e entrega de projetos para empresas portuguesas e europeias.',
-      en: 'Recruitment, teams and project delivery for Portuguese and European companies.',
     },
     flag: '/images/flags/pt.png',
   },
   {
     id: 'BR',
-    name: { pt: 'Brasil', br: 'Brasil', en: 'Brazil' },
+    name: { pt: 'Brasil' },
     description: {
       pt: 'Talento e capacidade de entrega para empresas brasileiras, com casos como a Hapvida.',
-      br: 'Talento e capacidade de entrega para empresas brasileiras, com cases como a Hapvida.',
-      en: 'Talent and delivery capacity for Brazilian companies, with cases such as Hapvida.',
     },
     flag: '/images/flags/br.png',
   },
   {
     id: 'US',
-    name: { pt: 'Estados Unidos', br: 'Estados Unidos', en: 'United States' },
+    name: { pt: 'Estados Unidos' },
     description: {
       pt: 'Equipas e projetos para empresas norte-americanas, com talento dos três mercados.',
-      br: 'Equipes e projetos para empresas norte-americanas, com talento dos três mercados.',
-      en: 'Nearshore teams and projects for US companies, with talent from Portugal and Brazil.',
     },
     flag: '/images/flags/us.png',
   },
@@ -226,36 +218,28 @@ export const responsibilities = [
   {
     label: {
       pt: 'Encontrar e avaliar o profissional',
-      br: 'Encontrar e avaliar o profissional',
-      en: 'Finding and assessing the professional',
     },
     owner: { contrate: 'y', reforce: 'y', construa: 'y' },
   },
   {
     label: {
       pt: 'Contrato do profissional',
-      br: 'Contrato do profissional',
-      en: "The professional's contract",
     },
     owner: { contrate: 'c', reforce: 'y', construa: 'y' },
   },
   {
-    label: { pt: 'Gestão do dia a dia', br: 'Gestão do dia a dia', en: 'Day-to-day management' },
+    label: { pt: 'Gestão do dia a dia' },
     owner: { contrate: 'c', reforce: 'c', construa: 'y' },
   },
   {
     label: {
       pt: 'Responsabilidade pela entrega',
-      br: 'Responsabilidade pela entrega',
-      en: 'Accountability for delivery',
     },
     owner: { contrate: 'c', reforce: 'c', construa: 'y' },
   },
   {
     label: {
       pt: 'Acompanhamento e substituição',
-      br: 'Acompanhamento e substituição',
-      en: 'Follow-up and replacement',
     },
     owner: { contrate: 'y', reforce: 'y', construa: 'y' },
   },

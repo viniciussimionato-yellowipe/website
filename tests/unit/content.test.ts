@@ -2,7 +2,9 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { getContent } from '@/content';
 import { serializeJsonLd } from '@/lib/seo/jsonld';
-import pt from '@/dictionaries/pt';
+import { getDictionary } from '@/dictionaries';
+
+const pt = getDictionary('pt');
 
 describe('conteúdo', () => {
   it('todo o conteúdo local passa nos esquemas', () => {

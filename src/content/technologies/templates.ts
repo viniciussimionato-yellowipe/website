@@ -6,11 +6,13 @@ import type { ModelId, TechCategory } from '../schema';
  * Regras (docs/14-tecnologias.md):
  * - {name} é substituído pelo nome da stack. Nada mais é interpolado.
  * - Cada serviço começa num problema do cliente (pain) e termina no que fazemos (text).
- * - pt-PT e inglês escritos à mão; pt-BR gerado por ptToBr() a partir do pt-PT e revisto por amostragem.
+ * - Escritos em pt-PT. O inglês está em src/i18n/en/technologies.json (chave = texto pt-PT);
+ *   o pt-BR é gerado pelo glossário src/i18n/br/glossary.json (ptToBr).
  * - IA aparece de forma discreta: um bloco "Ferramentas de IA que usamos" em cada página e uma pergunta
  *   frequente. Não há páginas próprias para ferramentas de IA (decisão do benchmark BairesDev).
  */
-export type Two = { pt: string; en: string };
+/** Texto pt-PT (a tradução vem dos catálogos em src/i18n). */
+export type Two = string;
 type ServiceTpl = { id: string; title: Two; pain: Two; text: Two };
 type FaqTpl = { q: Two; a: Two };
 type ProfileTpl = {
@@ -23,850 +25,472 @@ type ProfileTpl = {
 };
 
 export const CATEGORY_LABEL: Record<TechCategory, Two> = {
-  'front-end': { pt: 'Front-end', en: 'Front-end' },
-  mobile: { pt: 'Mobile', en: 'Mobile' },
-  'back-end': { pt: 'Back-end', en: 'Back-end' },
-  cloud: { pt: 'Cloud', en: 'Cloud' },
-  devops: { pt: 'DevOps', en: 'DevOps' },
-  qa: { pt: 'Qualidade e testes', en: 'Quality and testing' },
-  data: { pt: 'Dados', en: 'Data' },
-  database: { pt: 'Bases de dados', en: 'Databases' },
-  enterprise: { pt: 'ERP, CRM e low-code', en: 'ERP, CRM and low-code' },
-  ai: { pt: 'IA e machine learning', en: 'AI and machine learning' },
+  'front-end': 'Front-end',
+  mobile: 'Mobile',
+  'back-end': 'Back-end',
+  cloud: 'Cloud',
+  devops: 'DevOps',
+  qa: 'Qualidade e testes',
+  data: 'Dados',
+  database: 'Bases de dados',
+  enterprise: 'ERP, CRM e low-code',
+  ai: 'IA e machine learning',
 };
 
 /** Palavra-chave por omissão (H1 e título SEO). A stack pode substituir. */
 export const KEYWORD: Record<TechCategory, Two> = {
-  'front-end': { pt: 'Desenvolvimento {name}', en: '{name} development' },
-  mobile: { pt: 'Desenvolvimento de apps {name}', en: '{name} app development' },
-  'back-end': { pt: 'Desenvolvimento {name}', en: '{name} development' },
-  cloud: { pt: 'Consultoria {name}', en: '{name} consulting' },
-  devops: { pt: 'Consultoria {name}', en: '{name} consulting' },
-  qa: { pt: 'Automação de testes com {name}', en: 'Test automation with {name}' },
-  data: { pt: 'Engenharia de dados com {name}', en: '{name} data engineering' },
-  database: { pt: 'Consultoria {name}', en: '{name} consulting' },
-  enterprise: { pt: 'Consultoria {name}', en: '{name} consulting' },
-  ai: { pt: 'Desenvolvimento com {name}', en: '{name} development' },
+  'front-end': 'Desenvolvimento {name}',
+  mobile: 'Desenvolvimento de apps {name}',
+  'back-end': 'Desenvolvimento {name}',
+  cloud: 'Consultoria {name}',
+  devops: 'Consultoria {name}',
+  qa: 'Automação de testes com {name}',
+  data: 'Engenharia de dados com {name}',
+  database: 'Consultoria {name}',
+  enterprise: 'Consultoria {name}',
+  ai: 'Desenvolvimento com {name}',
 };
 
 /** Quem procuramos/apresentamos (para frases e títulos de perfis). */
 export const ROLE_NOUN: Record<TechCategory, Two> = {
-  'front-end': { pt: 'programadores {name}', en: '{name} developers' },
-  mobile: { pt: 'programadores {name}', en: '{name} developers' },
-  'back-end': { pt: 'programadores {name}', en: '{name} developers' },
-  cloud: { pt: 'engenheiros {name}', en: '{name} engineers' },
-  devops: { pt: 'engenheiros {name}', en: '{name} engineers' },
-  qa: { pt: 'engenheiros de QA com {name}', en: 'QA engineers with {name}' },
-  data: { pt: 'engenheiros de dados {name}', en: '{name} data engineers' },
-  database: { pt: 'especialistas {name}', en: '{name} specialists' },
-  enterprise: { pt: 'consultores {name}', en: '{name} consultants' },
-  ai: { pt: 'engenheiros de IA com {name}', en: '{name} AI engineers' },
+  'front-end': 'programadores {name}',
+  mobile: 'programadores {name}',
+  'back-end': 'programadores {name}',
+  cloud: 'engenheiros {name}',
+  devops: 'engenheiros {name}',
+  qa: 'engenheiros de QA com {name}',
+  data: 'engenheiros de dados {name}',
+  database: 'especialistas {name}',
+  enterprise: 'consultores {name}',
+  ai: 'engenheiros de IA com {name}',
 };
 
 /** Etiquetas das cinco camadas do cartão do topo. */
 export const LAYERS: Record<TechCategory, Two[]> = {
-  'front-end': [
-    { pt: 'Interface', en: 'Interface' },
-    { pt: 'Estado e dados', en: 'State and data' },
-    { pt: 'Build', en: 'Build' },
-    { pt: 'Testes', en: 'Testing' },
-    { pt: 'Entrega', en: 'Delivery' },
-  ],
-  mobile: [
-    { pt: 'App', en: 'App' },
-    { pt: 'Interface', en: 'UI' },
-    { pt: 'Dados', en: 'Data' },
-    { pt: 'Testes', en: 'Testing' },
-    { pt: 'Lojas', en: 'Stores' },
-  ],
-  'back-end': [
-    { pt: 'Interface', en: 'Interface' },
-    { pt: 'APIs', en: 'APIs' },
-    { pt: 'Dados', en: 'Data' },
-    { pt: 'Cloud', en: 'Cloud' },
-    { pt: 'Qualidade', en: 'Quality' },
-  ],
-  devops: [
-    { pt: 'Código', en: 'Code' },
-    { pt: 'Build', en: 'Build' },
-    { pt: 'Deploy', en: 'Deploy' },
-    { pt: 'Runtime', en: 'Runtime' },
-    { pt: 'Observabilidade', en: 'Observability' },
-  ],
-  cloud: [
-    { pt: 'Computação', en: 'Compute' },
-    { pt: 'Dados', en: 'Data' },
-    { pt: 'Rede e segurança', en: 'Network and security' },
-    { pt: 'Automação', en: 'Automation' },
-    { pt: 'Observabilidade', en: 'Observability' },
-  ],
-  qa: [
-    { pt: 'Testes', en: 'Tests' },
-    { pt: 'Linguagem', en: 'Language' },
-    { pt: 'Execução', en: 'Execution' },
-    { pt: 'Relatórios', en: 'Reports' },
-    { pt: 'Integrações', en: 'Integrations' },
-  ],
-  data: [
-    { pt: 'Fontes', en: 'Sources' },
-    { pt: 'Ingestão', en: 'Ingestion' },
-    { pt: 'Processamento', en: 'Processing' },
-    { pt: 'Armazenamento', en: 'Storage' },
-    { pt: 'Consumo', en: 'Consumption' },
-  ],
-  database: [
-    { pt: 'Modelo', en: 'Model' },
-    { pt: 'Consultas', en: 'Queries' },
-    { pt: 'Replicação', en: 'Replication' },
-    { pt: 'Backups', en: 'Backups' },
-    { pt: 'Monitorização', en: 'Monitoring' },
-  ],
-  enterprise: [
-    { pt: 'Processos', en: 'Processes' },
-    { pt: 'Plataforma', en: 'Platform' },
-    { pt: 'Integrações', en: 'Integrations' },
-    { pt: 'Dados', en: 'Data' },
-    { pt: 'Utilizadores', en: 'Users' },
-  ],
-  ai: [
-    { pt: 'Dados', en: 'Data' },
-    { pt: 'Modelos', en: 'Models' },
-    { pt: 'Orquestração', en: 'Orchestration' },
-    { pt: 'Canais', en: 'Channels' },
-    { pt: 'Avaliação', en: 'Evaluation' },
-  ],
+  'front-end': ['Interface', 'Estado e dados', 'Build', 'Testes', 'Entrega'],
+  mobile: ['App', 'Interface', 'Dados', 'Testes', 'Lojas'],
+  'back-end': ['Interface', 'APIs', 'Dados', 'Cloud', 'Qualidade'],
+  devops: ['Código', 'Build', 'Deploy', 'Runtime', 'Observabilidade'],
+  cloud: ['Computação', 'Dados', 'Rede e segurança', 'Automação', 'Observabilidade'],
+  qa: ['Testes', 'Linguagem', 'Execução', 'Relatórios', 'Integrações'],
+  data: ['Fontes', 'Ingestão', 'Processamento', 'Armazenamento', 'Consumo'],
+  database: ['Modelo', 'Consultas', 'Replicação', 'Backups', 'Monitorização'],
+  enterprise: ['Processos', 'Plataforma', 'Integrações', 'Dados', 'Utilizadores'],
+  ai: ['Dados', 'Modelos', 'Orquestração', 'Canais', 'Avaliação'],
 };
 
 /** Nomes dos grupos de ferramentas usados em stacks.ts (tools). */
 export const TOOL_GROUP: Record<string, Two> = {
-  frameworks: { pt: 'Frameworks', en: 'Frameworks' },
-  ui: { pt: 'Interface e design system', en: 'UI and design system' },
-  state: { pt: 'Estado e dados', en: 'State and data' },
-  data: { pt: 'Bases de dados', en: 'Databases' },
-  build: { pt: 'Build e qualidade de código', en: 'Build and code quality' },
-  testing: { pt: 'Testes', en: 'Testing' },
-  cloud: { pt: 'Cloud', en: 'Cloud' },
-  devops: { pt: 'DevOps e CI/CD', en: 'DevOps and CI/CD' },
-  observability: { pt: 'Observabilidade', en: 'Observability' },
-  security: { pt: 'Segurança', en: 'Security' },
-  messaging: { pt: 'Mensagens e integração', en: 'Messaging and integration' },
-  mobile: { pt: 'Mobile', en: 'Mobile' },
-  iac: { pt: 'Infraestrutura como código', en: 'Infrastructure as code' },
-  containers: { pt: 'Contentores', en: 'Containers' },
-  reporting: { pt: 'Relatórios', en: 'Reporting' },
-  languages: { pt: 'Linguagens', en: 'Languages' },
-  performance: { pt: 'Performance e carga', en: 'Performance and load' },
-  management: { pt: 'Gestão de testes', en: 'Test management' },
-  devices: { pt: 'Dispositivos e browsers', en: 'Devices and browsers' },
-  bi: { pt: 'BI e visualização', en: 'BI and visualization' },
-  orchestration: { pt: 'Orquestração', en: 'Orchestration' },
-  storage: { pt: 'Armazenamento', en: 'Storage' },
-  processing: { pt: 'Processamento', en: 'Processing' },
-  ml: { pt: 'Ciência de dados e ML', en: 'Data science and ML' },
-  governance: { pt: 'Qualidade e governança', en: 'Quality and governance' },
-  admin: { pt: 'Administração', en: 'Administration' },
-  replication: { pt: 'Alta disponibilidade', en: 'High availability' },
-  migration: { pt: 'Migração', en: 'Migration' },
-  modules: { pt: 'Módulos e produtos', en: 'Modules and products' },
+  frameworks: 'Frameworks',
+  ui: 'Interface e design system',
+  state: 'Estado e dados',
+  data: 'Bases de dados',
+  build: 'Build e qualidade de código',
+  testing: 'Testes',
+  cloud: 'Cloud',
+  devops: 'DevOps e CI/CD',
+  observability: 'Observabilidade',
+  security: 'Segurança',
+  messaging: 'Mensagens e integração',
+  mobile: 'Mobile',
+  iac: 'Infraestrutura como código',
+  containers: 'Contentores',
+  reporting: 'Relatórios',
+  languages: 'Linguagens',
+  performance: 'Performance e carga',
+  management: 'Gestão de testes',
+  devices: 'Dispositivos e browsers',
+  bi: 'BI e visualização',
+  orchestration: 'Orquestração',
+  storage: 'Armazenamento',
+  processing: 'Processamento',
+  ml: 'Ciência de dados e ML',
+  governance: 'Qualidade e governança',
+  admin: 'Administração',
+  replication: 'Alta disponibilidade',
+  migration: 'Migração',
+  modules: 'Módulos e produtos',
 };
 
 export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
   'front-end': [
     {
       id: 'apps',
-      title: { pt: 'Aplicações web em {name}', en: '{name} web applications' },
-      pain: {
-        pt: 'A interface atual não acompanha o produto.',
-        en: 'Your current UI cannot keep up with the product.',
-      },
-      text: {
-        pt: 'Portais, plataformas SaaS e back-offices em {name}, rápidos e fáceis de manter.',
-        en: 'Portals, SaaS platforms and back-offices in {name}, fast and easy to maintain.',
-      },
+      title: 'Aplicações web em {name}',
+      pain: 'A interface atual não acompanha o produto.',
+      text: 'Portais, plataformas SaaS e back-offices em {name}, rápidos e fáceis de manter.',
     },
     {
       id: 'design-system',
-      title: { pt: 'Design systems e componentes', en: 'Design systems and components' },
-      pain: { pt: 'Cada ecrã é desenhado de raiz.', en: 'Every screen is built from scratch.' },
-      text: {
-        pt: 'Bibliotecas de componentes {name} documentadas, acessíveis e partilhadas entre equipas.',
-        en: 'Documented, accessible {name} component libraries shared across teams.',
-      },
+      title: 'Design systems e componentes',
+      pain: 'Cada ecrã é desenhado de raiz.',
+      text: 'Bibliotecas de componentes {name} documentadas, acessíveis e partilhadas entre equipas.',
     },
     {
       id: 'performance',
-      title: { pt: 'Performance e Core Web Vitals', en: 'Performance and Core Web Vitals' },
-      pain: {
-        pt: 'As páginas demoram e o Google penaliza.',
-        en: 'Pages are slow and Google notices.',
-      },
-      text: {
-        pt: 'Auditoria e otimização de carregamento, renderização e bundles em {name}.',
-        en: 'Audits and optimization of loading, rendering and bundles in {name}.',
-      },
+      title: 'Performance e Core Web Vitals',
+      pain: 'As páginas demoram e o Google penaliza.',
+      text: 'Auditoria e otimização de carregamento, renderização e bundles em {name}.',
     },
     {
       id: 'modernization',
-      title: { pt: 'Modernização de front-end', en: 'Front-end modernization' },
-      pain: {
-        pt: 'O front-end legado trava cada nova funcionalidade.',
-        en: 'The legacy front-end slows every new feature.',
-      },
-      text: {
-        pt: 'Migração faseada para {name}, sem parar o produto, ecrã a ecrã.',
-        en: 'Phased migration to {name}, screen by screen, without stopping the product.',
-      },
+      title: 'Modernização de front-end',
+      pain: 'O front-end legado trava cada nova funcionalidade.',
+      text: 'Migração faseada para {name}, sem parar o produto, ecrã a ecrã.',
     },
     {
       id: 'accessibility',
-      title: { pt: 'Acessibilidade', en: 'Accessibility' },
-      pain: {
-        pt: 'Parte dos utilizadores não consegue usar o produto.',
-        en: 'Some users cannot use the product.',
-      },
-      text: {
-        pt: 'Interfaces {name} conformes com WCAG 2.2, testadas com leitores de ecrã.',
-        en: '{name} interfaces that meet WCAG 2.2, tested with screen readers.',
-      },
+      title: 'Acessibilidade',
+      pain: 'Parte dos utilizadores não consegue usar o produto.',
+      text: 'Interfaces {name} conformes com WCAG 2.2, testadas com leitores de ecrã.',
     },
     {
       id: 'qa',
-      title: { pt: 'Testes de front-end', en: 'Front-end testing' },
-      pain: {
-        pt: 'Cada lançamento parte algo no browser.',
-        en: 'Every release breaks something in the browser.',
-      },
-      text: {
-        pt: 'Testes de componentes e end-to-end automáticos em cada alteração de {name}.',
-        en: 'Automated component and end-to-end tests on every {name} change.',
-      },
+      title: 'Testes de front-end',
+      pain: 'Cada lançamento parte algo no browser.',
+      text: 'Testes de componentes e end-to-end automáticos em cada alteração de {name}.',
     },
   ],
   mobile: [
     {
       id: 'apps',
-      title: { pt: 'Apps {name} de raiz', en: '{name} apps from scratch' },
-      pain: {
-        pt: 'A ideia está validada, falta a app.',
-        en: 'The idea is validated; the app is missing.',
-      },
-      text: {
-        pt: 'Desenho, desenvolvimento e publicação de apps {name}, da primeira versão às lojas.',
-        en: 'Design, development and release of {name} apps, from first version to the stores.',
-      },
+      title: 'Apps {name} de raiz',
+      pain: 'A ideia está validada, falta a app.',
+      text: 'Desenho, desenvolvimento e publicação de apps {name}, da primeira versão às lojas.',
     },
     {
       id: 'modernization',
-      title: { pt: 'Evolução de apps existentes', en: 'Evolving existing apps' },
-      pain: {
-        pt: 'A app tem más avaliações e ninguém lhe quer mexer.',
-        en: 'The app has poor reviews and nobody wants to touch it.',
-      },
-      text: {
-        pt: 'Diagnóstico, estabilização e novas funcionalidades em apps {name}.',
-        en: 'Diagnosis, stabilization and new features for {name} apps.',
-      },
+      title: 'Evolução de apps existentes',
+      pain: 'A app tem más avaliações e ninguém lhe quer mexer.',
+      text: 'Diagnóstico, estabilização e novas funcionalidades em apps {name}.',
     },
     {
       id: 'performance',
-      title: { pt: 'Performance e estabilidade', en: 'Performance and stability' },
-      pain: {
-        pt: 'A app fecha sozinha e consome bateria.',
-        en: 'The app crashes and drains the battery.',
-      },
-      text: {
-        pt: 'Monitorização de falhas, otimização de arranque e consumo em {name}.',
-        en: 'Crash monitoring and start-up and battery optimization in {name}.',
-      },
+      title: 'Performance e estabilidade',
+      pain: 'A app fecha sozinha e consome bateria.',
+      text: 'Monitorização de falhas, otimização de arranque e consumo em {name}.',
     },
     {
       id: 'integrations',
-      title: { pt: 'Integrações e APIs', en: 'Integrations and APIs' },
-      pain: {
-        pt: 'A app não fala com os sistemas da empresa.',
-        en: 'The app does not talk to your systems.',
-      },
-      text: {
-        pt: 'Ligação segura a APIs, pagamentos, notificações e autenticação.',
-        en: 'Secure connection to APIs, payments, notifications and authentication.',
-      },
+      title: 'Integrações e APIs',
+      pain: 'A app não fala com os sistemas da empresa.',
+      text: 'Ligação segura a APIs, pagamentos, notificações e autenticação.',
     },
     {
       id: 'qa',
-      title: { pt: 'Testes mobile', en: 'Mobile testing' },
-      pain: {
-        pt: 'Cada versão funciona num telemóvel e falha noutro.',
-        en: 'Each release works on one phone and fails on another.',
-      },
-      text: {
-        pt: 'Testes automáticos em dispositivos reais e emuladores para {name}.',
-        en: 'Automated tests on real devices and emulators for {name}.',
-      },
+      title: 'Testes mobile',
+      pain: 'Cada versão funciona num telemóvel e falha noutro.',
+      text: 'Testes automáticos em dispositivos reais e emuladores para {name}.',
     },
     {
       id: 'release',
-      title: { pt: 'Publicação e manutenção', en: 'Release and maintenance' },
-      pain: {
-        pt: 'Publicar nas lojas é sempre uma corrida.',
-        en: 'Every store release is a scramble.',
-      },
-      text: {
-        pt: 'Pipelines de publicação, versões beta e manutenção contínua da app.',
-        en: 'Release pipelines, beta builds and ongoing maintenance.',
-      },
+      title: 'Publicação e manutenção',
+      pain: 'Publicar nas lojas é sempre uma corrida.',
+      text: 'Pipelines de publicação, versões beta e manutenção contínua da app.',
     },
   ],
   'back-end': [
     {
       id: 'apis',
-      title: { pt: 'APIs e microsserviços em {name}', en: '{name} APIs and microservices' },
-      pain: {
-        pt: 'As APIs não aguentam o crescimento do produto.',
-        en: 'Your APIs cannot keep up with growth.',
-      },
-      text: {
-        pt: 'APIs em {name} rápidas, documentadas e prontas a escalar.',
-        en: 'Fast, documented {name} APIs ready to scale.',
-      },
+      title: 'APIs e microsserviços em {name}',
+      pain: 'As APIs não aguentam o crescimento do produto.',
+      text: 'APIs em {name} rápidas, documentadas e prontas a escalar.',
     },
     {
       id: 'modernization',
-      title: { pt: 'Modernização de sistemas {name}', en: '{name} system modernization' },
-      pain: {
-        pt: 'O sistema legado trava cada nova funcionalidade.',
-        en: 'The legacy system blocks every new feature.',
-      },
-      text: {
-        pt: 'Migração faseada para versões atuais de {name}, com testes antes de cada passo.',
-        en: 'Phased migration to current {name} versions, with tests before every step.',
-      },
+      title: 'Modernização de sistemas {name}',
+      pain: 'O sistema legado trava cada nova funcionalidade.',
+      text: 'Migração faseada para versões atuais de {name}, com testes antes de cada passo.',
     },
     {
       id: 'cloud',
-      title: { pt: '{name} na cloud', en: '{name} in the cloud' },
-      pain: {
-        pt: 'A infraestrutura custa mais do que entrega.',
-        en: 'Infrastructure costs more than it delivers.',
-      },
-      text: {
-        pt: 'Aplicações {name} em contentores e serviços geridos, com custos visíveis.',
-        en: '{name} applications on containers and managed services, with visible costs.',
-      },
+      title: '{name} na cloud',
+      pain: 'A infraestrutura custa mais do que entrega.',
+      text: 'Aplicações {name} em contentores e serviços geridos, com custos visíveis.',
     },
     {
       id: 'integrations',
-      title: { pt: 'Integrações enterprise', en: 'Enterprise integrations' },
-      pain: {
-        pt: 'O ERP e o CRM não falam um com o outro.',
-        en: 'Your ERP and CRM do not talk to each other.',
-      },
-      text: {
-        pt: 'Integrações fiáveis e auditáveis entre sistemas, construídas em {name}.',
-        en: 'Reliable, auditable integrations between systems, built in {name}.',
-      },
+      title: 'Integrações enterprise',
+      pain: 'O ERP e o CRM não falam um com o outro.',
+      text: 'Integrações fiáveis e auditáveis entre sistemas, construídas em {name}.',
     },
     {
       id: 'data',
-      title: { pt: 'Dados e performance', en: 'Data and performance' },
-      pain: {
-        pt: 'As consultas lentas atrasam todo o produto.',
-        en: 'Slow queries hold back the whole product.',
-      },
-      text: {
-        pt: 'Modelação de dados, caching e otimização de consultas em aplicações {name}.',
-        en: 'Data modeling, caching and query optimization in {name} applications.',
-      },
+      title: 'Dados e performance',
+      pain: 'As consultas lentas atrasam todo o produto.',
+      text: 'Modelação de dados, caching e otimização de consultas em aplicações {name}.',
     },
     {
       id: 'qa',
-      title: { pt: 'Testes e QA para {name}', en: 'Testing and QA for {name}' },
-      pain: { pt: 'Cada lançamento é uma aposta.', en: 'Every release is a gamble.' },
-      text: {
-        pt: 'Testes unitários, de integração e de contrato automáticos em cada alteração.',
-        en: 'Automated unit, integration and contract tests on every change.',
-      },
+      title: 'Testes e QA para {name}',
+      pain: 'Cada lançamento é uma aposta.',
+      text: 'Testes unitários, de integração e de contrato automáticos em cada alteração.',
     },
   ],
   devops: [
     {
       id: 'adoption',
-      title: { pt: 'Adoção de {name}', en: '{name} adoption' },
-      pain: {
-        pt: 'Cada ambiente é configurado à mão.',
-        en: 'Every environment is set up by hand.',
-      },
-      text: {
-        pt: 'Introdução faseada de {name}, com padrões que as equipas conseguem manter.',
-        en: 'Phased {name} adoption with standards your teams can maintain.',
-      },
+      title: 'Adoção de {name}',
+      pain: 'Cada ambiente é configurado à mão.',
+      text: 'Introdução faseada de {name}, com padrões que as equipas conseguem manter.',
     },
     {
       id: 'platform',
-      title: { pt: 'Plataforma {name}', en: '{name} platform' },
-      pain: { pt: 'A configuração cresceu sem desenho.', en: 'The set-up grew without a design.' },
-      text: {
-        pt: 'Revisão e desenho da plataforma {name} com segurança, resiliência e custo em mente.',
-        en: '{name} platform review and design with security, resilience and cost in mind.',
-      },
+      title: 'Plataforma {name}',
+      pain: 'A configuração cresceu sem desenho.',
+      text: 'Revisão e desenho da plataforma {name} com segurança, resiliência e custo em mente.',
     },
     {
       id: 'automation',
-      title: { pt: 'CI/CD com {name}', en: 'CI/CD with {name}' },
-      pain: { pt: 'Publicar uma versão demora dias.', en: 'Shipping a release takes days.' },
-      text: {
-        pt: 'Pipelines que constroem, testam e publicam com {name} várias vezes por semana.',
-        en: 'Pipelines that build, test and ship with {name} several times a week.',
-      },
+      title: 'CI/CD com {name}',
+      pain: 'Publicar uma versão demora dias.',
+      text: 'Pipelines que constroem, testam e publicam com {name} várias vezes por semana.',
     },
     {
       id: 'security',
-      title: { pt: 'Segurança da cadeia de entrega', en: 'Supply chain security' },
-      pain: {
-        pt: 'Ninguém sabe o que corre em produção.',
-        en: 'Nobody knows what runs in production.',
-      },
-      text: {
-        pt: 'Imagens verificadas, segredos geridos e políticas aplicadas em {name}.',
-        en: 'Verified images, managed secrets and enforced policies in {name}.',
-      },
+      title: 'Segurança da cadeia de entrega',
+      pain: 'Ninguém sabe o que corre em produção.',
+      text: 'Imagens verificadas, segredos geridos e políticas aplicadas em {name}.',
     },
     {
       id: 'cost',
-      title: { pt: 'Custos e performance', en: 'Cost and performance' },
-      pain: {
-        pt: 'A infraestrutura está sobredimensionada.',
-        en: 'The infrastructure is oversized.',
-      },
-      text: {
-        pt: 'Dimensionamento, escalamento automático e redução de desperdício com {name}.',
-        en: 'Right-sizing, autoscaling and waste reduction with {name}.',
-      },
+      title: 'Custos e performance',
+      pain: 'A infraestrutura está sobredimensionada.',
+      text: 'Dimensionamento, escalamento automático e redução de desperdício com {name}.',
     },
     {
       id: 'operations',
-      title: { pt: 'Operação e observabilidade', en: 'Operations and observability' },
-      pain: {
-        pt: 'Os problemas são descobertos pelos clientes.',
-        en: 'Customers find the problems first.',
-      },
-      text: {
-        pt: 'Monitorização, alertas e resposta a incidentes em ambientes {name}.',
-        en: 'Monitoring, alerting and incident response for {name} environments.',
-      },
+      title: 'Operação e observabilidade',
+      pain: 'Os problemas são descobertos pelos clientes.',
+      text: 'Monitorização, alertas e resposta a incidentes em ambientes {name}.',
     },
   ],
   cloud: [
     {
       id: 'migration',
-      title: { pt: 'Migração para {name}', en: 'Migration to {name}' },
-      pain: {
-        pt: 'O datacenter próprio já não compensa.',
-        en: 'Your own datacenter no longer pays off.',
-      },
-      text: {
-        pt: 'Migração planeada por fases para {name}, com o mínimo de interrupção.',
-        en: 'Phased migration to {name} with minimal disruption.',
-      },
+      title: 'Migração para {name}',
+      pain: 'O datacenter próprio já não compensa.',
+      text: 'Migração planeada por fases para {name}, com o mínimo de interrupção.',
     },
     {
       id: 'architecture',
-      title: { pt: 'Arquitetura e boas práticas', en: 'Architecture and best practices' },
-      pain: { pt: 'A plataforma cresceu sem desenho.', en: 'The platform grew without a design.' },
-      text: {
-        pt: 'Revisão e desenho de arquitetura {name} com segurança, resiliência e custo em mente.',
-        en: '{name} architecture reviews and design with security, resilience and cost in mind.',
-      },
+      title: 'Arquitetura e boas práticas',
+      pain: 'A plataforma cresceu sem desenho.',
+      text: 'Revisão e desenho de arquitetura {name} com segurança, resiliência e custo em mente.',
     },
     {
       id: 'cost',
-      title: { pt: 'Otimização de custos', en: 'Cost optimization' },
-      pain: { pt: 'A fatura cresce todos os meses.', en: 'The bill grows every month.' },
-      text: {
-        pt: 'Visibilidade de custos e redução de desperdício em {name}, sem perder performance.',
-        en: 'Cost visibility and waste reduction in {name}, without losing performance.',
-      },
+      title: 'Otimização de custos',
+      pain: 'A fatura cresce todos os meses.',
+      text: 'Visibilidade de custos e redução de desperdício em {name}, sem perder performance.',
     },
     {
       id: 'automation',
-      title: { pt: 'Automação e CI/CD', en: 'Automation and CI/CD' },
-      pain: { pt: 'Publicar uma versão demora dias.', en: 'Shipping a release takes days.' },
-      text: {
-        pt: 'Pipelines e infraestrutura como código para publicar várias vezes por semana.',
-        en: 'Pipelines and infrastructure as code to ship several times a week.',
-      },
+      title: 'Automação e CI/CD',
+      pain: 'Publicar uma versão demora dias.',
+      text: 'Pipelines e infraestrutura como código para publicar várias vezes por semana.',
     },
     {
       id: 'security',
-      title: { pt: 'Segurança e conformidade', en: 'Security and compliance' },
-      pain: { pt: 'Ninguém sabe quem tem acesso a quê.', en: 'Nobody knows who can access what.' },
-      text: {
-        pt: 'Identidades, segredos e políticas em {name}, prontos para auditoria.',
-        en: 'Identities, secrets and policies in {name}, ready for audit.',
-      },
+      title: 'Segurança e conformidade',
+      pain: 'Ninguém sabe quem tem acesso a quê.',
+      text: 'Identidades, segredos e políticas em {name}, prontos para auditoria.',
     },
     {
       id: 'operations',
-      title: { pt: 'Operação e observabilidade', en: 'Operations and observability' },
-      pain: {
-        pt: 'Os problemas são descobertos pelos clientes.',
-        en: 'Customers find the problems first.',
-      },
-      text: {
-        pt: 'Monitorização, alertas e resposta a incidentes para plataformas em {name}.',
-        en: 'Monitoring, alerting and incident response for {name} platforms.',
-      },
+      title: 'Operação e observabilidade',
+      pain: 'Os problemas são descobertos pelos clientes.',
+      text: 'Monitorização, alertas e resposta a incidentes para plataformas em {name}.',
     },
   ],
   qa: [
     {
       id: 'automation',
-      title: { pt: 'Automação de testes com {name}', en: 'Test automation with {name}' },
-      pain: {
-        pt: 'A regressão manual atrasa cada lançamento.',
-        en: 'Manual regression delays every release.',
-      },
-      text: {
-        pt: 'Suites {name} que cobrem os fluxos críticos do produto.',
-        en: '{name} suites covering the critical product flows.',
-      },
+      title: 'Automação de testes com {name}',
+      pain: 'A regressão manual atrasa cada lançamento.',
+      text: 'Suites {name} que cobrem os fluxos críticos do produto.',
     },
     {
       id: 'framework',
-      title: { pt: 'Framework de automação', en: 'Automation framework' },
-      pain: {
-        pt: 'Os testes automáticos falham sem razão.',
-        en: 'Automated tests fail for no reason.',
-      },
-      text: {
-        pt: 'Estrutura {name} estável, com padrões, dados de teste e manutenção simples.',
-        en: 'A stable {name} structure with patterns, test data and simple maintenance.',
-      },
+      title: 'Framework de automação',
+      pain: 'Os testes automáticos falham sem razão.',
+      text: 'Estrutura {name} estável, com padrões, dados de teste e manutenção simples.',
     },
     {
       id: 'ci',
-      title: { pt: 'Testes no pipeline', en: 'Tests in the pipeline' },
-      pain: {
-        pt: 'Os testes só correm quando alguém se lembra.',
-        en: 'Tests only run when someone remembers.',
-      },
-      text: {
-        pt: 'Execução de {name} em cada alteração, com relatórios claros para a equipa.',
-        en: '{name} runs on every change, with clear reports for the team.',
-      },
+      title: 'Testes no pipeline',
+      pain: 'Os testes só correm quando alguém se lembra.',
+      text: 'Execução de {name} em cada alteração, com relatórios claros para a equipa.',
     },
     {
       id: 'factory',
-      title: { pt: 'Fábrica de testes', en: 'Testing factory' },
-      pain: { pt: 'A equipa não tem tempo para testar.', en: 'Your team has no time to test.' },
-      text: {
-        pt: 'Testes manuais, exploratórios e automáticos sob pedido, com {name} onde faz sentido.',
-        en: 'On-demand manual, exploratory and automated testing, with {name} where it fits.',
-      },
+      title: 'Fábrica de testes',
+      pain: 'A equipa não tem tempo para testar.',
+      text: 'Testes manuais, exploratórios e automáticos sob pedido, com {name} onde faz sentido.',
     },
     {
       id: 'team',
-      title: { pt: 'QA na sua equipa', en: 'QA in your team' },
-      pain: { pt: 'Os bugs só aparecem em produção.', en: 'Bugs only show up in production.' },
-      text: {
-        pt: 'Engenheiros de QA com {name} integrados nas suas sprints e rituais.',
-        en: 'QA engineers with {name} embedded in your sprints and rituals.',
-      },
+      title: 'QA na sua equipa',
+      pain: 'Os bugs só aparecem em produção.',
+      text: 'Engenheiros de QA com {name} integrados nas suas sprints e rituais.',
     },
     {
       id: 'strategy',
-      title: { pt: 'Estratégia de qualidade', en: 'Quality strategy' },
-      pain: { pt: 'Não se sabe o que está testado.', en: 'Nobody knows what is tested.' },
-      text: {
-        pt: 'Pirâmide de testes, métricas e cobertura dos riscos que importam.',
-        en: 'Test pyramid, metrics and coverage of the risks that matter.',
-      },
+      title: 'Estratégia de qualidade',
+      pain: 'Não se sabe o que está testado.',
+      text: 'Pirâmide de testes, métricas e cobertura dos riscos que importam.',
     },
   ],
   data: [
     {
       id: 'platform',
-      title: { pt: 'Plataformas de dados com {name}', en: '{name} data platforms' },
-      pain: {
-        pt: 'Os dados estão espalhados por vários sistemas.',
-        en: 'Your data is scattered across systems.',
-      },
-      text: {
-        pt: 'Uma plataforma {name} que junta os dados da empresa num só lugar, pronta a crescer.',
-        en: '{A} {name} platform that brings company data into one place, ready to grow.',
-      },
+      title: 'Plataformas de dados com {name}',
+      pain: 'Os dados estão espalhados por vários sistemas.',
+      text: 'Uma plataforma {name} que junta os dados da empresa num só lugar, pronta a crescer.',
     },
     {
       id: 'pipelines',
-      title: { pt: 'Pipelines e ETL', en: 'Pipelines and ETL' },
-      pain: {
-        pt: 'Os relatórios esperam por cargas feitas à mão.',
-        en: 'Reports wait for manual loads.',
-      },
-      text: {
-        pt: 'Pipelines {name} automáticos, monitorizados e fáceis de manter.',
-        en: 'Automated, monitored {name} pipelines that are easy to maintain.',
-      },
+      title: 'Pipelines e ETL',
+      pain: 'Os relatórios esperam por cargas feitas à mão.',
+      text: 'Pipelines {name} automáticos, monitorizados e fáceis de manter.',
     },
     {
       id: 'analytics',
-      title: { pt: 'Relatórios e dashboards', en: 'Reports and dashboards' },
-      pain: {
-        pt: 'As decisões esperam por folhas de Excel.',
-        en: 'Decisions wait for spreadsheets.',
-      },
-      text: {
-        pt: 'Indicadores atualizados e confiáveis, ligados aos dados tratados em {name}.',
-        en: 'Up-to-date, trusted KPIs on top of data prepared in {name}.',
-      },
+      title: 'Relatórios e dashboards',
+      pain: 'As decisões esperam por folhas de Excel.',
+      text: 'Indicadores atualizados e confiáveis, ligados aos dados tratados em {name}.',
     },
     {
       id: 'quality',
-      title: { pt: 'Qualidade e governança de dados', en: 'Data quality and governance' },
-      pain: { pt: 'Ninguém confia nos números.', en: 'Nobody trusts the numbers.' },
-      text: {
-        pt: 'Testes de dados, linhagem e regras de acesso para que cada número tenha origem.',
-        en: 'Data tests, lineage and access rules so every number has a source.',
-      },
+      title: 'Qualidade e governança de dados',
+      pain: 'Ninguém confia nos números.',
+      text: 'Testes de dados, linhagem e regras de acesso para que cada número tenha origem.',
     },
     {
       id: 'migration',
-      title: { pt: 'Migração e modernização', en: 'Migration and modernization' },
-      pain: {
-        pt: 'O data warehouse antigo já não escala.',
-        en: 'The old data warehouse no longer scales.',
-      },
-      text: {
-        pt: 'Migração faseada para {name}, com validação de dados em cada etapa.',
-        en: 'Phased migration to {name}, with data validation at every step.',
-      },
+      title: 'Migração e modernização',
+      pain: 'O data warehouse antigo já não escala.',
+      text: 'Migração faseada para {name}, com validação de dados em cada etapa.',
     },
     {
       id: 'cost',
-      title: { pt: 'Performance e custos', en: 'Performance and cost' },
-      pain: {
-        pt: 'As consultas demoram e a fatura cresce.',
-        en: 'Queries are slow and the bill keeps growing.',
-      },
-      text: {
-        pt: 'Otimização de processamento, armazenamento e custos em {name}.',
-        en: 'Processing, storage and cost optimization in {name}.',
-      },
+      title: 'Performance e custos',
+      pain: 'As consultas demoram e a fatura cresce.',
+      text: 'Otimização de processamento, armazenamento e custos em {name}.',
     },
   ],
   database: [
     {
       id: 'design',
-      title: { pt: 'Modelação e arquitetura', en: 'Modeling and architecture' },
-      pain: {
-        pt: 'O modelo de dados cresceu sem regras.',
-        en: 'The data model grew without rules.',
-      },
-      text: {
-        pt: 'Modelação, normalização e índices em {name} pensados para o produto.',
-        en: '{name} modeling, normalization and indexes designed for the product.',
-      },
+      title: 'Modelação e arquitetura',
+      pain: 'O modelo de dados cresceu sem regras.',
+      text: 'Modelação, normalização e índices em {name} pensados para o produto.',
     },
     {
       id: 'performance',
-      title: { pt: 'Performance e tuning', en: 'Performance and tuning' },
-      pain: {
-        pt: 'As consultas lentas atrasam todo o produto.',
-        en: 'Slow queries hold back the whole product.',
-      },
-      text: {
-        pt: 'Análise de planos de execução, índices e configuração de {name}.',
-        en: 'Execution plan analysis, indexing and {name} configuration.',
-      },
+      title: 'Performance e tuning',
+      pain: 'As consultas lentas atrasam todo o produto.',
+      text: 'Análise de planos de execução, índices e configuração de {name}.',
     },
     {
       id: 'migration',
-      title: { pt: 'Migração para {name}', en: 'Migration to {name}' },
-      pain: {
-        pt: 'A base de dados antiga custa caro e trava a cloud.',
-        en: 'The old database is expensive and blocks the cloud.',
-      },
-      text: {
-        pt: 'Migração planeada para {name}, na cloud ou on-premise, com validação de dados.',
-        en: 'Planned migration to {name}, in the cloud or on-premise, with data validation.',
-      },
+      title: 'Migração para {name}',
+      pain: 'A base de dados antiga custa caro e trava a cloud.',
+      text: 'Migração planeada para {name}, na cloud ou on-premise, com validação de dados.',
     },
     {
       id: 'ha',
-      title: { pt: 'Alta disponibilidade e backups', en: 'High availability and backups' },
-      pain: {
-        pt: 'Uma falha na base de dados para a empresa.',
-        en: 'A database failure stops the business.',
-      },
-      text: {
-        pt: 'Replicação, failover e backups testados em {name}.',
-        en: 'Replication, failover and tested backups in {name}.',
-      },
+      title: 'Alta disponibilidade e backups',
+      pain: 'Uma falha na base de dados para a empresa.',
+      text: 'Replicação, failover e backups testados em {name}.',
     },
     {
       id: 'security',
-      title: { pt: 'Segurança e conformidade', en: 'Security and compliance' },
-      pain: {
-        pt: 'Dados sensíveis sem controlo de acessos.',
-        en: 'Sensitive data without access control.',
-      },
-      text: {
-        pt: 'Acessos, cifragem e auditoria em {name}, alinhados com o RGPD e a LGPD.',
-        en: 'Access control, encryption and auditing in {name}, aligned with GDPR and LGPD.',
-      },
+      title: 'Segurança e conformidade',
+      pain: 'Dados sensíveis sem controlo de acessos.',
+      text: 'Acessos, cifragem e auditoria em {name}, alinhados com o RGPD e a LGPD.',
     },
     {
       id: 'operations',
-      title: { pt: 'Administração (DBA)', en: 'Administration (DBA)' },
-      pain: { pt: 'Ninguém é responsável pela base de dados.', en: 'Nobody owns the database.' },
-      text: {
-        pt: 'Monitorização, manutenção e atualizações de {name} com um DBA dedicado.',
-        en: 'Monitoring, maintenance and upgrades of {name} with a dedicated DBA.',
-      },
+      title: 'Administração (DBA)',
+      pain: 'Ninguém é responsável pela base de dados.',
+      text: 'Monitorização, manutenção e atualizações de {name} com um DBA dedicado.',
     },
   ],
   enterprise: [
     {
       id: 'implementation',
-      title: { pt: 'Implementação {name}', en: '{name} implementation' },
-      pain: {
-        pt: 'Os processos vivem em folhas de cálculo e emails.',
-        en: 'Processes live in spreadsheets and emails.',
-      },
-      text: {
-        pt: 'Implementação de {name} por fases, alinhada com os processos e as prioridades da empresa.',
-        en: 'Phased {name} implementation, aligned with your processes and priorities.',
-      },
+      title: 'Implementação {name}',
+      pain: 'Os processos vivem em folhas de cálculo e emails.',
+      text: 'Implementação de {name} por fases, alinhada com os processos e as prioridades da empresa.',
     },
     {
       id: 'customization',
-      title: { pt: 'Desenvolvimento e personalização', en: 'Development and customization' },
-      pain: {
-        pt: 'A solução standard não cobre o seu negócio.',
-        en: 'The standard solution does not cover your business.',
-      },
-      text: {
-        pt: 'Extensões e aplicações à medida em {name}, sem comprometer as atualizações.',
-        en: 'Custom extensions and apps in {name}, without compromising upgrades.',
-      },
+      title: 'Desenvolvimento e personalização',
+      pain: 'A solução standard não cobre o seu negócio.',
+      text: 'Extensões e aplicações à medida em {name}, sem comprometer as atualizações.',
     },
     {
       id: 'integrations',
-      title: { pt: 'Integrações', en: 'Integrations' },
-      pain: {
-        pt: '{name} não fala com o resto dos sistemas.',
-        en: '{name} does not talk to your other systems.',
-      },
-      text: {
-        pt: 'Integrações por APIs e middleware entre {name}, ERP, CRM e aplicações internas.',
-        en: 'API and middleware integrations between {name}, ERP, CRM and internal apps.',
-      },
+      title: 'Integrações',
+      pain: '{name} não fala com o resto dos sistemas.',
+      text: 'Integrações por APIs e middleware entre {name}, ERP, CRM e aplicações internas.',
     },
     {
       id: 'migration',
-      title: { pt: 'Migração e upgrades', en: 'Migration and upgrades' },
-      pain: {
-        pt: 'A versão atual está a chegar ao fim do suporte.',
-        en: 'Your current version is reaching end of support.',
-      },
-      text: {
-        pt: 'Upgrades e migrações de {name} planeados, com dados validados e testes de regressão.',
-        en: 'Planned {name} upgrades and migrations, with validated data and regression tests.',
-      },
+      title: 'Migração e upgrades',
+      pain: 'A versão atual está a chegar ao fim do suporte.',
+      text: 'Upgrades e migrações de {name} planeados, com dados validados e testes de regressão.',
     },
     {
       id: 'support',
-      title: { pt: 'Sustentação (AMS)', en: 'Application support (AMS)' },
-      pain: { pt: 'Os pedidos de suporte acumulam-se.', en: 'Support tickets keep piling up.' },
-      text: {
-        pt: 'Suporte e evolução contínua de {name} com níveis de serviço acordados.',
-        en: 'Ongoing {name} support and evolution with agreed service levels.',
-      },
+      title: 'Sustentação (AMS)',
+      pain: 'Os pedidos de suporte acumulam-se.',
+      text: 'Suporte e evolução contínua de {name} com níveis de serviço acordados.',
     },
     {
       id: 'qa',
-      title: { pt: 'Testes e qualidade', en: 'Testing and quality' },
-      pain: {
-        pt: 'Cada atualização obriga a semanas de testes manuais.',
-        en: 'Every update means weeks of manual testing.',
-      },
-      text: {
-        pt: 'Testes funcionais e automáticos para cada release de {name}.',
-        en: 'Functional and automated tests for every {name} release.',
-      },
+      title: 'Testes e qualidade',
+      pain: 'Cada atualização obriga a semanas de testes manuais.',
+      text: 'Testes funcionais e automáticos para cada release de {name}.',
     },
   ],
   ai: [
     {
       id: 'assistants',
-      title: { pt: 'Assistentes e chatbots com {name}', en: '{name} assistants and chatbots' },
-      pain: {
-        pt: 'O apoio ao cliente e as equipas internas não escalam.',
-        en: 'Customer support and internal teams cannot scale.',
-      },
-      text: {
-        pt: 'Assistentes ligados aos seus sistemas, que respondem com dados da empresa e passam para uma pessoa quando é preciso.',
-        en: 'Assistants connected to your systems that answer with company data and hand over to a person when needed.',
-      },
+      title: 'Assistentes e chatbots com {name}',
+      pain: 'O apoio ao cliente e as equipas internas não escalam.',
+      text: 'Assistentes ligados aos seus sistemas, que respondem com dados da empresa e passam para uma pessoa quando é preciso.',
     },
     {
       id: 'rag',
-      title: { pt: 'Pesquisa nos seus documentos (RAG)', en: 'Search over your documents (RAG)' },
-      pain: {
-        pt: 'A informação está presa em PDFs, wikis e emails.',
-        en: 'Knowledge is stuck in PDFs, wikis and emails.',
-      },
-      text: {
-        pt: 'Respostas com fonte a partir dos documentos da empresa, com {name} e pesquisa vetorial.',
-        en: 'Sourced answers from company documents, with {name} and vector search.',
-      },
+      title: 'Pesquisa nos seus documentos (RAG)',
+      pain: 'A informação está presa em PDFs, wikis e emails.',
+      text: 'Respostas com fonte a partir dos documentos da empresa, com {name} e pesquisa vetorial.',
     },
     {
       id: 'automation',
-      title: { pt: 'Agentes e automação', en: 'Agents and automation' },
-      pain: {
-        pt: 'A equipa perde horas em tarefas repetitivas.',
-        en: 'Your team loses hours on repetitive tasks.',
-      },
-      text: {
-        pt: 'Agentes com {name} que leem, decidem e executam passos em ferramentas reais, com aprovação humana onde importa.',
-        en: '{name} agents that read, decide and act in real tools, with human approval where it matters.',
-      },
+      title: 'Agentes e automação',
+      pain: 'A equipa perde horas em tarefas repetitivas.',
+      text: 'Agentes com {name} que leem, decidem e executam passos em ferramentas reais, com aprovação humana onde importa.',
     },
     {
       id: 'integration',
-      title: { pt: 'IA no seu produto', en: 'AI in your product' },
-      pain: {
-        pt: 'A IA fica numa demo e nunca chega ao produto.',
-        en: 'AI stays in a demo and never reaches the product.',
-      },
-      text: {
-        pt: 'Funcionalidades de IA integradas na sua aplicação, com APIs, testes e monitorização como o resto do código.',
-        en: 'AI features built into your application, with APIs, tests and monitoring like the rest of the code.',
-      },
+      title: 'IA no seu produto',
+      pain: 'A IA fica numa demo e nunca chega ao produto.',
+      text: 'Funcionalidades de IA integradas na sua aplicação, com APIs, testes e monitorização como o resto do código.',
     },
     {
       id: 'evaluation',
-      title: { pt: 'Avaliação, custo e qualidade', en: 'Evaluation, cost and quality' },
-      pain: {
-        pt: 'Ninguém sabe se as respostas estão certas nem quanto custam.',
-        en: 'Nobody knows if answers are right or what they cost.',
-      },
-      text: {
-        pt: 'Conjuntos de avaliação e métricas de qualidade, latência e custo por pedido em cada versão.',
-        en: 'Evaluation sets and quality, latency and cost-per-request metrics for every release.',
-      },
+      title: 'Avaliação, custo e qualidade',
+      pain: 'Ninguém sabe se as respostas estão certas nem quanto custam.',
+      text: 'Conjuntos de avaliação e métricas de qualidade, latência e custo por pedido em cada versão.',
     },
     {
       id: 'security',
-      title: { pt: 'Segurança e governança', en: 'Security and governance' },
-      pain: {
-        pt: 'Há receio de que dados sensíveis saiam da empresa.',
-        en: 'There is concern that sensitive data leaves the company.',
-      },
-      text: {
-        pt: 'Controlo de dados, RGPD e LGPD, guardrails e registo de cada pedido ao modelo.',
-        en: 'Data control, GDPR and LGPD, guardrails and logging of every model request.',
-      },
+      title: 'Segurança e governança',
+      pain: 'Há receio de que dados sensíveis saiam da empresa.',
+      text: 'Controlo de dados, RGPD e LGPD, guardrails e registo de cada pedido ao modelo.',
     },
   ],
 };
@@ -874,245 +498,122 @@ export const SERVICES: Record<TechCategory, ServiceTpl[]> = {
 /** Perguntas comuns a todas as stacks. A pergunta de IA é a única menção explícita além do bloco de ferramentas. */
 export const FAQ_COMMON: FaqTpl[] = [
   {
-    q: {
-      pt: 'A Yellowipe trabalha com {name} em Portugal e no Brasil?',
-      en: 'Does Yellowipe work with {name} in Portugal and Brazil?',
-    },
-    a: {
-      pt: 'Sim. Temos especialistas em {name} em Portugal e no Brasil e trabalhamos com empresas em Portugal, no Brasil e nos Estados Unidos, em português e em inglês.',
-      en: 'Yes. We have {name} specialists in Portugal and Brazil and work with companies in Portugal, Brazil and the United States, in Portuguese and English.',
-    },
+    q: 'A Yellowipe trabalha com {name} em Portugal e no Brasil?',
+    a: 'Sim. Temos especialistas em {name} em Portugal e no Brasil e trabalhamos com empresas em Portugal, no Brasil e nos Estados Unidos, em português e em inglês.',
   },
   {
-    q: {
-      pt: 'Como avaliam um especialista em {name}?',
-      en: 'How do you assess {a} {name} specialist?',
-    },
-    a: {
-      pt: 'Com entrevistas técnicas conduzidas por engenheiros que trabalham com {name} e, quando faz sentido, um exercício prático. Recebe as notas da avaliação com cada perfil.',
-      en: 'Through technical interviews run by engineers who work with {name} and, when useful, a practical exercise. You receive the assessment notes with each profile.',
-    },
+    q: 'Como avaliam um especialista em {name}?',
+    a: 'Com entrevistas técnicas conduzidas por engenheiros que trabalham com {name} e, quando faz sentido, um exercício prático. Recebe as notas da avaliação com cada perfil.',
   },
   {
-    q: {
-      pt: 'Posso contratar o especialista em {name} diretamente?',
-      en: 'Can I hire the {name} specialist directly?',
-    },
-    a: {
-      pt: 'Sim. No modelo Contrate o profissional passa a fazer parte da sua empresa. No Reforce, fica com contrato Yellowipe e trabalha na sua equipa. No Construa, a Yellowipe entrega o projeto.',
-      en: 'Yes. With Hire, the professional joins your company. With Augment, they stay on a Yellowipe contract and work in your team. With Build, Yellowipe delivers the project.',
-    },
+    q: 'Posso contratar o especialista em {name} diretamente?',
+    a: 'Sim. No modelo Contrate o profissional passa a fazer parte da sua empresa. No Reforce, fica com contrato Yellowipe e trabalha na sua equipa. No Construa, a Yellowipe entrega o projeto.',
   },
   {
-    q: {
-      pt: 'Usam ferramentas de IA no desenvolvimento com {name}?',
-      en: 'Do you use AI tools when working with {name}?',
-    },
-    a: {
-      pt: 'Sim, com assistentes como Claude Code, Cursor e GitHub Copilot, sempre com revisão por engenheiros seniores e dentro das regras de segurança da sua empresa.',
-      en: 'Yes, with assistants such as Claude Code, Cursor and GitHub Copilot, always reviewed by senior engineers and within your security rules.',
-    },
+    q: 'Usam ferramentas de IA no desenvolvimento com {name}?',
+    a: 'Sim, com assistentes como Claude Code, Cursor e GitHub Copilot, sempre com revisão por engenheiros seniores e dentro das regras de segurança da sua empresa.',
   },
 ];
 
 export const FAQ_CATEGORY: Record<TechCategory, FaqTpl[]> = {
   'front-end': [
     {
-      q: { pt: '{name} é uma boa escolha para SEO?', en: 'Is {name} good for SEO?' },
-      a: {
-        pt: 'Sim, quando a renderização é pensada desde o início: renderização no servidor ou estática, metadados corretos e Core Web Vitals controlados.',
-        en: 'Yes, when rendering is planned from day one: server or static rendering, correct metadata and controlled Core Web Vitals.',
-      },
+      q: '{name} é uma boa escolha para SEO?',
+      a: 'Sim, quando a renderização é pensada desde o início: renderização no servidor ou estática, metadados corretos e Core Web Vitals controlados.',
     },
     {
-      q: {
-        pt: 'Conseguem migrar o nosso front-end para {name}?',
-        en: 'Can you migrate our front-end to {name}?',
-      },
-      a: {
-        pt: 'Sim, por fases: os ecrãs novos já em {name} e os antigos migrados ao ritmo do produto, sem uma reescrita de uma só vez.',
-        en: 'Yes, in phases: new screens in {name} and old ones migrated at the product pace, with no big-bang rewrite.',
-      },
+      q: 'Conseguem migrar o nosso front-end para {name}?',
+      a: 'Sim, por fases: os ecrãs novos já em {name} e os antigos migrados ao ritmo do produto, sem uma reescrita de uma só vez.',
     },
   ],
   mobile: [
     {
-      q: { pt: 'Nativo ou multiplataforma?', en: 'Native or cross-platform?' },
-      a: {
-        pt: 'Depende do orçamento, da performance pedida e da equipa que vai manter a app. Recomendamos depois de uma descoberta curta.',
-        en: 'It depends on budget, required performance and who will maintain the app. We recommend after a short discovery.',
-      },
+      q: 'Nativo ou multiplataforma?',
+      a: 'Depende do orçamento, da performance pedida e da equipa que vai manter a app. Recomendamos depois de uma descoberta curta.',
     },
     {
-      q: { pt: 'Publicam a app nas lojas?', en: 'Do you publish the app to the stores?' },
-      a: {
-        pt: 'Sim, na conta da sua empresa na App Store e no Google Play, com versões beta antes de cada lançamento.',
-        en: 'Yes, in your company account on the App Store and Google Play, with beta builds before each release.',
-      },
+      q: 'Publicam a app nas lojas?',
+      a: 'Sim, na conta da sua empresa na App Store e no Google Play, com versões beta antes de cada lançamento.',
     },
   ],
   'back-end': [
     {
-      q: {
-        pt: 'Conseguem migrar um sistema antigo em {name}?',
-        en: 'Can you migrate a legacy {name} system?',
-      },
-      a: {
-        pt: 'Sim, por fases: avaliamos dependências, cobrimos o essencial com testes e migramos módulo a módulo, sem parar a operação.',
-        en: 'Yes, in phases: we map dependencies, cover the essentials with tests and migrate module by module without stopping operations.',
-      },
+      q: 'Conseguem migrar um sistema antigo em {name}?',
+      a: 'Sim, por fases: avaliamos dependências, cobrimos o essencial com testes e migramos módulo a módulo, sem parar a operação.',
     },
     {
-      q: { pt: 'Integram com o nosso ERP ou CRM?', en: 'Can you integrate with our ERP or CRM?' },
-      a: {
-        pt: 'Sim. Construímos integrações com filas de mensagens, retries e auditoria, para que nenhum dado se perca entre sistemas.',
-        en: 'Yes. We build integrations with message queues, retries and audit trails so no data is lost between systems.',
-      },
+      q: 'Integram com o nosso ERP ou CRM?',
+      a: 'Sim. Construímos integrações com filas de mensagens, retries e auditoria, para que nenhum dado se perca entre sistemas.',
     },
   ],
   devops: [
     {
-      q: {
-        pt: 'Conseguem introduzir {name} sem parar as entregas?',
-        en: 'Can you introduce {name} without stopping delivery?',
-      },
-      a: {
-        pt: 'Sim. Começamos por um serviço ou ambiente piloto, medimos o resultado e alargamos por fases, com documentação para a sua equipa.',
-        en: 'Yes. We start with one pilot service or environment, measure the result and expand in phases, with documentation for your team.',
-      },
+      q: 'Conseguem introduzir {name} sem parar as entregas?',
+      a: 'Sim. Começamos por um serviço ou ambiente piloto, medimos o resultado e alargamos por fases, com documentação para a sua equipa.',
     },
     {
-      q: {
-        pt: 'Trabalham em AWS, Azure e Google Cloud?',
-        en: 'Do you work on AWS, Azure and Google Cloud?',
-      },
-      a: {
-        pt: 'Sim, nas três e em infraestrutura própria. {name} funciona da mesma forma em todas.',
-        en: 'Yes, on all three and on-premise. {name} works the same way across them.',
-      },
+      q: 'Trabalham em AWS, Azure e Google Cloud?',
+      a: 'Sim, nas três e em infraestrutura própria. {name} funciona da mesma forma em todas.',
     },
   ],
   cloud: [
     {
-      q: { pt: 'Ajudam a reduzir a fatura de {name}?', en: 'Can you reduce our {name} bill?' },
-      a: {
-        pt: 'Sim. Começamos por dar visibilidade aos custos por equipa e serviço e depois eliminamos desperdício, com metas acordadas consigo.',
-        en: 'Yes. We first make costs visible by team and service, then remove waste against targets agreed with you.',
-      },
+      q: 'Ajudam a reduzir a fatura de {name}?',
+      a: 'Sim. Começamos por dar visibilidade aos custos por equipa e serviço e depois eliminamos desperdício, com metas acordadas consigo.',
     },
     {
-      q: {
-        pt: 'Trabalham com outras clouds além de {name}?',
-        en: 'Do you work with other clouds besides {name}?',
-      },
-      a: {
-        pt: 'Sim, AWS, Azure e Google Cloud, e também ambientes híbridos com infraestrutura própria.',
-        en: 'Yes: AWS, Azure and Google Cloud, plus hybrid set-ups with on-premise infrastructure.',
-      },
+      q: 'Trabalham com outras clouds além de {name}?',
+      a: 'Sim, AWS, Azure e Google Cloud, e também ambientes híbridos com infraestrutura própria.',
     },
   ],
   qa: [
     {
-      q: {
-        pt: 'Fazem testes manuais além da automação?',
-        en: 'Do you do manual testing as well as automation?',
-      },
-      a: {
-        pt: 'Sim. A nossa fábrica de testes cobre testes manuais, diagnóstico e automação sob pedido, e automatizamos primeiro o que se repete mais.',
-        en: 'Yes. Our testing factory covers manual testing, diagnostics and automation on demand, and we automate what repeats most first.',
-      },
+      q: 'Fazem testes manuais além da automação?',
+      a: 'Sim. A nossa fábrica de testes cobre testes manuais, diagnóstico e automação sob pedido, e automatizamos primeiro o que se repete mais.',
     },
     {
-      q: { pt: 'Quantos testes conseguem automatizar?', en: 'How many tests can you automate?' },
-      a: {
-        pt: 'Depende do produto. No caso Clever passámos de 32 para mais de 1.600 testes automatizados em seis meses.',
-        en: 'It depends on the product. At Clever we went from 32 to more than 1,600 automated tests in six months.',
-      },
+      q: 'Quantos testes conseguem automatizar?',
+      a: 'Depende do produto. No caso Clever passámos de 32 para mais de 1.600 testes automatizados em seis meses.',
     },
   ],
   data: [
     {
-      q: {
-        pt: 'Trabalham com dados na cloud e on-premise?',
-        en: 'Do you work with cloud and on-premise data?',
-      },
-      a: {
-        pt: 'Sim: AWS, Azure e Google Cloud, e também bases de dados e servidores próprios. Muitas plataformas combinam os dois.',
-        en: 'Yes: AWS, Azure and Google Cloud, plus your own databases and servers. Many platforms combine both.',
-      },
+      q: 'Trabalham com dados na cloud e on-premise?',
+      a: 'Sim: AWS, Azure e Google Cloud, e também bases de dados e servidores próprios. Muitas plataformas combinam os dois.',
     },
     {
-      q: {
-        pt: 'Ligam {name} aos nossos sistemas (ERP, CRM)?',
-        en: 'Can you connect {name} to our systems (ERP, CRM)?',
-      },
-      a: {
-        pt: 'Sim. Construímos a ingestão a partir do ERP, CRM, bases de dados e APIs, com cargas incrementais e alertas quando algo falha.',
-        en: 'Yes. We build ingestion from your ERP, CRM, databases and APIs, with incremental loads and alerts when something fails.',
-      },
+      q: 'Ligam {name} aos nossos sistemas (ERP, CRM)?',
+      a: 'Sim. Construímos a ingestão a partir do ERP, CRM, bases de dados e APIs, com cargas incrementais e alertas quando algo falha.',
     },
   ],
   database: [
     {
-      q: {
-        pt: 'Conseguem migrar a nossa base de dados para {name}?',
-        en: 'Can you migrate our database to {name}?',
-      },
-      a: {
-        pt: 'Sim. Avaliamos esquema, procedimentos e dependências, migramos por fases e validamos os dados antes de mudar a aplicação.',
-        en: 'Yes. We assess schema, procedures and dependencies, migrate in phases and validate data before switching the application.',
-      },
+      q: 'Conseguem migrar a nossa base de dados para {name}?',
+      a: 'Sim. Avaliamos esquema, procedimentos e dependências, migramos por fases e validamos os dados antes de mudar a aplicação.',
     },
     {
-      q: {
-        pt: 'Fazem administração contínua (DBA)?',
-        en: 'Do you provide ongoing database administration?',
-      },
-      a: {
-        pt: 'Sim, com um DBA na sua equipa (Reforce) ou com o serviço gerido pela Yellowipe, incluindo monitorização e backups.',
-        en: 'Yes, with a DBA in your team (Augment) or as a service managed by Yellowipe, including monitoring and backups.',
-      },
+      q: 'Fazem administração contínua (DBA)?',
+      a: 'Sim, com um DBA na sua equipa (Reforce) ou com o serviço gerido pela Yellowipe, incluindo monitorização e backups.',
     },
   ],
   enterprise: [
     {
-      q: {
-        pt: 'Fazem implementação de raiz ou só sustentação?',
-        en: 'Do you implement from scratch or only provide support?',
-      },
-      a: {
-        pt: 'As duas coisas: implementação por fases, evolução e sustentação (AMS), em projeto ou com consultores na sua equipa.',
-        en: 'Both: phased implementation, evolution and support (AMS), as a project or with consultants in your team.',
-      },
+      q: 'Fazem implementação de raiz ou só sustentação?',
+      a: 'As duas coisas: implementação por fases, evolução e sustentação (AMS), em projeto ou com consultores na sua equipa.',
     },
     {
-      q: {
-        pt: 'Como garantem que as atualizações de {name} não partem nada?',
-        en: 'How do you make sure {name} updates do not break anything?',
-      },
-      a: {
-        pt: 'Com ambientes de teste, testes de regressão automatizados e um plano de release acordado consigo.',
-        en: 'With test environments, automated regression tests and a release plan agreed with you.',
-      },
+      q: 'Como garantem que as atualizações de {name} não partem nada?',
+      a: 'Com ambientes de teste, testes de regressão automatizados e um plano de release acordado consigo.',
     },
   ],
   ai: [
     {
-      q: { pt: 'Os nossos dados ficam privados?', en: 'Does our data stay private?' },
-      a: {
-        pt: 'Sim. Usamos contas empresariais que não treinam modelos com os seus dados, alojamento na região que escolher e, quando é preciso, modelos na sua própria infraestrutura.',
-        en: 'Yes. We use business accounts that do not train models on your data, hosting in the region you choose and, when needed, models on your own infrastructure.',
-      },
+      q: 'Os nossos dados ficam privados?',
+      a: 'Sim. Usamos contas empresariais que não treinam modelos com os seus dados, alojamento na região que escolher e, quando é preciso, modelos na sua própria infraestrutura.',
     },
     {
-      q: {
-        pt: 'Conseguem começar com uma prova de conceito?',
-        en: 'Can you start with a proof of concept?',
-      },
-      a: {
-        pt: 'Sim: uma prova de conceito curta, com dados reais e critérios de sucesso acordados antes de investir em produção.',
-        en: 'Yes: a short proof of concept with real data and success criteria agreed before investing in production.',
-      },
+      q: 'Conseguem começar com uma prova de conceito?',
+      a: 'Sim: uma prova de conceito curta, com dados reais e critérios de sucesso acordados antes de investir em produção.',
     },
   ],
 };
@@ -1120,44 +621,32 @@ export const FAQ_CATEGORY: Record<TechCategory, FaqTpl[]> = {
 export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   'front-end': [
     {
-      role: { pt: 'Tech lead {name}', en: '{name} tech lead' },
-      bio: {
-        pt: 'Lidera equipas de front-end e define arquitetura, padrões e design system.',
-        en: 'Leads front-end teams and sets architecture, standards and design system.',
-      },
+      role: 'Tech lead {name}',
+      bio: 'Lidera equipas de front-end e define arquitetura, padrões e design system.',
       years: 11,
       city: 'Lisboa',
       market: 'PT',
       model: 'reforce',
     },
     {
-      role: { pt: 'Front-end sénior {name}', en: 'Senior {name} front-end developer' },
-      bio: {
-        pt: 'Interfaces rápidas e acessíveis para produtos com milhares de utilizadores.',
-        en: 'Fast, accessible interfaces for products with thousands of users.',
-      },
+      role: 'Front-end sénior {name}',
+      bio: 'Interfaces rápidas e acessíveis para produtos com milhares de utilizadores.',
       years: 8,
       city: 'São Paulo',
       market: 'BR',
       model: 'construa',
     },
     {
-      role: { pt: 'Full-stack {name}', en: 'Full-stack {name} developer' },
-      bio: {
-        pt: 'Da API ao ecrã, em produtos SaaS e portais de cliente.',
-        en: 'From API to screen, on SaaS products and customer portals.',
-      },
+      role: 'Full-stack {name}',
+      bio: 'Da API ao ecrã, em produtos SaaS e portais de cliente.',
       years: 7,
       city: 'Porto',
       market: 'PT',
       model: 'contrate',
     },
     {
-      role: { pt: 'QA automation front-end', en: 'Front-end QA automation engineer' },
-      bio: {
-        pt: 'Testes de componentes e end-to-end em pipelines de entrega contínua.',
-        en: 'Component and end-to-end tests in continuous delivery pipelines.',
-      },
+      role: 'QA automation front-end',
+      bio: 'Testes de componentes e end-to-end em pipelines de entrega contínua.',
       years: 6,
       city: 'Recife',
       market: 'BR',
@@ -1166,44 +655,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   mobile: [
     {
-      role: { pt: 'Tech lead mobile {name}', en: '{name} mobile tech lead' },
-      bio: {
-        pt: 'Lançou apps com milhões de downloads e lidera equipas mobile.',
-        en: 'Shipped apps with millions of downloads and leads mobile teams.',
-      },
+      role: 'Tech lead mobile {name}',
+      bio: 'Lançou apps com milhões de downloads e lidera equipas mobile.',
       years: 10,
       city: 'São Paulo',
       market: 'BR',
       model: 'construa',
     },
     {
-      role: { pt: 'Programador {name} sénior', en: 'Senior {name} developer' },
-      bio: {
-        pt: 'Apps estáveis, com atenção ao arranque, à memória e à bateria.',
-        en: 'Stable apps with attention to start-up, memory and battery.',
-      },
+      role: 'Programador {name} sénior',
+      bio: 'Apps estáveis, com atenção ao arranque, à memória e à bateria.',
       years: 8,
       city: 'Lisboa',
       market: 'PT',
       model: 'reforce',
     },
     {
-      role: { pt: 'Programador {name}', en: '{name} developer' },
-      bio: {
-        pt: 'Funcionalidades de ponta a ponta, da interface à integração com APIs.',
-        en: 'End-to-end features, from UI to API integration.',
-      },
+      role: 'Programador {name}',
+      bio: 'Funcionalidades de ponta a ponta, da interface à integração com APIs.',
       years: 5,
       city: 'Braga',
       market: 'PT',
       model: 'contrate',
     },
     {
-      role: { pt: 'QA mobile', en: 'Mobile QA engineer' },
-      bio: {
-        pt: 'Testes automáticos em dispositivos reais antes de cada publicação.',
-        en: 'Automated tests on real devices before every release.',
-      },
+      role: 'QA mobile',
+      bio: 'Testes automáticos em dispositivos reais antes de cada publicação.',
       years: 6,
       city: 'Curitiba',
       market: 'BR',
@@ -1212,44 +689,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   'back-end': [
     {
-      role: { pt: 'Tech lead {name}', en: '{name} tech lead' },
-      bio: {
-        pt: 'Liderou modernizações de sistemas críticos sem parar a operação.',
-        en: 'Led critical system modernizations without stopping operations.',
-      },
+      role: 'Tech lead {name}',
+      bio: 'Liderou modernizações de sistemas críticos sem parar a operação.',
       years: 12,
       city: 'Porto',
       market: 'PT',
       model: 'reforce',
     },
     {
-      role: { pt: 'Back-end sénior {name}', en: 'Senior {name} back-end developer' },
-      bio: {
-        pt: 'APIs de alto volume, com observabilidade e testes de contrato.',
-        en: 'High-volume APIs with observability and contract tests.',
-      },
+      role: 'Back-end sénior {name}',
+      bio: 'APIs de alto volume, com observabilidade e testes de contrato.',
       years: 9,
       city: 'São Paulo',
       market: 'BR',
       model: 'construa',
     },
     {
-      role: { pt: 'Full-stack {name}', en: 'Full-stack {name} developer' },
-      bio: {
-        pt: 'Back-offices e portais, do modelo de dados ao front-end.',
-        en: 'Back-offices and portals, from data model to front-end.',
-      },
+      role: 'Full-stack {name}',
+      bio: 'Back-offices e portais, do modelo de dados ao front-end.',
       years: 7,
       city: 'Lisboa',
       market: 'PT',
       model: 'contrate',
     },
     {
-      role: { pt: 'QA automation {name}', en: '{name} QA automation engineer' },
-      bio: {
-        pt: 'Testes de integração e de API a correr em cada pull request.',
-        en: 'Integration and API tests running on every pull request.',
-      },
+      role: 'QA automation {name}',
+      bio: 'Testes de integração e de API a correr em cada pull request.',
       years: 8,
       city: 'Recife',
       market: 'BR',
@@ -1258,44 +723,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   devops: [
     {
-      role: { pt: 'Engenheiro de plataforma {name}', en: '{name} platform engineer' },
-      bio: {
-        pt: 'Desenha plataformas internas que dão autonomia às equipas.',
-        en: 'Designs internal platforms that give teams autonomy.',
-      },
+      role: 'Engenheiro de plataforma {name}',
+      bio: 'Desenha plataformas internas que dão autonomia às equipas.',
       years: 11,
       city: 'Lisboa',
       market: 'PT',
       model: 'construa',
     },
     {
-      role: { pt: 'Engenheiro DevOps {name}', en: '{name} DevOps engineer' },
-      bio: {
-        pt: 'Pipelines e infraestrutura como código em ambientes de produção.',
-        en: 'Pipelines and infrastructure as code in production environments.',
-      },
+      role: 'Engenheiro DevOps {name}',
+      bio: 'Pipelines e infraestrutura como código em ambientes de produção.',
       years: 8,
       city: 'São Paulo',
       market: 'BR',
       model: 'reforce',
     },
     {
-      role: { pt: 'SRE {name}', en: '{name} SRE' },
-      bio: {
-        pt: 'Fiabilidade, alertas e resposta a incidentes.',
-        en: 'Reliability, alerting and incident response.',
-      },
+      role: 'SRE {name}',
+      bio: 'Fiabilidade, alertas e resposta a incidentes.',
       years: 9,
       city: 'Porto',
       market: 'PT',
       model: 'reforce',
     },
     {
-      role: { pt: 'DevSecOps {name}', en: '{name} DevSecOps engineer' },
-      bio: {
-        pt: 'Segurança integrada no pipeline, das imagens aos segredos.',
-        en: 'Security built into the pipeline, from images to secrets.',
-      },
+      role: 'DevSecOps {name}',
+      bio: 'Segurança integrada no pipeline, das imagens aos segredos.',
       years: 7,
       city: 'Curitiba',
       market: 'BR',
@@ -1304,44 +757,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   cloud: [
     {
-      role: { pt: 'Arquiteto cloud {name}', en: '{name} cloud architect' },
-      bio: {
-        pt: 'Desenha plataformas seguras e com custos sob controlo.',
-        en: 'Designs secure platforms with costs under control.',
-      },
+      role: 'Arquiteto cloud {name}',
+      bio: 'Desenha plataformas seguras e com custos sob controlo.',
       years: 12,
       city: 'Lisboa',
       market: 'PT',
       model: 'construa',
     },
     {
-      role: { pt: 'Engenheiro DevOps {name}', en: '{name} DevOps engineer' },
-      bio: {
-        pt: 'Pipelines, infraestrutura como código e publicação contínua.',
-        en: 'Pipelines, infrastructure as code and continuous delivery.',
-      },
+      role: 'Engenheiro DevOps {name}',
+      bio: 'Pipelines, infraestrutura como código e publicação contínua.',
       years: 8,
       city: 'São Paulo',
       market: 'BR',
       model: 'reforce',
     },
     {
-      role: { pt: 'SRE {name}', en: '{name} SRE' },
-      bio: {
-        pt: 'Monitorização, alertas e resposta a incidentes em produção.',
-        en: 'Monitoring, alerting and incident response in production.',
-      },
+      role: 'SRE {name}',
+      bio: 'Monitorização, alertas e resposta a incidentes em produção.',
       years: 9,
       city: 'Porto',
       market: 'PT',
       model: 'reforce',
     },
     {
-      role: { pt: 'Engenheiro de plataforma {name}', en: '{name} platform engineer' },
-      bio: {
-        pt: 'Ferramentas internas que dão autonomia às equipas de produto.',
-        en: 'Internal tooling that gives product teams autonomy.',
-      },
+      role: 'Engenheiro de plataforma {name}',
+      bio: 'Ferramentas internas que dão autonomia às equipas de produto.',
       years: 7,
       city: 'Florianópolis',
       market: 'BR',
@@ -1350,44 +791,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   qa: [
     {
-      role: { pt: 'QA lead {name}', en: '{name} QA lead' },
-      bio: {
-        pt: 'Define a estratégia de qualidade e lidera a automação.',
-        en: 'Sets the quality strategy and leads automation.',
-      },
+      role: 'QA lead {name}',
+      bio: 'Define a estratégia de qualidade e lidera a automação.',
       years: 10,
       city: 'Lisboa',
       market: 'PT',
       model: 'construa',
     },
     {
-      role: { pt: 'QA automation sénior {name}', en: 'Senior {name} QA automation engineer' },
-      bio: {
-        pt: 'Suites estáveis e rápidas que correm em paralelo no pipeline.',
-        en: 'Stable, fast suites running in parallel in the pipeline.',
-      },
+      role: 'QA automation sénior {name}',
+      bio: 'Suites estáveis e rápidas que correm em paralelo no pipeline.',
       years: 8,
       city: 'São Paulo',
       market: 'BR',
       model: 'reforce',
     },
     {
-      role: { pt: 'SDET {name}', en: '{name} SDET' },
-      bio: {
-        pt: 'Ferramentas de teste, dados de teste e ambientes efémeros.',
-        en: 'Test tooling, test data and ephemeral environments.',
-      },
+      role: 'SDET {name}',
+      bio: 'Ferramentas de teste, dados de teste e ambientes efémeros.',
       years: 7,
       city: 'Porto',
       market: 'PT',
       model: 'reforce',
     },
     {
-      role: { pt: 'QA automation {name}', en: '{name} QA automation engineer' },
-      bio: {
-        pt: 'Testes end-to-end e de API para produtos web e mobile.',
-        en: 'End-to-end and API tests for web and mobile products.',
-      },
+      role: 'QA automation {name}',
+      bio: 'Testes end-to-end e de API para produtos web e mobile.',
       years: 5,
       city: 'Recife',
       market: 'BR',
@@ -1396,44 +825,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   data: [
     {
-      role: { pt: 'Arquiteto de dados {name}', en: '{name} data architect' },
-      bio: {
-        pt: 'Desenha plataformas de dados que crescem com o negócio.',
-        en: 'Designs data platforms that grow with the business.',
-      },
+      role: 'Arquiteto de dados {name}',
+      bio: 'Desenha plataformas de dados que crescem com o negócio.',
       years: 12,
       city: 'Lisboa',
       market: 'PT',
       model: 'construa',
     },
     {
-      role: { pt: 'Engenheiro de dados sénior {name}', en: 'Senior {name} data engineer' },
-      bio: {
-        pt: 'Pipelines de alto volume, testados e monitorizados.',
-        en: 'High-volume pipelines, tested and monitored.',
-      },
+      role: 'Engenheiro de dados sénior {name}',
+      bio: 'Pipelines de alto volume, testados e monitorizados.',
       years: 8,
       city: 'São Paulo',
       market: 'BR',
       model: 'reforce',
     },
     {
-      role: { pt: 'Analytics engineer {name}', en: '{name} analytics engineer' },
-      bio: {
-        pt: 'Modelos de dados prontos para relatórios e dashboards.',
-        en: 'Data models ready for reports and dashboards.',
-      },
+      role: 'Analytics engineer {name}',
+      bio: 'Modelos de dados prontos para relatórios e dashboards.',
       years: 6,
       city: 'Porto',
       market: 'PT',
       model: 'contrate',
     },
     {
-      role: { pt: 'DataOps {name}', en: '{name} DataOps engineer' },
-      bio: {
-        pt: 'Automação, observabilidade e custos da plataforma de dados.',
-        en: 'Automation, observability and cost of the data platform.',
-      },
+      role: 'DataOps {name}',
+      bio: 'Automação, observabilidade e custos da plataforma de dados.',
       years: 7,
       city: 'Recife',
       market: 'BR',
@@ -1442,44 +859,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   database: [
     {
-      role: { pt: 'DBA sénior {name}', en: 'Senior {name} DBA' },
-      bio: {
-        pt: 'Performance, replicação e recuperação em sistemas críticos.',
-        en: 'Performance, replication and recovery on critical systems.',
-      },
+      role: 'DBA sénior {name}',
+      bio: 'Performance, replicação e recuperação em sistemas críticos.',
       years: 13,
       city: 'Lisboa',
       market: 'PT',
       model: 'reforce',
     },
     {
-      role: { pt: 'Arquiteto de dados {name}', en: '{name} data architect' },
-      bio: {
-        pt: 'Modelos de dados e migrações sem perda de informação.',
-        en: 'Data models and migrations without data loss.',
-      },
+      role: 'Arquiteto de dados {name}',
+      bio: 'Modelos de dados e migrações sem perda de informação.',
       years: 11,
       city: 'São Paulo',
       market: 'BR',
       model: 'construa',
     },
     {
-      role: { pt: 'Programador SQL {name}', en: '{name} SQL developer' },
-      bio: {
-        pt: 'Procedimentos, consultas e relatórios otimizados.',
-        en: 'Optimized procedures, queries and reports.',
-      },
+      role: 'Programador SQL {name}',
+      bio: 'Procedimentos, consultas e relatórios otimizados.',
       years: 7,
       city: 'Porto',
       market: 'PT',
       model: 'contrate',
     },
     {
-      role: { pt: 'DBA cloud {name}', en: '{name} cloud DBA' },
-      bio: {
-        pt: 'Bases de dados geridas na cloud, com custos sob controlo.',
-        en: 'Managed cloud databases with costs under control.',
-      },
+      role: 'DBA cloud {name}',
+      bio: 'Bases de dados geridas na cloud, com custos sob controlo.',
       years: 8,
       city: 'Curitiba',
       market: 'BR',
@@ -1488,44 +893,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   enterprise: [
     {
-      role: { pt: 'Arquiteto de soluções {name}', en: '{name} solution architect' },
-      bio: {
-        pt: 'Desenha a solução e as integrações com o resto dos sistemas.',
-        en: 'Designs the solution and its integrations with other systems.',
-      },
+      role: 'Arquiteto de soluções {name}',
+      bio: 'Desenha a solução e as integrações com o resto dos sistemas.',
       years: 13,
       city: 'Lisboa',
       market: 'PT',
       model: 'construa',
     },
     {
-      role: { pt: 'Consultor funcional {name} sénior', en: 'Senior {name} functional consultant' },
-      bio: {
-        pt: 'Traduz processos de negócio em configuração e requisitos.',
-        en: 'Turns business processes into configuration and requirements.',
-      },
+      role: 'Consultor funcional {name} sénior',
+      bio: 'Traduz processos de negócio em configuração e requisitos.',
       years: 10,
       city: 'São Paulo',
       market: 'BR',
       model: 'reforce',
     },
     {
-      role: { pt: 'Programador {name}', en: '{name} developer' },
-      bio: {
-        pt: 'Extensões, relatórios e integrações à medida.',
-        en: 'Custom extensions, reports and integrations.',
-      },
+      role: 'Programador {name}',
+      bio: 'Extensões, relatórios e integrações à medida.',
       years: 7,
       city: 'Porto',
       market: 'PT',
       model: 'contrate',
     },
     {
-      role: { pt: 'Tester funcional {name}', en: '{name} functional tester' },
-      bio: {
-        pt: 'Testes de regressão e de aceitação em cada release.',
-        en: 'Regression and acceptance testing on every release.',
-      },
+      role: 'Tester funcional {name}',
+      bio: 'Testes de regressão e de aceitação em cada release.',
       years: 6,
       city: 'Recife',
       market: 'BR',
@@ -1534,44 +927,32 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
   ],
   ai: [
     {
-      role: { pt: 'Engenheiro de IA {name}', en: '{name} AI engineer' },
-      bio: {
-        pt: 'Leva assistentes e agentes da prova de conceito à produção.',
-        en: 'Takes assistants and agents from proof of concept to production.',
-      },
+      role: 'Engenheiro de IA {name}',
+      bio: 'Leva assistentes e agentes da prova de conceito à produção.',
       years: 9,
       city: 'Lisboa',
       market: 'PT',
       model: 'construa',
     },
     {
-      role: { pt: 'Engenheiro de machine learning', en: 'Machine learning engineer' },
-      bio: {
-        pt: 'Treino, avaliação e serviço de modelos em produção.',
-        en: 'Training, evaluation and serving of models in production.',
-      },
+      role: 'Engenheiro de machine learning',
+      bio: 'Treino, avaliação e serviço de modelos em produção.',
       years: 8,
       city: 'São Paulo',
       market: 'BR',
       model: 'reforce',
     },
     {
-      role: { pt: 'Cientista de dados', en: 'Data scientist' },
-      bio: {
-        pt: 'Transforma perguntas de negócio em modelos e métricas.',
-        en: 'Turns business questions into models and metrics.',
-      },
+      role: 'Cientista de dados',
+      bio: 'Transforma perguntas de negócio em modelos e métricas.',
       years: 7,
       city: 'Porto',
       market: 'PT',
       model: 'contrate',
     },
     {
-      role: { pt: 'Engenheiro MLOps', en: 'MLOps engineer' },
-      bio: {
-        pt: 'Pipelines, monitorização e custos de modelos em produção.',
-        en: 'Pipelines, monitoring and cost of models in production.',
-      },
+      role: 'Engenheiro MLOps',
+      bio: 'Pipelines, monitorização e custos de modelos em produção.',
       years: 7,
       city: 'Recife',
       market: 'BR',
@@ -1582,32 +963,20 @@ export const PROFILES: Record<TechCategory, ProfileTpl[]> = {
 
 export const STEPS: { t: Two; x: Two }[] = [
   {
-    t: { pt: 'Conversa', en: 'Call' },
-    x: {
-      pt: 'Percebemos a stack, o objetivo e o modelo que faz sentido.',
-      en: 'We understand the stack, the goal and the right model.',
-    },
+    t: 'Conversa',
+    x: 'Percebemos a stack, o objetivo e o modelo que faz sentido.',
   },
   {
-    t: { pt: 'Proposta', en: 'Proposal' },
-    x: {
-      pt: 'Perfis avaliados em {name} ou plano de projeto.',
-      en: 'Profiles assessed in {name}, or a project plan.',
-    },
+    t: 'Proposta',
+    x: 'Perfis avaliados em {name} ou plano de projeto.',
   },
   {
-    t: { pt: 'Arranque', en: 'Kick-off' },
-    x: {
-      pt: 'Onboarding no seu repositório, pipelines e rituais.',
-      en: 'Onboarding into your repository, pipelines and rituals.',
-    },
+    t: 'Arranque',
+    x: 'Onboarding no seu repositório, pipelines e rituais.',
   },
   {
-    t: { pt: 'Acompanhamento', en: 'Follow-up' },
-    x: {
-      pt: 'Pontos de situação e métricas de entrega desde a primeira sprint.',
-      en: 'Status checks and delivery metrics from the first sprint.',
-    },
+    t: 'Acompanhamento',
+    x: 'Pontos de situação e métricas de entrega desde a primeira sprint.',
   },
 ];
 
@@ -1615,36 +984,27 @@ export const STEPS: { t: Two; x: Two }[] = [
 export const MODELS: { id: ModelId; title: Two; text: Two; yw: Two; cl: Two; cta: Two }[] = [
   {
     id: 'contrate',
-    title: { pt: 'Contratar {role}', en: 'Hire {role}' },
-    text: {
-      pt: 'Recrutamos para contratação permanente, com avaliação técnica em {name}.',
-      en: 'We recruit for permanent roles, with a technical assessment in {name}.',
-    },
-    yw: { pt: 'Encontra, avalia e apresenta', en: 'Finds, assesses and presents' },
-    cl: { pt: 'Contrata e gere o profissional', en: 'Hires and manages the professional' },
-    cta: { pt: 'Abrir uma vaga', en: 'Open a role' },
+    title: 'Contratar {role}',
+    text: 'Recrutamos para contratação permanente, com avaliação técnica em {name}.',
+    yw: 'Encontra, avalia e apresenta',
+    cl: 'Contrata e gere o profissional',
+    cta: 'Abrir uma vaga',
   },
   {
     id: 'reforce',
-    title: { pt: 'Consultores {name} na sua equipa', en: '{name} consultants in your team' },
-    text: {
-      pt: 'Especialistas seniores integrados na sua equipa, com as suas ferramentas e prioridades.',
-      en: 'Senior specialists embedded in your team, with your tools and priorities.',
-    },
-    yw: { pt: 'Garante as pessoas e a substituição', en: 'Guarantees people and replacement' },
-    cl: { pt: 'Gere o dia a dia', en: 'Runs the day to day' },
-    cta: { pt: 'Pedir perfis', en: 'Request profiles' },
+    title: 'Consultores {name} na sua equipa',
+    text: 'Especialistas seniores integrados na sua equipa, com as suas ferramentas e prioridades.',
+    yw: 'Garante as pessoas e a substituição',
+    cl: 'Gere o dia a dia',
+    cta: 'Pedir perfis',
   },
   {
     id: 'construa',
-    title: { pt: 'Projeto {name} de ponta a ponta', en: 'End-to-end {name} project' },
-    text: {
-      pt: 'Uma equipa Yellowipe com gestor de projeto constrói ou moderniza a sua solução.',
-      en: 'A Yellowipe team with a project manager builds or modernizes your solution.',
-    },
-    yw: { pt: 'Responde pela entrega', en: 'Owns delivery' },
-    cl: { pt: 'Define objetivos e aprova', en: 'Sets goals and approves' },
-    cta: { pt: 'Falar do projeto', en: 'Discuss the project' },
+    title: 'Projeto {name} de ponta a ponta',
+    text: 'Uma equipa Yellowipe com gestor de projeto constrói ou moderniza a sua solução.',
+    yw: 'Responde pela entrega',
+    cl: 'Define objetivos e aprova',
+    cta: 'Falar do projeto',
   },
 ];
 
@@ -1661,177 +1021,3 @@ export const RELATED_SERVICES: Record<TechCategory, string[]> = {
   enterprise: ['aplicacoes-enterprise', 'modernizacao-de-sistemas', 'automacao-de-testes'],
   ai: ['ia-generativa', 'agentes-de-ia', 'desenvolvimento-ia-ml'],
 };
-
-/**
- * Etiquetas das camadas e dos serviços escritas em português em stacks.ts. Nomes de
- * tecnologias ficam iguais em todos os idiomas; estas traduzem-se nas páginas em inglês
- * (o pt-BR passa por ptToBr). Uma etiqueta nova em português entra aqui também:
- * tests/unit/technologies.test.ts falha se aparecer português numa página em inglês.
- */
-export const CHIP_EN: Record<string, string> = {
-  Monólito: 'Monolith',
-  'Monólito → serviços': 'Monolith → services',
-  Módulos: 'Modules',
-  Regressão: 'Regression',
-  Pirâmide: 'Test pyramid',
-  Métricas: 'Metrics',
-  Paralelização: 'Parallelization',
-  Exploratórios: 'Exploratory',
-  'Matriz de dispositivos': 'Device matrix',
-  Distribuído: 'Distributed',
-  Cenários: 'Scenarios',
-  'Dados de teste': 'Test data',
-  'Exploratórios de API': 'Exploratory API testing',
-  Integrações: 'Integrations',
-  'Modelo semântico': 'Semantic model',
-  Certificação: 'Certification',
-  Agregações: 'Aggregations',
-  'Bases de dados': 'Databases',
-  'Testes de dados': 'Data tests',
-  'Cargas diárias': 'Daily loads',
-  Aplicações: 'Applications',
-  Tópicos: 'Topics',
-  Microsserviços: 'Microservices',
-  Partições: 'Partitions',
-  Retenção: 'Retention',
-  Índices: 'Indexes',
-  Monitorização: 'Monitoring',
-  'Planos de execução': 'Execution plans',
-  Modelação: 'Modeling',
-  Planos: 'Plans',
-  'Serviço ao cliente': 'Customer service',
-  Citações: 'Citations',
-  Memória: 'Memory',
-  'Aprovação humana': 'Human approval',
-  Classificação: 'Classification',
-  Extração: 'Extraction',
-  'Custo de GPU': 'GPU cost',
-  'Dados na empresa': 'On-premises data',
-  'Dados históricos': 'Historical data',
-  Previsão: 'Forecasting',
-  Visão: 'Computer vision',
-  Deteção: 'Detection',
-  'Dados anonimizados': 'Anonymized data',
-};
-
-/**
- * pt-PT → pt-BR. Glossário curado; o resultado é revisto por amostragem
- * (docs/14-tecnologias.md, "Revisão pt-BR"). Aplica-se só a texto de modelos.
- */
-const BR: [string, string][] = [
-  // Frases primeiro: "ecrã" é masculino e "tela" feminino.
-  ['Cada ecrã é desenhado de raiz', 'Cada tela é desenhada do zero'],
-  ['os ecrãs novos já em', 'as telas novas já em'],
-  ['e os antigos migrados', 'e as antigas migradas'],
-  ['Da API ao ecrã', 'Da API à tela'],
-  [
-    'A app tem más avaliações e ninguém lhe quer mexer',
-    'O app tem avaliações ruins e ninguém quer mexer nele',
-  ],
-  ['A app fecha sozinha', 'O app fecha sozinho'],
-  ['A app não fala com', 'O app não conversa com'],
-  ['falta a app', 'falta o app'],
-  ['Publicam a app', 'Vocês publicam o app'],
-  ['manutenção contínua da app', 'manutenção contínua do app'],
-  [
-    'Cada versão funciona num telemóvel e falha noutro',
-    'Cada versão funciona em um celular e falha em outro',
-  ],
-  ['No caso Clever', 'No case da Clever'],
-  ['sob controlo', 'sob controle'],
-  ['Controlo', 'Controle'],
-  ['Modelação', 'Modelagem'],
-  ['modelação', 'modelagem'],
-  ['Deteção', 'Detecção'],
-  ['deteção', 'detecção'],
-  ['registos', 'registros'],
-  ['Registos', 'Registros'],
-  ['Registo', 'Registro'],
-  ['Utilizadores', 'Usuários'],
-  ['utilizador', 'usuário'],
-  ['Utilizador', 'Usuário'],
-  ['telemóveis', 'celulares'],
-  ['stock', 'estoque'],
-  ['de raiz', 'do zero'],
-  ['folhas de cálculo', 'planilhas'],
-  ['Os pedidos de suporte acumulam-se', 'Os chamados de suporte se acumulam'],
-  ['sob pedido', 'sob demanda'],
-  ['cifragem', 'criptografia'],
-  ['controlo', 'controle'],
-  ['monitorizados', 'monitorados'],
-  ['folhas de Excel', 'planilhas de Excel'],
-  ['Bases de dados geridas', 'Bancos de dados gerenciados'],
-  ['A base de dados antiga', 'O banco de dados antigo'],
-  ['Uma falha na base de dados', 'Uma falha no banco de dados'],
-  ['pela base de dados', 'pelo banco de dados'],
-  ['a nossa base de dados', 'o nosso banco de dados'],
-  ['bases de dados', 'bancos de dados'],
-  ['Bases de dados', 'Bancos de dados'],
-  // Base de dados → banco de dados (masculino): artigos e contrações primeiro.
-  ['na base de dados', 'no banco de dados'],
-  ['da base de dados', 'do banco de dados'],
-  ['à base de dados', 'ao banco de dados'],
-  ['a base de dados', 'o banco de dados'],
-  ['base de dados', 'banco de dados'],
-  ['Base de dados', 'Banco de dados'],
-  ['com metas acordadas consigo', 'com metas acordadas com você'],
-  ['acordado consigo', 'acordado com você'],
-  ['sem desenho', 'sem planejamento'],
-  ['Desenho', 'Design'],
-  ['desenho', 'design'],
-  ['Desenha', 'Projeta'],
-  ['Arranque', 'Início'],
-  ['arranque', 'inicialização'],
-  ['Percebemos', 'Entendemos'],
-  ['portátil', 'notebook'],
-  ['ficheiros', 'arquivos'],
-  ['ficheiro', 'arquivo'],
-  ['num', 'em um'],
-  ['numa', 'em uma'],
-  ['equipas', 'equipes'],
-  ['equipa', 'equipe'],
-  ['Equipas', 'Equipes'],
-  ['Equipa', 'Equipe'],
-  ['programadores', 'desenvolvedores'],
-  ['programador', 'desenvolvedor'],
-  ['Programador', 'Desenvolvedor'],
-  ['utilizadores', 'usuários'],
-  ['ecrãs', 'telas'],
-  ['ecrã', 'tela'],
-  ['telemóvel', 'celular'],
-  ['e gere', 'e gerencia'],
-  ['Gere o dia a dia', 'Gerencia o dia a dia'],
-  ['geridos', 'gerenciados'],
-  ['contacto', 'contato'],
-  ['registo', 'registro'],
-  ['facto', 'fato'],
-  ['Contentores', 'Contêineres'],
-  ['contentores', 'contêineres'],
-  ['A sua empresa', 'Sua empresa'],
-  ['passámos', 'passamos'],
-  ['partem', 'quebram'],
-  ['parte algo', 'quebra algo'],
-  ['conformes com', 'em conformidade com'],
-  ['sénior', 'sênior'],
-  ['monitorização', 'monitoramento'],
-  ['Monitorização', 'Monitoramento'],
-  ['sobredimensionada', 'superdimensionada'],
-  ['fatura', 'conta'],
-  ['Pontos de situação', 'Reuniões de status'],
-  ['descoberta', 'discovery'],
-];
-const BR_RE = BR.map(
-  ([from, to]) => [new RegExp(`(?<!\\p{L})${from}(?!\\p{L})`, 'gu'), to] as const,
-);
-/** "está a chegar" → "está chegando": em pt-BR o progressivo usa o gerúndio. */
-const PROGRESSIVE =
-  /(?<!\p{L})(est(?:á|ão|amos|ou|ava|avam|ar|eja|ejam)|continua(?:m)?|anda(?:m)?|fica(?:m)?) a (\p{L}+?)(ar|er|ir)(?!\p{L})/gu;
-
-export function ptToBr(text: string): string {
-  const out = BR_RE.reduce((s, [re, to]) => s.replace(re, to), text);
-  return out.replace(
-    PROGRESSIVE,
-    (_m, aux: string, stem: string, end: string) =>
-      `${aux} ${stem}${end === 'ar' ? 'ando' : end === 'er' ? 'endo' : 'indo'}`,
-  );
-}

@@ -1,0 +1,1623 @@
+{
+  "models": {
+    "contrate": {
+      "name": "Hire",
+      "slug": "it-recruitment",
+      "keyword": "IT recruitment",
+      "promise": "Our recruiters find the right talent for your team, for permanent hiring.",
+      "idealFor": "Ideal for hard-to-find profiles and teams growing steadily.",
+      "howItWorks": [
+        {
+          "title": "Briefing",
+          "text": "We define the profile, stack, seniority and terms."
+        },
+        {
+          "title": "Search",
+          "text": "Active sourcing and candidate screening."
+        },
+        {
+          "title": "Shortlist",
+          "text": "Technically assessed candidates, with assessment notes."
+        },
+        {
+          "title": "Hiring",
+          "text": "We support interviews, the offer and onboarding."
+        }
+      ],
+      "faq": {
+        "0": {
+          "q": "Which profiles do you recruit?",
+          "a": "Developers, QA, DevOps, data and AI, from junior to architect, and leaders such as tech leads, engineering managers and CTOs."
+        },
+        "1": {
+          "q": "How do you assess candidates technically?",
+          "a": "With technical interviews run by engineers and, when it makes sense, hands-on exercises. You receive the assessment notes with the shortlist."
+        },
+        "2": {
+          "q": "How long does it take?",
+          "a": "[Average time to shortlist to be confirmed with the recruitment team.]"
+        },
+        "3": {
+          "q": "How does pricing work?",
+          "a": "[Pricing model to be confirmed: percentage of annual salary, retainer or a mix.]"
+        },
+        "4": {
+          "q": "What is the difference between Hire, Augment and Build?",
+          "a": "With Hire, the person joins your company. With Augment, Yellowipe specialists work in your team. With Build, a Yellowipe team delivers the solution."
+        }
+      },
+      "page": {
+        "tagline": "The right talent, hired permanently.",
+        "hero": {
+          "h1": "Our recruiters find",
+          "h1Highlight": "your next hire.",
+          "lead": "Our team of specialist tech recruiters searches for, assesses and presents the right candidates. You hire directly: the professional joins your company.",
+          "badges": [
+            "Recruiters who specialize in tech",
+            "Technical assessment before the shortlist",
+            "Portugal, Brazil and the US"
+          ],
+          "cta": "Open a role",
+          "vizLabel": "Illustration: Yellowipe recruiters assess candidates and your company hires the chosen one directly."
+        },
+        "viz": {
+          "scene": "contrate",
+          "actor": "Yellowipe recruiters",
+          "actorNote": "Active search in Portugal, Brazil and the US",
+          "waiting": "Waiting for the hire",
+          "doneTitle": "Ana S. · Java tech lead",
+          "doneNote": "Hired directly by your company",
+          "working": "Assessing",
+          "ready": "Shortlist ready ✓",
+          "job": "Role · Java tech lead",
+          "stages": ["Screening", "Technical test", "Interview"],
+          "candidates": [
+            {
+              "initials": "AS",
+              "name": "Ana S.",
+              "meta": "Java · Spring · 9 years",
+              "stage": "Recommended"
+            },
+            {
+              "initials": "BT",
+              "name": "Bruno T.",
+              "meta": "Java · Kotlin · 7 years",
+              "stage": "Interview"
+            },
+            {
+              "initials": "CL",
+              "name": "Carla L.",
+              "meta": "Java · AWS · 8 years",
+              "stage": "Technical test"
+            },
+            {
+              "initials": "DM",
+              "name": "Diogo M.",
+              "meta": "PHP · 4 years",
+              "stage": "Screening"
+            }
+          ]
+        },
+        "whoLead": "With Hire, Yellowipe finds and assesses. Once hired, the professional is part of your team.",
+        "why": {
+          "eyebrow": "Why Hire",
+          "title": "Hire better, without pausing your team to recruit.",
+          "lead": "We run the whole process. Your team only interviews people who have already passed the technical assessment.",
+          "items": [
+            {
+              "icon": "search",
+              "title": "Tech recruiters",
+              "text": "They speak the language of each stack and can tell a senior engineer from a well-written resume."
+            },
+            {
+              "icon": "check",
+              "title": "Technical assessment",
+              "text": "Every candidate on the shortlist has been technically assessed before reaching you."
+            },
+            {
+              "icon": "clock",
+              "title": "Less of your team’s time",
+              "text": "We handle sourcing, screening and scheduling. Your team only joins the final interviews."
+            },
+            {
+              "icon": "target",
+              "title": "Passive talent",
+              "text": "We reach professionals who aren’t responding to job ads."
+            },
+            {
+              "icon": "globe",
+              "title": "Three markets",
+              "text": "Recruitment in Portugal, in Brazil and for teams in the United States."
+            },
+            {
+              "icon": "loop",
+              "title": "Follow-up after the hire",
+              "text": "We follow onboarding during the first months to confirm it was the right choice."
+            }
+          ]
+        },
+        "formats": {
+          "title": "From your first developer to technical leadership.",
+          "lead": "The same process, adjusted to the seniority and confidentiality of each role.",
+          "items": [
+            {
+              "tag": "Roles",
+              "title": "Profiles for your team",
+              "text": "Developers, QA, DevOps and data professionals for permanent hiring.",
+              "ticks": [
+                "From junior to architect",
+                "Technically assessed shortlist",
+                "One or several roles in parallel"
+              ]
+            },
+            {
+              "tag": "Leadership",
+              "title": "Technology leaders",
+              "text": "Tech leads, engineering managers and CTOs, through direct and confidential search.",
+              "ticks": [
+                "Direct, discreet search",
+                "Technical and leadership assessment",
+                "Onboarding follow-up"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "title": "From open role to hire.",
+          "lead": "A clear process, with status updates at every stage."
+        },
+        "stack": {
+          "title": "We recruit for any stack your team uses.",
+          "lead": "Our recruiters work with engineers who assess each candidate in the role’s technology, from the most common to legacy systems.",
+          "cta": "Recruit for my stack"
+        },
+        "comparison": {
+          "title": "Why not recruit on your own?",
+          "columns": ["Yellowipe · Hire", "In-house recruiting", "Generalist agency"],
+          "rows": [
+            {
+              "label": "Technical knowledge",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Tech recruiters"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Depends on the team"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Limited"
+                }
+              ]
+            },
+            {
+              "label": "Technical assessment before the shortlist",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Yes"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Your team’s time"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Rarely"
+                }
+              ]
+            },
+            {
+              "label": "Access to passive talent",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Yes"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Limited"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Partial"
+                }
+              ]
+            },
+            {
+              "label": "Your team’s time",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Final interviews only"
+                },
+                {
+                  "tone": "bad",
+                  "text": "The whole process"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Lots of screening"
+                }
+              ]
+            },
+            {
+              "label": "Markets",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Portugal, Brazil and the US"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Local"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Varies"
+                }
+              ]
+            }
+          ]
+        },
+        "faqTitle": "What people ask us about recruitment.",
+        "finalTitle": "Which profile do you need to hire?"
+      },
+      "seo": {
+        "title": "IT recruitment and tech hiring | Yellowipe",
+        "description": "Specialized tech recruitment for US and European teams: developers, data, cloud and leadership roles, with a technically assessed shortlist."
+      }
+    },
+    "reforce": {
+      "name": "Augment",
+      "slug": "staff-augmentation",
+      "keyword": "Staff augmentation",
+      "promise": "Our specialists join your team and work with your tools and processes.",
+      "idealFor": "Ideal for adding capacity now, without growing headcount.",
+      "howItWorks": [
+        {
+          "title": "First call",
+          "text": "We get to know the team, the stack and what needs to ship."
+        },
+        {
+          "title": "Profiles",
+          "text": "We present technically assessed candidates within [x] days."
+        },
+        {
+          "title": "Interviews",
+          "text": "Interview anyone you like. Only move forward with your picks."
+        },
+        {
+          "title": "Onboarding",
+          "text": "Onboarding into your tools and ongoing follow-up."
+        }
+      ],
+      "faq": {
+        "0": {
+          "q": "What is staff augmentation in the Augment model?",
+          "a": "Yellowipe professionals who work inside your team, with your tools and priorities. The contract is with us; the day-to-day is with you."
+        },
+        "1": {
+          "q": "What is the difference between staffing and a dedicated team?",
+          "a": "With staffing, you manage the specialists as part of your team. With a dedicated team, a Yellowipe tech lead organizes the work around the priorities you set."
+        },
+        "2": {
+          "q": "How long does it take to have someone on the team?",
+          "a": "[Average time to first profiles and to start date to be confirmed.]"
+        },
+        "3": {
+          "q": "Do your professionals use AI tools?",
+          "a": "Yes. They work with assistants such as Claude Code, Cursor and GitHub Copilot, always within your company’s security rules."
+        },
+        "4": {
+          "q": "How much does it cost?",
+          "a": "It depends on the profiles, seniority and duration. We send a proposal after the first call."
+        }
+      },
+      "page": {
+        "tagline": "Specialists embedded in your team.",
+        "hero": {
+          "h1": "Our consultants,",
+          "h1Highlight": "working inside your team.",
+          "lead": "Yellowipe technology consultants join your team and work with your tools and priorities. You manage the work; we handle the contract, follow-up and replacements.",
+          "badges": [
+            "Technical selection by senior engineers",
+            "Overlapping hours with Europe and the US",
+            "AI-assisted development"
+          ],
+          "cta": "Request profiles",
+          "vizLabel": "Illustration: Yellowipe consultants inside the client’s team, supported by a Yellowipe account manager."
+        },
+        "viz": {
+          "scene": "reforce",
+          "actor": "Yellowipe consultants",
+          "actorNote": "Technical selection and account manager",
+          "waiting": "Team short on capacity",
+          "doneTitle": "Team augmented with 2 consultants",
+          "doneNote": "You manage the work; Yellowipe stands behind the people",
+          "consultants": ["MF", "RD"],
+          "team": "Your team · Payments",
+          "sprint": "Sprint 14",
+          "members": ["JP", "SM", "LC"],
+          "capacity": "Team capacity",
+          "deliveries": "Deliveries per sprint"
+        },
+        "whoLead": "With Augment, the consultants are Yellowipe’s and work under your direction. You run the day-to-day; we stand behind the people.",
+        "why": {
+          "eyebrow": "Why Augment",
+          "title": "More capacity. No change to how you work.",
+          "lead": "Specialists join your team and work with your tools and processes. You stay in control of priorities.",
+          "items": [
+            {
+              "icon": "team",
+              "title": "Real integration",
+              "text": "They use your Jira, your Git and your ceremonies. To your team, they are just more colleagues."
+            },
+            {
+              "icon": "puzzle",
+              "title": "Missing skills",
+              "text": "Fill gaps in cloud, data, QA or AI without a months-long hiring process."
+            },
+            {
+              "icon": "scale",
+              "title": "Scale up and down",
+              "text": "Grow the team for a launch and scale back afterward, with no hiring costs."
+            },
+            {
+              "icon": "clock",
+              "title": "Matching time zones and language",
+              "text": "Teams in Portugal and Brazil, working in English and Portuguese, with overlapping hours with Europe and the US."
+            },
+            {
+              "icon": "swap",
+              "title": "Replacements without starting over",
+              "text": "If a profile is not the right fit, we propose an alternative without going back to the start."
+            },
+            {
+              "icon": "chart",
+              "title": "Ongoing follow-up",
+              "text": "An account manager tracks performance and satisfaction, with regular check-ins."
+            }
+          ]
+        },
+        "formats": {
+          "title": "Two formats. The same high bar.",
+          "lead": "Start with one specialist or a full team, and switch formats when your needs change.",
+          "items": [
+            {
+              "tag": "Staffing",
+              "title": "Specialists in your team",
+              "text": "Individual profiles who join your team. You set the priorities and manage the day-to-day.",
+              "ticks": [
+                "From one to several profiles",
+                "Technical management on your side",
+                "Ideal for skill gaps and workload peaks"
+              ]
+            },
+            {
+              "tag": "Team",
+              "title": "Dedicated team",
+              "text": "A full team with a Yellowipe tech lead. You decide the what; we organize the how.",
+              "ticks": [
+                "Tech lead and QA included",
+                "Less management on your side",
+                "Ideal for ongoing product work"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "title": "From first call to first sprint.",
+          "lead": "You only move forward with the people you choose, and we follow each professional after they start."
+        },
+        "stack": {
+          "title": "Your stack is our stack.",
+          "lead": "Consultants who already work with the technologies you use, from the most common to niche platforms and legacy systems, and with the AI tools that speed up delivery.",
+          "cta": "Request specialists in my stack"
+        },
+        "comparison": {
+          "title": "Augment, hire or go far away?",
+          "columns": ["Yellowipe · Augment", "Hire in-house", "Distant offshore"],
+          "rows": [
+            {
+              "label": "Time to start",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Weeks"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Months"
+                },
+                {
+                  "tone": "good",
+                  "text": "Weeks"
+                }
+              ]
+            },
+            {
+              "label": "Overlapping hours",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Europe and the US"
+                },
+                {
+                  "tone": "good",
+                  "text": "Full"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Few"
+                }
+              ]
+            },
+            {
+              "label": "Technical selection",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "By senior engineers"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Depends on the team"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Varies"
+                }
+              ]
+            },
+            {
+              "label": "Language and culture",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "English and Portuguese"
+                },
+                {
+                  "tone": "good",
+                  "text": "Full"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Varies"
+                }
+              ]
+            },
+            {
+              "label": "Fixed costs and overhead",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "None"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Salary, benefits and hiring"
+                },
+                {
+                  "tone": "good",
+                  "text": "None"
+                }
+              ]
+            },
+            {
+              "label": "Scaling up or down",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Flexible"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Slow"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Rigid contracts"
+                }
+              ]
+            }
+          ]
+        },
+        "faqTitle": "What people ask us about Augment.",
+        "finalTitle": "Tell us which profiles your team is missing."
+      },
+      "seo": {
+        "title": "Nearshore staff augmentation | Yellowipe",
+        "description": "Nearshore developers and IT specialists from Portugal and Brazil who join your team and tools. Software, cloud, QA and AI."
+      }
+    },
+    "construa": {
+      "name": "Build",
+      "slug": "software-development",
+      "keyword": "Software development",
+      "promise": "Our teams build the solution for you, from product definition to go-live.",
+      "idealFor": "Ideal for launching new products or modernizing systems with a team that owns delivery.",
+      "howItWorks": [
+        {
+          "title": "Discovery",
+          "text": "Goals, users and technical constraints."
+        },
+        {
+          "title": "Design",
+          "text": "Architecture, prototypes and a delivery plan."
+        },
+        {
+          "title": "Build",
+          "text": "Sprints with demos and automated tests."
+        },
+        {
+          "title": "Go-live and evolution",
+          "text": "Supported launch and continuous improvement."
+        }
+      ],
+      "faq": {
+        "0": {
+          "q": "What kind of projects do you take on?",
+          "a": "Web and mobile applications, enterprise platforms, AI and cloud solutions, from MVPs to critical systems serving millions of users."
+        },
+        "1": {
+          "q": "Do you work on fixed-scope projects?",
+          "a": "Yes, for projects with clear requirements. When the product is still being discovered, we recommend an ongoing product team."
+        },
+        "2": {
+          "q": "Who owns the code?",
+          "a": "The code and intellectual property are yours. [Confirm wording with legal.]"
+        },
+        "3": {
+          "q": "Do you use AI in development?",
+          "a": "Yes, with coding assistants and AI-generated tests, always reviewed by senior engineers."
+        },
+        "4": {
+          "q": "How much does it cost?",
+          "a": "It depends on the scope and the team. After discovery, we send a proposal with a delivery plan."
+        }
+      },
+      "page": {
+        "tagline": "A team that delivers the solution.",
+        "hero": {
+          "h1": "Our team and our manager,",
+          "h1Highlight": "building your product.",
+          "lead": "A complete Yellowipe team, led by a project manager, builds the solution end to end. You set the goal and approve each delivery; we are accountable for the result.",
+          "badges": [
+            "A complete, managed team",
+            "Demos at the end of every sprint",
+            "Automated tests from day one"
+          ],
+          "cta": "Talk about your project",
+          "vizLabel": "Illustration: a Yellowipe team with a project manager building the client’s product, sprint by sprint."
+        },
+        "viz": {
+          "scene": "construa",
+          "actor": "Yellowipe team",
+          "actorNote": "Project manager and 4 specialists",
+          "waiting": "Waiting for delivery",
+          "doneTitle": "Customer portal in production",
+          "doneNote": "Delivered and evolved by the same team",
+          "lead": "PM",
+          "product": "Customer portal",
+          "disciplines": [
+            {
+              "initials": "UX",
+              "label": "Design"
+            },
+            {
+              "initials": "FE",
+              "label": "Front-end"
+            },
+            {
+              "initials": "BE",
+              "label": "Back-end"
+            },
+            {
+              "initials": "QA",
+              "label": "Quality"
+            }
+          ],
+          "live": "Live"
+        },
+        "whoLead": "With Build, Yellowipe is accountable for delivery: team, management and quality. You set the goal and approve every demo.",
+        "why": {
+          "eyebrow": "Why Build",
+          "title": "Critical software delivered, without overloading your team.",
+          "lead": "You set the goals and priorities. We handle execution, with a team that is accountable for the result.",
+          "items": [
+            {
+              "icon": "target",
+              "title": "Focus on the business",
+              "text": "You set goals and priorities; day-to-day execution stays with us."
+            },
+            {
+              "icon": "layers",
+              "title": "A complete team",
+              "text": "Product, design, engineering, QA and DevOps in one team, already used to working together."
+            },
+            {
+              "icon": "eye",
+              "title": "Full visibility",
+              "text": "Demos at the end of every sprint and quality metrics shared with you."
+            },
+            {
+              "icon": "check",
+              "title": "Quality from day one",
+              "text": "Automated tests and CI/CD on every change, as in the Linde case study."
+            },
+            {
+              "icon": "spark",
+              "title": "AI in the process",
+              "text": "Development accelerated with coding assistants, always reviewed by senior engineers."
+            },
+            {
+              "icon": "loop",
+              "title": "Continuity",
+              "text": "The same team maintains and evolves the product after launch."
+            }
+          ]
+        },
+        "formats": {
+          "title": "A fixed-scope project or a product team.",
+          "lead": "Choose based on how certain you already are about what you want to build.",
+          "items": [
+            {
+              "tag": "Project",
+              "title": "Fixed scope",
+              "text": "Scope, timeline and budget agreed up front, with phased deliveries.",
+              "ticks": [
+                "Ideal for MVPs and modules",
+                "Agreed delivery plan",
+                "Handover with documentation"
+              ]
+            },
+            {
+              "tag": "Product",
+              "title": "Ongoing product team",
+              "text": "A stable team that evolves the product from a shared roadmap.",
+              "ticks": [
+                "Roadmap reviewed with you",
+                "Ideal for growing products",
+                "The same team over time"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "title": "From problem to software in production.",
+          "lead": "Short sprints, frequent demos and quality measured in every delivery."
+        },
+        "stack": {
+          "title": "We build on the stack that makes sense for you.",
+          "lead": "We choose the technology with your team: the one you already use, or the one that best serves the product, always with AI in the development process.",
+          "cta": "Talk about your project"
+        },
+        "comparison": {
+          "title": "Build with us, assemble a team or hire freelancers?",
+          "columns": ["Yellowipe · Build", "Assemble an in-house team", "Freelancers"],
+          "rows": [
+            {
+              "label": "Time to kick off",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Weeks"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Months"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Fast, but scattered"
+                }
+              ]
+            },
+            {
+              "label": "A complete team, from product to QA",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Yes"
+                },
+                {
+                  "tone": "mid",
+                  "text": "You have to build it"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Rarely"
+                }
+              ]
+            },
+            {
+              "label": "Accountability for delivery",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Yellowipe’s"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Yours"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Split"
+                }
+              ]
+            },
+            {
+              "label": "Quality and testing",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Automated from the start"
+                },
+                {
+                  "tone": "mid",
+                  "text": "It depends"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Varies"
+                }
+              ]
+            },
+            {
+              "label": "Continuity after launch",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "The same team"
+                },
+                {
+                  "tone": "good",
+                  "text": "Yes"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Uncertain"
+                }
+              ]
+            }
+          ]
+        },
+        "faqTitle": "What people ask us about Build.",
+        "finalTitle": "Tell us what you want to build."
+      },
+      "seo": {
+        "title": "Custom software development | Yellowipe",
+        "description": "Nearshore teams that build your product from MVP to go-live: web, mobile, cloud and AI, backed by real case studies."
+      }
+    }
+  },
+  "areas": {
+    "software": {
+      "name": "Custom software",
+      "tabLabel": "Custom\nsoftware",
+      "description": "Software built around your business, from the first release to go-live, with a team that stays until the product is stable.",
+      "ai": "faster delivery with coding assistants such as Claude Code, Cursor and GitHub Copilot.",
+      "proof": "Hapvida: a telehealth app for millions of users."
+    },
+    "ia": {
+      "name": "Artificial intelligence",
+      "tabLabel": "Artificial\nintelligence",
+      "description": "From proof of concept to AI in production: agents, models and automations connected to your data and processes.",
+      "ai": "generative AI, RAG and agents in production, connected to your systems via MCP, on OpenAI, Azure AI, SageMaker or Vertex AI."
+    },
+    "emergentes": {
+      "name": "Emerging technologies",
+      "tabLabel": "Emerging\ntech",
+      "description": "Emerging technologies applied to concrete problems, with fast prototypes to validate before investing.",
+      "ai": "prototypes validated faster with AI-assisted development."
+    },
+    "cloud-devops": {
+      "name": "Cloud and DevOps",
+      "tabLabel": "Cloud and\nDevOps",
+      "description": "Infrastructure that speeds up delivery: pipelines, cloud and modernized systems without stopping operations.",
+      "ai": "infrastructure as code and pipelines written and reviewed with AI support, plus model operations (MLOps).",
+      "proof": "Linde: 94% less regression time with CI/CD."
+    },
+    "qualidade": {
+      "name": "Quality and testing",
+      "tabLabel": "Quality and\ntesting",
+      "description": "Quality measured in every release, with automation that grows with the product.",
+      "ai": "tests generated and maintained with AI support, as in the Clever case.",
+      "proof": "Clever: from 32 to 1,600+ automated tests in six months."
+    },
+    "design": {
+      "name": "Product design",
+      "tabLabel": "Product\ndesign",
+      "description": "Easy-to-use products, designed with the people who will use them and handed over ready to build.",
+      "ai": "research, prototypes and interface variants produced faster with AI.",
+      "proof": "Hapvida: an experience designed for millions of users."
+    },
+    "recrutamento": {
+      "name": "Tech recruitment",
+      "tabLabel": "Tech\nrecruitment",
+      "description": "We find the tech profiles your team needs, for permanent hiring, across our three markets.",
+      "ai": "professionals fluent in the AI tools your team uses, plus data, machine learning and generative AI specialists."
+    }
+  },
+  "services": {
+    "aplicacoes-web": {
+      "name": "Web applications",
+      "slug": "web-applications",
+      "keyword": "Web application development",
+      "summary": "Portals, SaaS platforms and fast dashboards in the browser, built on APIs.",
+      "seo": {
+        "title": "Web applications | Yellowipe",
+        "description": "Portals, SaaS platforms and fast dashboards in the browser, built on APIs."
+      }
+    },
+    "aplicacoes-mobile": {
+      "name": "Mobile apps",
+      "slug": "mobile-app-development",
+      "keyword": "mobile app development",
+      "summary": "iOS and Android apps, native or cross-platform, from concept to store release.",
+      "seo": {
+        "title": "Mobile app development | Yellowipe",
+        "description": "iOS and Android apps from design to store release, with automated tests. Hapvida case study: telehealth for millions."
+      }
+    },
+    "aplicacoes-enterprise": {
+      "name": "Enterprise applications",
+      "slug": "enterprise-applications",
+      "keyword": "Enterprise application development",
+      "summary": "Internal systems integrated with your ERP and CRM, instead of spreadsheets.",
+      "seo": {
+        "title": "Enterprise applications | Yellowipe",
+        "description": "Internal systems integrated with your ERP and CRM, instead of spreadsheets."
+      }
+    },
+    "aplicacoes-cloud": {
+      "name": "Cloud applications",
+      "slug": "cloud-applications",
+      "keyword": "Cloud application development",
+      "summary": "Cloud-native applications built to scale without rewriting the architecture.",
+      "seo": {
+        "title": "Cloud applications | Yellowipe",
+        "description": "Cloud-native applications built to scale without rewriting the architecture."
+      }
+    },
+    "ia-generativa": {
+      "name": "Generative AI",
+      "slug": "generative-ai",
+      "keyword": "Generative AI development",
+      "summary": "Assistants, document search and content generation on company data.",
+      "seo": {
+        "title": "Generative AI | Yellowipe",
+        "description": "Assistants, document search and content generation on company data."
+      }
+    },
+    "agentes-de-ia": {
+      "name": "AI agents",
+      "slug": "ai-agents",
+      "keyword": "AI agent development",
+      "summary": "Agents that run tasks end to end, with rules and human oversight.",
+      "seo": {
+        "title": "AI agents | Yellowipe",
+        "description": "Agents that run tasks end to end, with rules and human oversight."
+      }
+    },
+    "desenvolvimento-ia-ml": {
+      "name": "AI/ML development",
+      "slug": "ai-ml-development",
+      "keyword": "AI and machine learning development",
+      "summary": "Forecasting, classification and recommendation models trained on your data.",
+      "seo": {
+        "title": "AI/ML development | Yellowipe",
+        "description": "Forecasting, classification and recommendation models trained on your data."
+      }
+    },
+    "transformacao-com-ia": {
+      "name": "AI transformation",
+      "slug": "ai-transformation",
+      "keyword": "AI transformation consulting",
+      "summary": "Assessment, use-case prioritization and a roadmap for the whole organization.",
+      "seo": {
+        "title": "AI transformation | Yellowipe",
+        "description": "Assessment, use-case prioritization and a roadmap for the whole organization."
+      }
+    },
+    "realidade-aumentada-e-virtual": {
+      "name": "AR and VR",
+      "slug": "ar-and-vr",
+      "keyword": "AR and VR development",
+      "summary": "Immersive experiences for training, sales and field maintenance.",
+      "seo": {
+        "title": "AR and VR | Yellowipe",
+        "description": "Immersive experiences for training, sales and field maintenance."
+      }
+    },
+    "blockchain": {
+      "name": "Blockchain",
+      "slug": "blockchain",
+      "keyword": "Blockchain development services",
+      "summary": "Shared ledgers and smart contracts where traceability is critical.",
+      "seo": {
+        "title": "Blockchain | Yellowipe",
+        "description": "Shared ledgers and smart contracts where traceability is critical."
+      }
+    },
+    "iot": {
+      "name": "IoT",
+      "slug": "iot",
+      "keyword": "IoT development services",
+      "summary": "Connected sensors and platforms to monitor operations in real time.",
+      "seo": {
+        "title": "IoT | Yellowipe",
+        "description": "Connected sensors and platforms to monitor operations in real time."
+      }
+    },
+    "devops-e-devsecops": {
+      "name": "DevOps and DevSecOps",
+      "slug": "devops-and-devsecops",
+      "keyword": "DevOps and DevSecOps services",
+      "summary": "Pipelines, infrastructure as code and security built into delivery.",
+      "seo": {
+        "title": "DevOps and DevSecOps | Yellowipe",
+        "description": "Pipelines, infrastructure as code and security built into delivery."
+      }
+    },
+    "migracao-para-cloud": {
+      "name": "Cloud migration",
+      "slug": "cloud-migration",
+      "keyword": "Cloud migration services",
+      "summary": "Migration to AWS, Azure or Google Cloud with minimal disruption.",
+      "seo": {
+        "title": "Cloud migration | Yellowipe",
+        "description": "Migration to AWS, Azure or Google Cloud with minimal disruption."
+      }
+    },
+    "modernizacao-de-sistemas": {
+      "name": "Legacy modernization",
+      "slug": "legacy-modernization",
+      "keyword": "Legacy system modernization",
+      "summary": "Legacy systems rewritten or broken up in phases, without stopping the business.",
+      "seo": {
+        "title": "Legacy modernization | Yellowipe",
+        "description": "Legacy systems rewritten or broken up in phases, without stopping the business."
+      }
+    },
+    "pipelines-ci-cd": {
+      "name": "CI/CD pipelines",
+      "slug": "ci-cd-pipelines",
+      "keyword": "CI/CD pipeline implementation",
+      "summary": "Continuous integration and delivery, with automated tests on every change.",
+      "seo": {
+        "title": "CI/CD pipelines | Yellowipe",
+        "description": "Continuous integration and delivery, with automated tests on every change."
+      }
+    },
+    "automacao-de-testes": {
+      "name": "Test automation",
+      "slug": "test-automation",
+      "keyword": "test automation services",
+      "summary": "Automated suites that grow with the product and cut regression time.",
+      "seo": {
+        "title": "Test automation | Yellowipe",
+        "description": "Automated tests built into CI/CD. Clever: from 32 to 1,600+ tests in six months. Linde: −94% regression time."
+      }
+    },
+    "testes-de-performance": {
+      "name": "Performance testing",
+      "slug": "performance-testing",
+      "keyword": "Performance testing services",
+      "summary": "Load and stress tests that find the limits before your users do.",
+      "seo": {
+        "title": "Performance testing | Yellowipe",
+        "description": "Load and stress tests that find the limits before your users do."
+      }
+    },
+    "testes-de-seguranca": {
+      "name": "Security testing",
+      "slug": "security-testing",
+      "keyword": "Security and penetration testing",
+      "summary": "Vulnerability scans and penetration tests before each release.",
+      "seo": {
+        "title": "Security testing | Yellowipe",
+        "description": "Vulnerability scans and penetration tests before each release."
+      }
+    },
+    "testes-manuais": {
+      "name": "Manual testing",
+      "slug": "manual-testing",
+      "keyword": "Manual QA testing services",
+      "summary": "Exploratory and acceptance testing where automation falls short.",
+      "seo": {
+        "title": "Manual testing | Yellowipe",
+        "description": "Exploratory and acceptance testing where automation falls short."
+      }
+    },
+    "ux-ui-design": {
+      "name": "UX and UI design",
+      "slug": "ux-and-ui-design",
+      "keyword": "UX and UI design services",
+      "summary": "Research, flows, prototypes and a design system ready to build.",
+      "seo": {
+        "title": "UX and UI design | Yellowipe",
+        "description": "Research, flows, prototypes and a design system ready to build."
+      }
+    },
+    "web-design": {
+      "name": "Web design",
+      "slug": "web-design",
+      "keyword": "Website design and development",
+      "summary": "Corporate websites and landing pages built to convert.",
+      "seo": {
+        "title": "Web design | Yellowipe",
+        "description": "Corporate websites and landing pages built to convert."
+      }
+    },
+    "developers-e-engenharia": {
+      "name": "Developers and engineering",
+      "slug": "developers-and-engineering",
+      "keyword": "Software developer recruitment",
+      "summary": "Front-end, back-end, mobile and full-stack, from junior to architect.",
+      "seo": {
+        "title": "Developers and engineering | Yellowipe",
+        "description": "Front-end, back-end, mobile and full-stack, from junior to architect."
+      }
+    },
+    "recrutamento-dados-e-ia": {
+      "name": "Data and AI",
+      "slug": "data-and-ai",
+      "keyword": "Data and AI recruitment",
+      "summary": "Data engineers, data scientists and machine learning specialists.",
+      "seo": {
+        "title": "Data and AI | Yellowipe",
+        "description": "Data engineers, data scientists and machine learning specialists."
+      }
+    },
+    "recrutamento-cloud-devops-qa": {
+      "name": "Cloud, DevOps and QA",
+      "slug": "cloud-devops-and-qa",
+      "keyword": "Cloud, DevOps and QA recruitment",
+      "summary": "Infrastructure, automation and software quality profiles.",
+      "seo": {
+        "title": "Cloud, DevOps and QA | Yellowipe",
+        "description": "Infrastructure, automation and software quality profiles."
+      }
+    },
+    "liderancas-tecnologicas": {
+      "name": "Tech leadership",
+      "slug": "tech-leadership",
+      "keyword": "Tech leadership recruitment",
+      "summary": "Tech leads, engineering managers and CTOs.",
+      "seo": {
+        "title": "Tech leadership | Yellowipe",
+        "description": "Tech leads, engineering managers and CTOs."
+      }
+    }
+  },
+  "cases": {
+    "clever": {
+      "slug": "clever-test-automation",
+      "headline": "32 → 1,600+ tests",
+      "summary": "A stalled test suite turned into a scalable QA process in six months, with AI-assisted automation.",
+      "metrics": {
+        "0": {
+          "label": "automated tests"
+        },
+        "1": {
+          "label": "months"
+        }
+      },
+      "seo": {
+        "title": "Clever: from 32 to 1,600+ tests | Yellowipe",
+        "description": "How Yellowipe turned a stalled suite into a scalable QA process in six months, with AI-assisted automation."
+      }
+    },
+    "linde": {
+      "slug": "linde-regression-time",
+      "headline": "−94% regression time",
+      "summary": "A suite with an 88% failure rate recovered in one week, with 128 automated tests and CI/CD.",
+      "metrics": {
+        "0": {
+          "label": "regression time"
+        },
+        "1": {
+          "label": "automated tests"
+        }
+      },
+      "seo": {
+        "title": "Linde: 94% less regression time | Yellowipe",
+        "description": "A test suite with an 88% failure rate recovered in one week: 128 automated tests and CI/CD."
+      }
+    },
+    "hapvida": {
+      "slug": "hapvida-telehealth",
+      "headline": "Telehealth for millions",
+      "summary": "End-to-end development of the Hapvida app, with remote access to healthcare.",
+      "metrics": {
+        "0": {
+          "label": "users"
+        }
+      },
+      "seo": {
+        "title": "Hapvida: telehealth for millions | Yellowipe",
+        "description": "End-to-end development of the Hapvida app, giving millions remote access to healthcare."
+      }
+    }
+  },
+  "markets": {
+    "PT": {
+      "name": "Portugal",
+      "description": "Recruitment, teams and project delivery for Portuguese and European companies."
+    },
+    "BR": {
+      "name": "Brazil",
+      "description": "Talent and delivery capacity for Brazilian companies, with case studies such as Hapvida."
+    },
+    "US": {
+      "name": "United States",
+      "description": "Nearshore teams and projects for US companies, with talent from Portugal and Brazil."
+    }
+  },
+  "technologyGroups": {
+    "front-end": {
+      "name": "Front-end"
+    },
+    "mobile": {
+      "name": "Mobile"
+    },
+    "back-end": {
+      "name": "Back-end"
+    },
+    "cloud-devops": {
+      "name": "Cloud and DevOps"
+    },
+    "dados": {
+      "name": "Data"
+    },
+    "ia": {
+      "name": "AI and machine learning"
+    },
+    "enterprise": {
+      "name": "ERP, CRM and low-code"
+    },
+    "qa": {
+      "name": "Quality and testing"
+    }
+  },
+  "responsibilities": {
+    "0": {
+      "label": "Finding and assessing the professional"
+    },
+    "1": {
+      "label": "The professional’s contract"
+    },
+    "2": {
+      "label": "Day-to-day management"
+    },
+    "3": {
+      "label": "Accountability for delivery"
+    },
+    "4": {
+      "label": "Follow-up and replacement"
+    }
+  },
+  "stacks": {
+    "react": {
+      "pitch": "Fast, accessible React interfaces that are easy to evolve, from customer portals to SaaS platforms.",
+      "faq": {
+        "0": {
+          "q": "Do you use React Server Components?",
+          "a": "Yes, in new Next.js projects when they reduce the JavaScript sent to the browser. In existing apps we assess case by case."
+        }
+      }
+    },
+    "nextjs": {
+      "pitch": "Next.js sites and apps that load fast, rank on Google and scale with the product.",
+      "faq": {
+        "0": {
+          "q": "Do you migrate from Pages Router to App Router?",
+          "a": "Yes, route by route. Both routers run side by side during the migration, so the site never stops."
+        }
+      }
+    },
+    "angular": {
+      "pitch": "Enterprise Angular apps with clear architecture, for large teams and long-lived products.",
+      "faq": {
+        "0": {
+          "q": "Can you migrate from AngularJS?",
+          "a": "Yes. We use a hybrid or micro-frontend approach to migrate module by module to current Angular."
+        }
+      }
+    },
+    "vue": {
+      "pitch": "Lightweight, productive Vue.js interfaces, from internal dashboards to online stores.",
+      "faq": {
+        "0": {
+          "q": "Do you migrate Vue 2 apps to Vue 3?",
+          "a": "Yes. Vue 2 no longer receives updates; we migrate with the compatibility build, component by component."
+        }
+      }
+    },
+    "typescript": {
+      "keyword": "TypeScript development",
+      "pitch": "End-to-end typed TypeScript, from browser to API, with fewer bugs in production.",
+      "faq": {
+        "0": {
+          "q": "Can you convert a JavaScript project to TypeScript?",
+          "a": "Yes, file by file, starting with the most error-prone modules. Strict mode is enabled in phases."
+        }
+      }
+    },
+    "react-native": {
+      "pitch": "iOS and Android apps from one React Native codebase, with a native feel.",
+      "faq": {
+        "0": {
+          "q": "Is a React Native app as good as a native one?",
+          "a": "For most products, yes. When a feature needs native code, we write that module in Swift or Kotlin."
+        }
+      }
+    },
+    "flutter": {
+      "pitch": "Flutter apps with a consistent UI on iOS, Android and web, from one codebase."
+    },
+    "ios-swift": {
+      "keyword": "iOS app development",
+      "pitch": "Native iOS apps in Swift and SwiftUI, fast, secure and ready for the App Store."
+    },
+    "android-kotlin": {
+      "keyword": "Android app development",
+      "pitch": "Native Android apps in Kotlin and Jetpack Compose, stable across thousands of devices."
+    },
+    "nodejs": {
+      "pitch": "Node.js APIs and services in TypeScript, fast to build and easy to scale."
+    },
+    "python": {
+      "pitch": "Production-ready Python APIs, automation and data platforms.",
+      "faq": {
+        "0": {
+          "q": "Do you also do data engineering with Python?",
+          "a": "Yes: data pipelines with Airflow or dbt, connected to your applications and reports."
+        }
+      }
+    },
+    "java": {
+      "pitch": "Robust Java and Spring Boot systems for sectors where failure is not an option.",
+      "faq": {
+        "0": {
+          "q": "Can you migrate from Java 8 to Java 21?",
+          "a": "Yes, with dependency analysis, regression tests and a phased Spring upgrade."
+        }
+      }
+    },
+    "dotnet": {
+      "keyword": ".NET development",
+      "pitch": "Modern, maintainable .NET systems, from APIs to enterprise applications on Azure.",
+      "faq": {
+        "0": {
+          "q": "Can you migrate a .NET Framework app to .NET 8?",
+          "a": "Yes, in phases: we map dependencies, cover the essentials with tests and migrate module by module without stopping operations."
+        }
+      }
+    },
+    "php": {
+      "pitch": "Modern PHP and Laravel applications, from commerce platforms to back-offices."
+    },
+    "go": {
+      "pitch": "High-performance Go services for APIs, platforms and infrastructure."
+    },
+    "aws": {
+      "pitch": "Architecture, migration and operations on AWS, with security and costs under control."
+    },
+    "azure": {
+      "pitch": "Architecture, migration and operations on Microsoft Azure, integrated with the Microsoft ecosystem."
+    },
+    "google-cloud": {
+      "pitch": "Google Cloud platforms for applications and data, with BigQuery and GKE at the core."
+    },
+    "kubernetes": {
+      "pitch": "Secure, well-designed Kubernetes clusters on EKS, AKS, GKE or on-premise."
+    },
+    "docker": {
+      "pitch": "Applications in Docker containers, identical from developer laptop to production."
+    },
+    "terraform": {
+      "pitch": "Infrastructure as code with Terraform: reproducible, reviewed and auditable environments."
+    },
+    "playwright": {
+      "pitch": "Stable, fast Playwright tests that run on every change, across all browsers.",
+      "faq": {
+        "0": {
+          "q": "Why Playwright instead of Selenium?",
+          "a": "More stable, faster and easier-to-maintain tests, with parallel runs and built-in reports. We migrate existing suites by priority."
+        }
+      }
+    },
+    "selenium": {
+      "pitch": "Robust Selenium automation for web apps, in Java, C# or Python, built into your pipeline.",
+      "faq": {
+        "0": {
+          "q": "Our Selenium tests are flaky. Can you fix them?",
+          "a": "Yes. We review waits, selectors and test data, and parallelize with Selenium Grid. Where it makes sense, we move the flakiest suites to Playwright."
+        }
+      }
+    },
+    "cypress": {
+      "pitch": "Cypress tests that are quick to write and debug, for React, Angular and Vue front-ends.",
+      "faq": {
+        "0": {
+          "q": "Cypress or Playwright?",
+          "a": "Cypress is great for front-end teams that want tests that are quick to write and debug. Playwright wins on multiple browsers, tabs and parallel runs. We recommend after looking at the product and the team."
+        }
+      }
+    },
+    "appium": {
+      "role": "mobile QA engineers",
+      "keyword": "Mobile test automation with Appium",
+      "pitch": "Automated iOS and Android app tests with Appium, on real devices and emulators.",
+      "serviceOverrides": {
+        "automation": {
+          "title": "Mobile test automation",
+          "pain": "Every app release is tested by hand on a handful of phones.",
+          "text": "Appium suites for iOS and Android that run on dozens of devices on every build."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Do you test on real devices?",
+          "a": "Yes, on device farms such as BrowserStack or Sauce Labs and on physical devices, with a matrix of models and OS versions based on your app usage data."
+        }
+      }
+    },
+    "jmeter": {
+      "role": "performance engineers",
+      "keyword": "Performance testing with JMeter",
+      "pitch": "Load and stress testing with JMeter and k6 to know what your system can take before your customers do.",
+      "serviceOverrides": {
+        "automation": {
+          "title": "Load and stress testing",
+          "pain": "Nobody knows how many users the system can take.",
+          "text": "Realistic JMeter and k6 scenarios that reveal limits, bottlenecks and headroom."
+        },
+        "framework": {
+          "title": "Performance scenarios and data",
+          "pain": "Load tests do not reflect real usage.",
+          "text": "Traffic profiles and test data based on production, reusable on every release."
+        },
+        "ci": {
+          "title": "Performance in the pipeline",
+          "pain": "Performance regressions only show up in production.",
+          "text": "Short k6 or JMeter runs on every release, with thresholds that block the release."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "When should we run load tests?",
+          "a": "Before launches, campaigns and seasonal peaks, and whenever the architecture changes. With k6 or JMeter in the pipeline, performance regressions show up straight away."
+        }
+      }
+    },
+    "postman": {
+      "keyword": "API testing with Postman",
+      "pitch": "API testing with Postman and REST Assured that catches broken integrations before production.",
+      "serviceOverrides": {
+        "automation": {
+          "title": "Automated API testing",
+          "pain": "Integrations break without warning.",
+          "text": "Postman collections and REST Assured suites that validate every endpoint and contract."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Is Postman enough, or do you need code?",
+          "a": "Postman with Newman covers functional API tests in the pipeline well. For complex scenarios, dynamic data or contract tests, we add REST Assured or Pact."
+        }
+      }
+    },
+    "power-bi": {
+      "role": "Power BI specialists",
+      "keyword": "Power BI consulting",
+      "pitch": "Fast, trusted Power BI dashboards, connected to your systems and refreshed without manual work.",
+      "serviceOverrides": {
+        "platform": {
+          "title": "Semantic model and Microsoft Fabric",
+          "pain": "Every report calculates the numbers its own way.",
+          "text": "A single Power BI data model, with DAX measures shared across the company."
+        },
+        "pipelines": {
+          "title": "Automated data refresh",
+          "pain": "Reports depend on manual exports."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Can you connect Power BI to our ERP?",
+          "a": "Yes: SAP, Dynamics, Primavera, PHC, TOTVS and others, through native connectors, the database or APIs, with scheduled refresh and row-level security."
+        }
+      }
+    },
+    "databricks": {
+      "pitch": "A Databricks lakehouse that brings data engineering, analytics and machine learning onto one platform.",
+      "faq": {
+        "0": {
+          "q": "Databricks on Azure, AWS or Google Cloud?",
+          "a": "All three. We pick the cloud where your data and identities already live, to avoid transfer costs and duplicated access control."
+        }
+      }
+    },
+    "spark": {
+      "pitch": "High-volume processing with Apache Spark, batch and streaming, on the cloud you already use.",
+      "serviceOverrides": {
+        "analytics": {
+          "title": "Analytics at scale",
+          "pain": "Queries over historical data take hours.",
+          "text": "Spark SQL and optimized formats to analyze years of data in minutes."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Spark on Databricks or self-managed?",
+          "a": "Databricks speeds up delivery and reduces operations; EMR, Dataproc or Kubernetes make sense when cost or control matter more. We compare both against your real volumes."
+        }
+      }
+    },
+    "airflow": {
+      "pitch": "Pipeline orchestration with Apache Airflow: scheduled loads, clear dependencies and alerts when something fails.",
+      "serviceOverrides": {
+        "analytics": {
+          "title": "Monitoring and SLAs",
+          "pain": "Nobody knows a load failed until the report is wrong.",
+          "text": "Alerts, SLAs and automatic retries for every Airflow pipeline."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Managed or self-hosted Airflow?",
+          "a": "For most companies, a managed service (MWAA, Cloud Composer or Astronomer) is cheaper to run. We deploy on Kubernetes when network or cost requirements call for it."
+        }
+      }
+    },
+    "kafka": {
+      "role": "Kafka engineers",
+      "keyword": "Data streaming with Apache Kafka",
+      "pitch": "Real-time events with Apache Kafka, to integrate systems and feed data without waiting for the nightly load.",
+      "serviceOverrides": {
+        "pipelines": {
+          "title": "Integration with Kafka Connect and CDC",
+          "pain": "Systems exchange data through nightly files.",
+          "text": "Connectors and change data capture (CDC) that move data where it is needed, in seconds."
+        },
+        "analytics": {
+          "title": "Real-time data",
+          "pain": "KPIs arrive a day late.",
+          "text": "Event processing with Kafka Streams or Flink for real-time alerts and dashboards."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Managed Kafka (Confluent, MSK) or self-hosted?",
+          "a": "A managed service greatly reduces operations and is our default recommendation. We run self-hosted clusters when latency, network or large-scale cost require it."
+        }
+      }
+    },
+    "postgresql": {
+      "pitch": "Fast, secure, always-on PostgreSQL, on-premise or on managed cloud services.",
+      "faq": {
+        "0": {
+          "q": "Is it worth migrating from Oracle to PostgreSQL?",
+          "a": "Often, yes: it cuts licenses and opens the door to managed services. We first assess PL/SQL code and dependencies to estimate effort and risk."
+        }
+      }
+    },
+    "sql-server": {
+      "pitch": "Well-tuned, protected SQL Server, from transactional databases to reporting.",
+      "faq": {
+        "0": {
+          "q": "Do you migrate SQL Server to Azure SQL?",
+          "a": "Yes, to Azure SQL Database, Managed Instance or SQL Server on a VM, depending on which features you use. We validate performance before the switch."
+        }
+      }
+    },
+    "oracle": {
+      "pitch": "Stable, optimized Oracle Database, with specialists in PL/SQL, performance and migration.",
+      "faq": {
+        "0": {
+          "q": "Do you only administer Oracle, or also write PL/SQL?",
+          "a": "Both: DBAs for performance, Data Guard and backups, and PL/SQL developers for procedures, reports and integrations."
+        }
+      }
+    },
+    "mongodb": {
+      "pitch": "Well-modeled, scalable MongoDB for products with flexible data and heavy traffic.",
+      "faq": {
+        "0": {
+          "q": "MongoDB or a relational database?",
+          "a": "MongoDB works well for flexible data and document reads; complex transactions and reporting often call for PostgreSQL. We assess the data model before recommending."
+        }
+      }
+    },
+    "sap": {
+      "pitch": "Functional and technical SAP consultants for S/4HANA, ABAP and integrations, from migration to support.",
+      "faq": {
+        "0": {
+          "q": "Can you help migrate from SAP ECC to S/4HANA?",
+          "a": "Yes. We assess custom code and data, choose the approach (greenfield, brownfield or selective) and migrate in phases, with regression tests at each step."
+        }
+      }
+    },
+    "salesforce": {
+      "pitch": "Salesforce shaped around your sales and customer service, with Apex, Flows and integrations.",
+      "faq": {
+        "0": {
+          "q": "Do you migrate data from another CRM to Salesforce?",
+          "a": "Yes. We map objects and fields, clean and deduplicate data and migrate in phases, validating before the old system is switched off."
+        }
+      }
+    },
+    "outsystems": {
+      "role": "OutSystems developers",
+      "keyword": "OutSystems development",
+      "pitch": "Low-code OutSystems apps delivered fast, without giving up quality, security or integration.",
+      "serviceOverrides": {
+        "implementation": {
+          "title": "OutSystems apps from scratch",
+          "text": "Web and mobile apps in OutSystems, from prototype to production in weeks."
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Do you migrate apps from OutSystems 11 to ODC?",
+          "a": "Yes. We assess architecture and dependencies, prepare the apps and migrate in phases to OutSystems Developer Cloud."
+        }
+      }
+    },
+    "openai": {
+      "pitch": "Assistants, document search and automation with OpenAI GPT models, connected to your systems with your data protected.",
+      "faq": {
+        "0": {
+          "q": "OpenAI directly or Azure OpenAI?",
+          "a": "Azure OpenAI when you are already on Microsoft and need an EU region and network control; the OpenAI API when faster access to new models matters more."
+        }
+      }
+    },
+    "claude": {
+      "pitch": "Applications built on Anthropic Claude models for long documents, agents and automation, with clear safety rules.",
+      "faq": {
+        "0": {
+          "q": "Claude through Anthropic, AWS or Google Cloud?",
+          "a": "Through the cloud where you already have contracts and data (Amazon Bedrock or Google Vertex AI), or the Anthropic API when you want the newest features first."
+        }
+      }
+    },
+    "langchain": {
+      "pitch": "AI agents and applications with LangChain and LangGraph, connected to your data and tools and ready for production."
+    },
+    "hugging-face": {
+      "keyword": "Open-source models with Hugging Face",
+      "pitch": "Open-source Hugging Face models fine-tuned and hosted on your infrastructure, when data cannot leave the company.",
+      "faq": {
+        "0": {
+          "q": "Are open-source models a real alternative?",
+          "a": "For many tasks, yes: classification, extraction and internal assistants. We compare quality and cost against commercial models before recommending."
+        }
+      }
+    },
+    "pytorch": {
+      "role": "machine learning engineers",
+      "keyword": "Machine learning with PyTorch",
+      "pitch": "PyTorch machine learning models, from experimentation to production, for forecasting, computer vision and language.",
+      "serviceOverrides": {
+        "assistants": {
+          "title": "Predictive models",
+          "pain": "Forecasts are still made in spreadsheets.",
+          "text": "Models trained on your data to forecast demand, risk or customer churn."
+        },
+        "rag": {
+          "title": "Computer vision and language",
+          "pain": "Images and text are analyzed by hand.",
+          "text": "PyTorch vision and language models to classify, extract and detect."
+        }
+      }
+    }
+  }
+}

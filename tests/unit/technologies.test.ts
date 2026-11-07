@@ -2,7 +2,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { getContent } from '@/content';
 import { auditTechPage, buildTechPage } from '@/content/technologies/build';
-import { ptToBr } from '@/content/technologies/templates';
+import { ptToBr } from '@/lib/i18n/brazilian';
 import { locales } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 

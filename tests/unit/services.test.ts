@@ -2,9 +2,6 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { getContent } from '@/content';
 import { auditServicePage, buildServicePage, inSentence } from '@/content/services/build';
-import { SERVICES_EN } from '@/content/services/en';
-import { servicePages } from '@/content/services/pages';
-import * as T from '@/content/services/templates';
 import { locales } from '@/lib/i18n/locales';
 import { pathFor } from '@/lib/routing';
 
@@ -86,49 +83,7 @@ describe('máquina de conteúdo de serviços', () => {
     assert.equal(inSentence('DevOps e DevSecOps'), 'DevOps e DevSecOps');
   });
 
-  it('inglês: cada texto pt-PT tem tradução ou é um termo igual em inglês', () => {
-    // Termos sem acentos nem palavras portuguesas (nomes de tecnologias, siglas…).
-    const PT =
-      /[ãõçáéíóúâêôàÁÉÍÓÚ]|(?<!\p{L})(de|da|do|das|dos|para|com|e|em|um|uma|o|a|os|as|no|na|que|não|por|sem|seu|sua|Dados|Testes|Qualidade|Entrega|Processos|Regras|Fontes|Agentes|Sistemas|Ferramentas|Registos|Modelos|Produto|Custos|Alertas|Eventos|Suporte|Manuais|Terreno|Valor|Escala|Pilotos)(?!\p{L})/u;
-    const texts: string[] = [];
-    const walk = (v: unknown, key?: string) => {
-      if (
-        key &&
-        ['id', 'model', 'market', 'city', 'years', 'stackIds', 'caseIds', 'related'].includes(key)
-      )
-        return;
-      if (typeof v === 'string') texts.push(v);
-      else if (Array.isArray(v)) v.forEach((x) => walk(x));
-      else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) walk(x, k);
-    };
-    walk(servicePages);
-    for (const k of [
-      'ROLE',
-      'LAYERS',
-      'PROFILES',
-      'FAQ_AREA',
-      'FAQ_COMMON',
-      'STEPS',
-      'STEPS_RECRUITMENT',
-      'MODELS',
-    ] as const)
-      walk((T as Record<string, unknown>)[k]);
-    for (const t of texts)
-      assert.ok(SERVICES_EN[t] !== undefined || !PT.test(t), `sem tradução: ${t}`);
-  });
-
-  it('inglês: o catálogo não guarda traduções de textos que já não existem', () => {
-    const used = new Set<string>();
-    const walk = (v: unknown) => {
-      if (typeof v === 'string') used.add(v);
-      else if (Array.isArray(v)) v.forEach(walk);
-      else if (v && typeof v === 'object') Object.values(v).forEach(walk);
-    };
-    walk(servicePages);
-    walk(T);
-    for (const k of Object.keys(SERVICES_EN)) assert.ok(used.has(k), `tradução órfã: ${k}`);
-  });
-
+  // Cobertura do catálogo inglês (em falta, órfãs, marcadores): tests/unit/i18n.test.ts.
   it('páginas em inglês sem português', () => {
     const PT = /[ãõçáéíóúâêô]|(?<!\p{L})(de|para|com|não|testes|dados|equipa)(?!\p{L})/u;
     const NAMES =

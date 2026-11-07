@@ -6,8 +6,8 @@ import type { ModelId } from '../schema';
  *
  * - {name} = nome do serviço em minúscula quando é um nome comum ("aplicações web",
  *   mas "IoT" e "DevOps e DevSecOps" mantêm-se); {role} = quem trabalha na área.
- * - Escrito em pt-PT; o pt-BR é gerado por ptToBr() e revisto por amostragem.
- *   Não há páginas de serviço em inglês (não existe /en/services).
+ * - Escrito em pt-PT. O inglês está em src/i18n/en/services.json (chave = texto pt-PT);
+ *   o pt-BR é gerado pelo glossário src/i18n/br/glossary.json.
  * - O que muda de serviço para serviço está em ./pages.ts; aqui fica o que é da área.
  */
 export type AreaId =
@@ -424,68 +424,4 @@ export const MODELS: {
     cl: 'Define objetivos e aprova',
     cta: 'Falar do projeto',
   },
-];
-
-/**
- * pt-PT → pt-BR próprio dos serviços, aplicado antes do glossário partilhado (ptToBr).
- * Frases primeiro; cada entrada só troca palavras inteiras.
- */
-export const BR_SERVICES: [string, string][] = [
-  ['Quanto tempo demora', 'Quanto tempo leva'],
-  ['Que tecnologia recomendam', 'Que tecnologia vocês recomendam'],
-  ['Que CMS recomendam', 'Que CMS vocês recomendam'],
-  ['Gestão de equipas', 'Gestão de equipes'],
-  ['pontos de situação', 'reuniões de status'],
-  ['Pontos de situação', 'Reuniões de status'],
-  ['testes automáticos', 'testes automatizados'],
-  ['Testes automáticos', 'Testes automatizados'],
-  ['suites automáticas', 'suítes automatizadas'],
-  ['Suites automáticas', 'Suítes automatizadas'],
-  ['publicação automática', 'publicação automatizada'],
-  ['sistema operativo', 'sistema operacional'],
-  ['autenticação única', 'login único'],
-  ['à medida', 'sob medida'],
-  ['à partida', 'no início'],
-  ['a meio do', 'no meio do'],
-  ['no browser', 'no navegador'],
-  ['browsers', 'navegadores'],
-  ['faturação', 'faturamento'],
-  ['partilhados', 'compartilhados'],
-  ['partilhadas', 'compartilhadas'],
-  ['partilhado', 'compartilhado'],
-  ['partilhada', 'compartilhada'],
-  ['partilham', 'compartilham'],
-  ['consigo', 'com você'],
-  ['utilizador', 'usuário'],
-  ['Telemóveis', 'Celulares'],
-  ['telemóveis', 'celulares'],
-  ['registos', 'registros'],
-  ['Controlo', 'Controle'],
-  ['monitorizar', 'monitorar'],
-  ['Monitorização', 'Monitoramento'],
-  ['planeamento', 'planejamento'],
-  ['Planeamento', 'Planejamento'],
-  ['artefactos', 'artefatos'],
-  ['Artefactos', 'Artefatos'],
-  ['contactos', 'contatos'],
-  ['Sénior', 'Sênior'],
-  ['Recolhe', 'Coleta'],
-  ['recolhe', 'coleta'],
-  ['equipa', 'equipe'],
-  ['ecrã', 'tela'],
-];
-
-/** Perguntas que em pt-BR pedem sujeito ("Vocês usam…?"). */
-export const BR_QUESTION_VERBS = [
-  'Usam',
-  'Trabalham',
-  'Recrutam',
-  'Podem',
-  'Integram',
-  'Começam',
-  'Avaliam',
-  'Testam',
-  'Entregam',
-  'Publicam',
-  'Combinam',
 ];

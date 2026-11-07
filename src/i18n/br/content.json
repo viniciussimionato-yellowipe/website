@@ -1,0 +1,1205 @@
+{
+  "models": {
+    "contrate": {
+      "name": "Contrate",
+      "slug": "recrutamento-de-ti",
+      "keyword": "Recrutamento de TI",
+      "promise": "Nossos recrutadores encontram o talento certo para a sua equipe, em contratação efetiva.",
+      "idealFor": "Ideal para perfis difíceis de encontrar e equipes crescendo de forma estável.",
+      "howItWorks": [
+        {
+          "title": "Briefing",
+          "text": "Definimos perfil, stack, senioridade e condições."
+        },
+        {
+          "title": "Busca",
+          "text": "Sourcing ativo e triagem dos candidatos."
+        },
+        {
+          "title": "Shortlist",
+          "text": "Candidatos avaliados tecnicamente, com notas da avaliação."
+        },
+        {
+          "title": "Contratação",
+          "text": "Apoiamos entrevistas, proposta e onboarding."
+        }
+      ],
+      "faq": {
+        "0": {
+          "q": "Que perfis vocês recrutam?",
+          "a": "Desenvolvedores, QA, DevOps, dados e IA, de júnior a arquiteto, e lideranças como tech leads, engineering managers e CTOs."
+        },
+        "1": {
+          "q": "Como vocês avaliam tecnicamente os candidatos?",
+          "a": "Com entrevistas técnicas conduzidas por engenheiros e, quando faz sentido, exercícios práticos. Você recebe as notas da avaliação junto com a shortlist."
+        },
+        "2": {
+          "q": "Quanto tempo leva?",
+          "a": "[Prazo médio até a shortlist a confirmar com a equipe de recrutamento.]"
+        },
+        "3": {
+          "q": "Como funciona o preço?",
+          "a": "[Modelo de preço a confirmar: porcentagem do salário anual, retainer ou misto.]"
+        },
+        "4": {
+          "q": "Qual a diferença entre Contrate, Reforce e Construa?",
+          "a": "No Contrate, a pessoa fica na sua empresa. No Reforce, especialistas da Yellowipe trabalham na sua equipe. No Construa, uma equipe da Yellowipe entrega a solução."
+        }
+      },
+      "page": {
+        "tagline": "O talento certo, em contratação efetiva.",
+        "hero": {
+          "h1": "Nossos recrutadores encontram",
+          "h1Highlight": "o seu próximo profissional.",
+          "lead": "Uma equipe de recrutadores especializados em tecnologia busca, avalia e apresenta os candidatos certos. Você contrata diretamente: o profissional passa a fazer parte da sua empresa.",
+          "badges": [
+            "Recrutadores especializados em tech",
+            "Avaliação técnica antes da shortlist",
+            "Brasil, Portugal e EUA"
+          ],
+          "cta": "Abrir uma vaga",
+          "vizLabel": "Ilustração: recrutadores da Yellowipe avaliam candidatos e a sua empresa contrata diretamente o escolhido."
+        },
+        "viz": {
+          "scene": "contrate",
+          "actor": "Recrutadores Yellowipe",
+          "actorNote": "Busca ativa no Brasil, em Portugal e nos EUA",
+          "waiting": "Aguardando a contratação",
+          "doneTitle": "Ana S. · Tech lead Java",
+          "doneNote": "Contratada diretamente pela sua empresa",
+          "working": "Avaliando",
+          "ready": "Shortlist pronta ✓",
+          "job": "Vaga · Tech lead Java",
+          "stages": ["Triagem", "Teste técnico", "Entrevista"],
+          "candidates": [
+            {
+              "initials": "AS",
+              "name": "Ana S.",
+              "meta": "Java · Spring · 9 anos",
+              "stage": "Recomendada"
+            },
+            {
+              "initials": "BT",
+              "name": "Bruno T.",
+              "meta": "Java · Kotlin · 7 anos",
+              "stage": "Entrevista"
+            },
+            {
+              "initials": "CL",
+              "name": "Carla L.",
+              "meta": "Java · AWS · 8 anos",
+              "stage": "Teste técnico"
+            },
+            {
+              "initials": "DM",
+              "name": "Diogo M.",
+              "meta": "PHP · 4 anos",
+              "stage": "Triagem"
+            }
+          ]
+        },
+        "whoLead": "No Contrate, a Yellowipe encontra e avalia. A partir da contratação, o profissional é seu.",
+        "why": {
+          "eyebrow": "Por que o Contrate",
+          "title": "Contrate melhor, sem parar a equipe para recrutar.",
+          "lead": "Cuidamos do processo inteiro. Sua equipe só entrevista quem já passou na avaliação técnica.",
+          "items": [
+            {
+              "icon": "search",
+              "title": "Recrutadores de tecnologia",
+              "text": "Falam a língua das stacks e distinguem um sênior de um currículo bem escrito."
+            },
+            {
+              "icon": "check",
+              "title": "Avaliação técnica",
+              "text": "Cada candidato da shortlist passou por avaliação técnica antes de chegar até você."
+            },
+            {
+              "icon": "clock",
+              "title": "Menos tempo da sua equipe",
+              "text": "Fazemos sourcing, triagem e agendamento. A equipe só entra nas entrevistas finais."
+            },
+            {
+              "icon": "target",
+              "title": "Talento passivo",
+              "text": "Chegamos a profissionais que não estão respondendo a anúncios."
+            },
+            {
+              "icon": "globe",
+              "title": "Três mercados",
+              "text": "Recrutamento no Brasil, em Portugal e para equipes nos Estados Unidos."
+            },
+            {
+              "icon": "loop",
+              "title": "Acompanhamento após a contratação",
+              "text": "Acompanhamos o onboarding nos primeiros meses para confirmar que a escolha foi a certa."
+            }
+          ]
+        },
+        "formats": {
+          "title": "Do primeiro desenvolvedor à liderança técnica.",
+          "lead": "O mesmo processo, ajustado à senioridade e à confidencialidade de cada vaga.",
+          "items": [
+            {
+              "tag": "Vagas",
+              "title": "Perfis para a sua equipe",
+              "text": "Desenvolvedores, QA, DevOps e dados para contratação efetiva.",
+              "ticks": [
+                "De júnior a arquiteto",
+                "Shortlist avaliada tecnicamente",
+                "Uma ou várias vagas em paralelo"
+              ]
+            },
+            {
+              "tag": "Liderança",
+              "title": "Lideranças de tecnologia",
+              "text": "Tech leads, engineering managers e CTOs, com busca direta e confidencial.",
+              "ticks": [
+                "Busca direta e discreta",
+                "Avaliação técnica e de liderança",
+                "Acompanhamento do onboarding"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "title": "Da vaga aberta à contratação.",
+          "lead": "Um processo claro, com status em cada fase."
+        },
+        "stack": {
+          "title": "Recrutamos em qualquer stack que a sua equipe use.",
+          "lead": "Nossos recrutadores trabalham com engenheiros que avaliam cada candidato na tecnologia da vaga, das mais usadas aos sistemas legados.",
+          "cta": "Recrutar para a minha stack"
+        },
+        "comparison": {
+          "title": "Por que não recrutar sozinho?",
+          "columns": ["Yellowipe · Contrate", "Recrutar internamente", "Agência generalista"],
+          "rows": [
+            {
+              "label": "Conhecimento técnico",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Recrutadores tech"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Depende da equipe"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Limitado"
+                }
+              ]
+            },
+            {
+              "label": "Avaliação técnica antes da shortlist",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Sim"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Tempo da sua equipe"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Raramente"
+                }
+              ]
+            },
+            {
+              "label": "Acesso a talento passivo",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Sim"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Limitado"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Parcial"
+                }
+              ]
+            },
+            {
+              "label": "Tempo da sua equipe",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Só entrevistas finais"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Todo o processo"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Muita triagem"
+                }
+              ]
+            },
+            {
+              "label": "Mercados",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Brasil, Portugal e EUA"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Local"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Variável"
+                }
+              ]
+            }
+          ]
+        },
+        "faqTitle": "O que nos perguntam sobre recrutamento.",
+        "finalTitle": "Que perfil você precisa contratar?"
+      },
+      "seo": {
+        "title": "Recrutamento de TI | Yellowipe",
+        "description": "Recrutamento tech especializado: desenvolvedores, dados, cloud e lideranças, com shortlist em prazo definido."
+      }
+    },
+    "reforce": {
+      "name": "Reforce",
+      "slug": "alocacao-de-profissionais-ti",
+      "keyword": "Alocação de profissionais de TI",
+      "promise": "Nossos especialistas se integram à sua equipe e trabalham com as suas ferramentas e processos.",
+      "idealFor": "Ideal para ganhar capacidade já, sem aumentar o quadro de funcionários.",
+      "howItWorks": [
+        {
+          "title": "Conversa",
+          "text": "Entendemos a equipe, a stack e o que precisa ser entregue."
+        },
+        {
+          "title": "Perfis",
+          "text": "Apresentamos candidatos já avaliados tecnicamente, em [x] dias."
+        },
+        {
+          "title": "Entrevistas",
+          "text": "Você entrevista quem quiser. Só avança com quem escolher."
+        },
+        {
+          "title": "Onboarding",
+          "text": "Integração nas suas ferramentas e acompanhamento contínuo."
+        }
+      ],
+      "faq": {
+        "0": {
+          "q": "O que é a alocação de profissionais de TI no modelo Reforce?",
+          "a": "São profissionais da Yellowipe que trabalham dentro da sua equipe, com as suas ferramentas e prioridades. O contrato é com a gente; o dia a dia é com você."
+        },
+        "1": {
+          "q": "Qual a diferença entre alocação e squad dedicado?",
+          "a": "Na alocação, você gerencia os especialistas como parte da sua equipe. No squad dedicado, um tech lead da Yellowipe organiza o trabalho a partir das prioridades que você define."
+        },
+        "2": {
+          "q": "Quanto tempo leva para ter alguém na equipe?",
+          "a": "[Prazo médio até os primeiros perfis e até o início a confirmar.]"
+        },
+        "3": {
+          "q": "Os profissionais usam ferramentas de IA?",
+          "a": "Sim. Trabalham com assistentes como Claude Code, Cursor e GitHub Copilot, sempre dentro das regras de segurança da sua empresa."
+        },
+        "4": {
+          "q": "Quanto custa?",
+          "a": "Depende dos perfis, da senioridade e da duração. Enviamos uma proposta depois da primeira conversa."
+        }
+      },
+      "page": {
+        "tagline": "Especialistas integrados à sua equipe.",
+        "hero": {
+          "h1": "Nossos consultores,",
+          "h1Highlight": "trabalhando dentro da sua equipe.",
+          "lead": "Consultores de tecnologia da Yellowipe entram na sua equipe e trabalham com as suas ferramentas e prioridades. Você gerencia o trabalho; nós cuidamos do contrato, do acompanhamento e da substituição.",
+          "badges": [
+            "Seleção técnica por seniores",
+            "Horário em comum com EUA e Europa",
+            "Desenvolvimento assistido por IA"
+          ],
+          "cta": "Pedir perfis",
+          "vizLabel": "Ilustração: consultores da Yellowipe dentro da equipe do cliente, acompanhados por um gerente de conta Yellowipe."
+        },
+        "viz": {
+          "scene": "reforce",
+          "actor": "Consultores Yellowipe",
+          "actorNote": "Seleção técnica e gerente de conta",
+          "waiting": "Equipe com capacidade faltando",
+          "doneTitle": "Equipe reforçada com 2 consultores",
+          "doneNote": "Você gerencia; a Yellowipe garante as pessoas",
+          "consultants": ["MF", "RD"],
+          "team": "Sua equipe · Pagamentos",
+          "sprint": "Sprint 14",
+          "members": ["JP", "SM", "LC"],
+          "capacity": "Capacidade da equipe",
+          "deliveries": "Entregas por sprint"
+        },
+        "whoLead": "No Reforce, os consultores são da Yellowipe e trabalham sob a sua direção. Você gerencia o dia a dia; nós garantimos as pessoas.",
+        "why": {
+          "eyebrow": "Por que o Reforce",
+          "title": "Mais capacidade. Sem mudar a forma como você trabalha.",
+          "lead": "Os especialistas entram na sua equipe e trabalham com as suas ferramentas e processos. Você mantém o controle das prioridades.",
+          "items": [
+            {
+              "icon": "team",
+              "title": "Integração real",
+              "text": "Usam o seu Jira, o seu Git e as suas cerimônias. Para a equipe, são mais colegas."
+            },
+            {
+              "icon": "puzzle",
+              "title": "Competências que faltam",
+              "text": "Cubra lacunas em cloud, dados, QA ou IA sem abrir um processo de recrutamento de meses."
+            },
+            {
+              "icon": "scale",
+              "title": "Escala para cima e para baixo",
+              "text": "Aumente a equipe para um lançamento e reduza depois, sem custos de contratação."
+            },
+            {
+              "icon": "clock",
+              "title": "Fuso e idioma compatíveis",
+              "text": "Equipes no Brasil e em Portugal, em português e inglês, com horário em comum com os EUA e a Europa."
+            },
+            {
+              "icon": "swap",
+              "title": "Substituição sem recomeçar",
+              "text": "Se um perfil não se encaixar, propomos uma alternativa sem voltar ao início do processo."
+            },
+            {
+              "icon": "chart",
+              "title": "Acompanhamento contínuo",
+              "text": "Um gerente de conta acompanha desempenho e satisfação, com reuniões de status regulares."
+            }
+          ]
+        },
+        "formats": {
+          "title": "Dois formatos. O mesmo nível de exigência.",
+          "lead": "Comece com um especialista ou com uma equipe completa, e mude de formato quando a necessidade mudar.",
+          "items": [
+            {
+              "tag": "Alocação",
+              "title": "Especialistas na sua equipe",
+              "text": "Perfis individuais que entram na sua equipe. Você define as prioridades e gerencia o dia a dia.",
+              "ticks": [
+                "De um a vários perfis",
+                "Gestão técnica do seu lado",
+                "Ideal para lacunas e picos de trabalho"
+              ]
+            },
+            {
+              "tag": "Squad",
+              "title": "Equipe dedicada",
+              "text": "Uma equipe completa com tech lead da Yellowipe. Você define o quê; nós organizamos o como.",
+              "ticks": [
+                "Tech lead e QA incluídos",
+                "Menos gestão do seu lado",
+                "Ideal para frentes de produto contínuas"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "title": "Da conversa à primeira sprint.",
+          "lead": "Você só avança com quem escolher, e acompanhamos cada profissional depois da entrada."
+        },
+        "stack": {
+          "title": "A sua stack é a nossa stack.",
+          "lead": "Consultores que já trabalham nas tecnologias que você usa, das mais comuns às de nicho e aos sistemas legados, e com as ferramentas de IA que aceleram a entrega.",
+          "cta": "Pedir especialistas na minha stack"
+        },
+        "comparison": {
+          "title": "Alocar, contratar ou terceirizar para longe?",
+          "columns": ["Yellowipe · Reforce", "Contratar internamente", "Offshore distante"],
+          "rows": [
+            {
+              "label": "Tempo até começar",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Semanas"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Meses"
+                },
+                {
+                  "tone": "good",
+                  "text": "Semanas"
+                }
+              ]
+            },
+            {
+              "label": "Horário em comum",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "EUA e Europa"
+                },
+                {
+                  "tone": "good",
+                  "text": "Total"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Pouco"
+                }
+              ]
+            },
+            {
+              "label": "Seleção técnica",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Por engenheiros seniores"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Depende da equipe"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Variável"
+                }
+              ]
+            },
+            {
+              "label": "Idioma e cultura",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Português e inglês"
+                },
+                {
+                  "tone": "good",
+                  "text": "Total"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Variável"
+                }
+              ]
+            },
+            {
+              "label": "Custos fixos e encargos",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Nenhum"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Salário, encargos e recrutamento"
+                },
+                {
+                  "tone": "good",
+                  "text": "Nenhum"
+                }
+              ]
+            },
+            {
+              "label": "Escalar ou reduzir",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Flexível"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Lento"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Contratos rígidos"
+                }
+              ]
+            }
+          ]
+        },
+        "faqTitle": "O que nos perguntam sobre o Reforce.",
+        "finalTitle": "Conte para a gente que perfis faltam na sua equipe."
+      },
+      "seo": {
+        "title": "Alocação de profissionais de TI | Yellowipe",
+        "description": "Alocação de desenvolvedores e especialistas de TI integrados à sua equipe. Software, cloud, QA e IA."
+      }
+    },
+    "construa": {
+      "name": "Construa",
+      "slug": "desenvolvimento-de-software",
+      "keyword": "Desenvolvimento de software",
+      "promise": "Nossas equipes constroem a solução para você, da definição do produto ao go-live.",
+      "idealFor": "Ideal para lançar produtos novos ou modernizar sistemas com uma equipe que assume a entrega.",
+      "howItWorks": [
+        {
+          "title": "Descoberta",
+          "text": "Objetivos, usuários e restrições técnicas."
+        },
+        {
+          "title": "Desenho",
+          "text": "Arquitetura, protótipos e plano de entregas."
+        },
+        {
+          "title": "Construção",
+          "text": "Sprints com demos e testes automatizados."
+        },
+        {
+          "title": "Go-live e evolução",
+          "text": "Lançamento acompanhado e melhoria contínua."
+        }
+      ],
+      "faq": {
+        "0": {
+          "q": "Que tipo de projeto vocês fazem?",
+          "a": "Aplicações web e mobile, plataformas enterprise, soluções de IA e cloud, de MVPs a sistemas críticos para milhões de usuários."
+        },
+        "1": {
+          "q": "Vocês trabalham com escopo fechado?",
+          "a": "Sim, para projetos com requisitos claros. Quando o produto ainda está sendo descoberto, recomendamos uma equipe de produto contínua."
+        },
+        "2": {
+          "q": "De quem é o código?",
+          "a": "O código e a propriedade intelectual são seus. [Confirmar a redação com o jurídico.]"
+        },
+        "3": {
+          "q": "Vocês usam IA no desenvolvimento?",
+          "a": "Sim, com assistentes de código e testes gerados com IA, sempre revisados por engenheiros seniores."
+        },
+        "4": {
+          "q": "Quanto custa?",
+          "a": "Depende do escopo e da equipe. Depois da descoberta, enviamos uma proposta com plano de entregas."
+        }
+      },
+      "page": {
+        "tagline": "Uma equipe que entrega a solução.",
+        "hero": {
+          "h1": "Nossa equipe e nosso gerente",
+          "h1Highlight": "construindo o seu produto.",
+          "lead": "Uma equipe completa da Yellowipe, liderada por um gerente de projeto, constrói a solução de ponta a ponta. Você define o objetivo e aprova as entregas; nós respondemos pelo resultado.",
+          "badges": [
+            "Equipe completa e gerenciada",
+            "Demos no fim de cada sprint",
+            "Testes automatizados desde o início"
+          ],
+          "cta": "Falar sobre o projeto",
+          "vizLabel": "Ilustração: equipe Yellowipe com gerente de projeto construindo o produto do cliente, sprint a sprint."
+        },
+        "viz": {
+          "scene": "construa",
+          "actor": "Equipe Yellowipe",
+          "actorNote": "Gerente de projeto e 4 especialistas",
+          "waiting": "Aguardando a entrega",
+          "doneTitle": "Portal de clientes em produção",
+          "doneNote": "Entregue e evoluído pela mesma equipe",
+          "lead": "GP",
+          "product": "Portal de clientes",
+          "disciplines": [
+            {
+              "initials": "UX",
+              "label": "Design"
+            },
+            {
+              "initials": "FE",
+              "label": "Front-end"
+            },
+            {
+              "initials": "BE",
+              "label": "Back-end"
+            },
+            {
+              "initials": "QA",
+              "label": "Qualidade"
+            }
+          ],
+          "live": "Em produção"
+        },
+        "whoLead": "No Construa, a Yellowipe responde pela entrega: equipe, gestão e qualidade. Você define o objetivo e aprova cada demo.",
+        "why": {
+          "eyebrow": "Por que o Construa",
+          "title": "Software crítico entregue, sem sobrecarregar a sua equipe.",
+          "lead": "Você define os objetivos e as prioridades. Nós cuidamos da execução, com uma equipe que se responsabiliza pelo resultado.",
+          "items": [
+            {
+              "icon": "target",
+              "title": "Foco no negócio",
+              "text": "Você define objetivos e prioridades; a execução diária fica com a gente."
+            },
+            {
+              "icon": "layers",
+              "title": "Equipe completa",
+              "text": "Produto, design, engenharia, QA e DevOps em uma só equipe, já acostumada a trabalhar junta."
+            },
+            {
+              "icon": "eye",
+              "title": "Visibilidade total",
+              "text": "Demos no fim de cada sprint e métricas de qualidade compartilhadas com você."
+            },
+            {
+              "icon": "check",
+              "title": "Qualidade desde o primeiro dia",
+              "text": "Testes automatizados e CI/CD em cada alteração, como no case Linde."
+            },
+            {
+              "icon": "spark",
+              "title": "IA no processo",
+              "text": "Desenvolvimento acelerado com assistentes de código, sempre revisado por engenheiros seniores."
+            },
+            {
+              "icon": "loop",
+              "title": "Continuidade",
+              "text": "A mesma equipe mantém e evolui o produto depois do lançamento."
+            }
+          ]
+        },
+        "formats": {
+          "title": "Um projeto fechado ou uma equipe de produto.",
+          "lead": "Escolha pelo grau de certeza que você já tem sobre o que quer construir.",
+          "items": [
+            {
+              "tag": "Projeto",
+              "title": "Escopo fechado",
+              "text": "Escopo, prazo e orçamento definidos no início, com entregas por fases.",
+              "ticks": [
+                "Ideal para MVPs e módulos",
+                "Plano de entregas combinado",
+                "Handover com documentação"
+              ]
+            },
+            {
+              "tag": "Produto",
+              "title": "Equipe de produto contínua",
+              "text": "Uma equipe estável que evolui o produto a partir de um roadmap compartilhado.",
+              "ticks": [
+                "Roadmap revisado com você",
+                "Ideal para produtos em crescimento",
+                "Mesma equipe ao longo do tempo"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "title": "Do problema ao software em produção.",
+          "lead": "Sprints curtas, demos frequentes e qualidade medida em cada entrega."
+        },
+        "stack": {
+          "title": "Construímos na stack que faz sentido para você.",
+          "lead": "Escolhemos a tecnologia com a sua equipe: a que você já usa, ou a que melhor atende o produto, sempre com IA no processo de desenvolvimento.",
+          "cta": "Falar sobre o projeto"
+        },
+        "comparison": {
+          "title": "Construir com a gente, montar equipe ou juntar freelancers?",
+          "columns": ["Yellowipe · Construa", "Montar equipe interna", "Freelancers"],
+          "rows": [
+            {
+              "label": "Tempo até começar",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Semanas"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Meses"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Rápido, mas disperso"
+                }
+              ]
+            },
+            {
+              "label": "Equipe completa, do produto ao QA",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Sim"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Você precisa montar"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Raramente"
+                }
+              ]
+            },
+            {
+              "label": "Responsabilidade pela entrega",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Da Yellowipe"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Sua"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Dividida"
+                }
+              ]
+            },
+            {
+              "label": "Qualidade e testes",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "Automatizados desde o início"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Depende"
+                },
+                {
+                  "tone": "mid",
+                  "text": "Variável"
+                }
+              ]
+            },
+            {
+              "label": "Continuidade após o lançamento",
+              "cells": [
+                {
+                  "tone": "good",
+                  "text": "A mesma equipe"
+                },
+                {
+                  "tone": "good",
+                  "text": "Sim"
+                },
+                {
+                  "tone": "bad",
+                  "text": "Incerta"
+                }
+              ]
+            }
+          ]
+        },
+        "faqTitle": "O que nos perguntam sobre o Construa.",
+        "finalTitle": "Conte para a gente o que você quer construir."
+      },
+      "seo": {
+        "title": "Desenvolvimento de software sob medida | Yellowipe",
+        "description": "Equipes que constroem o seu produto do MVP ao go-live: web, mobile, cloud e IA, com cases reais."
+      }
+    }
+  },
+  "areas": {
+    "software": {
+      "name": "Software sob medida",
+      "tabLabel": "Software\nsob medida",
+      "description": "Software sob medida para o seu negócio, da primeira versão ao go-live, com uma equipe que fica até o produto estar estável.",
+      "ai": "desenvolvimento acelerado com assistentes de código como Claude Code, Cursor e GitHub Copilot.",
+      "proof": "Hapvida: aplicativo com teleconsulta para milhões de usuários."
+    },
+    "ia": {
+      "name": "Inteligência artificial",
+      "tabLabel": "Inteligência\nartificial",
+      "description": "Da prova de conceito à IA em produção: agentes, modelos e automações conectados aos seus dados e processos.",
+      "ai": "IA generativa, RAG e agentes em produção, conectados aos seus sistemas por MCP, com OpenAI, Azure AI, SageMaker ou Vertex AI."
+    },
+    "emergentes": {
+      "name": "Tecnologias emergentes",
+      "tabLabel": "Tecnologias\nemergentes",
+      "description": "Tecnologias emergentes aplicadas a problemas concretos, com protótipos rápidos para validar antes de investir.",
+      "ai": "protótipos validados mais rápido com desenvolvimento assistido por IA."
+    },
+    "cloud-devops": {
+      "name": "Cloud e DevOps",
+      "tabLabel": "Cloud e\nDevOps",
+      "description": "Infraestrutura que acelera as entregas: pipelines, cloud e sistemas modernizados sem parar a operação.",
+      "ai": "infraestrutura como código e pipelines escritos e revisados com apoio de IA, e operações de modelos (MLOps).",
+      "proof": "Linde: −94% no tempo de regressão com CI/CD."
+    },
+    "qualidade": {
+      "name": "Qualidade e testes",
+      "tabLabel": "Qualidade\ne testes",
+      "description": "Qualidade medida em cada entrega, com automação que cresce no ritmo do produto.",
+      "ai": "testes gerados e mantidos com apoio de IA, como no case Clever.",
+      "proof": "Clever: de 32 para 1.600+ testes automatizados em seis meses."
+    },
+    "design": {
+      "name": "Design de produto",
+      "tabLabel": "Design de\nproduto",
+      "description": "Produtos fáceis de usar, desenhados com quem vai usá-los e entregues prontos para desenvolver.",
+      "ai": "pesquisa, protótipos e variantes de interface produzidos mais rápido com IA.",
+      "proof": "Hapvida: experiência desenhada para milhões de usuários."
+    },
+    "recrutamento": {
+      "name": "Recrutamento tech",
+      "tabLabel": "Recrutamento\ntech",
+      "description": "Encontramos os perfis de tecnologia de que a sua equipe precisa, para contratação efetiva, nos três mercados.",
+      "ai": "profissionais fluentes nas ferramentas de IA que a sua equipe usa, e especialistas em dados, machine learning e IA generativa."
+    }
+  },
+  "services": {
+    "aplicacoes-web": {
+      "name": "Aplicações web",
+      "slug": "aplicacoes-web",
+      "keyword": "Aplicações web",
+      "summary": "Portais, plataformas SaaS e dashboards rápidos no navegador, construídos sobre APIs.",
+      "seo": {
+        "title": "Aplicações web | Yellowipe",
+        "description": "Portais, plataformas SaaS e dashboards rápidos no navegador, construídos sobre APIs."
+      }
+    },
+    "aplicacoes-mobile": {
+      "name": "Desenvolvimento de aplicativos",
+      "slug": "desenvolvimento-de-aplicativos",
+      "keyword": "desenvolvimento de aplicativos",
+      "summary": "Apps iOS e Android, nativos ou multiplataforma, da concepção à publicação nas lojas.",
+      "seo": {
+        "title": "Desenvolvimento de aplicativos | Yellowipe",
+        "description": "Aplicativos iOS e Android do desenho à publicação, com testes automatizados. Case Hapvida: teleconsulta para milhões."
+      }
+    },
+    "aplicacoes-enterprise": {
+      "name": "Aplicações corporativas",
+      "slug": "aplicacoes-corporativas",
+      "keyword": "Aplicações corporativas",
+      "summary": "Sistemas internos integrados ao ERP e ao CRM, no lugar de planilhas.",
+      "seo": {
+        "title": "Aplicações corporativas | Yellowipe",
+        "description": "Sistemas internos integrados ao ERP e ao CRM, no lugar de planilhas."
+      }
+    },
+    "aplicacoes-cloud": {
+      "name": "Aplicações cloud",
+      "slug": "aplicacoes-cloud",
+      "keyword": "Aplicações cloud",
+      "summary": "Aplicações cloud-native, preparadas para crescer sem reescrever a arquitetura.",
+      "seo": {
+        "title": "Aplicações cloud | Yellowipe",
+        "description": "Aplicações cloud-native, preparadas para crescer sem reescrever a arquitetura."
+      }
+    },
+    "ia-generativa": {
+      "name": "IA generativa",
+      "slug": "ia-generativa",
+      "keyword": "IA generativa",
+      "summary": "Assistentes, busca em documentos e geração de conteúdo com os dados da empresa.",
+      "seo": {
+        "title": "IA generativa | Yellowipe",
+        "description": "Assistentes, busca em documentos e geração de conteúdo com os dados da empresa."
+      }
+    },
+    "agentes-de-ia": {
+      "name": "Agentes de IA",
+      "slug": "agentes-de-ia",
+      "keyword": "Agentes de IA",
+      "summary": "Agentes que executam tarefas de ponta a ponta, com regras e supervisão humana.",
+      "seo": {
+        "title": "Agentes de IA | Yellowipe",
+        "description": "Agentes que executam tarefas de ponta a ponta, com regras e supervisão humana."
+      }
+    },
+    "desenvolvimento-ia-ml": {
+      "name": "Desenvolvimento de IA/ML",
+      "slug": "desenvolvimento-ia-ml",
+      "keyword": "Desenvolvimento de IA/ML",
+      "summary": "Modelos de previsão, classificação e recomendação treinados com os seus dados.",
+      "seo": {
+        "title": "Desenvolvimento de IA/ML | Yellowipe",
+        "description": "Modelos de previsão, classificação e recomendação treinados com os seus dados."
+      }
+    },
+    "transformacao-com-ia": {
+      "name": "Transformação com IA",
+      "slug": "transformacao-com-ia",
+      "keyword": "Transformação com IA",
+      "summary": "Diagnóstico, priorização de casos de uso e roadmap para toda a organização.",
+      "seo": {
+        "title": "Transformação com IA | Yellowipe",
+        "description": "Diagnóstico, priorização de casos de uso e roadmap para toda a organização."
+      }
+    },
+    "realidade-aumentada-e-virtual": {
+      "name": "Realidade aumentada e virtual",
+      "slug": "realidade-aumentada-e-virtual",
+      "keyword": "Realidade aumentada e virtual",
+      "summary": "Experiências imersivas para treinamento, vendas e manutenção em campo.",
+      "seo": {
+        "title": "Realidade aumentada e virtual | Yellowipe",
+        "description": "Experiências imersivas para treinamento, vendas e manutenção em campo."
+      }
+    },
+    "blockchain": {
+      "name": "Blockchain",
+      "slug": "blockchain",
+      "keyword": "Blockchain",
+      "summary": "Registros compartilhados e contratos inteligentes onde a rastreabilidade é crítica.",
+      "seo": {
+        "title": "Blockchain | Yellowipe",
+        "description": "Registros compartilhados e contratos inteligentes onde a rastreabilidade é crítica."
+      }
+    },
+    "iot": {
+      "name": "IoT",
+      "slug": "iot",
+      "keyword": "IoT",
+      "summary": "Sensores e plataformas conectados para monitorar operações em tempo real.",
+      "seo": {
+        "title": "IoT | Yellowipe",
+        "description": "Sensores e plataformas conectados para monitorar operações em tempo real."
+      }
+    },
+    "devops-e-devsecops": {
+      "name": "DevOps e DevSecOps",
+      "slug": "devops-e-devsecops",
+      "keyword": "DevOps e DevSecOps",
+      "summary": "Pipelines, infraestrutura como código e segurança integrada ao ciclo de entrega.",
+      "seo": {
+        "title": "DevOps e DevSecOps | Yellowipe",
+        "description": "Pipelines, infraestrutura como código e segurança integrada ao ciclo de entrega."
+      }
+    },
+    "migracao-para-cloud": {
+      "name": "Migração para cloud",
+      "slug": "migracao-para-cloud",
+      "keyword": "Migração para cloud",
+      "summary": "Migração para AWS, Azure ou Google Cloud com o mínimo de interrupção.",
+      "seo": {
+        "title": "Migração para cloud | Yellowipe",
+        "description": "Migração para AWS, Azure ou Google Cloud com o mínimo de interrupção."
+      }
+    },
+    "modernizacao-de-sistemas": {
+      "name": "Modernização de sistemas",
+      "slug": "modernizacao-de-sistemas",
+      "keyword": "Modernização de sistemas",
+      "summary": "Sistemas legados reescritos ou decompostos por fases, sem parar o negócio.",
+      "seo": {
+        "title": "Modernização de sistemas | Yellowipe",
+        "description": "Sistemas legados reescritos ou decompostos por fases, sem parar o negócio."
+      }
+    },
+    "pipelines-ci-cd": {
+      "name": "Pipelines CI/CD",
+      "slug": "pipelines-ci-cd",
+      "keyword": "Pipelines CI/CD",
+      "summary": "Integração e entrega contínuas, com testes automatizados a cada alteração.",
+      "seo": {
+        "title": "Pipelines CI/CD | Yellowipe",
+        "description": "Integração e entrega contínuas, com testes automatizados a cada alteração."
+      }
+    },
+    "automacao-de-testes": {
+      "name": "Automação de testes",
+      "slug": "automacao-de-testes",
+      "keyword": "automação de testes",
+      "summary": "Suítes automatizadas que crescem com o produto e cortam o tempo de regressão.",
+      "seo": {
+        "title": "Automação de testes | Yellowipe",
+        "description": "Testes automatizados integrados ao CI/CD. Clever: de 32 para 1.600+ testes em seis meses. Linde: −94% na regressão."
+      }
+    },
+    "testes-de-performance": {
+      "name": "Testes de performance",
+      "slug": "testes-de-performance",
+      "keyword": "Testes de performance",
+      "summary": "Testes de carga e estresse que mostram os limites antes dos usuários.",
+      "seo": {
+        "title": "Testes de performance | Yellowipe",
+        "description": "Testes de carga e estresse que mostram os limites antes dos usuários."
+      }
+    },
+    "testes-de-seguranca": {
+      "name": "Testes de segurança",
+      "slug": "testes-de-seguranca",
+      "keyword": "Testes de segurança",
+      "summary": "Análise de vulnerabilidades e testes de invasão antes de cada lançamento.",
+      "seo": {
+        "title": "Testes de segurança | Yellowipe",
+        "description": "Análise de vulnerabilidades e testes de invasão antes de cada lançamento."
+      }
+    },
+    "testes-manuais": {
+      "name": "Testes manuais",
+      "slug": "testes-manuais",
+      "keyword": "Testes manuais",
+      "summary": "Testes exploratórios e de aceitação onde a automação não chega.",
+      "seo": {
+        "title": "Testes manuais | Yellowipe",
+        "description": "Testes exploratórios e de aceitação onde a automação não chega."
+      }
+    },
+    "ux-ui-design": {
+      "name": "UX e UI Design",
+      "slug": "ux-ui-design",
+      "keyword": "UX e UI Design",
+      "summary": "Pesquisa, fluxos, protótipos e design system prontos para desenvolvimento.",
+      "seo": {
+        "title": "UX e UI Design | Yellowipe",
+        "description": "Pesquisa, fluxos, protótipos e design system prontos para desenvolvimento."
+      }
+    },
+    "web-design": {
+      "name": "Web design",
+      "slug": "web-design",
+      "keyword": "Web design",
+      "summary": "Sites institucionais e landing pages pensados para converter.",
+      "seo": {
+        "title": "Web design | Yellowipe",
+        "description": "Sites institucionais e landing pages pensados para converter."
+      }
+    },
+    "developers-e-engenharia": {
+      "name": "Desenvolvedores e engenharia",
+      "slug": "desenvolvedores-e-engenharia",
+      "keyword": "Desenvolvedores e engenharia",
+      "summary": "Front-end, back-end, mobile e full-stack, de júnior a arquiteto.",
+      "seo": {
+        "title": "Desenvolvedores e engenharia | Yellowipe",
+        "description": "Front-end, back-end, mobile e full-stack, de júnior a arquiteto."
+      }
+    },
+    "recrutamento-dados-e-ia": {
+      "name": "Dados e IA",
+      "slug": "recrutamento-dados-e-ia",
+      "keyword": "Dados e IA",
+      "summary": "Engenheiros de dados, cientistas de dados e especialistas em machine learning.",
+      "seo": {
+        "title": "Dados e IA | Yellowipe",
+        "description": "Engenheiros de dados, cientistas de dados e especialistas em machine learning."
+      }
+    },
+    "recrutamento-cloud-devops-qa": {
+      "name": "Cloud, DevOps e QA",
+      "slug": "recrutamento-cloud-devops-qa",
+      "keyword": "Cloud, DevOps e QA",
+      "summary": "Perfis de infraestrutura, automação e qualidade de software.",
+      "seo": {
+        "title": "Cloud, DevOps e QA | Yellowipe",
+        "description": "Perfis de infraestrutura, automação e qualidade de software."
+      }
+    },
+    "liderancas-tecnologicas": {
+      "name": "Lideranças de tecnologia",
+      "slug": "liderancas-de-tecnologia",
+      "keyword": "Lideranças de tecnologia",
+      "summary": "Tech leads, engineering managers e CTOs.",
+      "seo": {
+        "title": "Lideranças de tecnologia | Yellowipe",
+        "description": "Tech leads, engineering managers e CTOs."
+      }
+    }
+  },
+  "cases": {
+    "clever": {
+      "slug": "clever-automacao-de-testes",
+      "headline": "32 → 1.600+ testes",
+      "summary": "Uma suíte de testes estagnada transformada em um processo de QA escalável em seis meses, com automação assistida por IA.",
+      "metrics": {
+        "0": {
+          "label": "testes automatizados"
+        },
+        "1": {
+          "label": "meses"
+        }
+      },
+      "seo": {
+        "title": "Clever: de 32 para 1.600+ testes | Case Yellowipe",
+        "description": "Como a Yellowipe transformou uma suíte estagnada em um processo de QA escalável em seis meses, com automação assistida por IA."
+      }
+    },
+    "linde": {
+      "slug": "linde-tempo-de-regressao",
+      "headline": "−94% no tempo de regressão",
+      "summary": "Uma suíte com 88% de falhas recuperada em uma semana, com 128 testes automatizados e CI/CD.",
+      "metrics": {
+        "0": {
+          "label": "tempo de regressão"
+        },
+        "1": {
+          "label": "testes automatizados"
+        }
+      },
+      "seo": {
+        "title": "Linde: −94% no tempo de regressão | Case Yellowipe",
+        "description": "Suíte com 88% de falhas recuperada em uma semana: 128 testes automatizados e CI/CD."
+      }
+    },
+    "hapvida": {
+      "slug": "hapvida-teleconsulta",
+      "headline": "Teleconsulta para milhões",
+      "summary": "Desenvolvimento end-to-end do aplicativo Hapvida, com acesso remoto a cuidados de saúde.",
+      "metrics": {
+        "0": {
+          "label": "usuários"
+        }
+      },
+      "seo": {
+        "title": "Hapvida: teleconsulta para milhões | Case Yellowipe",
+        "description": "Desenvolvimento end-to-end do aplicativo Hapvida, com acesso remoto a cuidados de saúde para milhões de pessoas."
+      }
+    }
+  },
+  "markets": {
+    "PT": {
+      "name": "Portugal",
+      "description": "Recrutamento, equipes e entrega de projetos para empresas portuguesas e europeias."
+    },
+    "BR": {
+      "name": "Brasil",
+      "description": "Talento e capacidade de entrega para empresas brasileiras, com cases como a Hapvida."
+    },
+    "US": {
+      "name": "Estados Unidos",
+      "description": "Equipes e projetos para empresas norte-americanas, com talento dos três mercados."
+    }
+  },
+  "technologyGroups": {
+    "front-end": {
+      "name": "Front-end"
+    },
+    "mobile": {
+      "name": "Mobile"
+    },
+    "back-end": {
+      "name": "Back-end"
+    },
+    "cloud-devops": {
+      "name": "Cloud e DevOps"
+    },
+    "dados": {
+      "name": "Dados"
+    },
+    "ia": {
+      "name": "IA e machine learning"
+    },
+    "enterprise": {
+      "name": "ERP, CRM e low-code"
+    },
+    "qa": {
+      "name": "Qualidade e testes"
+    }
+  },
+  "responsibilities": {
+    "0": {
+      "label": "Encontrar e avaliar o profissional"
+    },
+    "1": {
+      "label": "Contrato do profissional"
+    },
+    "2": {
+      "label": "Gestão do dia a dia"
+    },
+    "3": {
+      "label": "Responsabilidade pela entrega"
+    },
+    "4": {
+      "label": "Acompanhamento e substituição"
+    }
+  }
+}

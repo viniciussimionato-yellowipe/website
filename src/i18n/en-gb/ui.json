@@ -1,0 +1,35 @@
+{
+  "form": {
+    "jobPanelText": "This form is for companies. Job applications go through our open positions or by sending your CV, where our recruitment team will reply.",
+    "cvCta": "Send my CV"
+  },
+  "careers": {
+    "whyTitle": "Projects that count on your CV. People you can count on.",
+    "cvTitle": "Didn’t find the right role? Leave us your CV.",
+    "cvDrop": "Drop your CV or LinkedIn profile",
+    "steps": [
+      {
+        "title": "Application",
+        "text": "Send your CV or LinkedIn. A person reads it, not an automated filter."
+      },
+      {
+        "title": "Intro call",
+        "text": "We talk about what you are looking for: stack, project, model and salary."
+      },
+      {
+        "title": "Technical interview",
+        "text": "With engineers in your field, then with the client. We give feedback at every stage."
+      },
+      {
+        "title": "Offer",
+        "text": "A clear offer, with the contract type and conditions in writing. [Average timeline to be confirmed.]"
+      }
+    ]
+  },
+  "jobs": {
+    "emptyText": "Leave your CV and we’ll let you know when a matching project comes up.",
+    "attach": "Attach CV",
+    "cvOrLinkedin": "Attach your CV or add your LinkedIn profile.",
+    "cvInvalid": "Your CV must be a PDF or DOCX, up to 5 MB."
+  }
+}

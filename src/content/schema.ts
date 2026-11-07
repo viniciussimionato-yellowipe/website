@@ -265,11 +265,11 @@ export const TechStack = z.object({
   /** Logótipo em public/images/tech (fontes e licenças no README da pasta). */
   logo: text.optional(),
   /** Como chamar quem trabalha com a stack (ex.: "especialistas Power BI"). Por omissão: modelo da categoria. */
-  role: z.object({ pt: text, en: text }).optional(),
+  role: LocalizedText.optional(),
   /** Palavra-chave principal por idioma (H1 e título SEO). Por omissão: modelo da categoria. */
   keyword: z.object({ pt: text.optional(), en: text.optional() }).optional(),
   /** Uma frase própria da stack para o topo da página. */
-  pitch: z.object({ pt: text, en: text }),
+  pitch: LocalizedText,
   /** Versão ou nota técnica curta no cartão do topo (ex.: ".NET 8 · C# 12"). */
   version: text,
   /** Cinco camadas do cartão do topo, pela ordem das etiquetas da categoria. */
@@ -286,18 +286,16 @@ export const TechStack = z.object({
     .record(
       z.string(),
       z.object({
-        title: z.object({ pt: text, en: text }).optional(),
-        pain: z.object({ pt: text, en: text }).optional(),
-        text: z.object({ pt: text, en: text }).optional(),
+        title: LocalizedText.optional(),
+        pain: LocalizedText.optional(),
+        text: LocalizedText.optional(),
       }),
     )
     .default({}),
   /** Competências mostradas nos perfis (a stack primeiro). */
   skills: z.array(text).min(4),
   /** Perguntas próprias da stack (aparecem antes das da categoria e das comuns). */
-  faq: z
-    .array(z.object({ q: z.object({ pt: text, en: text }), a: z.object({ pt: text, en: text }) }))
-    .default([]),
+  faq: z.array(z.object({ q: LocalizedText, a: LocalizedText })).default([]),
   related: z.array(Slug),
   caseIds: z.array(Slug).default([]),
 });

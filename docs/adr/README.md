@@ -13,3 +13,5 @@ Mudar uma decisão = novo ADR que diz qual substitui.
 | 0006 | Análise só com consentimento e sem dados pessoais | Aceite                   |
 | 0007 | Poucas dependências                               | Aceite                   |
 | 0008 | Microsoft Clarity para análise qualitativa        | Aceite                   |
+| 0009 | Inglês americano (/en/) e britânico (/en-gb/)     | Aceite                   |
+| 0010 | Traduções em JSON por idioma (src/i18n)           | Aceite                   |

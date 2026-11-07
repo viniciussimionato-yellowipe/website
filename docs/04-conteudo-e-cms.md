@@ -2,12 +2,12 @@
 
 ## Onde vive o conteúdo
 
-| O quê                                                       | Ficheiro hoje                    | Depois do CMS              |
-| ----------------------------------------------------------- | -------------------------------- | -------------------------- |
-| Factos da empresa (anos, empresas, produtos, contactos)     | `src/config/site.ts`             | Configuração global no CMS |
-| Textos de interface (botões, títulos de secção, formulário) | `src/dictionaries/{pt,br,en}.ts` | Ficam no código            |
-| Modelos, áreas, serviços, casos, mercados, tecnologias      | `src/content/local/*.ts`         | CMS                        |
-| Esquemas (contrato)                                         | `src/content/schema.ts`          | Ficam no código            |
+| O quê                                                       | Ficheiro hoje                          | Depois do CMS              |
+| ----------------------------------------------------------- | -------------------------------------- | -------------------------- |
+| Factos da empresa (anos, empresas, produtos, contactos)     | `src/config/site.ts`                   | Configuração global no CMS |
+| Textos de interface (botões, títulos de secção, formulário) | `src/i18n/<idioma>/ui.json` (ADR 0010) | Ficam no código            |
+| Modelos, áreas, serviços, casos, mercados, tecnologias      | `src/content/local/*.ts`               | CMS                        |
+| Esquemas (contrato)                                         | `src/content/schema.ts`                | Ficam no código            |
 
 Os componentes só usam `src/content/index.ts`. Trocar ficheiros locais pelo CMS = escrever um adaptador que devolve o mesmo `Content` validado pelos mesmos esquemas ([ADR 0003](adr/0003-camada-de-conteudo.md)).
 

@@ -22,7 +22,6 @@ export const stacks: In[] = [
     logo: '/images/tech/react.svg',
     pitch: {
       pt: 'Interfaces React rápidas, acessíveis e fáceis de evoluir, de portais de cliente a plataformas SaaS.',
-      en: 'Fast, accessible React interfaces that are easy to evolve, from customer portals to SaaS platforms.',
     },
     version: 'React 19 · TypeScript',
     layers: [
@@ -50,10 +49,9 @@ export const stacks: In[] = [
     skills: ['React', 'TypeScript', 'Next.js', 'Testing Library'],
     faq: [
       {
-        q: { pt: 'Usam React Server Components?', en: 'Do you use React Server Components?' },
+        q: { pt: 'Usam React Server Components?' },
         a: {
           pt: 'Sim, em projetos Next.js novos, quando reduzem o JavaScript enviado ao browser. Em aplicações existentes avaliamos caso a caso.',
-          en: 'Yes, in new Next.js projects when they reduce the JavaScript sent to the browser. In existing apps we assess case by case.',
         },
       },
     ],
@@ -68,7 +66,6 @@ export const stacks: In[] = [
     logo: '/images/tech/nextjs.svg',
     pitch: {
       pt: 'Sites e aplicações Next.js que carregam depressa, aparecem no Google e escalam com o produto.',
-      en: 'Next.js sites and apps that load fast, rank on Google and scale with the product.',
     },
     version: 'Next.js 16 · App Router',
     layers: [
@@ -98,11 +95,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Migram do Pages Router para o App Router?',
-          en: 'Do you migrate from Pages Router to App Router?',
         },
         a: {
           pt: 'Sim, rota a rota. Os dois routers convivem durante a migração, por isso o site nunca fica parado.',
-          en: 'Yes, route by route. Both routers run side by side during the migration, so the site never stops.',
         },
       },
     ],
@@ -117,7 +112,6 @@ export const stacks: In[] = [
     logo: '/images/tech/angular.svg',
     pitch: {
       pt: 'Aplicações Angular enterprise com arquitetura clara, para equipas grandes e produtos de longa duração.',
-      en: 'Enterprise Angular apps with clear architecture, for large teams and long-lived products.',
     },
     version: 'Angular 20 · Signals',
     layers: [
@@ -146,10 +140,9 @@ export const stacks: In[] = [
     skills: ['Angular', 'TypeScript', 'RxJS', 'NgRx'],
     faq: [
       {
-        q: { pt: 'Conseguem migrar de AngularJS?', en: 'Can you migrate from AngularJS?' },
+        q: { pt: 'Conseguem migrar de AngularJS?' },
         a: {
           pt: 'Sim. Usamos uma abordagem híbrida ou por micro-frontends para migrar módulo a módulo para Angular atual.',
-          en: 'Yes. We use a hybrid or micro-frontend approach to migrate module by module to current Angular.',
         },
       },
     ],
@@ -164,7 +157,6 @@ export const stacks: In[] = [
     logo: '/images/tech/vue.svg',
     pitch: {
       pt: 'Interfaces Vue.js leves e produtivas, de dashboards internos a lojas online.',
-      en: 'Lightweight, productive Vue.js interfaces, from internal dashboards to online stores.',
     },
     version: 'Vue 3 · Composition API',
     layers: [
@@ -194,11 +186,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Migram aplicações de Vue 2 para Vue 3?',
-          en: 'Do you migrate Vue 2 apps to Vue 3?',
         },
         a: {
           pt: 'Sim. O Vue 2 já não recebe atualizações; migramos com o build de compatibilidade e por componentes.',
-          en: 'Yes. Vue 2 no longer receives updates; we migrate with the compatibility build, component by component.',
         },
       },
     ],
@@ -211,10 +201,9 @@ export const stacks: In[] = [
     slug: 'typescript',
     category: 'front-end',
     logo: '/images/tech/typescript.svg',
-    keyword: { pt: 'Desenvolvimento TypeScript', en: 'TypeScript development' },
+    keyword: { pt: 'Desenvolvimento TypeScript' },
     pitch: {
       pt: 'Código TypeScript tipado de ponta a ponta, do browser à API, com menos erros em produção.',
-      en: 'End-to-end typed TypeScript, from browser to API, with fewer bugs in production.',
     },
     version: 'TypeScript 5 · strict',
     layers: [
@@ -243,11 +232,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Convertem um projeto JavaScript para TypeScript?',
-          en: 'Can you convert a JavaScript project to TypeScript?',
         },
         a: {
           pt: 'Sim, ficheiro a ficheiro, começando pelos módulos com mais erros. O modo strict é ativado por fases.',
-          en: 'Yes, file by file, starting with the most error-prone modules. Strict mode is enabled in phases.',
         },
       },
     ],
@@ -263,7 +250,6 @@ export const stacks: In[] = [
     logo: '/images/tech/react.svg',
     pitch: {
       pt: 'Apps iOS e Android a partir do mesmo código React Native, com experiência nativa.',
-      en: 'iOS and Android apps from one React Native codebase, with a native feel.',
     },
     version: 'React Native · Expo',
     layers: [
@@ -293,11 +279,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Uma app React Native é tão boa como uma nativa?',
-          en: 'Is a React Native app as good as a native one?',
         },
         a: {
           pt: 'Para a maioria dos produtos, sim. Quando uma funcionalidade precisa de código nativo, escrevemos esse módulo em Swift ou Kotlin.',
-          en: 'For most products, yes. When a feature needs native code, we write that module in Swift or Kotlin.',
         },
       },
     ],
@@ -312,7 +296,6 @@ export const stacks: In[] = [
     logo: '/images/tech/flutter.svg',
     pitch: {
       pt: 'Apps Flutter com interface consistente em iOS, Android e web, a partir de um só código.',
-      en: 'Flutter apps with a consistent UI on iOS, Android and web, from one codebase.',
     },
     version: 'Flutter 3 · Dart 3',
     layers: [
@@ -348,10 +331,9 @@ export const stacks: In[] = [
     slug: 'ios',
     category: 'mobile',
     logo: '/images/tech/swift.svg',
-    keyword: { pt: 'Desenvolvimento de apps iOS', en: 'iOS app development' },
+    keyword: { pt: 'Desenvolvimento de apps iOS' },
     pitch: {
       pt: 'Apps iOS nativas em Swift e SwiftUI, rápidas, seguras e prontas para a App Store.',
-      en: 'Native iOS apps in Swift and SwiftUI, fast, secure and ready for the App Store.',
     },
     version: 'Swift 6 · SwiftUI',
     layers: [
@@ -387,10 +369,9 @@ export const stacks: In[] = [
     slug: 'android',
     category: 'mobile',
     logo: '/images/tech/kotlin.svg',
-    keyword: { pt: 'Desenvolvimento de apps Android', en: 'Android app development' },
+    keyword: { pt: 'Desenvolvimento de apps Android' },
     pitch: {
       pt: 'Apps Android nativas em Kotlin e Jetpack Compose, estáveis em milhares de dispositivos.',
-      en: 'Native Android apps in Kotlin and Jetpack Compose, stable across thousands of devices.',
     },
     version: 'Kotlin 2 · Compose',
     layers: [
@@ -428,7 +409,6 @@ export const stacks: In[] = [
     logo: '/images/tech/node.svg',
     pitch: {
       pt: 'APIs e serviços Node.js em TypeScript, rápidos de construir e fáceis de escalar.',
-      en: 'Node.js APIs and services in TypeScript, fast to build and easy to scale.',
     },
     version: 'Node.js 22 LTS · TypeScript',
     layers: [
@@ -466,7 +446,6 @@ export const stacks: In[] = [
     logo: '/images/tech/python.svg',
     pitch: {
       pt: 'APIs, automação e plataformas de dados em Python, prontas para produção.',
-      en: 'Production-ready Python APIs, automation and data platforms.',
     },
     version: 'Python 3.13 · FastAPI',
     layers: [
@@ -497,11 +476,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Também fazem engenharia de dados com Python?',
-          en: 'Do you also do data engineering with Python?',
         },
         a: {
           pt: 'Sim: pipelines de dados com Airflow ou dbt, ligados às suas aplicações e relatórios.',
-          en: 'Yes: data pipelines with Airflow or dbt, connected to your applications and reports.',
         },
       },
     ],
@@ -516,7 +493,6 @@ export const stacks: In[] = [
     logo: '/images/tech/java.svg',
     pitch: {
       pt: 'Sistemas Java e Spring Boot robustos para setores onde falhar não é opção.',
-      en: 'Robust Java and Spring Boot systems for sectors where failure is not an option.',
     },
     version: 'Java 21 LTS · Spring Boot 3',
     layers: [
@@ -548,11 +524,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Conseguem migrar de Java 8 para Java 21?',
-          en: 'Can you migrate from Java 8 to Java 21?',
         },
         a: {
           pt: 'Sim, com análise de dependências, testes de regressão e atualização faseada do Spring.',
-          en: 'Yes, with dependency analysis, regression tests and a phased Spring upgrade.',
         },
       },
     ],
@@ -565,10 +539,9 @@ export const stacks: In[] = [
     slug: 'dotnet',
     category: 'back-end',
     logo: '/images/tech/dotnet.svg',
-    keyword: { pt: 'Desenvolvimento .NET', en: '.NET development' },
+    keyword: { pt: 'Desenvolvimento .NET' },
     pitch: {
       pt: 'Sistemas .NET modernos e fáceis de manter, de APIs a aplicações enterprise na Azure.',
-      en: 'Modern, maintainable .NET systems, from APIs to enterprise applications on Azure.',
     },
     version: '.NET 8 · C# 12',
     layers: [
@@ -600,11 +573,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Conseguem migrar uma aplicação .NET Framework para .NET 8?',
-          en: 'Can you migrate a .NET Framework app to .NET 8?',
         },
         a: {
           pt: 'Sim, por fases: avaliamos dependências, cobrimos o essencial com testes e migramos módulo a módulo, sem parar a operação.',
-          en: 'Yes, in phases: we map dependencies, cover the essentials with tests and migrate module by module without stopping operations.',
         },
       },
     ],
@@ -619,7 +590,6 @@ export const stacks: In[] = [
     logo: '/images/tech/php.svg',
     pitch: {
       pt: 'Aplicações PHP e Laravel modernas, de plataformas de comércio a back-offices.',
-      en: 'Modern PHP and Laravel applications, from commerce platforms to back-offices.',
     },
     version: 'PHP 8.3 · Laravel 11',
     layers: [
@@ -656,7 +626,6 @@ export const stacks: In[] = [
     logo: '/images/tech/go.svg',
     pitch: {
       pt: 'Serviços Go de alto desempenho para APIs, plataformas e infraestrutura.',
-      en: 'High-performance Go services for APIs, platforms and infrastructure.',
     },
     version: 'Go 1.23',
     layers: [
@@ -695,7 +664,6 @@ export const stacks: In[] = [
     logo: '/images/tech/aws.svg',
     pitch: {
       pt: 'Arquitetura, migração e operação na AWS, com segurança e custos sob controlo.',
-      en: 'Architecture, migration and operations on AWS, with security and costs under control.',
     },
     version: 'Well-Architected',
     layers: [
@@ -733,7 +701,6 @@ export const stacks: In[] = [
     logo: '/images/tech/azure.svg',
     pitch: {
       pt: 'Arquitetura, migração e operação na Microsoft Azure, integrada com o ecossistema Microsoft.',
-      en: 'Architecture, migration and operations on Microsoft Azure, integrated with the Microsoft ecosystem.',
     },
     version: 'Well-Architected',
     layers: [
@@ -770,7 +737,6 @@ export const stacks: In[] = [
     logo: '/images/tech/gcp.svg',
     pitch: {
       pt: 'Plataformas na Google Cloud para aplicações e dados, com BigQuery e GKE no centro.',
-      en: 'Google Cloud platforms for applications and data, with BigQuery and GKE at the core.',
     },
     version: 'Architecture Framework',
     layers: [
@@ -808,7 +774,6 @@ export const stacks: In[] = [
     logo: '/images/tech/kubernetes.svg',
     pitch: {
       pt: 'Clusters Kubernetes seguros e bem desenhados, em EKS, AKS, GKE ou infraestrutura própria.',
-      en: 'Secure, well-designed Kubernetes clusters on EKS, AKS, GKE or on-premise.',
     },
     version: 'Kubernetes · Helm · Argo CD',
     layers: [
@@ -845,7 +810,6 @@ export const stacks: In[] = [
     logo: '/images/tech/docker.svg',
     pitch: {
       pt: 'Aplicações em contentores Docker, iguais do portátil do programador à produção.',
-      en: 'Applications in Docker containers, identical from developer laptop to production.',
     },
     version: 'Docker · OCI',
     layers: [
@@ -881,7 +845,6 @@ export const stacks: In[] = [
     logo: '/images/tech/terraform.svg',
     pitch: {
       pt: 'Infraestrutura como código com Terraform: ambientes reproduzíveis, revistos e auditáveis.',
-      en: 'Infrastructure as code with Terraform: reproducible, reviewed and auditable environments.',
     },
     version: 'Terraform · OpenTofu',
     layers: [
@@ -919,7 +882,6 @@ export const stacks: In[] = [
     logo: '/images/tech/playwright.svg',
     pitch: {
       pt: 'Testes Playwright estáveis e rápidos que correm em cada alteração, em todos os browsers.',
-      en: 'Stable, fast Playwright tests that run on every change, across all browsers.',
     },
     version: 'Playwright · TypeScript',
     layers: [
@@ -946,10 +908,9 @@ export const stacks: In[] = [
     skills: ['Playwright', 'TypeScript', 'GitHub Actions', 'Allure'],
     faq: [
       {
-        q: { pt: 'Porquê Playwright e não Selenium?', en: 'Why Playwright instead of Selenium?' },
+        q: { pt: 'Porquê Playwright e não Selenium?' },
         a: {
           pt: 'Testes mais estáveis, mais rápidos e mais fáceis de manter, com execução paralela e relatórios incluídos. Migramos as suites existentes por prioridade.',
-          en: 'More stable, faster and easier-to-maintain tests, with parallel runs and built-in reports. We migrate existing suites by priority.',
         },
       },
     ],
@@ -965,7 +926,6 @@ export const stacks: In[] = [
     logo: '/images/tech/selenium.svg',
     pitch: {
       pt: 'Automação Selenium robusta para aplicações web, em Java, C# ou Python, integrada no seu pipeline.',
-      en: 'Robust Selenium automation for web apps, in Java, C# or Python, built into your pipeline.',
     },
     version: 'Selenium 4 · WebDriver',
     layers: [
@@ -995,11 +955,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Os nossos testes Selenium falham sem razão. Têm solução?',
-          en: 'Our Selenium tests are flaky. Can you fix them?',
         },
         a: {
           pt: 'Sim. Revemos esperas, seletores e dados de teste, e paralelizamos com Selenium Grid. Quando faz sentido, migramos as suites mais instáveis para Playwright.',
-          en: 'Yes. We review waits, selectors and test data, and parallelize with Selenium Grid. Where it makes sense, we move the flakiest suites to Playwright.',
         },
       },
     ],
@@ -1014,7 +972,6 @@ export const stacks: In[] = [
     logo: '/images/tech/cypress.svg',
     pitch: {
       pt: 'Testes Cypress rápidos de escrever e de depurar, para front-ends em React, Angular e Vue.',
-      en: 'Cypress tests that are quick to write and debug, for React, Angular and Vue front-ends.',
     },
     version: 'Cypress · TypeScript',
     layers: [
@@ -1041,10 +998,9 @@ export const stacks: In[] = [
     skills: ['Cypress', 'TypeScript', 'JavaScript', 'GitHub Actions'],
     faq: [
       {
-        q: { pt: 'Cypress ou Playwright?', en: 'Cypress or Playwright?' },
+        q: { pt: 'Cypress ou Playwright?' },
         a: {
           pt: 'Cypress é ótimo para equipas de front-end que querem testes rápidos de escrever e depurar. Playwright ganha em vários browsers, separadores e execução paralela. Recomendamos depois de ver o produto e a equipa.',
-          en: 'Cypress is great for front-end teams that want tests that are quick to write and debug. Playwright wins on multiple browsers, tabs and parallel runs. We recommend after looking at the product and the team.',
         },
       },
     ],
@@ -1059,12 +1015,10 @@ export const stacks: In[] = [
     logo: '/images/tech/appium.svg',
     keyword: {
       pt: 'Automação de testes mobile com Appium',
-      en: 'Mobile test automation with Appium',
     },
-    role: { pt: 'engenheiros de QA mobile', en: 'mobile QA engineers' },
+    role: { pt: 'engenheiros de QA mobile' },
     pitch: {
       pt: 'Testes automáticos de apps iOS e Android com Appium, em dispositivos reais e emuladores.',
-      en: 'Automated iOS and Android app tests with Appium, on real devices and emulators.',
     },
     version: 'Appium 2 · WebdriverIO',
     layers: [
@@ -1083,14 +1037,12 @@ export const stacks: In[] = [
     ],
     serviceOverrides: {
       automation: {
-        title: { pt: 'Automação de testes mobile', en: 'Mobile test automation' },
+        title: { pt: 'Automação de testes mobile' },
         pain: {
           pt: 'Cada versão da app é testada à mão em meia dúzia de telemóveis.',
-          en: 'Every app release is tested by hand on a handful of phones.',
         },
         text: {
           pt: 'Suites Appium para iOS e Android que correm em dezenas de dispositivos a cada build.',
-          en: 'Appium suites for iOS and Android that run on dozens of devices on every build.',
         },
       },
     },
@@ -1105,10 +1057,9 @@ export const stacks: In[] = [
     skills: ['Appium', 'Java', 'WebdriverIO', 'BrowserStack'],
     faq: [
       {
-        q: { pt: 'Testam em dispositivos reais?', en: 'Do you test on real devices?' },
+        q: { pt: 'Testam em dispositivos reais?' },
         a: {
           pt: 'Sim, em device farms como BrowserStack ou Sauce Labs e em dispositivos físicos, com uma matriz de modelos e versões definida a partir dos dados de uso da sua app.',
-          en: 'Yes, on device farms such as BrowserStack or Sauce Labs and on physical devices, with a matrix of models and OS versions based on your app usage data.',
         },
       },
     ],
@@ -1121,11 +1072,10 @@ export const stacks: In[] = [
     slug: 'jmeter',
     category: 'qa',
     logo: '/images/tech/jmeter.svg',
-    keyword: { pt: 'Testes de performance com JMeter', en: 'Performance testing with JMeter' },
-    role: { pt: 'engenheiros de performance', en: 'performance engineers' },
+    keyword: { pt: 'Testes de performance com JMeter' },
+    role: { pt: 'engenheiros de performance' },
     pitch: {
       pt: 'Testes de carga e de stress com JMeter e k6 para saber quanto o seu sistema aguenta antes dos clientes.',
-      en: 'Load and stress testing with JMeter and k6 to know what your system can take before your customers do.',
     },
     version: 'Apache JMeter · k6',
     layers: [
@@ -1151,46 +1101,39 @@ export const stacks: In[] = [
     },
     serviceOverrides: {
       automation: {
-        title: { pt: 'Testes de carga e stress', en: 'Load and stress testing' },
+        title: { pt: 'Testes de carga e stress' },
         pain: {
           pt: 'Ninguém sabe quantos utilizadores o sistema aguenta.',
-          en: 'Nobody knows how many users the system can take.',
         },
         text: {
           pt: 'Cenários realistas com JMeter e k6 que mostram limites, gargalos e margem de crescimento.',
-          en: 'Realistic JMeter and k6 scenarios that reveal limits, bottlenecks and headroom.',
         },
       },
       framework: {
-        title: { pt: 'Cenários e dados de performance', en: 'Performance scenarios and data' },
+        title: { pt: 'Cenários e dados de performance' },
         pain: {
           pt: 'Os testes de carga não refletem o uso real.',
-          en: 'Load tests do not reflect real usage.',
         },
         text: {
           pt: 'Perfis de tráfego e dados de teste baseados na produção, reutilizáveis em cada versão.',
-          en: 'Traffic profiles and test data based on production, reusable on every release.',
         },
       },
       ci: {
-        title: { pt: 'Performance no pipeline', en: 'Performance in the pipeline' },
+        title: { pt: 'Performance no pipeline' },
         pain: {
           pt: 'As regressões de performance só aparecem em produção.',
-          en: 'Performance regressions only show up in production.',
         },
         text: {
           pt: 'Testes curtos com k6 ou JMeter em cada versão, com limites que travam o lançamento.',
-          en: 'Short k6 or JMeter runs on every release, with thresholds that block the release.',
         },
       },
     },
     skills: ['JMeter', 'k6', 'Grafana', 'LoadRunner'],
     faq: [
       {
-        q: { pt: 'Quando devemos fazer testes de carga?', en: 'When should we run load tests?' },
+        q: { pt: 'Quando devemos fazer testes de carga?' },
         a: {
           pt: 'Antes de lançamentos, campanhas e picos sazonais, e sempre que a arquitetura muda. Com k6 ou JMeter no pipeline, as regressões de performance aparecem logo.',
-          en: 'Before launches, campaigns and seasonal peaks, and whenever the architecture changes. With k6 or JMeter in the pipeline, performance regressions show up straight away.',
         },
       },
     ],
@@ -1203,10 +1146,9 @@ export const stacks: In[] = [
     slug: 'postman',
     category: 'qa',
     logo: '/images/tech/postman.svg',
-    keyword: { pt: 'Testes de API com Postman', en: 'API testing with Postman' },
+    keyword: { pt: 'Testes de API com Postman' },
     pitch: {
       pt: 'Testes de API com Postman e REST Assured que apanham integrações partidas antes de chegarem à produção.',
-      en: 'API testing with Postman and REST Assured that catches broken integrations before production.',
     },
     version: 'Postman · Newman',
     layers: [
@@ -1233,11 +1175,10 @@ export const stacks: In[] = [
     },
     serviceOverrides: {
       automation: {
-        title: { pt: 'Testes de API automatizados', en: 'Automated API testing' },
-        pain: { pt: 'As integrações partem sem aviso.', en: 'Integrations break without warning.' },
+        title: { pt: 'Testes de API automatizados' },
+        pain: { pt: 'As integrações partem sem aviso.' },
         text: {
           pt: 'Coleções Postman e suites REST Assured que validam cada endpoint e contrato.',
-          en: 'Postman collections and REST Assured suites that validate every endpoint and contract.',
         },
       },
     },
@@ -1246,11 +1187,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Postman chega ou precisam de código?',
-          en: 'Is Postman enough, or do you need code?',
         },
         a: {
           pt: 'Postman com Newman cobre bem testes funcionais de API no pipeline. Para cenários complexos, dados dinâmicos ou testes de contrato, juntamos REST Assured ou Pact.',
-          en: 'Postman with Newman covers functional API tests in the pipeline well. For complex scenarios, dynamic data or contract tests, we add REST Assured or Pact.',
         },
       },
     ],
@@ -1264,11 +1203,10 @@ export const stacks: In[] = [
     slug: 'power-bi',
     category: 'data',
     logo: '/images/tech/powerbi.svg',
-    keyword: { pt: 'Consultoria Power BI', en: 'Power BI consulting' },
-    role: { pt: 'especialistas Power BI', en: 'Power BI specialists' },
+    keyword: { pt: 'Consultoria Power BI' },
+    role: { pt: 'especialistas Power BI' },
     pitch: {
       pt: 'Dashboards Power BI rápidos e confiáveis, ligados aos seus sistemas e atualizados sem trabalho manual.',
-      en: 'Fast, trusted Power BI dashboards, connected to your systems and refreshed without manual work.',
     },
     version: 'Power BI · Fabric',
     layers: [
@@ -1296,32 +1234,27 @@ export const stacks: In[] = [
       platform: {
         title: {
           pt: 'Modelo semântico e Microsoft Fabric',
-          en: 'Semantic model and Microsoft Fabric',
         },
         pain: {
           pt: 'Cada relatório calcula os números à sua maneira.',
-          en: 'Every report calculates the numbers its own way.',
         },
         text: {
           pt: 'Um modelo de dados único no Power BI, com medidas DAX partilhadas por toda a empresa.',
-          en: 'A single Power BI data model, with DAX measures shared across the company.',
         },
       },
       pipelines: {
-        title: { pt: 'Atualização automática dos dados', en: 'Automated data refresh' },
+        title: { pt: 'Atualização automática dos dados' },
         pain: {
           pt: 'Os relatórios dependem de exportações manuais.',
-          en: 'Reports depend on manual exports.',
         },
       },
     },
     skills: ['Power BI', 'DAX', 'SQL', 'Power Query'],
     faq: [
       {
-        q: { pt: 'Ligam o Power BI ao nosso ERP?', en: 'Can you connect Power BI to our ERP?' },
+        q: { pt: 'Ligam o Power BI ao nosso ERP?' },
         a: {
           pt: 'Sim: SAP, Dynamics, Primavera, PHC, TOTVS e outros, através de conectores nativos, base de dados ou APIs, com atualização agendada e segurança por linha.',
-          en: 'Yes: SAP, Dynamics, Primavera, PHC, TOTVS and others, through native connectors, the database or APIs, with scheduled refresh and row-level security.',
         },
       },
     ],
@@ -1336,7 +1269,6 @@ export const stacks: In[] = [
     logo: '/images/tech/databricks.svg',
     pitch: {
       pt: 'Lakehouse em Databricks para juntar engenharia de dados, analytics e machine learning numa só plataforma.',
-      en: 'A Databricks lakehouse that brings data engineering, analytics and machine learning onto one platform.',
     },
     version: 'Databricks · Delta Lake',
     layers: [
@@ -1366,11 +1298,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Databricks em Azure, AWS ou Google Cloud?',
-          en: 'Databricks on Azure, AWS or Google Cloud?',
         },
         a: {
           pt: 'Nas três. Escolhemos a cloud onde já estão os seus dados e identidades, para evitar custos de transferência e duplicação de acessos.',
-          en: 'All three. We pick the cloud where your data and identities already live, to avoid transfer costs and duplicated access control.',
         },
       },
     ],
@@ -1386,7 +1316,6 @@ export const stacks: In[] = [
     logo: '/images/tech/spark.svg',
     pitch: {
       pt: 'Processamento de grandes volumes com Apache Spark, em batch e em streaming, na cloud que já usa.',
-      en: 'High-volume processing with Apache Spark, batch and streaming, on the cloud you already use.',
     },
     version: 'Spark 3 · PySpark · Scala',
     layers: [
@@ -1404,14 +1333,12 @@ export const stacks: In[] = [
     ],
     serviceOverrides: {
       analytics: {
-        title: { pt: 'Analytics em grande escala', en: 'Analytics at scale' },
+        title: { pt: 'Analytics em grande escala' },
         pain: {
           pt: 'As consultas sobre o histórico demoram horas.',
-          en: 'Queries over historical data take hours.',
         },
         text: {
           pt: 'Spark SQL e formatos otimizados para analisar anos de dados em minutos.',
-          en: 'Spark SQL and optimized formats to analyze years of data in minutes.',
         },
       },
     },
@@ -1428,11 +1355,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Spark com Databricks ou gerido por nós?',
-          en: 'Spark on Databricks or self-managed?',
         },
         a: {
           pt: 'Databricks acelera a entrega e reduz a operação; EMR, Dataproc ou Kubernetes fazem sentido quando o custo ou o controlo pesam mais. Comparamos os dois com os seus volumes reais.',
-          en: 'Databricks speeds up delivery and reduces operations; EMR, Dataproc or Kubernetes make sense when cost or control matter more. We compare both against your real volumes.',
         },
       },
     ],
@@ -1448,7 +1373,6 @@ export const stacks: In[] = [
     logo: '/images/tech/airflow.svg',
     pitch: {
       pt: 'Orquestração de pipelines com Apache Airflow: cargas agendadas, dependências claras e alertas quando algo falha.',
-      en: 'Pipeline orchestration with Apache Airflow: scheduled loads, clear dependencies and alerts when something fails.',
     },
     version: 'Airflow 2 · Python',
     layers: [
@@ -1466,14 +1390,12 @@ export const stacks: In[] = [
     ],
     serviceOverrides: {
       analytics: {
-        title: { pt: 'Monitorização e SLAs', en: 'Monitoring and SLAs' },
+        title: { pt: 'Monitorização e SLAs' },
         pain: {
           pt: 'Ninguém sabe que a carga falhou até o relatório sair errado.',
-          en: 'Nobody knows a load failed until the report is wrong.',
         },
         text: {
           pt: 'Alertas, SLAs e reprocessamento automático para cada pipeline em Airflow.',
-          en: 'Alerts, SLAs and automatic retries for every Airflow pipeline.',
         },
       },
     },
@@ -1488,10 +1410,9 @@ export const stacks: In[] = [
     skills: ['Airflow', 'Python', 'SQL', 'dbt'],
     faq: [
       {
-        q: { pt: 'Airflow gerido ou instalado por nós?', en: 'Managed or self-hosted Airflow?' },
+        q: { pt: 'Airflow gerido ou instalado por nós?' },
         a: {
           pt: 'Para a maioria das empresas, um serviço gerido (MWAA, Cloud Composer ou Astronomer) é mais barato de manter. Instalamos em Kubernetes quando há requisitos de rede ou de custo.',
-          en: 'For most companies, a managed service (MWAA, Cloud Composer or Astronomer) is cheaper to run. We deploy on Kubernetes when network or cost requirements call for it.',
         },
       },
     ],
@@ -1505,11 +1426,10 @@ export const stacks: In[] = [
     slug: 'apache-kafka',
     category: 'data',
     logo: '/images/tech/kafka.svg',
-    keyword: { pt: 'Streaming de dados com Apache Kafka', en: 'Data streaming with Apache Kafka' },
-    role: { pt: 'engenheiros Kafka', en: 'Kafka engineers' },
+    keyword: { pt: 'Streaming de dados com Apache Kafka' },
+    role: { pt: 'engenheiros Kafka' },
     pitch: {
       pt: 'Eventos em tempo real com Apache Kafka, para integrar sistemas e alimentar dados sem esperar pela carga da noite.',
-      en: 'Real-time events with Apache Kafka, to integrate systems and feed data without waiting for the nightly load.',
     },
     version: 'Kafka · Confluent',
     layers: [
@@ -1537,23 +1457,19 @@ export const stacks: In[] = [
       pipelines: {
         title: {
           pt: 'Integração com Kafka Connect e CDC',
-          en: 'Integration with Kafka Connect and CDC',
         },
         pain: {
           pt: 'Os sistemas trocam dados por ficheiros à noite.',
-          en: 'Systems exchange data through nightly files.',
         },
         text: {
           pt: 'Conectores e captura de alterações (CDC) que levam os dados para onde são precisos, em segundos.',
-          en: 'Connectors and change data capture (CDC) that move data where it is needed, in seconds.',
         },
       },
       analytics: {
-        title: { pt: 'Dados em tempo real', en: 'Real-time data' },
-        pain: { pt: 'Os indicadores chegam com um dia de atraso.', en: 'KPIs arrive a day late.' },
+        title: { pt: 'Dados em tempo real' },
+        pain: { pt: 'Os indicadores chegam com um dia de atraso.' },
         text: {
           pt: 'Processamento de eventos com Kafka Streams ou Flink para alertas e dashboards em tempo real.',
-          en: 'Event processing with Kafka Streams or Flink for real-time alerts and dashboards.',
         },
       },
     },
@@ -1562,11 +1478,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Kafka gerido (Confluent, MSK) ou próprio?',
-          en: 'Managed Kafka (Confluent, MSK) or self-hosted?',
         },
         a: {
           pt: 'Um serviço gerido reduz muito a operação e é o que recomendamos por omissão. Mantemos clusters próprios quando há requisitos de latência, rede ou custo a grande escala.',
-          en: 'A managed service greatly reduces operations and is our default recommendation. We run self-hosted clusters when latency, network or large-scale cost require it.',
         },
       },
     ],
@@ -1582,7 +1496,6 @@ export const stacks: In[] = [
     logo: '/images/tech/postgresql.svg',
     pitch: {
       pt: 'PostgreSQL rápido, seguro e sempre disponível, on-premise ou em serviços geridos na cloud.',
-      en: 'Fast, secure, always-on PostgreSQL, on-premise or on managed cloud services.',
     },
     version: 'PostgreSQL 17',
     layers: [
@@ -1611,11 +1524,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Vale a pena migrar de Oracle para PostgreSQL?',
-          en: 'Is it worth migrating from Oracle to PostgreSQL?',
         },
         a: {
           pt: 'Muitas vezes, sim: reduz licenças e abre caminho a serviços geridos. Avaliamos primeiro o código PL/SQL e as dependências para estimar esforço e risco.',
-          en: 'Often, yes: it cuts licenses and opens the door to managed services. We first assess PL/SQL code and dependencies to estimate effort and risk.',
         },
       },
     ],
@@ -1630,7 +1541,6 @@ export const stacks: In[] = [
     logo: '/images/tech/sqlserver.svg',
     pitch: {
       pt: 'SQL Server bem afinado e protegido, das bases de dados transacionais aos relatórios.',
-      en: 'Well-tuned, protected SQL Server, from transactional databases to reporting.',
     },
     version: 'SQL Server 2022 · Azure SQL',
     layers: [
@@ -1659,11 +1569,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Migram SQL Server para Azure SQL?',
-          en: 'Do you migrate SQL Server to Azure SQL?',
         },
         a: {
           pt: 'Sim, para Azure SQL Database, Managed Instance ou SQL Server em máquina virtual, conforme a compatibilidade das funcionalidades que usa. Validamos performance antes da mudança.',
-          en: 'Yes, to Azure SQL Database, Managed Instance or SQL Server on a VM, depending on which features you use. We validate performance before the switch.',
         },
       },
     ],
@@ -1679,7 +1587,6 @@ export const stacks: In[] = [
     logo: '/images/tech/oracle.svg',
     pitch: {
       pt: 'Oracle Database estável e otimizado, com especialistas em PL/SQL, performance e migração.',
-      en: 'Stable, optimized Oracle Database, with specialists in PL/SQL, performance and migration.',
     },
     version: 'Oracle 19c · 23ai',
     layers: [
@@ -1708,11 +1615,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Fazem só administração ou também PL/SQL?',
-          en: 'Do you only administer Oracle, or also write PL/SQL?',
         },
         a: {
           pt: 'As duas coisas: DBAs para performance, Data Guard e backups, e programadores PL/SQL para procedimentos, relatórios e integrações.',
-          en: 'Both: DBAs for performance, Data Guard and backups, and PL/SQL developers for procedures, reports and integrations.',
         },
       },
     ],
@@ -1727,7 +1632,6 @@ export const stacks: In[] = [
     logo: '/images/tech/mongodb.svg',
     pitch: {
       pt: 'MongoDB bem modelado e escalável, para produtos com dados flexíveis e muito tráfego.',
-      en: 'Well-modeled, scalable MongoDB for products with flexible data and heavy traffic.',
     },
     version: 'MongoDB 8 · Atlas',
     layers: [
@@ -1754,10 +1658,9 @@ export const stacks: In[] = [
     skills: ['MongoDB', 'Node.js', 'Atlas', 'Aggregation'],
     faq: [
       {
-        q: { pt: 'MongoDB ou base de dados relacional?', en: 'MongoDB or a relational database?' },
+        q: { pt: 'MongoDB ou base de dados relacional?' },
         a: {
           pt: 'MongoDB funciona bem com dados flexíveis e leituras por documento; transações complexas e relatórios pedem muitas vezes PostgreSQL. Avaliamos o modelo de dados antes de recomendar.',
-          en: 'MongoDB works well for flexible data and document reads; complex transactions and reporting often call for PostgreSQL. We assess the data model before recommending.',
         },
       },
     ],
@@ -1773,7 +1676,6 @@ export const stacks: In[] = [
     logo: '/images/tech/sap.svg',
     pitch: {
       pt: 'Consultores SAP funcionais e técnicos para S/4HANA, ABAP e integrações, da migração à sustentação.',
-      en: 'Functional and technical SAP consultants for S/4HANA, ABAP and integrations, from migration to support.',
     },
     version: 'S/4HANA · ABAP · BTP',
     layers: [
@@ -1804,11 +1706,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Ajudam na migração de SAP ECC para S/4HANA?',
-          en: 'Can you help migrate from SAP ECC to S/4HANA?',
         },
         a: {
           pt: 'Sim. Avaliamos o código à medida e os dados, escolhemos a abordagem (greenfield, brownfield ou seletiva) e migramos por fases, com testes de regressão em cada etapa.',
-          en: 'Yes. We assess custom code and data, choose the approach (greenfield, brownfield or selective) and migrate in phases, with regression tests at each step.',
         },
       },
     ],
@@ -1823,7 +1723,6 @@ export const stacks: In[] = [
     logo: '/images/tech/salesforce.svg',
     pitch: {
       pt: 'Salesforce configurado à medida das suas vendas e do seu serviço ao cliente, com Apex, Flows e integrações.',
-      en: 'Salesforce shaped around your sales and customer service, with Apex, Flows and integrations.',
     },
     version: 'Sales · Service · Experience Cloud',
     layers: [
@@ -1853,11 +1752,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Migram dados de outro CRM para Salesforce?',
-          en: 'Do you migrate data from another CRM to Salesforce?',
         },
         a: {
           pt: 'Sim. Mapeamos objetos e campos, limpamos e deduplicamos os dados e migramos por fases, com validação antes de desligar o sistema antigo.',
-          en: 'Yes. We map objects and fields, clean and deduplicate data and migrate in phases, validating before the old system is switched off.',
         },
       },
     ],
@@ -1870,11 +1767,10 @@ export const stacks: In[] = [
     slug: 'outsystems',
     category: 'enterprise',
     logo: '/images/tech/outsystems.png',
-    keyword: { pt: 'Desenvolvimento OutSystems', en: 'OutSystems development' },
-    role: { pt: 'programadores OutSystems', en: 'OutSystems developers' },
+    keyword: { pt: 'Desenvolvimento OutSystems' },
+    role: { pt: 'programadores OutSystems' },
     pitch: {
       pt: 'Aplicações OutSystems de baixo código entregues depressa, sem abdicar de qualidade, segurança e integração.',
-      en: 'Low-code OutSystems apps delivered fast, without giving up quality, security or integration.',
     },
     version: 'OutSystems 11 · ODC',
     layers: [
@@ -1895,10 +1791,9 @@ export const stacks: In[] = [
     ],
     serviceOverrides: {
       implementation: {
-        title: { pt: 'Aplicações OutSystems de raiz', en: 'OutSystems apps from scratch' },
+        title: { pt: 'Aplicações OutSystems de raiz' },
         text: {
           pt: 'Aplicações web e mobile em OutSystems, do protótipo à produção em semanas.',
-          en: 'Web and mobile apps in OutSystems, from prototype to production in weeks.',
         },
       },
     },
@@ -1915,11 +1810,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Migram aplicações de OutSystems 11 para ODC?',
-          en: 'Do you migrate apps from OutSystems 11 to ODC?',
         },
         a: {
           pt: 'Sim. Avaliamos a arquitetura e as dependências, preparamos as aplicações e migramos por fases para a OutSystems Developer Cloud.',
-          en: 'Yes. We assess architecture and dependencies, prepare the apps and migrate in phases to OutSystems Developer Cloud.',
         },
       },
     ],
@@ -1935,7 +1828,6 @@ export const stacks: In[] = [
     logo: '/images/tech/openai.svg',
     pitch: {
       pt: 'Assistentes, pesquisa em documentos e automação com os modelos GPT da OpenAI, ligados aos seus sistemas e com os dados protegidos.',
-      en: 'Assistants, document search and automation with OpenAI GPT models, connected to your systems with your data protected.',
     },
     version: 'GPT · Azure OpenAI',
     layers: [
@@ -1962,10 +1854,9 @@ export const stacks: In[] = [
     skills: ['OpenAI', 'Python', 'LangChain', 'pgvector'],
     faq: [
       {
-        q: { pt: 'OpenAI direta ou Azure OpenAI?', en: 'OpenAI directly or Azure OpenAI?' },
+        q: { pt: 'OpenAI direta ou Azure OpenAI?' },
         a: {
           pt: 'Azure OpenAI quando a empresa já está na Microsoft e precisa de região europeia e controlo de rede; a API da OpenAI quando a rapidez de acesso a novos modelos pesa mais.',
-          en: 'Azure OpenAI when you are already on Microsoft and need an EU region and network control; the OpenAI API when faster access to new models matters more.',
         },
       },
     ],
@@ -1980,7 +1871,6 @@ export const stacks: In[] = [
     logo: '/images/tech/claude.svg',
     pitch: {
       pt: 'Aplicações com os modelos Claude da Anthropic para documentos longos, agentes e automação, com regras de segurança claras.',
-      en: 'Applications built on Anthropic Claude models for long documents, agents and automation, with clear safety rules.',
     },
     version: 'Claude · Anthropic API',
     layers: [
@@ -2009,11 +1899,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Claude pela Anthropic, AWS ou Google Cloud?',
-          en: 'Claude through Anthropic, AWS or Google Cloud?',
         },
         a: {
           pt: 'Pela cloud onde já tem contrato e dados (Amazon Bedrock ou Google Vertex AI), ou pela API da Anthropic quando quer as funcionalidades mais recentes primeiro.',
-          en: 'Through the cloud where you already have contracts and data (Amazon Bedrock or Google Vertex AI), or the Anthropic API when you want the newest features first.',
         },
       },
     ],
@@ -2028,7 +1916,6 @@ export const stacks: In[] = [
     logo: '/images/tech/langchain.svg',
     pitch: {
       pt: 'Agentes e aplicações de IA com LangChain e LangGraph, ligados aos seus dados e ferramentas e prontos para produção.',
-      en: 'AI agents and applications with LangChain and LangGraph, connected to your data and tools and ready for production.',
     },
     version: 'LangChain · LangGraph',
     layers: [
@@ -2064,11 +1951,9 @@ export const stacks: In[] = [
     logo: '/images/tech/huggingface.svg',
     keyword: {
       pt: 'Modelos open source com Hugging Face',
-      en: 'Open-source models with Hugging Face',
     },
     pitch: {
       pt: 'Modelos open source da Hugging Face afinados e alojados na sua infraestrutura, quando os dados não podem sair da empresa.',
-      en: 'Open-source Hugging Face models fine-tuned and hosted on your infrastructure, when data cannot leave the company.',
     },
     version: 'Transformers · vLLM',
     layers: [
@@ -2097,11 +1982,9 @@ export const stacks: In[] = [
       {
         q: {
           pt: 'Modelos open source são uma alternativa real?',
-          en: 'Are open-source models a real alternative?',
         },
         a: {
           pt: 'Para muitas tarefas, sim: classificação, extração e assistentes internos. Comparamos qualidade e custo com modelos comerciais antes de recomendar.',
-          en: 'For many tasks, yes: classification, extraction and internal assistants. We compare quality and cost against commercial models before recommending.',
         },
       },
     ],
@@ -2114,11 +1997,10 @@ export const stacks: In[] = [
     slug: 'pytorch',
     category: 'ai',
     logo: '/images/tech/pytorch.svg',
-    keyword: { pt: 'Machine learning com PyTorch', en: 'Machine learning with PyTorch' },
-    role: { pt: 'engenheiros de machine learning', en: 'machine learning engineers' },
+    keyword: { pt: 'Machine learning com PyTorch' },
+    role: { pt: 'engenheiros de machine learning' },
     pitch: {
       pt: 'Modelos de machine learning em PyTorch, da experimentação à produção, para previsão, visão computacional e linguagem.',
-      en: 'PyTorch machine learning models, from experimentation to production, for forecasting, computer vision and language.',
     },
     version: 'PyTorch 2 · Lightning',
     layers: [
@@ -2136,25 +2018,21 @@ export const stacks: In[] = [
     ],
     serviceOverrides: {
       assistants: {
-        title: { pt: 'Modelos preditivos', en: 'Predictive models' },
+        title: { pt: 'Modelos preditivos' },
         pain: {
           pt: 'As previsões ainda se fazem em folhas de cálculo.',
-          en: 'Forecasts are still made in spreadsheets.',
         },
         text: {
           pt: 'Modelos treinados com os seus dados para previsão de procura, risco ou abandono de clientes.',
-          en: 'Models trained on your data to forecast demand, risk or customer churn.',
         },
       },
       rag: {
-        title: { pt: 'Visão computacional e linguagem', en: 'Computer vision and language' },
+        title: { pt: 'Visão computacional e linguagem' },
         pain: {
           pt: 'Imagens e textos são analisados à mão.',
-          en: 'Images and text are analyzed by hand.',
         },
         text: {
           pt: 'Modelos de visão e de linguagem em PyTorch para classificar, extrair e detetar.',
-          en: 'PyTorch vision and language models to classify, extract and detect.',
         },
       },
     },
